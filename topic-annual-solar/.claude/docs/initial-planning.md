@@ -12,6 +12,8 @@ A full-population analysis of 9,802 global M >= 6.0 earthquakes over a 72-year p
 - **Robustness**: zero of 1,000 synthetic uniform catalogs matched the observed extremity (>99.9% confidence)
 - **Controls null**: lunar signal p = 0.606, local solar time signal p = 0.368
 
+Reference: https://github.com/jakeYeager/erebus-valid-one/blob/main/approach-three/output/case_3a_whitepaper.md
+
 ### Central Puzzle
 
 The bimodal equinox pattern is not straightforwardly explained by the dominant mechanism in the literature (hydrological/snow loading). Hydrological forcing peaks at summer or winter solstice depending on hemisphere and regional climate — not at the equinoxes. The equinox signal is more consistent with a direct solar-geometric forcing (e.g., solar declination rate of change, Earth-Sun distance, or tidal stress geometry) or with a globally symmetric effect that cancels hemisphere-specific hydrological loading and leaves a residual equinox peak. This distinction is the core scientific question.
@@ -203,18 +205,18 @@ Cases are grouped by whether they primarily replicate existing literature or bre
 
 ## Prioritization (Revised)
 
-| Case | Verdict | Type | Mechanism Discriminated | Priority |
-|------|---------|------|------------------------|----------|
-| A4: Declustering sensitivity | KEEP | Replication | Artifact vs. genuine | **Execute first** |
-| B6: Rolling window stationarity | KEEP ↑ | Novel | Temporal persistence | High |
-| A1: Schuster / MFPA spectrum | REFRAME | Replication | Periodicity confirmation | High |
-| B1: Hemisphere phase symmetry | KEEP | Novel | Hydrological vs. geometric | High |
-| A3: Magnitude stratification | KEEP ↑ | Replication | Loading vs. nucleation scale | High |
-| B2: Ocean vs. continent | KEEP | Novel | Hydrological vs. geometric | Medium |
-| B4: Depth stratification | REFRAME | Novel | Surface vs. deep forcing | Medium |
-| A2: b-value seasonality | KEEP | Replication | Rate vs. magnitude distribution | Medium |
-| B3: Tectonic regime | KEEP | Novel | Stress geometry | Medium |
-| B5: Declination rate vs. position | KEEP | Novel | Solar variable identification | Low |
+| Case                              | Verdict | Type        | Mechanism Discriminated         | Priority          |
+| --------------------------------- | ------- | ----------- | ------------------------------- | ----------------- |
+| A4: Declustering sensitivity      | KEEP    | Replication | Artifact vs. genuine            | **Execute first** |
+| B6: Rolling window stationarity   | KEEP ↑  | Novel       | Temporal persistence            | High              |
+| A1: Schuster / MFPA spectrum      | REFRAME | Replication | Periodicity confirmation        | High              |
+| B1: Hemisphere phase symmetry     | KEEP    | Novel       | Hydrological vs. geometric      | High              |
+| A3: Magnitude stratification      | KEEP ↑  | Replication | Loading vs. nucleation scale    | High              |
+| B2: Ocean vs. continent           | KEEP    | Novel       | Hydrological vs. geometric      | Medium            |
+| B4: Depth stratification          | REFRAME | Novel       | Surface vs. deep forcing        | Medium            |
+| A2: b-value seasonality           | KEEP    | Replication | Rate vs. magnitude distribution | Medium            |
+| B3: Tectonic regime               | KEEP    | Novel       | Stress geometry                 | Medium            |
+| B5: Declination rate vs. position | KEEP    | Novel       | Solar variable identification   | Low               |
 
 **Recommended execution order:** A4 → B6 → A1 → B1 → A3 → B2 → B4 → A2 → B3 → B5
 
