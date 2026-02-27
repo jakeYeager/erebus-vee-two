@@ -22,4 +22,4 @@ This approach in the project reviews the statistical testing suites from Approac
 - Case 3A/B: Clustering Patterns
 - Case 4A/B: Energy-Weighted Validation
 
-Only read this file if you need to know the full summary of this topic: `topic-global-description/final-summary.md`
+Only read this file if you need to know the full summary of this topic: `topic-l3/final-summary.md`

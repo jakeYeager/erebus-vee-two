@@ -26,6 +26,6 @@ Review the cases in the following priority:
 9. B3: Tectonic regime
 10. B5: Declination rate vs. position
 
-**Eager Load Planning:** [warning user if topic status changes] Remove eager-loading when planning is complete: @topic-annual-solar/.claude/docs/initial-planning.md
+**Eager Load Planning:** [warning user if topic status changes] Remove eager-loading when planning is complete: @topic-a2/.claude/docs/planning-initial.md
 
 <!-- --resume "seismic-solar-phase-analysis"  -->

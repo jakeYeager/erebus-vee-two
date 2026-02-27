@@ -23,4 +23,4 @@ This topic tests whether the solar_secs clustering signal identified in previous
 - Case D3A/B: Clustering Patterns
 - Case D4A/B: Energy-Weighted Validation
 
-Only read this file if you need to know the final summary of this topic: `topic-declustering/final-summary.md`
+Only read this file if you need to know the final summary of this topic: `topic-l4/final-summary.md`

@@ -64,7 +64,7 @@ Store the full case block for each case for use in Steps 3–5.
 
 Try to read `<topic-dir>/.claude/docs/file-organization.md`. If it exists and contains substantive content (not just a placeholder), extract data file paths and column names for use in spec files.
 
-If file-organization.md is absent or empty, read the prior topic's spec files (e.g., `topic-declustering-algo/.claude/spec/case-d0-spec.md`) to identify data file conventions — paths and column names typically carry forward across topics. Note any new columns described in `planning-refinement.md`'s Pipeline Requirements section.
+If file-organization.md is absent or empty, read the prior topic's spec files (e.g., `topic-l4/.claude/spec/case-d0-spec.md`) to identify data file conventions — paths and column names typically carry forward across topics. Note any new columns described in `planning-refinement.md`'s Pipeline Requirements section.
 
 Record what data context you were able to establish and flag any gaps.
 

@@ -10,7 +10,7 @@ Global seismicity M≥6.0, post-1949, n=9,802 (pre-declustering); G-K declustere
 
 ## Topic Research
 
-Only read this file if you need to know the background research for this topic:`topic-declustering-degradation/academic-research.md`
+Only read this file if you need to know the background research for this topic:`topic-l5/academic-research.md`
 
 ## Analysis Framework
 
@@ -20,4 +20,4 @@ Only read this file if you need to know the background research for this topic:`
 - Case E4: GR Law in Aftershock Subpopulations
 - Case E5: Declustering Degradation Synthesis
 
-Only read this file if you need to know the final summary of this topic: `topic-declustering-degradation/final-summary.md`
+Only read this file if you need to know the final summary of this topic: `topic-l5/final-summary.md`
