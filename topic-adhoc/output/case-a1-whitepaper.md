@@ -1,8 +1,9 @@
 # Case A1: Binning Increment Sensitivity Analysis for Astronomical Metrics
 
 **Document Information**
-- Version: 1.0
-- Date: 2026-02-27
+- Author: Jake Yeager
+- Version: 1.1
+- Date: February 27, 2026
 
 ---
 
@@ -105,6 +106,5 @@ The `solar_secs` row shows visible departures from the uniform expected line (re
 ---
 
 **Generation Details**
-- Version: 1.0
-- Date: 2026-02-27
+- Version: 1.1
 - Generated with: Claude Code (claude-opus-4-6)

@@ -1,8 +1,9 @@
 # Case A0: ComCat and ISC-GEM Catalog Comparison Reference
 
 **Document Information**
-- Version: 1.0
-- Date: 2026-02-27
+- Author: Jake Yeager
+- Version: 1.1
+- Date: February 27, 2026
 
 ---
 
@@ -100,6 +101,5 @@ No external references are cited. Catalog documentation is available from the US
 ---
 
 **Generation Details**
-- Version: 1.0
-- Date: 2026-02-27
+- Version: 1.1
 - Generated with: Claude Code (claude-opus-4-6)

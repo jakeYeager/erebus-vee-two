@@ -19,8 +19,9 @@ Use these template header and footers unless otherwise specified:
 # Case [identifier]: [Title]
 
 **Document Information**
+- Author: Jake Yeager
 - Version: 1.0
-- Date: [current date]
+- Date: [current date, format: mmmm d, yyyy]
 ```
 
 **Footer:**
@@ -29,8 +30,7 @@ Use these template header and footers unless otherwise specified:
 
 **Generation Details**
 - Version: 1.0
-- Date: [current date]
-- Generated with: Claude Code ([current model used])
+- Generated with: Claude Code ([current model used, readable format])
 ```
 
 ## Images

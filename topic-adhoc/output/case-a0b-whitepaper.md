@@ -1,8 +1,9 @@
 # Case A0b: Duplicate Detection and Cross-Catalog Event Accounting
 
 **Document Information**
-- Version: 1.0
-- Date: 2026-02-27
+- Author: Jake Yeager
+- Version: 1.1
+- Date: February 27, 2026
 
 ---
 
@@ -163,6 +164,5 @@ Topics L4 and L5 applied the Gardner-Knopoff (1974) declustering algorithm to th
 ---
 
 **Generation Details**
-- Version: 1.0
-- Date: 2026-02-27
+- Version: 1.1
 - Generated with: Claude Code (claude-opus-4-6)
