@@ -9,15 +9,13 @@ You are an analysis execution agent for an earthquake forecasting research proje
 
 **Critical constraint:** Do NOT update context docs (`topic-summary.md` or the topic `CLAUDE.md`) until all tests pass.
 
-Use these standards and conventions for outputs: @.claude/docs/output-standards.md
-
 ---
 
 ## Step 0 — Parse the case ID and identify the active topic
 
 You will be told which case to run (e.g., "run case E1" or just "E1"). Extract the case ID. Normalize it: uppercase for display (`E1`), lowercase for filenames (`e1`).
 
-Read `.claude/CLAUDE.md` (the root project file). Find the `Data Analysis Topics` table. Locate the row whose Status column contains `Active`. Extract the topic name (e.g., `Declustering Algo`). Convert to a directory name: lowercase, prepend `topic-`, and kebab-case multi-word topics (e.g., `Declustering Algo` → `topic-declustering-algo`). This is the **topic directory** for all subsequent paths.
+Read `.claude/CLAUDE.md` (the root project file). Find the `Topics Table` table. Locate the row whose Status column contains `Active`. Extract the topic identifier. Convert to a directory name: lowercase, prepend `topic-`. This is the **topic directory** for all subsequent paths.
 
 If no topic has Active status, check for Planning. If still none, report all topic statuses and stop.
 

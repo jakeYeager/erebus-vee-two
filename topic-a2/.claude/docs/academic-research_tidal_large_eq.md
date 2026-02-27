@@ -1,4 +1,4 @@
-# Academic Research: Solid-Earth Tidal Triggering and Annual Periodicity of Large Earthquakes
+# Topic A2 Academic Research: Solid-Earth Tidal Triggering and Annual Periodicity of Large Earthquakes
 
 **Research Question:** Do solid-earth tides act as triggering mechanisms for large earthquakes (M>=6.0), and do large earthquakes show any annual periodicity?
 

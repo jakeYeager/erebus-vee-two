@@ -6,6 +6,12 @@
 
 The bimodal equinox pattern is not straightforwardly explained by the dominant mechanism in the literature (hydrological/snow loading). Hydrological forcing peaks at summer or winter solstice depending on hemisphere and regional climate — not at the equinoxes. The equinox signal is more consistent with a direct solar-geometric forcing (e.g., solar declination rate of change, Earth-Sun distance, or tidal stress geometry) or with a globally symmetric effect that cancels hemisphere-specific hydrological loading and leaves a residual equinox peak. This distinction is the core scientific question.
 
+## Data Source
+
+All cases use the ISC-GEM catalog: `data/global-sets/iscgem_global_events.csv` (9,210 events, M ≥ 6.0, 1949–2021).
+
+Prior results (Case 3A context) used the ComCat catalog (9,802 events). See Case CC1 in topic-catalog-comparison for a full description of the differences between the two catalogs.
+
 ## Case Review Priority
 
 Review the cases in the following priority:
@@ -21,3 +27,5 @@ Review the cases in the following priority:
 10. B5: Declination rate vs. position
 
 **Eager Load Planning:** [warning user if topic status changes] Remove eager-loading when planning is complete: @topic-annual-solar/.claude/docs/initial-planning.md
+
+<!-- --resume "seismic-solar-phase-analysis"  -->

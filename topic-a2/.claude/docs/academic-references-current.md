@@ -1,4 +1,4 @@
-# Current Topic References
+# Topic A2 References
 
 ## Annual Solar / Seasonal Signal Investigation
 

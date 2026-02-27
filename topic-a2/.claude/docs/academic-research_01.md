@@ -1,4 +1,4 @@
-# Academic Research: Annual Seasonal Modulation of Earthquake Occurrence Rates
+# Topic A2 Academic Research: Annual Seasonal Modulation of Earthquake Occurrence Rates
 
 **Research Question:** What is the evidence for annual (solar declination / seasonal) modulation of earthquake occurrence rates, and how does this differ mechanistically and statistically from diurnal or semi-diurnal solid-earth tidal triggering?
 

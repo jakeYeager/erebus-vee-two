@@ -19,10 +19,10 @@ The specific steps to follow are detailed below. Follow them carefully and do no
 
 Steps:
 1. Read `.claude/CLAUDE.md` (the root project file)
-2. Find the `Data Analysis Topics` table
+2. Find the `Topics Table` table
 3. Locate the row whose Status column contains `Planning`
-4. Extract the topic name from that row (e.g., `Declustering`)
-5.Convert it to a directory name: lowercase the word(s), prepend `topic-` and kebab-case multi-word topics (e.g., `Declustering Algo` → `topic-declustering-algo`). This is the **topic directory** used in all subsequent paths
+4. Extract the topic identifier from that row (e.g., `A0`)
+5.Convert it to a directory name: lowercase the letter(s), prepend `topic-`. This is the **topic directory** used in all subsequent paths
 6. If no topic has Planning status, stop and report: `No topic is currently in Planning status. Check .claude/CLAUDE.md.`
 
 ---
@@ -48,7 +48,7 @@ Read each file first. If the Superseded header is already present at line 1, ski
 
 Read `<topic-dir>/.claude/docs/planning-refinement.md`.
 
-Locate the `## <topic name> Cases` section (e.g., `## Declustering Algo Cases`). For each case with a `### Case <identifier> —` heading in that section, extract the **full case block**: all text from that heading up to the next `---` divider or the next `### Case` heading (whichever comes first). Stop extraction at the next `##` section heading — do not include deferred or out-of-scope cases.
+Locate the `## [topic name] Cases` section (e.g., `## Declustering Algo Cases`). For each case with a `### Case [identifier] —` heading in that section, extract the **full case block**: all text from that heading up to the next `---` divider or the next `### Case` heading (whichever comes first). Stop extraction at the next `##` section heading — do not include deferred or out-of-scope cases.
 
 From each case block, identify:
 - **Case ID** — the `<identifier>` token from the heading (e.g., `E1`, `F2`)
@@ -121,7 +121,7 @@ Follow this structure:
 **Numbered deliverable sections** — one `## N.` section per deliverable. Derive the deliverables and their specific implementation steps from the full case block in `planning-refinement.md`. Be concrete: name the specific statistical tests, the exact output file paths, the JSON field names, the visualization types, and the whitepaper sections. The agent reading this spec should not need to make any structural decisions.
 
 **Final section — Update context docs:** always the last numbered section. Include:
-  - Update `topic-<name>/.claude/docs/topic-summary.md` with a block with the case title plus key results and final status of the case ("Complete", "Blocked", or "Abandoned")
+  - Update `<topic-dir>/.claude/docs/topic-summary.md` with a block with the case title plus key results and final status of the case ("Complete", "Blocked", or "Abandoned")
   - Update Case <ID> status ("Complete", "Blocked", or "Abandoned") in `<topic-dir>/.claude/CLAUDE.md`
 
 **Deriving deliverables from the case block:**

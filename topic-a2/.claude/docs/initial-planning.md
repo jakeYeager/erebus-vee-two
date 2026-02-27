@@ -1,8 +1,10 @@
-# Initial Planning: Annual Solar Signal Investigation
+# Topic A2 Initial Planning: Annual Solar Signal Investigation
 
 ## Context
 
 ### Prior Result (Case 3A)
+
+> **Catalog note:** Case 3A used the ComCat catalog (9,802 events). All cases in this topic use the ISC-GEM catalog (`data/global-sets/iscgem_global_events.csv`, 9,210 events, 1949–2021). See Case CC1 in topic-catalog-comparison for a full description of differences between the two populations.
 
 A full-population analysis of 9,802 global M >= 6.0 earthquakes over a 72-year period found:
 

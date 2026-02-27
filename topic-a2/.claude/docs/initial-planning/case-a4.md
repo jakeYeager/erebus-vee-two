@@ -8,7 +8,9 @@ Bradley & Hubbard (2024) specifically demonstrated that aftershock temporal clus
 
 ## Test
 
-Apply two standard declustering algorithms (Gardner-Knopoff 1974 window method; Reasenberg 1985 spatial-temporal linking) to the catalog. Repeat the Case 3A chi-square and Rayleigh analysis on each declustered version. Compare p-values and bin distributions against the undeclustered result.
+Apply two standard declustering algorithms (Gardner-Knopoff 1974 window method; Reasenberg 1985 spatial-temporal linking) to the ISC-GEM catalog (`data/global-sets/iscgem_global_events.csv`). Repeat the Case 3A chi-square and Rayleigh analysis on each declustered version. Compare p-values and bin distributions against the undeclustered result.
+
+> **Note:** The project's prior declustering outputs (Old Four) were produced from the ComCat catalog and are not used as inputs here. Declustering must be applied fresh to the ISC-GEM population.
 
 ## Expected Outcome
 
