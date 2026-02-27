@@ -8,9 +8,9 @@ The bimodal equinox pattern is not straightforwardly explained by the dominant m
 
 ## Data Source
 
-All cases use the ISC-GEM catalog: `data/global-sets/iscgem_global_events.csv` (9,210 events, M ≥ 6.0, 1949–2021).
+All cases use the ISC-GEM catalog: `data/global-sets/iscgem_global_events.csv` (9,210 events, M ≥ 6.0, 1950–2021).
 
-Prior results (Case 3A context) used the ComCat catalog (9,802 events). See Case CC1 in topic-catalog-comparison for a full description of the differences between the two catalogs.
+Prior results (Case 3A context) used the ComCat catalog (9,802 events). See Cases A0 and A0b in topic-adhoc for a full description of differences between the two catalogs.
 
 ## Case Review Priority
 
