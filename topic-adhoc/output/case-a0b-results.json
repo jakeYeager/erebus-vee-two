@@ -1,0 +1,91 @@
+{
+  "generated": "2026-02-27T17:42:52.704238+00:00",
+  "prerequisites": {
+    "case_a0_results": "topic-adhoc/output/case-a0-results.json"
+  },
+  "id_cross_reference": {
+    "comcat_iscgem_prefix_count": 2973,
+    "id_matched_in_iscgem": {
+      "count": 2893,
+      "pct_of_comcat_iscgem": 97.3
+    },
+    "id_unmatched_in_iscgem": {
+      "count": 80,
+      "pct_of_comcat_iscgem": 2.7
+    },
+    "iscgem_ids_not_in_comcat": {
+      "count": 6317,
+      "pct_of_iscgem": 68.6
+    }
+  },
+  "within_comcat_duplicates": {
+    "tolerances": {
+      "time_seconds": 60,
+      "distance_km": 50,
+      "magnitude": 0.3
+    },
+    "duplicate_candidate_count": 1,
+    "pct_of_iscgem_prefix_subset": 0.0,
+    "net_effective_comcat_count": 9801,
+    "temporal_distribution": {
+      "1950s": 0,
+      "1960s": 0,
+      "1970s": 0,
+      "1980s_plus": 1
+    }
+  },
+  "cross_catalog_matching": {
+    "primary": {
+      "tolerances": {
+        "time_seconds": 60,
+        "distance_km": 50,
+        "magnitude": 0.3
+      },
+      "matched": 8413,
+      "comcat_only": 1389,
+      "iscgem_only": 797,
+      "comcat_only_temporal": {
+        "1950s": 45,
+        "1960s": 28,
+        "1970s": 240,
+        "1980s": 252,
+        "1990s": 304,
+        "2000s": 318,
+        "2010s": 171,
+        "2020s": 31
+      },
+      "iscgem_only_temporal": {
+        "1950s": 5,
+        "1960s": 3,
+        "1970s": 414,
+        "1980s": 191,
+        "1990s": 50,
+        "2000s": 69,
+        "2010s": 44,
+        "2020s": 21
+      },
+      "comcat_only_by_mag_band": {
+        "6.0-6.4": 1285,
+        "7.0-7.4": 23,
+        "6.5-6.9": 65,
+        "7.5+": 16
+      },
+      "iscgem_only_by_mag_band": {
+        "6.0-6.4": 628,
+        "6.5-6.9": 119,
+        "7.5+": 21,
+        "7.0-7.4": 29
+      }
+    },
+    "strict": {
+      "tolerances": {
+        "time_seconds": 30,
+        "distance_km": 25,
+        "magnitude": 0.2
+      },
+      "matched": 7904,
+      "comcat_only": 1898,
+      "iscgem_only": 1306
+    }
+  }
+}
