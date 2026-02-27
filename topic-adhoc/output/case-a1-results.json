@@ -1,0 +1,109 @@
+{
+  "generated": "2026-02-27T18:59:56.987056+00:00",
+  "data_source": "data/global-sets/iscgem_global_events.csv",
+  "event_count": 9210,
+  "methodology": {
+    "phase_normalization": true,
+    "normalization_factors": {
+      "solar_secs": "actual_calendar_year_length_by_solaration_year",
+      "lunar_secs": "mean_synodic_month_2551442.976s",
+      "midnight_secs": "fixed_day_86400s"
+    },
+    "bin_counts": [
+      8,
+      16,
+      24,
+      32
+    ],
+    "n_tests": 12,
+    "alpha_uncorrected": 0.05,
+    "alpha_bonferroni": 0.004167,
+    "robustness_criterion": "significant at >= 3 of 4 bin counts after Bonferroni correction"
+  },
+  "results": {
+    "solar_secs": {
+      "8": {
+        "chi2": 17.4432,
+        "p_value": 0.014751281754132348,
+        "cramers_v": 0.016449,
+        "significant_bonferroni": false
+      },
+      "16": {
+        "chi2": 42.4612,
+        "p_value": 0.00019080350795975666,
+        "cramers_v": 0.017532,
+        "significant_bonferroni": true
+      },
+      "24": {
+        "chi2": 66.4769,
+        "p_value": 4.2023702536495576e-06,
+        "cramers_v": 0.017715,
+        "significant_bonferroni": true
+      },
+      "32": {
+        "chi2": 78.165,
+        "p_value": 5.9941160708019394e-06,
+        "cramers_v": 0.016546,
+        "significant_bonferroni": true
+      },
+      "n_significant": 3,
+      "robust": true
+    },
+    "lunar_secs": {
+      "8": {
+        "chi2": 10.0356,
+        "p_value": 0.18656425248491268,
+        "cramers_v": 0.012477,
+        "significant_bonferroni": false
+      },
+      "16": {
+        "chi2": 14.8182,
+        "p_value": 0.4645872420588929,
+        "cramers_v": 0.010357,
+        "significant_bonferroni": false
+      },
+      "24": {
+        "chi2": 19.3368,
+        "p_value": 0.6815120278676816,
+        "cramers_v": 0.009554,
+        "significant_bonferroni": false
+      },
+      "32": {
+        "chi2": 29.418,
+        "p_value": 0.5474720116598486,
+        "cramers_v": 0.010151,
+        "significant_bonferroni": false
+      },
+      "n_significant": 0,
+      "robust": false
+    },
+    "midnight_secs": {
+      "8": {
+        "chi2": 1.3928,
+        "p_value": 0.9857897451862155,
+        "cramers_v": 0.004648,
+        "significant_bonferroni": false
+      },
+      "16": {
+        "chi2": 9.5961,
+        "p_value": 0.8443488306230751,
+        "cramers_v": 0.008334,
+        "significant_bonferroni": false
+      },
+      "24": {
+        "chi2": 16.2879,
+        "p_value": 0.8426676692986119,
+        "cramers_v": 0.008769,
+        "significant_bonferroni": false
+      },
+      "32": {
+        "chi2": 27.9101,
+        "p_value": 0.6258024244883275,
+        "cramers_v": 0.009887,
+        "significant_bonferroni": false
+      },
+      "n_significant": 0,
+      "robust": false
+    }
+  }
+}
