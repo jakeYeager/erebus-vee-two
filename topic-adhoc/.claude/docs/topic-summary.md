@@ -23,3 +23,14 @@
 - The 592-event gap is entirely catalog divergence, not internal duplication
 - ISC-GEM-only events spike in the 1970s (414 of 797), suggesting systematic catalog construction differences
 - Pipeline recommendations R1--R6 documented; deduplication step (R4) not warranted
+
+### Case A1: Binning Increment Sensitivity Analysis for Astronomical Metrics
+
+**Status:** Complete
+
+**Key Results:**
+- `solar_secs` chi-square signal is robust: Bonferroni-significant at 3 of 4 bin counts (k=16, 24, 32); only k=8 falls short (p=0.015)
+- `lunar_secs` shows no significant departure from uniformity at any bin count after phase normalization (all p > 0.18), confirming the legacy 16-bin result was a binning artifact
+- `midnight_secs` remains non-significant across all bin counts (all p > 0.62), confirming expected behavior as a temporal control at global scale
+- Cramer's V for `solar_secs` is small but consistent (0.016--0.018), indicating a modest effect size
+- Phase normalization established as project standard; clamping required for 3 solar and 23 lunar boundary events

@@ -14,5 +14,5 @@ The user will work with you on iterative refinements of a specification file unt
 | ---------- | -------- | ------------------------------------------------------ |
 | A0         | Complete | ComCat and ISC-GEM data file comparison.               |
 | A0b        | Complete | Duplicate detection and cross-catalog event accounting. |
-| A1         | Planning | Effects of binning increments on astronomical metrics. |
+| A1         | Complete | Effects of binning increments on astronomical metrics. |
 
