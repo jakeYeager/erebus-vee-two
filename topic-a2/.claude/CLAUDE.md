@@ -12,19 +12,20 @@ All cases use the ISC-GEM catalog: `data/global-sets/iscgem_global_events.csv` (
 
 Prior results (Case 3A context) used the ComCat catalog (9,802 events). See Cases A0 and A0b in topic-adhoc for a full description of differences between the two catalogs.
 
-## Case Review Priority
+## Case Table
 
-Review the cases in the following priority:
-1. A4: Declustering sensitivity
-2. B6: Rolling window stationarity
-3. A1: Schuster / MFPA spectrum
-4. B1: Hemisphere phase symmetry
-5. A3: Magnitude stratification
-6. B2: Ocean vs. continent
-7. B4: Depth stratification
-8. A2: b-value seasonality
-9. B3: Tectonic regime
-10. B5: Declination rate vs. position
+| Priority | Case | Status  | Title                                                          |
+| -------- | ---- | ------- | -------------------------------------------------------------- |
+| 1        | A4   | Pending | Declustering Sensitivity Analysis                              |
+| 2        | B6   | Pending | Rolling Window Stationarity Test                               |
+| 3        | A1   | Pending | Schuster Spectrum and MFPA Periodicity Analysis                |
+| 4        | B1   | Pending | Hemisphere Stratification — Phase Symmetry Test                |
+| 5        | A3   | Pending | Magnitude Stratification of the Solar Signal                   |
+| 6        | B2   | Pending | Ocean vs. Continent Location — Hydrological Loading Discrimination |
+| 7        | B4   | Pending | Depth Stratification — Surface Loading Penetration Test        |
+| 8        | A2   | Pending | b-Value Seasonal Variation                                     |
+| 9        | B3   | Pending | Tectonic Regime Stratification                                 |
+| 10       | B5   | Pending | Solar Declination Rate-of-Change vs. Position Test             |
 
 **Eager Load Planning:** [warning user if topic status changes] Remove eager-loading when planning is complete: @topic-a2/.claude/docs/planning-initial.md
 
