@@ -80,6 +80,11 @@ Cases are grouped by whether they primarily replicate existing literature or bre
 
 **Expected outcome if literature holds:** Annual period (365.25 days) reaches significance; tidal periods (12h, 24h, 14 days) do not. Sub-annual harmonics should be cross-referenced against the three A1b phase intervals to test consistency: a 6-month harmonic would explain intervals 1 and 3 (~6 months apart at phases 0.19 and 0.90); the August interval (phase 0.64) does not fit a 6-month harmonic and may indicate a more complex periodicity or residual sequence contamination at that phase.
 
+**Data sources:**
+- Raw catalog: `data/global-sets/iscgem_global_events.csv` (n=9,210)
+- G-K mainshocks (after A4): `data/iscgem/declustering-algorithm/mainshocks_G-K_global.csv` (n=5,883)
+- A1b mainshocks (after A4): `data/iscgem/declustering-algorithm/mainshocks_a1b_global.csv` (n=7,137)
+
 **Key references:** Ader & Avouac (2013), Dutilleul et al. (2015), Park et al. (2021), Bradley & Hubbard (2024), Adhoc Case A1b
 
 ---
@@ -97,6 +102,9 @@ Cases are grouped by whether they primarily replicate existing literature or bre
 **Expected outcome if literature holds:** b-value peaks near solstice positions (clamping phase), troughs near equinox positions — inverse of the rate signal.
 
 **Diagnostic value:** If rate and b-value vary inversely in phase, the equinox excess is partly a magnitude-distribution effect (more events capable of reaching M 6.0 threshold during unclamping), not only a nucleation rate effect. This would be a new finding at global M >= 6 scale.
+
+**Data sources:**
+- Raw catalog: `data/global-sets/iscgem_global_events.csv` (n=9,210; magnitude bands derived at analysis time from `usgs_mag`)
 
 **Key references:** Colledge et al. (2025), Bettinelli et al. (2008), Ide et al. (2016)
 
@@ -117,6 +125,9 @@ Cases are grouped by whether they primarily replicate existing literature or bre
 **Expected outcome if solar-geometric forcing is mechanism:** Effect is flat or increases with magnitude.
 
 **Expected outcome if consistent with tidal literature pattern:** Effect should be weakest at M >= 6 (the opposite of what Case 3A found globally) — making any positive result here a novel finding.
+
+**Data sources:**
+- Raw catalog: `data/global-sets/iscgem_global_events.csv` (n=9,210; magnitude bands M 6.0–6.4, 6.5–6.9, 7.0–7.4, ≥7.5 derived at analysis time from `usgs_mag`)
 
 **Key references:** Hao et al. (2018), Johnson et al. (2017), Métivier et al. (2009), Ide et al. (2016)
 
@@ -140,6 +151,8 @@ A two-algorithm comparison (G-K vs Reasenberg) is insufficient given the evidenc
 1. **Gardner-Knopoff (1974)** standard window method — established reference
 2. **Reasenberg (1985)** spatial-temporal linking — independent method
 3. **A1b-informed custom window** (83.2 km spatial / 95.6 days temporal) — data-informed from elevated-bin clustering footprint
+
+**Note:** The values for the G-K window are derived from widely available formula but have not been directly verified against Gardner & Knopoff (1974) BSSA 64(5), pp. 1363–1367.
 
 For each declustering method, produce a mainshock catalog (retained events) and an aftershock catalog (removed events). Then perform three sub-analyses:
 
@@ -171,6 +184,15 @@ Possible outcomes:
 
 **Diagnostic value:** A signal that disappears after declustering would indicate the structure is driven by temporal clustering of aftershock sequences. A signal that weakens under G-K but persists under the A1b window would indicate G-K is over-aggressive — removing genuine signal along with aftershocks. Sub-analysis C adds a unique discriminator: if aftershocks themselves are phase-preferring, the traditional "declustering removes contamination" framing is too simple, and the mechanism acts on both mainshocks and aftershocks. The L4/L5 ISC-GEM values will differ from the ComCat-based reference (60.2% suppression, χ²=45.61→18.13) and should not be expected to match.
 
+**Data sources:**
+- Raw catalog: `data/global-sets/iscgem_global_events.csv` (n=9,210; undeclustered baseline)
+- G-K mainshocks: `data/iscgem/declustering-algorithm/mainshocks_G-K_global.csv` (n=5,883)
+- G-K aftershocks: `data/iscgem/declustering-algorithm/aftershocks_G-K_global.csv` (n=3,327)
+- Reasenberg mainshocks: `data/iscgem/declustering-algorithm/mainshocks_reas_global.csv` (n=8,265)
+- Reasenberg aftershocks: `data/iscgem/declustering-algorithm/aftershocks_reas_global.csv` (n=945)
+- A1b mainshocks: `data/iscgem/declustering-algorithm/mainshocks_a1b_global.csv` (n=7,137)
+- A1b aftershocks: `data/iscgem/declustering-algorithm/aftershocks_a1b_global.csv` (n=2,073)
+
 **Key references:** Park et al. (2021), Bradley & Hubbard (2024), Gardner & Knopoff (1974), Ader & Avouac (2013), Adhoc Cases A1 and A1b
 
 ---
@@ -199,6 +221,9 @@ Possible outcomes:
 **Prediction (hydrological hypothesis):** NH and SH peaks are offset by ~half a year; intervals 2 and 3 may appear only in one hemisphere.
 **Prediction (mixed — sequence contamination + genuine signal):** Interval 1 appears in both hemispheres (genuine); intervals 2 and 3 are hemisphere-specific or disappear after declustering.
 
+**Data sources:**
+- Raw catalog: `data/global-sets/iscgem_global_events.csv` (n=9,210; hemisphere split derived at analysis time from `latitude`)
+
 ---
 
 #### Case B2: Ocean vs. Continent Location — Hydrological Loading Discrimination
@@ -215,6 +240,14 @@ Possible outcomes:
 
 **Prediction (geometric hypothesis):** Signal appears in both oceanic and continental subsets.
 **Prediction (hydrological hypothesis):** Signal is confined to or significantly stronger in continental earthquakes.
+
+**Data Visualizations:** Outputs should include dot-plot or heatmap-like visualizations at the global scale, as well as tighter window views of the  seismically active areas coastlines (i.e. Phillipines, Japan, Chile, Java). These detail images should be done for each mapping treatments in order to review the effects of the mapping method. Color scheme: `oceanic`=blue, `transitional`=green, `continental`=red.
+
+**Data sources:**
+- Raw catalog: `data/global-sets/iscgem_global_events.csv` (n=9,210)
+- GSHHG classification (primary): `data/iscgem/plate-location/ocean_class_gshhg_global.csv` (continental=3,799 / transitional=3,459 / oceanic=1,952)
+- Natural Earth classification (secondary): `data/iscgem/plate-location/ocean_class_ne_global.csv` (same distribution as GSHHG)
+- PB2002 classification (coarse proxy): `data/iscgem/plate-location/ocean_class_pb2002_global.csv` (continental=2,851 / transitional=3,677 / oceanic=2,682)
 
 ---
 
@@ -233,6 +266,10 @@ Possible outcomes:
 **Prediction (loading hypothesis):** Thrust faults show solstice deficits; normal faults show solstice excess; patterns approximately anti-phased.
 **Prediction (geometric hypothesis):** All three classes show equinox excess with similar phase.
 **Prediction (consistent with Métivier tidal pattern):** Normal and strike-slip show stronger signal than thrust.
+
+**Data sources:**
+- Focal mechanism join: `data/iscgem/focal-mechanism/focal_join_global.csv` (n=9,210; 4,874 proximity matches / 4,336 null; mechanism classified from `rake` column)
+- PB2002 fallback (if needed): `data/iscgem/plate-location/ocean_class_pb2002_global.csv` — coarse proxy only; not required while GCMT data is available
 
 **Key references:** Métivier et al. (2009), Johnson et al. (2017b)
 
@@ -253,6 +290,9 @@ Possible outcomes:
 - *Geometric/deep forcing hypothesis*: Signal present at all depth ranges including > 300 km.
 - *Zhan & Shearer pattern*: Deep events show a seasonality, but potentially with different phase than shallow events — a finding of independent interest.
 
+**Data sources:**
+- Raw catalog: `data/global-sets/iscgem_global_events.csv` (n=9,210; depth bands 0–20 km, 20–70 km, 70–300 km, >300 km derived at analysis time from `depth`)
+
 **Key references:** Zhan & Shearer (2015), Dutilleul et al. (2021), Johnson et al. (2017)
 
 ---
@@ -271,6 +311,9 @@ Possible outcomes:
 
 **Sequencing note:** Should be run after A4 (declustering) to ensure sequence contamination is controlled, and after B1 (hemisphere) to determine whether all three intervals represent genuine signal.
 
+**Data sources:**
+- Solar geometry enriched catalog: `data/iscgem/celestial-geometry/solar_geometry_global.csv` (n=9,210; includes `solar_declination`, `declination_rate`, `earth_sun_distance` plus all base catalog columns)
+
 ---
 
 #### Case B6: Rolling Window Stationarity Test
@@ -284,6 +327,9 @@ Possible outcomes:
 **Data density note (Adhoc A0b):** ISC-GEM has a 1970s spike of 414 unmatched events relative to ComCat, indicating a period-specific difference in catalog construction. The rolling window approach inherently accounts for this by testing each window independently, but the 1970s windows should be flagged if they show anomalous behavior relative to adjacent decades.
 
 **Test:** Compute the Rayleigh statistic and mean phase angle of the solar-cycle distribution using a sliding 10-year window across the 72-year record. Plot the trajectory of p-value, mean vector length, and mean phase. Test whether the phase structure is stable across decades or drifts. If any binned supplementary tests are used alongside Rayleigh, apply phase-normalized binning.
+
+**Data sources:**
+- Raw catalog: `data/global-sets/iscgem_global_events.csv` (n=9,210)
 
 **Key references:** Bradley & Hubbard (2024), Dutilleul et al. (2021)
 
