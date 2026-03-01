@@ -37,7 +37,7 @@ All cases use the ISC-GEM catalog (9,210 events, M ≥ 6.0, 1950–2021). Prior 
 | 6        | B2   | Complete | Ocean vs. Continent Location — Hydrological Loading Discrimination |
 | 7        | B4   | Complete | Depth Stratification — Surface Loading Penetration Test       |
 | 8        | A2   | Complete | b-Value Seasonal Variation                                    |
-| 9        | B3   | Pending | Tectonic Regime Stratification                                 |
+| 9        | B3   | Complete | Tectonic Regime Stratification                                |
 | 10       | B5   | Pending | Solar Declination Rate-of-Change vs. Position Test             |
 
 ## Analysis Framework
@@ -59,7 +59,6 @@ Only read this file if you need the full description of "Case B4: Depth Stratifi
 Only read this file if you need the full description of "Case A2: b-Value Seasonal Variation": `topic-a2/.claude/spec/case-a2-spec.md`
 
 Only read this file if you need the full description of "Case B3: Tectonic Regime Stratification": `topic-a2/.claude/spec/case-b3-spec.md`
-**Pre-run:** (1) *User Confirmed* - apply Julian constant (31,557,600 s) should be used uniformly for year phase normalization. (2) Verify that `focal_join_global.csv` includes `solar_secs` as a base-catalog-prefix column, or whether the raw catalog must be joined separately to supply `solar_secs` for matched events. *User Confirmed* - join exists already from data pipeline treatment.
 
 Only read this file if you need the full description of "Case B5: Solar Declination Rate-of-Change vs. Position Test": `topic-a2/.claude/spec/case-b5-spec.md`
 **Pre-run:** Verify actual min/max ranges of `solar_declination`, `declination_rate`, and `earth_sun_distance` in `solar_geometry_global.csv` against the REQ-3 spec ranges (−23.5 to +23.5°, ~−0.40 to +0.40 deg/day, ~0.983 to ~1.017 AU); update bin-computation formula if actual ranges differ.
