@@ -35,7 +35,7 @@ All cases use the ISC-GEM catalog (9,210 events, M ≥ 6.0, 1950–2021). Prior 
 | 4        | B1   | Complete | Hemisphere Stratification — Phase Symmetry Test               |
 | 5        | A3   | Complete | Magnitude Stratification of the Solar Signal                  |
 | 6        | B2   | Complete | Ocean vs. Continent Location — Hydrological Loading Discrimination |
-| 7        | B4   | Pending | Depth Stratification — Surface Loading Penetration Test        |
+| 7        | B4   | Complete | Depth Stratification — Surface Loading Penetration Test       |
 | 8        | A2   | Pending | b-Value Seasonal Variation                                     |
 | 9        | B3   | Pending | Tectonic Regime Stratification                                 |
 | 10       | B5   | Pending | Solar Declination Rate-of-Change vs. Position Test             |
@@ -55,7 +55,6 @@ Only read this file if you need the full description of "Case A3: Magnitude Stra
 Only read this file if you need the full description of "Case B2: Ocean vs. Continent Location — Hydrological Loading Discrimination": `topic-a2/.claude/spec/case-b2-spec.md`
 
 Only read this file if you need the full description of "Case B4: Depth Stratification — Surface Loading Penetration Test": `topic-a2/.claude/spec/case-b4-spec.md`
-**Pre-run:** *User Confirmed* - apply Julian constant (31,557,600 s) should be used uniformly for year phase normalization.
 
 Only read this file if you need the full description of "Case A2: b-Value Seasonal Variation": `topic-a2/.claude/spec/case-a2-spec.md`
 **Pre-run:** *User Confirmed* - apply Julian constant (31,557,600 s) should be used uniformly for year phase normalization.
