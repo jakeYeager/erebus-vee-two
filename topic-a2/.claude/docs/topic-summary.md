@@ -15,3 +15,7 @@
 ## Case B1: Hemisphere Stratification — Phase Symmetry Test
 **Status:** Complete
 **Key results:** NH n=4,429; SH n=4,781; n_equatorial=0. NH k=24: χ²=73.13 (p=3.96×10⁻⁷, V=0.0268); SH k=24: χ²=47.34 (p=2.03×10⁻³, V=0.0207). Test 1 (global symmetry): partially symmetric — intervals 2 and 3 in both hemispheres; interval 1 (March equinox) in NH only. Test 2 (interval 1): NH=True, SH=False (SH overlap 33%, below 50% threshold). Test 3 (intervals 2 & 3): both appear in both hemispheres at same phase positions. Test 4 (half-cycle offset): found (NH interval at ~0.396 ↔ SH interval at ~0.896, offset=0.500; 1 of 20 pairs within tolerance). Primary conclusion: hydrological (partially supported) — half-cycle offset detected, but intervals 2 and 3 are not hemisphere-specific as the hydrological hypothesis predicts.
+
+## Case A3: Magnitude Stratification of the Solar Signal
+**Status:** Complete
+**Key results:** Band sizes: M 6.0–6.4 (n=6,482), M 6.5–6.9 (n=1,880), M 7.0–7.4 (n=577), M ≥ 7.5 (n=271). Cramér's V at k=24: M 6.0–6.4=0.0186, M 6.5–6.9=0.0292, M 7.0–7.4=0.0450, M ≥ 7.5=0.0779. Spearman ρ (Cramér's V vs band): 1.000 (p≈0) — perfect monotonic increase. Trend classification: increasing. Significant bands at k=24 (p<0.05): M 6.0–6.4 (p=5.4×10⁻⁴), M 6.5–6.9 (p=0.034), M ≥ 7.5 (p=0.027); M 7.0–7.4 not significant (p=0.260). Prediction support: hydrological_loading=not supported; solar_geometric=supported; tidal_literature_pattern=not supported; magnitude_independent=not supported. Max/min V ratio=4.18.
