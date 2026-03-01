@@ -38,7 +38,7 @@ All cases use the ISC-GEM catalog (9,210 events, M ≥ 6.0, 1950–2021). Prior 
 | 7        | B4   | Complete | Depth Stratification — Surface Loading Penetration Test       |
 | 8        | A2   | Complete | b-Value Seasonal Variation                                    |
 | 9        | B3   | Complete | Tectonic Regime Stratification                                |
-| 10       | B5   | Pending | Solar Declination Rate-of-Change vs. Position Test             |
+| 10       | B5   | Complete | Solar Declination Rate-of-Change vs. Position Test            |
 
 ## Analysis Framework
 
@@ -61,4 +61,3 @@ Only read this file if you need the full description of "Case A2: b-Value Season
 Only read this file if you need the full description of "Case B3: Tectonic Regime Stratification": `topic-a2/.claude/spec/case-b3-spec.md`
 
 Only read this file if you need the full description of "Case B5: Solar Declination Rate-of-Change vs. Position Test": `topic-a2/.claude/spec/case-b5-spec.md`
-**Pre-run:** Verify actual min/max ranges of `solar_declination`, `declination_rate`, and `earth_sun_distance` in `solar_geometry_global.csv` against the REQ-3 spec ranges (−23.5 to +23.5°, ~−0.40 to +0.40 deg/day, ~0.983 to ~1.017 AU); update bin-computation formula if actual ranges differ.
