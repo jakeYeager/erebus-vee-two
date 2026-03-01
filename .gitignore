@@ -30,3 +30,4 @@ htmlcov/
 
 # Environments
 .env
+claude.local.md

@@ -1,0 +1,741 @@
+{
+  "case": "A3",
+  "title": "Magnitude Stratification of the Solar Signal",
+  "solar_year_secs": 31557600.0,
+  "band_stats": {
+    "M6.0-6.4": {
+      "n": 6482,
+      "k16": {
+        "chi2": 35.82536254242518,
+        "p_chi2": 0.001873268755815671,
+        "cramer_v": 0.019195311054947675,
+        "rayleigh_R": 0.00950060870233096,
+        "p_rayleigh": 0.5570638191967677,
+        "mean_phase": 0.1655340682398757,
+        "bin_counts": [
+          373,
+          394,
+          364,
+          468,
+          454,
+          410,
+          403,
+          391,
+          355,
+          382,
+          430,
+          420,
+          410,
+          388,
+          435,
+          405
+        ],
+        "elevated_intervals": [
+          {
+            "phase_start": 0.1875,
+            "phase_end": 0.3125,
+            "mean_phase": 0.25
+          },
+          {
+            "phase_start": 0.625,
+            "phase_end": 0.6875,
+            "mean_phase": 0.65625
+          },
+          {
+            "phase_start": 0.875,
+            "phase_end": 0.9375,
+            "mean_phase": 0.90625
+          }
+        ]
+      },
+      "k24": {
+        "chi2": 51.738969453872265,
+        "p_chi2": 0.0005419746786264646,
+        "cramer_v": 0.01862903916280358,
+        "rayleigh_R": 0.00950060870233096,
+        "p_rayleigh": 0.5570638191967677,
+        "mean_phase": 0.1655340682398757,
+        "bin_counts": [
+          248,
+          261,
+          258,
+          246,
+          279,
+          307,
+          312,
+          299,
+          253,
+          280,
+          266,
+          248,
+          248,
+          231,
+          258,
+          317,
+          239,
+          294,
+          254,
+          280,
+          264,
+          303,
+          255,
+          282
+        ],
+        "elevated_intervals": [
+          {
+            "phase_start": 0.208333,
+            "phase_end": 0.333333,
+            "mean_phase": 0.270833
+          },
+          {
+            "phase_start": 0.625,
+            "phase_end": 0.666667,
+            "mean_phase": 0.645833
+          },
+          {
+            "phase_start": 0.708333,
+            "phase_end": 0.75,
+            "mean_phase": 0.729167
+          },
+          {
+            "phase_start": 0.875,
+            "phase_end": 0.916667,
+            "mean_phase": 0.895833
+          }
+        ],
+        "cramer_v_ci95_lower": 0.01777738395363964,
+        "cramer_v_ci95_upper": 0.027394923007282086
+      },
+      "k32": {
+        "chi2": 69.21258870718914,
+        "p_chi2": 9.68502073881867e-05,
+        "cramer_v": 0.018559111729208135,
+        "rayleigh_R": 0.00950060870233096,
+        "p_rayleigh": 0.5570638191967677,
+        "mean_phase": 0.1655340682398757,
+        "bin_counts": [
+          192,
+          181,
+          211,
+          183,
+          184,
+          180,
+          264,
+          204,
+          234,
+          220,
+          234,
+          176,
+          206,
+          197,
+          200,
+          191,
+          187,
+          168,
+          201,
+          181,
+          237,
+          193,
+          192,
+          228,
+          193,
+          217,
+          190,
+          198,
+          229,
+          206,
+          197,
+          208
+        ],
+        "elevated_intervals": [
+          {
+            "phase_start": 0.1875,
+            "phase_end": 0.21875,
+            "mean_phase": 0.203125
+          },
+          {
+            "phase_start": 0.25,
+            "phase_end": 0.34375,
+            "mean_phase": 0.296875
+          },
+          {
+            "phase_start": 0.625,
+            "phase_end": 0.65625,
+            "mean_phase": 0.640625
+          },
+          {
+            "phase_start": 0.71875,
+            "phase_end": 0.75,
+            "mean_phase": 0.734375
+          },
+          {
+            "phase_start": 0.78125,
+            "phase_end": 0.8125,
+            "mean_phase": 0.796875
+          },
+          {
+            "phase_start": 0.875,
+            "phase_end": 0.90625,
+            "mean_phase": 0.890625
+          }
+        ]
+      }
+    },
+    "M6.5-6.9": {
+      "n": 1880,
+      "k16": {
+        "chi2": 16.76595744680851,
+        "p_chi2": 0.3330469539312824,
+        "cramer_v": 0.024383139627902246,
+        "rayleigh_R": 0.024324618437185495,
+        "p_rayleigh": 0.3287782798687041,
+        "mean_phase": 0.07986085374559378,
+        "bin_counts": [
+          130,
+          109,
+          130,
+          125,
+          121,
+          125,
+          115,
+          105,
+          109,
+          107,
+          125,
+          95,
+          121,
+          127,
+          133,
+          103
+        ],
+        "elevated_intervals": [
+          {
+            "phase_start": 0.0,
+            "phase_end": 0.0625,
+            "mean_phase": 0.03125
+          },
+          {
+            "phase_start": 0.125,
+            "phase_end": 0.1875,
+            "mean_phase": 0.15625
+          },
+          {
+            "phase_start": 0.875,
+            "phase_end": 0.9375,
+            "mean_phase": 0.90625
+          }
+        ]
+      },
+      "k24": {
+        "chi2": 36.782978723404256,
+        "p_chi2": 0.03425531109753515,
+        "cramer_v": 0.029166250757381666,
+        "rayleigh_R": 0.024324618437185495,
+        "p_rayleigh": 0.3287782798687041,
+        "mean_phase": 0.07986085374559378,
+        "bin_counts": [
+          92,
+          81,
+          66,
+          93,
+          81,
+          81,
+          76,
+          88,
+          82,
+          83,
+          60,
+          77,
+          75,
+          67,
+          74,
+          95,
+          73,
+          52,
+          78,
+          88,
+          82,
+          98,
+          67,
+          71
+        ],
+        "elevated_intervals": [
+          {
+            "phase_start": 0.0,
+            "phase_end": 0.041667,
+            "mean_phase": 0.020833
+          },
+          {
+            "phase_start": 0.125,
+            "phase_end": 0.166667,
+            "mean_phase": 0.145833
+          },
+          {
+            "phase_start": 0.291667,
+            "phase_end": 0.333333,
+            "mean_phase": 0.3125
+          },
+          {
+            "phase_start": 0.625,
+            "phase_end": 0.666667,
+            "mean_phase": 0.645833
+          },
+          {
+            "phase_start": 0.791667,
+            "phase_end": 0.833333,
+            "mean_phase": 0.8125
+          },
+          {
+            "phase_start": 0.875,
+            "phase_end": 0.916667,
+            "mean_phase": 0.895833
+          }
+        ],
+        "cramer_v_ci95_lower": 0.028756702386516637,
+        "cramer_v_ci95_upper": 0.045178389235867575
+      },
+      "k32": {
+        "chi2": 49.668085106382975,
+        "p_chi2": 0.018084986242609378,
+        "cramer_v": 0.02919301408121297,
+        "rayleigh_R": 0.024324618437185495,
+        "p_rayleigh": 0.3287782798687041,
+        "mean_phase": 0.07986085374559378,
+        "bin_counts": [
+          65,
+          65,
+          66,
+          43,
+          68,
+          62,
+          73,
+          52,
+          51,
+          70,
+          66,
+          59,
+          57,
+          58,
+          40,
+          65,
+          53,
+          56,
+          45,
+          62,
+          65,
+          60,
+          59,
+          36,
+          64,
+          57,
+          71,
+          56,
+          78,
+          55,
+          58,
+          45
+        ],
+        "elevated_intervals": [
+          {
+            "phase_start": 0.125,
+            "phase_end": 0.15625,
+            "mean_phase": 0.140625
+          },
+          {
+            "phase_start": 0.1875,
+            "phase_end": 0.21875,
+            "mean_phase": 0.203125
+          },
+          {
+            "phase_start": 0.28125,
+            "phase_end": 0.3125,
+            "mean_phase": 0.296875
+          },
+          {
+            "phase_start": 0.8125,
+            "phase_end": 0.84375,
+            "mean_phase": 0.828125
+          },
+          {
+            "phase_start": 0.875,
+            "phase_end": 0.90625,
+            "mean_phase": 0.890625
+          }
+        ]
+      }
+    },
+    "M7.0-7.4": {
+      "n": 577,
+      "k16": {
+        "chi2": 14.889081455805893,
+        "p_chi2": 0.4594360555339193,
+        "cramer_v": 0.041476339131805415,
+        "rayleigh_R": 0.014613367454230532,
+        "p_rayleigh": 0.8840703453530179,
+        "mean_phase": 0.1350218133266178,
+        "bin_counts": [
+          41,
+          30,
+          43,
+          40,
+          40,
+          31,
+          40,
+          28,
+          31,
+          40,
+          45,
+          30,
+          29,
+          39,
+          41,
+          29
+        ],
+        "elevated_intervals": [
+          {
+            "phase_start": 0.125,
+            "phase_end": 0.1875,
+            "mean_phase": 0.15625
+          },
+          {
+            "phase_start": 0.625,
+            "phase_end": 0.6875,
+            "mean_phase": 0.65625
+          }
+        ]
+      },
+      "k24": {
+        "chi2": 26.909878682842287,
+        "p_chi2": 0.2598221025090909,
+        "cramer_v": 0.04503021757137174,
+        "rayleigh_R": 0.014613367454230532,
+        "p_rayleigh": 0.8840703453530179,
+        "mean_phase": 0.1350218133266178,
+        "bin_counts": [
+          33,
+          20,
+          18,
+          29,
+          30,
+          24,
+          25,
+          26,
+          20,
+          22,
+          21,
+          25,
+          20,
+          23,
+          28,
+          34,
+          28,
+          13,
+          15,
+          31,
+          22,
+          26,
+          21,
+          23
+        ],
+        "elevated_intervals": [
+          {
+            "phase_start": 0.0,
+            "phase_end": 0.041667,
+            "mean_phase": 0.020833
+          },
+          {
+            "phase_start": 0.125,
+            "phase_end": 0.208333,
+            "mean_phase": 0.166667
+          },
+          {
+            "phase_start": 0.625,
+            "phase_end": 0.666667,
+            "mean_phase": 0.645833
+          },
+          {
+            "phase_start": 0.791667,
+            "phase_end": 0.833333,
+            "mean_phase": 0.8125
+          }
+        ],
+        "cramer_v_ci95_lower": 0.046803247505282766,
+        "cramer_v_ci95_upper": 0.07616962084412468
+      },
+      "k32": {
+        "chi2": 37.433275563258235,
+        "p_chi2": 0.19768397411005723,
+        "cramer_v": 0.045746741190858586,
+        "rayleigh_R": 0.014613367454230532,
+        "p_rayleigh": 0.8840703453530179,
+        "mean_phase": 0.1350218133266178,
+        "bin_counts": [
+          18,
+          23,
+          18,
+          12,
+          26,
+          17,
+          21,
+          19,
+          21,
+          19,
+          18,
+          13,
+          16,
+          24,
+          6,
+          22,
+          17,
+          14,
+          23,
+          17,
+          25,
+          20,
+          18,
+          12,
+          13,
+          16,
+          26,
+          13,
+          22,
+          19,
+          12,
+          17
+        ],
+        "elevated_intervals": [
+          {
+            "phase_start": 0.03125,
+            "phase_end": 0.0625,
+            "mean_phase": 0.046875
+          },
+          {
+            "phase_start": 0.125,
+            "phase_end": 0.15625,
+            "mean_phase": 0.140625
+          },
+          {
+            "phase_start": 0.40625,
+            "phase_end": 0.4375,
+            "mean_phase": 0.421875
+          },
+          {
+            "phase_start": 0.5625,
+            "phase_end": 0.59375,
+            "mean_phase": 0.578125
+          },
+          {
+            "phase_start": 0.625,
+            "phase_end": 0.65625,
+            "mean_phase": 0.640625
+          },
+          {
+            "phase_start": 0.8125,
+            "phase_end": 0.84375,
+            "mean_phase": 0.828125
+          }
+        ]
+      }
+    },
+    "M7.5+": {
+      "n": 271,
+      "k16": {
+        "chi2": 16.586715867158674,
+        "p_chi2": 0.344164481467897,
+        "cramer_v": 0.0638777966671527,
+        "rayleigh_R": 0.05336250088769867,
+        "p_rayleigh": 0.46223224852947425,
+        "mean_phase": 0.7681182596844063,
+        "bin_counts": [
+          13,
+          14,
+          11,
+          20,
+          16,
+          12,
+          20,
+          16,
+          13,
+          20,
+          22,
+          14,
+          18,
+          14,
+          22,
+          26
+        ],
+        "elevated_intervals": [
+          {
+            "phase_start": 0.625,
+            "phase_end": 0.6875,
+            "mean_phase": 0.65625
+          },
+          {
+            "phase_start": 0.875,
+            "phase_end": 1.0,
+            "mean_phase": 0.9375
+          }
+        ]
+      },
+      "k24": {
+        "chi2": 37.81180811808118,
+        "p_chi2": 0.026681063682463937,
+        "cramer_v": 0.07788703280626924,
+        "rayleigh_R": 0.05336250088769867,
+        "p_rayleigh": 0.46223224852947425,
+        "mean_phase": 0.7681182596844063,
+        "bin_counts": [
+          10,
+          8,
+          9,
+          4,
+          15,
+          12,
+          12,
+          10,
+          6,
+          9,
+          16,
+          11,
+          8,
+          12,
+          13,
+          22,
+          3,
+          11,
+          11,
+          12,
+          9,
+          17,
+          18,
+          13
+        ],
+        "elevated_intervals": [
+          {
+            "phase_start": 0.166667,
+            "phase_end": 0.208333,
+            "mean_phase": 0.1875
+          },
+          {
+            "phase_start": 0.416667,
+            "phase_end": 0.458333,
+            "mean_phase": 0.4375
+          },
+          {
+            "phase_start": 0.625,
+            "phase_end": 0.666667,
+            "mean_phase": 0.645833
+          },
+          {
+            "phase_start": 0.875,
+            "phase_end": 0.958333,
+            "mean_phase": 0.916667
+          }
+        ],
+        "cramer_v_ci95_lower": 0.07566629735241873,
+        "cramer_v_ci95_upper": 0.12139625472193137
+      },
+      "k32": {
+        "chi2": 44.15867158671587,
+        "p_chi2": 0.059110305240570454,
+        "cramer_v": 0.07250075141462836,
+        "rayleigh_R": 0.05336250088769867,
+        "p_rayleigh": 0.46223224852947425,
+        "mean_phase": 0.7681182596844063,
+        "bin_counts": [
+          8,
+          5,
+          8,
+          6,
+          4,
+          7,
+          13,
+          7,
+          11,
+          5,
+          8,
+          4,
+          6,
+          14,
+          8,
+          8,
+          4,
+          9,
+          11,
+          9,
+          17,
+          5,
+          7,
+          7,
+          7,
+          11,
+          6,
+          8,
+          14,
+          8,
+          17,
+          9
+        ],
+        "elevated_intervals": [
+          {
+            "phase_start": 0.1875,
+            "phase_end": 0.21875,
+            "mean_phase": 0.203125
+          },
+          {
+            "phase_start": 0.40625,
+            "phase_end": 0.4375,
+            "mean_phase": 0.421875
+          },
+          {
+            "phase_start": 0.625,
+            "phase_end": 0.65625,
+            "mean_phase": 0.640625
+          },
+          {
+            "phase_start": 0.875,
+            "phase_end": 0.90625,
+            "mean_phase": 0.890625
+          },
+          {
+            "phase_start": 0.9375,
+            "phase_end": 0.96875,
+            "mean_phase": 0.953125
+          }
+        ]
+      }
+    }
+  },
+  "trend_analysis": {
+    "cramer_v_by_band": {
+      "M6.0-6.4": 0.01862903916280358,
+      "M6.5-6.9": 0.029166250757381666,
+      "M7.0-7.4": 0.04503021757137174,
+      "M7.5+": 0.07788703280626924
+    },
+    "rayleigh_R_by_band": {
+      "M6.0-6.4": 0.00950060870233096,
+      "M6.5-6.9": 0.024324618437185495,
+      "M7.0-7.4": 0.014613367454230532,
+      "M7.5+": 0.05336250088769867
+    },
+    "spearman_rho_cramer_v": 1.0,
+    "spearman_p_cramer_v": 0.0,
+    "spearman_rho_rayleigh": 0.7999999999999999,
+    "spearman_p_rayleigh": 0.20000000000000007,
+    "trend_classification": "increasing",
+    "significant_bands": [
+      "M6.0-6.4",
+      "M6.5-6.9",
+      "M7.5+"
+    ],
+    "m75_significant": true,
+    "cramer_v_ratio_max_min": 4.180947397533283,
+    "prediction_support": {
+      "hydrological_loading": "not supported",
+      "solar_geometric": "supported",
+      "tidal_literature_pattern": "not supported",
+      "magnitude_independent": "not supported"
+    }
+  }
+}

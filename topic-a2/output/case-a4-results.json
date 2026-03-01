@@ -1,0 +1,1631 @@
+{
+  "case": "A4",
+  "title": "Declustering Sensitivity Analysis",
+  "catalog_counts": {
+    "raw": 9210,
+    "gk_mainshocks": 5883,
+    "gk_aftershocks": 3327,
+    "reas_mainshocks": 8265,
+    "reas_aftershocks": 945,
+    "a1b_mainshocks": 7137,
+    "a1b_aftershocks": 2073
+  },
+  "solar_year_secs": 31557600.0,
+  "sub_a": {
+    "raw": {
+      "k16": {
+        "n": 9210,
+        "k": 16,
+        "chi2": 40.41129207383279,
+        "p_chi2": 0.0003929708402873554,
+        "cramer_v": 0.01710314286937846,
+        "rayleigh_R": 0.0112088170803404,
+        "p_rayleigh": 0.3143896575076237,
+        "mean_phase_fraction": 0.1125426044741076,
+        "bin_counts": [
+          557,
+          547,
+          548,
+          653,
+          631,
+          578,
+          578,
+          540,
+          508,
+          549,
+          622,
+          559,
+          578,
+          568,
+          631,
+          563
+        ]
+      },
+      "k24": {
+        "n": 9210,
+        "k": 24,
+        "chi2": 69.37459283387622,
+        "p_chi2": 1.518371402559259e-06,
+        "cramer_v": 0.018096996004343686,
+        "rayleigh_R": 0.0112088170803404,
+        "p_rayleigh": 0.3143896575076237,
+        "mean_phase_fraction": 0.1125426044741076,
+        "bin_counts": [
+          383,
+          370,
+          351,
+          372,
+          405,
+          424,
+          425,
+          423,
+          361,
+          394,
+          363,
+          361,
+          351,
+          333,
+          373,
+          468,
+          343,
+          370,
+          358,
+          411,
+          377,
+          444,
+          361,
+          389
+        ]
+      },
+      "k32": {
+        "n": 9210,
+        "k": 32,
+        "chi2": 87.28903365906623,
+        "p_chi2": 2.9392132705416355e-07,
+        "cramer_v": 0.017485142690592856,
+        "rayleigh_R": 0.0112088170803404,
+        "p_rayleigh": 0.3143896575076237,
+        "mean_phase_fraction": 0.1125426044741076,
+        "bin_counts": [
+          283,
+          274,
+          303,
+          244,
+          282,
+          266,
+          371,
+          282,
+          317,
+          314,
+          326,
+          252,
+          285,
+          293,
+          254,
+          286,
+          261,
+          247,
+          280,
+          269,
+          344,
+          278,
+          276,
+          283,
+          277,
+          301,
+          293,
+          275,
+          343,
+          288,
+          284,
+          279
+        ]
+      }
+    },
+    "gk_mainshocks": {
+      "k16": {
+        "n": 5883,
+        "k": 16,
+        "chi2": 16.757266700662925,
+        "p_chi2": 0.3335809204892625,
+        "cramer_v": 0.013780232249352212,
+        "rayleigh_R": 0.002286854600682351,
+        "p_rayleigh": 0.9697021190368449,
+        "mean_phase_fraction": 0.43562831062665813,
+        "bin_counts": [
+          362,
+          335,
+          348,
+          388,
+          395,
+          360,
+          388,
+          363,
+          345,
+          358,
+          395,
+          359,
+          360,
+          356,
+          405,
+          366
+        ]
+      },
+      "k24": {
+        "n": 5883,
+        "k": 24,
+        "chi2": 32.0841407445181,
+        "p_chi2": 0.09840617691622336,
+        "cramer_v": 0.015398622212683684,
+        "rayleigh_R": 0.002286854600682351,
+        "p_rayleigh": 0.9697021190368449,
+        "mean_phase_fraction": 0.43562831062665813,
+        "bin_counts": [
+          253,
+          235,
+          209,
+          231,
+          253,
+          252,
+          268,
+          249,
+          238,
+          260,
+          248,
+          243,
+          239,
+          224,
+          240,
+          285,
+          231,
+          238,
+          225,
+          260,
+          231,
+          289,
+          233,
+          249
+        ]
+      },
+      "k32": {
+        "n": 5883,
+        "k": 32,
+        "chi2": 39.08873023967364,
+        "p_chi2": 0.15090543362976658,
+        "cramer_v": 0.014640149459273347,
+        "rayleigh_R": 0.002286854600682351,
+        "p_rayleigh": 0.9697021190368449,
+        "mean_phase_fraction": 0.43562831062665813,
+        "bin_counts": [
+          189,
+          173,
+          190,
+          145,
+          172,
+          176,
+          211,
+          177,
+          205,
+          190,
+          203,
+          157,
+          187,
+          201,
+          170,
+          193,
+          176,
+          169,
+          179,
+          179,
+          207,
+          188,
+          177,
+          182,
+          175,
+          185,
+          179,
+          177,
+          219,
+          186,
+          187,
+          179
+        ]
+      }
+    },
+    "reas_mainshocks": {
+      "k16": {
+        "n": 8265,
+        "k": 16,
+        "chi2": 23.621415607985483,
+        "p_chi2": 0.07180776429741395,
+        "cramer_v": 0.013803394554015955,
+        "rayleigh_R": 0.006004838034507353,
+        "p_rayleigh": 0.7422864718103134,
+        "mean_phase_fraction": 0.18723661358484778,
+        "bin_counts": [
+          497,
+          494,
+          483,
+          553,
+          565,
+          519,
+          531,
+          503,
+          473,
+          504,
+          541,
+          508,
+          506,
+          499,
+          571,
+          518
+        ]
+      },
+      "k24": {
+        "n": 8265,
+        "k": 24,
+        "chi2": 39.93793103448275,
+        "p_chi2": 0.015617079765352504,
+        "cramer_v": 0.014494640034465467,
+        "rayleigh_R": 0.006004838034507353,
+        "p_rayleigh": 0.7422864718103134,
+        "mean_phase_fraction": 0.18723661358484778,
+        "bin_counts": [
+          335,
+          336,
+          320,
+          326,
+          350,
+          360,
+          380,
+          375,
+          329,
+          360,
+          341,
+          333,
+          327,
+          308,
+          342,
+          395,
+          315,
+          339,
+          323,
+          349,
+          333,
+          402,
+          327,
+          360
+        ]
+      },
+      "k32": {
+        "n": 8265,
+        "k": 32,
+        "chi2": 48.313490623109494,
+        "p_chi2": 0.02455095535194836,
+        "cramer_v": 0.013731941108104499,
+        "rayleigh_R": 0.006004838034507353,
+        "p_rayleigh": 0.7422864718103134,
+        "mean_phase_fraction": 0.18723661358484778,
+        "bin_counts": [
+          253,
+          244,
+          267,
+          227,
+          242,
+          241,
+          299,
+          254,
+          282,
+          283,
+          291,
+          228,
+          262,
+          269,
+          237,
+          266,
+          239,
+          234,
+          252,
+          252,
+          293,
+          248,
+          254,
+          254,
+          251,
+          255,
+          245,
+          254,
+          308,
+          263,
+          261,
+          257
+        ]
+      }
+    },
+    "a1b_mainshocks": {
+      "k16": {
+        "n": 7137,
+        "k": 16,
+        "chi2": 18.026481715006305,
+        "p_chi2": 0.26127589659746603,
+        "cramer_v": 0.012976333787669719,
+        "rayleigh_R": 0.010030037364740051,
+        "p_rayleigh": 0.48772967428394776,
+        "mean_phase_fraction": 0.48187204939057643,
+        "bin_counts": [
+          427,
+          407,
+          416,
+          472,
+          474,
+          448,
+          473,
+          442,
+          426,
+          448,
+          473,
+          446,
+          440,
+          417,
+          478,
+          450
+        ]
+      },
+      "k24": {
+        "n": 7137,
+        "k": 24,
+        "chi2": 30.41151744430433,
+        "p_chi2": 0.1379491958582125,
+        "cramer_v": 0.013611227062809546,
+        "rayleigh_R": 0.010030037364740051,
+        "p_rayleigh": 0.48772967428394776,
+        "mean_phase_fraction": 0.48187204939057643,
+        "bin_counts": [
+          289,
+          289,
+          256,
+          280,
+          303,
+          305,
+          312,
+          324,
+          286,
+          319,
+          305,
+          291,
+          294,
+          277,
+          303,
+          343,
+          282,
+          294,
+          282,
+          301,
+          274,
+          335,
+          287,
+          306
+        ]
+      },
+      "k32": {
+        "n": 7137,
+        "k": 32,
+        "chi2": 39.90009808042595,
+        "p_chi2": 0.13130882043099282,
+        "cramer_v": 0.013429142625861184,
+        "rayleigh_R": 0.010030037364740051,
+        "p_rayleigh": 0.48772967428394776,
+        "mean_phase_fraction": 0.48187204939057643,
+        "bin_counts": [
+          216,
+          211,
+          231,
+          176,
+          210,
+          206,
+          254,
+          218,
+          230,
+          244,
+          251,
+          197,
+          233,
+          240,
+          212,
+          230,
+          211,
+          215,
+          223,
+          225,
+          250,
+          223,
+          226,
+          220,
+          222,
+          218,
+          208,
+          209,
+          253,
+          225,
+          234,
+          216
+        ]
+      }
+    },
+    "suppression_summary": [
+      {
+        "method": "gk",
+        "k16": {
+          "chi2_raw": 40.41129207383279,
+          "chi2_mainshock": 16.757266700662925,
+          "chi2_suppression_pct": 58.53320732718262
+        },
+        "k24": {
+          "chi2_raw": 69.37459283387622,
+          "chi2_mainshock": 32.0841407445181,
+          "chi2_suppression_pct": 53.75231848733657
+        },
+        "k32": {
+          "chi2_raw": 87.28903365906623,
+          "chi2_mainshock": 39.08873023967364,
+          "chi2_suppression_pct": 55.21919695852458
+        }
+      },
+      {
+        "method": "reas",
+        "k16": {
+          "chi2_raw": 40.41129207383279,
+          "chi2_mainshock": 23.621415607985483,
+          "chi2_suppression_pct": 41.54748735866114
+        },
+        "k24": {
+          "chi2_raw": 69.37459283387622,
+          "chi2_mainshock": 39.93793103448275,
+          "chi2_suppression_pct": 42.43147324825709
+        },
+        "k32": {
+          "chi2_raw": 87.28903365906623,
+          "chi2_mainshock": 48.313490623109494,
+          "chi2_suppression_pct": 44.65113359850852
+        }
+      },
+      {
+        "method": "a1b",
+        "k16": {
+          "chi2_raw": 40.41129207383279,
+          "chi2_mainshock": 18.026481715006305,
+          "chi2_suppression_pct": 55.392463863636635
+        },
+        "k24": {
+          "chi2_raw": 69.37459283387622,
+          "chi2_mainshock": 30.41151744430433,
+          "chi2_suppression_pct": 56.16332117850771
+        },
+        "k32": {
+          "chi2_raw": 87.28903365906623,
+          "chi2_mainshock": 39.90009808042595,
+          "chi2_suppression_pct": 54.289678315986556
+        }
+      }
+    ]
+  },
+  "sub_b": {
+    "a1b_baseline_intervals": [
+      {
+        "id": 1,
+        "phase_start": 0.1875,
+        "phase_end": 0.25,
+        "calendar": "~Mar 10 - Apr 1"
+      },
+      {
+        "id": 2,
+        "phase_start": 0.625,
+        "phase_end": 0.656,
+        "calendar": "~Aug 16 - Aug 28"
+      },
+      {
+        "id": 3,
+        "phase_start": 0.875,
+        "phase_end": 0.917,
+        "calendar": "~Nov 16 - Dec 1"
+      }
+    ],
+    "gk_mainshocks": {
+      "k16": {
+        "recovered_intervals": [
+          {
+            "phase_start": 0.1875,
+            "phase_end": 0.3125,
+            "classification": "new interval",
+            "n_events": 783,
+            "R_coherence": 0.9745307198210845
+          },
+          {
+            "phase_start": 0.375,
+            "phase_end": 0.4375,
+            "classification": "new interval",
+            "n_events": 388,
+            "R_coherence": 0.9940242861150638
+          },
+          {
+            "phase_start": 0.625,
+            "phase_end": 0.6875,
+            "classification": "new interval",
+            "n_events": 395,
+            "R_coherence": 0.9942421045577802
+          },
+          {
+            "phase_start": 0.875,
+            "phase_end": 0.9375,
+            "classification": "matches interval 3",
+            "n_events": 405,
+            "R_coherence": 0.9940760172445537
+          }
+        ],
+        "baseline_survival": {
+          "interval_1": {
+            "survives": false,
+            "matching_recovered": []
+          },
+          "interval_2": {
+            "survives": false,
+            "matching_recovered": []
+          },
+          "interval_3": {
+            "survives": true,
+            "matching_recovered": [
+              {
+                "phase_start": 0.875,
+                "phase_end": 0.9375,
+                "classification": "matches interval 3",
+                "n_events": 405,
+                "R_coherence": 0.9940760172445537
+              }
+            ]
+          }
+        }
+      },
+      "k24": {
+        "recovered_intervals": [
+          {
+            "phase_start": 0.25,
+            "phase_end": 0.2916666666666667,
+            "classification": "new interval",
+            "n_events": 268,
+            "R_coherence": 0.9972886631862664
+          },
+          {
+            "phase_start": 0.625,
+            "phase_end": 0.6666666666666666,
+            "classification": "matches interval 2",
+            "n_events": 285,
+            "R_coherence": 0.9973317777257025
+          },
+          {
+            "phase_start": 0.875,
+            "phase_end": 0.9166666666666666,
+            "classification": "matches interval 3",
+            "n_events": 289,
+            "R_coherence": 0.9970737117218998
+          }
+        ],
+        "baseline_survival": {
+          "interval_1": {
+            "survives": false,
+            "matching_recovered": []
+          },
+          "interval_2": {
+            "survives": true,
+            "matching_recovered": [
+              {
+                "phase_start": 0.625,
+                "phase_end": 0.6666666666666666,
+                "classification": "matches interval 2",
+                "n_events": 285,
+                "R_coherence": 0.9973317777257025
+              }
+            ]
+          },
+          "interval_3": {
+            "survives": true,
+            "matching_recovered": [
+              {
+                "phase_start": 0.875,
+                "phase_end": 0.9166666666666666,
+                "classification": "matches interval 3",
+                "n_events": 289,
+                "R_coherence": 0.9970737117218998
+              }
+            ]
+          }
+        }
+      },
+      "k32": {
+        "recovered_intervals": [
+          {
+            "phase_start": 0.1875,
+            "phase_end": 0.21875,
+            "classification": "matches interval 1",
+            "n_events": 211,
+            "R_coherence": 0.9982795300340124
+          },
+          {
+            "phase_start": 0.25,
+            "phase_end": 0.28125,
+            "classification": "new interval",
+            "n_events": 205,
+            "R_coherence": 0.9985484947371636
+          },
+          {
+            "phase_start": 0.3125,
+            "phase_end": 0.34375,
+            "classification": "new interval",
+            "n_events": 203,
+            "R_coherence": 0.9983370907479048
+          },
+          {
+            "phase_start": 0.40625,
+            "phase_end": 0.4375,
+            "classification": "new interval",
+            "n_events": 201,
+            "R_coherence": 0.9984419669168113
+          },
+          {
+            "phase_start": 0.625,
+            "phase_end": 0.65625,
+            "classification": "matches interval 2",
+            "n_events": 207,
+            "R_coherence": 0.9985674705436605
+          },
+          {
+            "phase_start": 0.875,
+            "phase_end": 0.90625,
+            "classification": "matches interval 3",
+            "n_events": 219,
+            "R_coherence": 0.998216041873021
+          }
+        ],
+        "baseline_survival": {
+          "interval_1": {
+            "survives": true,
+            "matching_recovered": [
+              {
+                "phase_start": 0.1875,
+                "phase_end": 0.21875,
+                "classification": "matches interval 1",
+                "n_events": 211,
+                "R_coherence": 0.9982795300340124
+              }
+            ]
+          },
+          "interval_2": {
+            "survives": true,
+            "matching_recovered": [
+              {
+                "phase_start": 0.625,
+                "phase_end": 0.65625,
+                "classification": "matches interval 2",
+                "n_events": 207,
+                "R_coherence": 0.9985674705436605
+              }
+            ]
+          },
+          "interval_3": {
+            "survives": true,
+            "matching_recovered": [
+              {
+                "phase_start": 0.875,
+                "phase_end": 0.90625,
+                "classification": "matches interval 3",
+                "n_events": 219,
+                "R_coherence": 0.998216041873021
+              }
+            ]
+          }
+        }
+      }
+    },
+    "reas_mainshocks": {
+      "k16": {
+        "recovered_intervals": [
+          {
+            "phase_start": 0.1875,
+            "phase_end": 0.3125,
+            "classification": "new interval",
+            "n_events": 1118,
+            "R_coherence": 0.974474027111836
+          },
+          {
+            "phase_start": 0.625,
+            "phase_end": 0.6875,
+            "classification": "new interval",
+            "n_events": 541,
+            "R_coherence": 0.994425010566392
+          },
+          {
+            "phase_start": 0.875,
+            "phase_end": 0.9375,
+            "classification": "matches interval 3",
+            "n_events": 571,
+            "R_coherence": 0.9938093093882424
+          }
+        ],
+        "baseline_survival": {
+          "interval_1": {
+            "survives": false,
+            "matching_recovered": []
+          },
+          "interval_2": {
+            "survives": false,
+            "matching_recovered": []
+          },
+          "interval_3": {
+            "survives": true,
+            "matching_recovered": [
+              {
+                "phase_start": 0.875,
+                "phase_end": 0.9375,
+                "classification": "matches interval 3",
+                "n_events": 571,
+                "R_coherence": 0.9938093093882424
+              }
+            ]
+          }
+        }
+      },
+      "k24": {
+        "recovered_intervals": [
+          {
+            "phase_start": 0.25,
+            "phase_end": 0.3333333333333333,
+            "classification": "new interval",
+            "n_events": 755,
+            "R_coherence": 0.9888028988459271
+          },
+          {
+            "phase_start": 0.625,
+            "phase_end": 0.6666666666666666,
+            "classification": "matches interval 2",
+            "n_events": 395,
+            "R_coherence": 0.9974110196299322
+          },
+          {
+            "phase_start": 0.875,
+            "phase_end": 0.9166666666666666,
+            "classification": "matches interval 3",
+            "n_events": 402,
+            "R_coherence": 0.9971212436952097
+          }
+        ],
+        "baseline_survival": {
+          "interval_1": {
+            "survives": false,
+            "matching_recovered": []
+          },
+          "interval_2": {
+            "survives": true,
+            "matching_recovered": [
+              {
+                "phase_start": 0.625,
+                "phase_end": 0.6666666666666666,
+                "classification": "matches interval 2",
+                "n_events": 395,
+                "R_coherence": 0.9974110196299322
+              }
+            ]
+          },
+          "interval_3": {
+            "survives": true,
+            "matching_recovered": [
+              {
+                "phase_start": 0.875,
+                "phase_end": 0.9166666666666666,
+                "classification": "matches interval 3",
+                "n_events": 402,
+                "R_coherence": 0.9971212436952097
+              }
+            ]
+          }
+        }
+      },
+      "k32": {
+        "recovered_intervals": [
+          {
+            "phase_start": 0.1875,
+            "phase_end": 0.21875,
+            "classification": "matches interval 1",
+            "n_events": 299,
+            "R_coherence": 0.9983858642171042
+          },
+          {
+            "phase_start": 0.25,
+            "phase_end": 0.34375,
+            "classification": "new interval",
+            "n_events": 856,
+            "R_coherence": 0.9856257873158494
+          },
+          {
+            "phase_start": 0.625,
+            "phase_end": 0.65625,
+            "classification": "matches interval 2",
+            "n_events": 293,
+            "R_coherence": 0.9985045584711791
+          },
+          {
+            "phase_start": 0.875,
+            "phase_end": 0.90625,
+            "classification": "matches interval 3",
+            "n_events": 308,
+            "R_coherence": 0.9982959817559894
+          }
+        ],
+        "baseline_survival": {
+          "interval_1": {
+            "survives": true,
+            "matching_recovered": [
+              {
+                "phase_start": 0.1875,
+                "phase_end": 0.21875,
+                "classification": "matches interval 1",
+                "n_events": 299,
+                "R_coherence": 0.9983858642171042
+              }
+            ]
+          },
+          "interval_2": {
+            "survives": true,
+            "matching_recovered": [
+              {
+                "phase_start": 0.625,
+                "phase_end": 0.65625,
+                "classification": "matches interval 2",
+                "n_events": 293,
+                "R_coherence": 0.9985045584711791
+              }
+            ]
+          },
+          "interval_3": {
+            "survives": true,
+            "matching_recovered": [
+              {
+                "phase_start": 0.875,
+                "phase_end": 0.90625,
+                "classification": "matches interval 3",
+                "n_events": 308,
+                "R_coherence": 0.9982959817559894
+              }
+            ]
+          }
+        }
+      }
+    },
+    "a1b_mainshocks": {
+      "k16": {
+        "recovered_intervals": [
+          {
+            "phase_start": 0.1875,
+            "phase_end": 0.3125,
+            "classification": "new interval",
+            "n_events": 946,
+            "R_coherence": 0.9740739391620996
+          },
+          {
+            "phase_start": 0.375,
+            "phase_end": 0.4375,
+            "classification": "new interval",
+            "n_events": 473,
+            "R_coherence": 0.9939465190904927
+          },
+          {
+            "phase_start": 0.625,
+            "phase_end": 0.6875,
+            "classification": "new interval",
+            "n_events": 473,
+            "R_coherence": 0.9943571591288689
+          },
+          {
+            "phase_start": 0.875,
+            "phase_end": 0.9375,
+            "classification": "matches interval 3",
+            "n_events": 478,
+            "R_coherence": 0.9938949133377831
+          }
+        ],
+        "baseline_survival": {
+          "interval_1": {
+            "survives": false,
+            "matching_recovered": []
+          },
+          "interval_2": {
+            "survives": false,
+            "matching_recovered": []
+          },
+          "interval_3": {
+            "survives": true,
+            "matching_recovered": [
+              {
+                "phase_start": 0.875,
+                "phase_end": 0.9375,
+                "classification": "matches interval 3",
+                "n_events": 478,
+                "R_coherence": 0.9938949133377831
+              }
+            ]
+          }
+        }
+      },
+      "k24": {
+        "recovered_intervals": [
+          {
+            "phase_start": 0.2916666666666667,
+            "phase_end": 0.3333333333333333,
+            "classification": "new interval",
+            "n_events": 324,
+            "R_coherence": 0.9973688894527103
+          },
+          {
+            "phase_start": 0.375,
+            "phase_end": 0.4166666666666667,
+            "classification": "new interval",
+            "n_events": 319,
+            "R_coherence": 0.9971938228805778
+          },
+          {
+            "phase_start": 0.625,
+            "phase_end": 0.6666666666666666,
+            "classification": "matches interval 2",
+            "n_events": 343,
+            "R_coherence": 0.9973924646614247
+          },
+          {
+            "phase_start": 0.875,
+            "phase_end": 0.9166666666666666,
+            "classification": "matches interval 3",
+            "n_events": 335,
+            "R_coherence": 0.997088764815003
+          }
+        ],
+        "baseline_survival": {
+          "interval_1": {
+            "survives": false,
+            "matching_recovered": []
+          },
+          "interval_2": {
+            "survives": true,
+            "matching_recovered": [
+              {
+                "phase_start": 0.625,
+                "phase_end": 0.6666666666666666,
+                "classification": "matches interval 2",
+                "n_events": 343,
+                "R_coherence": 0.9973924646614247
+              }
+            ]
+          },
+          "interval_3": {
+            "survives": true,
+            "matching_recovered": [
+              {
+                "phase_start": 0.875,
+                "phase_end": 0.9166666666666666,
+                "classification": "matches interval 3",
+                "n_events": 335,
+                "R_coherence": 0.997088764815003
+              }
+            ]
+          }
+        }
+      },
+      "k32": {
+        "recovered_intervals": [
+          {
+            "phase_start": 0.1875,
+            "phase_end": 0.21875,
+            "classification": "matches interval 1",
+            "n_events": 254,
+            "R_coherence": 0.9983770102165012
+          },
+          {
+            "phase_start": 0.28125,
+            "phase_end": 0.34375,
+            "classification": "new interval",
+            "n_events": 495,
+            "R_coherence": 0.9936346686782414
+          },
+          {
+            "phase_start": 0.40625,
+            "phase_end": 0.4375,
+            "classification": "new interval",
+            "n_events": 240,
+            "R_coherence": 0.9984065416743694
+          },
+          {
+            "phase_start": 0.625,
+            "phase_end": 0.65625,
+            "classification": "matches interval 2",
+            "n_events": 250,
+            "R_coherence": 0.9985313071818988
+          },
+          {
+            "phase_start": 0.875,
+            "phase_end": 0.90625,
+            "classification": "matches interval 3",
+            "n_events": 253,
+            "R_coherence": 0.9982652349807077
+          }
+        ],
+        "baseline_survival": {
+          "interval_1": {
+            "survives": true,
+            "matching_recovered": [
+              {
+                "phase_start": 0.1875,
+                "phase_end": 0.21875,
+                "classification": "matches interval 1",
+                "n_events": 254,
+                "R_coherence": 0.9983770102165012
+              }
+            ]
+          },
+          "interval_2": {
+            "survives": true,
+            "matching_recovered": [
+              {
+                "phase_start": 0.625,
+                "phase_end": 0.65625,
+                "classification": "matches interval 2",
+                "n_events": 250,
+                "R_coherence": 0.9985313071818988
+              }
+            ]
+          },
+          "interval_3": {
+            "survives": true,
+            "matching_recovered": [
+              {
+                "phase_start": 0.875,
+                "phase_end": 0.90625,
+                "classification": "matches interval 3",
+                "n_events": 253,
+                "R_coherence": 0.9982652349807077
+              }
+            ]
+          }
+        }
+      }
+    },
+    "interval_survival_summary": {
+      "interval_1": {
+        "gk": "absent",
+        "reas": "absent",
+        "a1b": "absent"
+      },
+      "interval_2": {
+        "gk": "survives",
+        "reas": "survives",
+        "a1b": "survives"
+      },
+      "interval_3": {
+        "gk": "survives",
+        "reas": "survives",
+        "a1b": "survives"
+      }
+    }
+  },
+  "sub_c": {
+    "gk_aftershocks": {
+      "n": 3327,
+      "k16": {
+        "n": 3327,
+        "k": 16,
+        "chi2": 43.12323414487527,
+        "p_chi2": 0.0001506626610825424,
+        "cramer_v": 0.029395688207957002,
+        "rayleigh_R": 0.03302083275661566,
+        "p_rayleigh": 0.026577801483790187,
+        "mean_phase_fraction": 0.09503624382269366,
+        "bin_counts": [
+          195,
+          212,
+          200,
+          265,
+          236,
+          218,
+          190,
+          177,
+          163,
+          191,
+          227,
+          200,
+          218,
+          212,
+          226,
+          197
+        ],
+        "elevated_intervals": [
+          {
+            "phase_start": 0.1875,
+            "phase_end": 0.3125
+          },
+          {
+            "phase_start": 0.625,
+            "phase_end": 0.6875
+          },
+          {
+            "phase_start": 0.875,
+            "phase_end": 0.9375
+          }
+        ]
+      },
+      "k24": {
+        "n": 3327,
+        "k": 24,
+        "chi2": 66.34896302975653,
+        "p_chi2": 4.393724154700339e-06,
+        "cramer_v": 0.0294460300790439,
+        "rayleigh_R": 0.03302083275661566,
+        "p_rayleigh": 0.026577801483790187,
+        "mean_phase_fraction": 0.09503624382269366,
+        "bin_counts": [
+          130,
+          135,
+          142,
+          141,
+          152,
+          172,
+          157,
+          174,
+          123,
+          134,
+          115,
+          118,
+          112,
+          109,
+          133,
+          183,
+          112,
+          132,
+          133,
+          151,
+          146,
+          155,
+          128,
+          140
+        ],
+        "elevated_intervals": [
+          {
+            "phase_start": 0.16666666666666666,
+            "phase_end": 0.3333333333333333
+          },
+          {
+            "phase_start": 0.625,
+            "phase_end": 0.6666666666666666
+          },
+          {
+            "phase_start": 0.7916666666666666,
+            "phase_end": 0.8333333333333334
+          },
+          {
+            "phase_start": 0.875,
+            "phase_end": 0.9166666666666666
+          }
+        ]
+      },
+      "k32": {
+        "n": 3327,
+        "k": 32,
+        "chi2": 81.80312593928463,
+        "p_chi2": 1.8369766580646699e-06,
+        "cramer_v": 0.028162921359763487,
+        "rayleigh_R": 0.03302083275661566,
+        "p_rayleigh": 0.026577801483790187,
+        "mean_phase_fraction": 0.09503624382269366,
+        "bin_counts": [
+          94,
+          101,
+          113,
+          99,
+          110,
+          90,
+          160,
+          105,
+          112,
+          124,
+          123,
+          95,
+          98,
+          92,
+          84,
+          93,
+          85,
+          78,
+          101,
+          90,
+          137,
+          90,
+          99,
+          101,
+          102,
+          116,
+          114,
+          98,
+          124,
+          102,
+          97,
+          100
+        ],
+        "elevated_intervals": [
+          {
+            "phase_start": 0.1875,
+            "phase_end": 0.21875
+          },
+          {
+            "phase_start": 0.28125,
+            "phase_end": 0.34375
+          },
+          {
+            "phase_start": 0.625,
+            "phase_end": 0.65625
+          },
+          {
+            "phase_start": 0.78125,
+            "phase_end": 0.8125
+          },
+          {
+            "phase_start": 0.875,
+            "phase_end": 0.90625
+          }
+        ]
+      },
+      "classification": "significant, intervals match A1b baseline"
+    },
+    "reas_aftershocks": {
+      "n": 945,
+      "k16": {
+        "n": 945,
+        "k": 16,
+        "chi2": 71.3978835978836,
+        "p_chi2": 2.5148142256339546e-09,
+        "cramer_v": 0.07097103445612932,
+        "rayleigh_R": 0.06676926692386968,
+        "p_rayleigh": 0.01480281993451847,
+        "mean_phase_fraction": 0.054656037208162915,
+        "bin_counts": [
+          60,
+          53,
+          65,
+          100,
+          66,
+          59,
+          47,
+          37,
+          35,
+          45,
+          81,
+          51,
+          72,
+          69,
+          60,
+          45
+        ],
+        "elevated_intervals": [
+          {
+            "phase_start": 0.1875,
+            "phase_end": 0.25
+          },
+          {
+            "phase_start": 0.625,
+            "phase_end": 0.6875
+          },
+          {
+            "phase_start": 0.75,
+            "phase_end": 0.875
+          }
+        ]
+      },
+      "k24": {
+        "n": 945,
+        "k": 24,
+        "chi2": 107.36825396825398,
+        "p_chi2": 7.33410597214952e-13,
+        "cramer_v": 0.07028426750994116,
+        "rayleigh_R": 0.06676926692386968,
+        "p_rayleigh": 0.01480281993451847,
+        "mean_phase_fraction": 0.054656037208162915,
+        "bin_counts": [
+          48,
+          34,
+          31,
+          46,
+          55,
+          64,
+          45,
+          48,
+          32,
+          34,
+          22,
+          28,
+          24,
+          25,
+          31,
+          73,
+          28,
+          31,
+          35,
+          62,
+          44,
+          42,
+          34,
+          29
+        ],
+        "elevated_intervals": [
+          {
+            "phase_start": 0.0,
+            "phase_end": 0.041666666666666664
+          },
+          {
+            "phase_start": 0.125,
+            "phase_end": 0.25
+          },
+          {
+            "phase_start": 0.2916666666666667,
+            "phase_end": 0.3333333333333333
+          },
+          {
+            "phase_start": 0.625,
+            "phase_end": 0.6666666666666666
+          },
+          {
+            "phase_start": 0.7916666666666666,
+            "phase_end": 0.8333333333333334
+          }
+        ]
+      },
+      "k32": {
+        "n": 945,
+        "k": 32,
+        "chi2": 149.12910052910053,
+        "p_chi2": 2.1684581702750853e-17,
+        "cramer_v": 0.07134843443553708,
+        "rayleigh_R": 0.06676926692386968,
+        "p_rayleigh": 0.01480281993451847,
+        "mean_phase_fraction": 0.054656037208162915,
+        "bin_counts": [
+          30,
+          30,
+          36,
+          17,
+          40,
+          25,
+          72,
+          28,
+          35,
+          31,
+          35,
+          24,
+          23,
+          24,
+          17,
+          20,
+          22,
+          13,
+          28,
+          17,
+          51,
+          30,
+          22,
+          29,
+          26,
+          46,
+          48,
+          21,
+          35,
+          25,
+          23,
+          22
+        ],
+        "elevated_intervals": [
+          {
+            "phase_start": 0.0625,
+            "phase_end": 0.09375
+          },
+          {
+            "phase_start": 0.125,
+            "phase_end": 0.15625
+          },
+          {
+            "phase_start": 0.1875,
+            "phase_end": 0.21875
+          },
+          {
+            "phase_start": 0.25,
+            "phase_end": 0.28125
+          },
+          {
+            "phase_start": 0.3125,
+            "phase_end": 0.34375
+          },
+          {
+            "phase_start": 0.625,
+            "phase_end": 0.65625
+          },
+          {
+            "phase_start": 0.78125,
+            "phase_end": 0.84375
+          },
+          {
+            "phase_start": 0.875,
+            "phase_end": 0.90625
+          }
+        ]
+      },
+      "classification": "significant, intervals match A1b baseline"
+    },
+    "a1b_aftershocks": {
+      "n": 2073,
+      "k16": {
+        "n": 2073,
+        "k": 16,
+        "chi2": 78.71056439942113,
+        "p_chi2": 1.2010618548966045e-10,
+        "cramer_v": 0.05031195956656426,
+        "rayleigh_R": 0.07756385552812788,
+        "p_rayleigh": 3.8344580814926345e-06,
+        "mean_phase_fraction": 0.05972221831523399,
+        "bin_counts": [
+          130,
+          140,
+          132,
+          181,
+          157,
+          130,
+          105,
+          98,
+          82,
+          101,
+          149,
+          113,
+          138,
+          151,
+          153,
+          113
+        ],
+        "elevated_intervals": [
+          {
+            "phase_start": 0.1875,
+            "phase_end": 0.3125
+          },
+          {
+            "phase_start": 0.625,
+            "phase_end": 0.6875
+          },
+          {
+            "phase_start": 0.8125,
+            "phase_end": 0.9375
+          }
+        ]
+      },
+      "k24": {
+        "n": 2073,
+        "k": 24,
+        "chi2": 111.34732272069463,
+        "p_chi2": 1.4577394376898903e-13,
+        "cramer_v": 0.04832549603463727,
+        "rayleigh_R": 0.07756385552812788,
+        "p_rayleigh": 3.8344580814926345e-06,
+        "mean_phase_fraction": 0.05972221831523399,
+        "bin_counts": [
+          94,
+          81,
+          95,
+          92,
+          102,
+          119,
+          113,
+          99,
+          75,
+          75,
+          58,
+          70,
+          57,
+          56,
+          70,
+          125,
+          61,
+          76,
+          76,
+          110,
+          103,
+          109,
+          74,
+          83
+        ],
+        "elevated_intervals": [
+          {
+            "phase_start": 0.16666666666666666,
+            "phase_end": 0.3333333333333333
+          },
+          {
+            "phase_start": 0.625,
+            "phase_end": 0.6666666666666666
+          },
+          {
+            "phase_start": 0.7916666666666666,
+            "phase_end": 0.9166666666666666
+          }
+        ]
+      },
+      "k32": {
+        "n": 2073,
+        "k": 32,
+        "chi2": 141.205499276411,
+        "p_chi2": 5.23139889308735e-16,
+        "cramer_v": 0.046875434614820945,
+        "rayleigh_R": 0.07756385552812788,
+        "p_rayleigh": 3.8344580814926345e-06,
+        "mean_phase_fraction": 0.05972221831523399,
+        "bin_counts": [
+          67,
+          63,
+          72,
+          68,
+          72,
+          60,
+          117,
+          64,
+          87,
+          70,
+          75,
+          55,
+          52,
+          53,
+          42,
+          56,
+          50,
+          32,
+          57,
+          44,
+          94,
+          55,
+          50,
+          63,
+          55,
+          83,
+          85,
+          66,
+          90,
+          63,
+          50,
+          63
+        ],
+        "elevated_intervals": [
+          {
+            "phase_start": 0.1875,
+            "phase_end": 0.21875
+          },
+          {
+            "phase_start": 0.25,
+            "phase_end": 0.28125
+          },
+          {
+            "phase_start": 0.3125,
+            "phase_end": 0.34375
+          },
+          {
+            "phase_start": 0.625,
+            "phase_end": 0.65625
+          },
+          {
+            "phase_start": 0.78125,
+            "phase_end": 0.84375
+          },
+          {
+            "phase_start": 0.875,
+            "phase_end": 0.90625
+          }
+        ]
+      },
+      "classification": "significant, intervals match A1b baseline"
+    }
+  }
+}
