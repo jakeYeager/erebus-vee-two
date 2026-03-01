@@ -12,7 +12,7 @@ Ader & Avouac (2013) applied the standard Schuster spectrum to Himalayan seismic
 
 | File | Path | n | Key columns |
 |------|------|---|-------------|
-| ISC-GEM raw catalog | `data/global-sets/iscgem_global_events.csv` | 9,210 | `usgs_id`, `usgs_mag`, `event_at`, `solaration_year`, `solar_secs`, `lunar_secs`, `midnight_secs`, `latitude`, `longitude`, `depth` |
+| ISC-GEM raw catalog | `data/iscgem/iscgem_global_6-9_1950-2021.csv` | 9,210 | `usgs_id`, `usgs_mag`, `event_at`, `solaration_year`, `solar_secs`, `lunar_secs`, `midnight_secs`, `latitude`, `longitude`, `depth` |
 | G-K mainshocks (after A4) | `data/iscgem/declustering-algorithm/mainshocks_G-K_global.csv` | 5,883 | same schema as raw |
 | A1b mainshocks (after A4) | `data/iscgem/declustering-algorithm/mainshocks_a1b_global.csv` | 7,137 | same schema as raw |
 

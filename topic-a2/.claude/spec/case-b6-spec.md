@@ -12,7 +12,7 @@ Topic L3 established the global ISC-GEM catalog (n=9,210, M≥6.0, 1950–2021) 
 
 | File | Path | n | Key columns |
 |------|------|---|-------------|
-| ISC-GEM raw catalog | `data/global-sets/iscgem_global_events.csv` | 9,210 | `usgs_id`, `usgs_mag`, `event_at`, `solaration_year`, `solar_secs`, `lunar_secs`, `midnight_secs`, `latitude`, `longitude`, `depth` |
+| ISC-GEM raw catalog | `data/iscgem/iscgem_global_6-9_1950-2021.csv` | 9,210 | `usgs_id`, `usgs_mag`, `event_at`, `solaration_year`, `solar_secs`, `lunar_secs`, `midnight_secs`, `latitude`, `longitude`, `depth` |
 
 Parse `event_at` as UTC datetime for windowing. Phase normalization: `phase = (solar_secs / year_length_secs) % 1.0` using Julian year (31,557,600 s) unless per-year values are available [confirm before running: same as A4 — verify whether per-year solar year lengths are pre-computed or whether the Julian constant is used uniformly].
 
@@ -37,7 +37,7 @@ In `src/case-b6-analysis.py`:
 
 - Import: `pandas`, `numpy`, `scipy.stats`, `pathlib`, `json`, `logging`
 - Set `BASE_DIR = Path(__file__).resolve().parent.parent`
-- Define `RAW_PATH = BASE_DIR.parent / "data" / "global-sets" / "iscgem_global_events.csv"`
+- Define `RAW_PATH = BASE_DIR.parent / "data" / "iscgem" / "iscgem_global_6-9_1950-2021.csv"`
 - Load CSV; parse `event_at` as `pd.Timestamp` (UTC); log row count; assert n=9210
 - Compute `event_year` from `event_at` as integer calendar year
 - Compute phase: `phase = (solar_secs / 31_557_600.0) % 1.0` (Julian year constant; see confirm note above)

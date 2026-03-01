@@ -12,7 +12,7 @@ Topic L4 established G-K declustering on ComCat (6,222 mainshocks / 3,580 afters
 
 | File | Path | n | Key columns |
 |------|------|---|-------------|
-| ISC-GEM raw catalog | `data/global-sets/iscgem_global_events.csv` | 9,210 | `usgs_id`, `usgs_mag`, `event_at`, `solaration_year`, `solar_secs`, `lunar_secs`, `midnight_secs`, `latitude`, `longitude`, `depth` |
+| ISC-GEM raw catalog | `data/iscgem/iscgem_global_6-9_1950-2021.csv` | 9,210 | `usgs_id`, `usgs_mag`, `event_at`, `solaration_year`, `solar_secs`, `lunar_secs`, `midnight_secs`, `latitude`, `longitude`, `depth` |
 | G-K mainshocks | `data/iscgem/declustering-algorithm/mainshocks_G-K_global.csv` | 5,883 | same schema as raw |
 | G-K aftershocks | `data/iscgem/declustering-algorithm/aftershocks_G-K_global.csv` | 3,327 | same schema as raw |
 | Reasenberg mainshocks | `data/iscgem/declustering-algorithm/mainshocks_reas_global.csv` | 8,265 | same schema as raw |
@@ -49,7 +49,7 @@ In `src/case-a4-analysis.py`:
 - Import: `pandas`, `numpy`, `scipy.stats`, `pathlib`, `json`, `logging`
 - Set `BASE_DIR = Path(__file__).resolve().parent.parent`
 - Define data paths using BASE_DIR:
-  - `RAW_PATH = BASE_DIR.parent / "data" / "global-sets" / "iscgem_global_events.csv"`
+  - `RAW_PATH = BASE_DIR.parent / "data" / "iscgem" / "iscgem_global_6-9_1950-2021.csv"`
   - `DECLUSTER_DIR = BASE_DIR.parent / "data" / "iscgem" / "declustering-algorithm"`
   - Mainshock paths: `mainshocks_G-K_global.csv`, `mainshocks_reas_global.csv`, `mainshocks_a1b_global.csv`
   - Aftershock paths: `aftershocks_G-K_global.csv`, `aftershocks_reas_global.csv`, `aftershocks_a1b_global.csv`

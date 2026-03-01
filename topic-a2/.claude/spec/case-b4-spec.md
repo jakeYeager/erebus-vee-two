@@ -12,7 +12,7 @@ Topic L4 confirmed that the `depth` column is present in the ISC-GEM catalog sch
 
 | File | Path | n | Key columns |
 |------|------|---|-------------|
-| ISC-GEM raw catalog | `data/global-sets/iscgem_global_events.csv` | 9,210 | `usgs_id`, `usgs_mag`, `event_at`, `solaration_year`, `solar_secs`, `latitude`, `longitude`, `depth` |
+| ISC-GEM raw catalog | `data/iscgem/iscgem_global_6-9_1950-2021.csv` | 9,210 | `usgs_id`, `usgs_mag`, `event_at`, `solaration_year`, `solar_secs`, `latitude`, `longitude`, `depth` |
 
 Depth bands derived at analysis time from `depth` (units: km):
 - Band 1 shallow: `0 <= depth < 20`
@@ -44,7 +44,7 @@ In `src/case-b4-analysis.py`:
 
 - Import: `pandas`, `numpy`, `scipy.stats`, `pathlib`, `json`, `logging`
 - Set `BASE_DIR = Path(__file__).resolve().parent.parent`
-- Define `RAW_PATH = BASE_DIR.parent / "data" / "global-sets" / "iscgem_global_events.csv"`
+- Define `RAW_PATH = BASE_DIR.parent / "data" / "iscgem" / "iscgem_global_6-9_1950-2021.csv"`
 - Load catalog; assert n=9210
 - Define depth band boundaries:
   ```python

@@ -12,7 +12,7 @@ Adhoc A0 established the ISC-GEM magnitude precision advantage that specifically
 
 | File | Path | n | Key columns |
 |------|------|---|-------------|
-| ISC-GEM raw catalog | `data/global-sets/iscgem_global_events.csv` | 9,210 | `usgs_id`, `usgs_mag`, `event_at`, `solaration_year`, `solar_secs`, `latitude`, `longitude`, `depth` |
+| ISC-GEM raw catalog | `data/iscgem/iscgem_global_6-9_1950-2021.csv` | 9,210 | `usgs_id`, `usgs_mag`, `event_at`, `solaration_year`, `solar_secs`, `latitude`, `longitude`, `depth` |
 
 Magnitude column: `usgs_mag` — used directly for b-value MLE. No magnitude band pre-filtering; full M ≥ 6.0 catalog used. Minimum magnitude for b-value MLE: `Mc = 6.0` (catalog threshold).
 
@@ -40,7 +40,7 @@ In `src/case-a2-analysis.py`:
 
 - Import: `pandas`, `numpy`, `scipy.stats`, `pathlib`, `json`, `logging`
 - Set `BASE_DIR = Path(__file__).resolve().parent.parent`
-- Define `RAW_PATH = BASE_DIR.parent / "data" / "global-sets" / "iscgem_global_events.csv"`
+- Define `RAW_PATH = BASE_DIR.parent / "data" / "iscgem" / "iscgem_global_6-9_1950-2021.csv"`
 - Load catalog; assert n=9210; assert no NaN in `usgs_mag`; log row count
 - Compute phase using Julian year constant
 - Set `BIN_COUNTS = [24, 32]` (primary=24; k=32 as secondary per Adhoc A1 recommendation)

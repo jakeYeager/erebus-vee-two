@@ -12,7 +12,7 @@ The ocean/continent classification files were produced specifically for this top
 
 | File | Path | n | Key columns |
 |------|------|---|-------------|
-| ISC-GEM raw catalog | `data/global-sets/iscgem_global_events.csv` | 9,210 | `usgs_id`, `usgs_mag`, `event_at`, `solaration_year`, `solar_secs`, `latitude`, `longitude`, `depth` |
+| ISC-GEM raw catalog | `data/iscgem/iscgem_global_6-9_1950-2021.csv` | 9,210 | `usgs_id`, `usgs_mag`, `event_at`, `solaration_year`, `solar_secs`, `latitude`, `longitude`, `depth` |
 | GSHHG classification (primary) | `data/iscgem/plate-location/ocean_class_gshhg_global.csv` | 9,210 | `usgs_id`, `ocean_class`, `dist_to_coast_km` |
 | Natural Earth classification (secondary) | `data/iscgem/plate-location/ocean_class_ne_global.csv` | 9,210 | `usgs_id`, `ocean_class`, `dist_to_coast_km` |
 | PB2002 classification (coarse proxy) | `data/iscgem/plate-location/ocean_class_pb2002_global.csv` | 9,210 | `usgs_id`, `ocean_class`, `dist_to_coast_km` |

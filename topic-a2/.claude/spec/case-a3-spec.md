@@ -12,7 +12,7 @@ Topic L3 established magnitude column `usgs_mag` in the ISC-GEM catalog. Topic L
 
 | File | Path | n | Key columns |
 |------|------|---|-------------|
-| ISC-GEM raw catalog | `data/global-sets/iscgem_global_events.csv` | 9,210 | `usgs_id`, `usgs_mag`, `event_at`, `solaration_year`, `solar_secs`, `lunar_secs`, `midnight_secs`, `latitude`, `longitude`, `depth` |
+| ISC-GEM raw catalog | `data/iscgem/iscgem_global_6-9_1950-2021.csv` | 9,210 | `usgs_id`, `usgs_mag`, `event_at`, `solaration_year`, `solar_secs`, `lunar_secs`, `midnight_secs`, `latitude`, `longitude`, `depth` |
 
 Magnitude bands derived at analysis time from `usgs_mag`:
 - Band 1: `6.0 <= usgs_mag < 6.5` (M 6.0–6.4)
@@ -43,7 +43,7 @@ In `src/case-a3-analysis.py`:
 
 - Import: `pandas`, `numpy`, `scipy.stats`, `pathlib`, `json`, `logging`
 - Set `BASE_DIR = Path(__file__).resolve().parent.parent`
-- Define `RAW_PATH = BASE_DIR.parent / "data" / "global-sets" / "iscgem_global_events.csv"`
+- Define `RAW_PATH = BASE_DIR.parent / "data" / "iscgem" / "iscgem_global_6-9_1950-2021.csv"`
 - Load catalog; assert n=9210; log row count
 - Define magnitude band boundaries and labels:
   ```python

@@ -12,7 +12,7 @@ The hemisphere split variable (`latitude`) was added to the ISC-GEM catalog in T
 
 | File | Path | n | Key columns |
 |------|------|---|-------------|
-| ISC-GEM raw catalog | `data/global-sets/iscgem_global_events.csv` | 9,210 | `usgs_id`, `usgs_mag`, `event_at`, `solaration_year`, `solar_secs`, `lunar_secs`, `midnight_secs`, `latitude`, `longitude`, `depth` |
+| ISC-GEM raw catalog | `data/iscgem/iscgem_global_6-9_1950-2021.csv` | 9,210 | `usgs_id`, `usgs_mag`, `event_at`, `solaration_year`, `solar_secs`, `lunar_secs`, `midnight_secs`, `latitude`, `longitude`, `depth` |
 
 Hemisphere split: `NH = df[df["latitude"] > 0]`; `SH = df[df["latitude"] < 0]`; events at latitude=0 are excluded (equatorial events, expected n≈0). Phase normalization: `phase = (solar_secs / year_length_secs) % 1.0` using Julian year [confirm before running: consistent with A4/B6/A1 — verify uniform Julian constant vs per-year values].
 
@@ -38,7 +38,7 @@ In `src/case-b1-analysis.py`:
 
 - Import: `pandas`, `numpy`, `scipy.stats`, `pathlib`, `json`, `logging`
 - Set `BASE_DIR = Path(__file__).resolve().parent.parent`
-- Define `RAW_PATH = BASE_DIR.parent / "data" / "global-sets" / "iscgem_global_events.csv"`
+- Define `RAW_PATH = BASE_DIR.parent / "data" / "iscgem" / "iscgem_global_6-9_1950-2021.csv"`
 - Load catalog; assert n=9210; log row count
 - Create hemisphere subsets:
   - `df_nh = df[df["latitude"] > 0].copy()` — log n_nh

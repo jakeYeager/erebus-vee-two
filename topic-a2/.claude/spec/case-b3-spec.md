@@ -12,7 +12,7 @@ The focal mechanism join file was produced for this topic (data-requirements.md 
 
 | File | Path | n | Key columns |
 |------|------|---|-------------|
-| ISC-GEM raw catalog | `data/global-sets/iscgem_global_events.csv` | 9,210 | `usgs_id`, `usgs_mag`, `event_at`, `solaration_year`, `solar_secs`, `latitude`, `longitude`, `depth` |
+| ISC-GEM raw catalog | `data/iscgem/iscgem_global_6-9_1950-2021.csv` | 9,210 | `usgs_id`, `usgs_mag`, `event_at`, `solaration_year`, `solar_secs`, `latitude`, `longitude`, `depth` |
 | GCMT focal mechanism join | `data/iscgem/focal-mechanism/focal_join_global.csv` | 9,210 | `usgs_id`, `gcmt_id`, `mechanism`, `rake`, `strike`, `dip`, `scalar_moment`, `centroid_depth`, `match_confidence` |
 
 GCMT join schema: `mechanism` column already classified (`thrust`, `normal`, `strike_slip`, `oblique`, or null). `match_confidence` is `proximity` for matched events, null for unmatched. The file is an enriched catalog (all base columns present as prefix).
