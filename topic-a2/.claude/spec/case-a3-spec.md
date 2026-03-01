@@ -1,6 +1,6 @@
 # Case A3: Magnitude Stratification of the Solar Signal
 
-**Status:** Pending
+**Status:** Complete
 
 **Intent statement:**
 Case A3 stratifies the ISC-GEM catalog into four magnitude bands (M 6.0–6.4, M 6.5–6.9, M 7.0–7.4, M ≥ 7.5) and independently computes solar-phase statistics for each band. The goal is to determine whether the Case 3A solar signal is evenly distributed across magnitude or concentrated in a specific band, which directly constrains the physical mechanism. The tidal literature provides competing predictions: Métivier (2009) found tidal triggering inversely dependent on magnitude (strongest for small events); Ide et al. (2016) found M < 8.2 indistinguishable from random for tidal phase; Hao et al. (2018) found diurnal periodicity stronger at larger magnitudes in Japan. These findings point in opposite directions at different timescales, making any positive result at global M ≥ 6 scale a novel finding. Adhoc A1b provides preliminary directional evidence: the elevated-bin events (n=1,438, 15.6% of catalog) showed no magnitude skew relative to the full catalog, suggesting magnitude-independence. Case A3 formalizes this with per-band chi-square tests and Cramér's V. The ISC-GEM catalog's 82.9% 2-decimal magnitude precision (vs ComCat's 77.5%) makes per-band stratification more reliable because magnitude rounding artifacts that would inflate the M 6.0 bin in ComCat are substantially reduced.

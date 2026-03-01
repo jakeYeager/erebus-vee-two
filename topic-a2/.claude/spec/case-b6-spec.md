@@ -1,6 +1,6 @@
 # Case B6: Rolling Window Stationarity Test
 
-**Status:** Pending
+**Status:** Complete
 
 **Intent statement:**
 Case B6 tests whether the solar-phase signal observed in the full ISC-GEM catalog is stationary across the 72-year record (1950–2021) or concentrated in a subset of years. Bradley & Hubbard (2024) documented that tidal correlations detected in pre-2000 data consistently failed replication in post-2000 data — the canonical demonstration of non-stationarity as an artifact signature. Dutilleul et al. (2021) found that Parkfield's semiannual periodicity shifted phase after the 2004 M6.0 earthquake. A non-stationary solar signal would substantially weaken the interpretation of the Case 3A result and would deprioritize the mechanistic investigations in downstream cases. The test uses a sliding 10-year window to compute the Rayleigh statistic, mean vector length (R), and mean phase angle of the solar-phase distribution at each window position. The 1970s windows should be flagged for anomalous behavior given the Adhoc A0b finding that ISC-GEM has a 414-event density spike in that decade relative to ComCat, indicating a period-specific difference in catalog construction methodology.

@@ -1,6 +1,6 @@
 # Case A4: Declustering Sensitivity Analysis
 
-**Status:** Pending
+**Status:** Complete
 
 **Intent statement:**
 Case A4 is the mandatory first-execution case for Topic A2. It tests whether the solar-phase signal observed in the full ISC-GEM catalog (Case 3A: χ²=45.61, p=6.13×10⁻⁵) survives aftershock removal under three independent declustering methods: Gardner-Knopoff (1974), Reasenberg (1985), and a data-informed custom window derived from Adhoc Case A1b (83.2 km / 95.6 days). Bradley & Hubbard (2024) demonstrated that aftershock temporal clustering is large enough to produce artificial periodic signal in Schuster-type tests; Park et al. (2021) showed standard Schuster requires prior declustering. This case applies that validation directly to the three-interval solar phase structure identified in Adhoc A1b. Three sub-analyses are performed: (A) scalar signal survival on mainshock catalogs, (B) post-declustering interval structure comparison, and (C) aftershock population phase preference. The three-way method comparison specifically tests whether G-K over-suppresses genuine signal by using windows (~295 days at M6.0) approximately 3× longer than the observed clustering footprint. Because this topic uses ISC-GEM, the ComCat-specific M 6.0 rounding artifact concern (Adhoc A0b) is mitigated, and ISC-GEM-based results are not expected to match the ComCat-based L4/L5 reference (60.2% suppression, χ²=45.61→18.13).

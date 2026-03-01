@@ -1,6 +1,6 @@
 # Case A1: Schuster Spectrum and MFPA Periodicity Analysis
 
-**Status:** Pending
+**Status:** Complete
 
 **Intent statement:**
 Case A1 applies two complementary periodicity detection methods — the cluster-robust Schuster Spectrum Test (Park et al. 2021) and Modified Fourier Power Analysis (MFPA, Dutilleul et al. 2015) — to the ISC-GEM catalog in order to formally characterize the periodic structure of the solar seismic signal. The standard Schuster test is not used alone because Bradley & Hubbard (2024) specifically identified two failure modes relevant here: aftershock temporal clustering biases phase distributions, and a ~20% tidal asymmetry in astronomical forcing creates spurious signal. The cluster-robust variant (Park et al. 2021) is designed to address the first failure mode. MFPA scans the full range from 6 hours to 18 months, testing whether the annual (365.25-day) signal is accompanied by sub-annual harmonics (6-month, 4-month). Results are run on three catalog versions — raw, G-K declustered, and A1b-informed declustered — to test whether G-K over-suppresses the periodicity signal relative to the data-informed window. Sub-annual harmonics are cross-referenced against the three A1b phase intervals: a 6-month harmonic would predict peaks at phases ~0.19 and ~0.69, consistent with intervals 1 and potentially 2, but interval 3 (phase ~0.90) does not fit a 6-month pattern, suggesting residual sequence contamination or a more complex structure.

@@ -1,6 +1,6 @@
 # Case B1: Hemisphere Stratification — Phase Symmetry Test
 
-**Status:** Pending
+**Status:** Complete
 
 **Intent statement:**
 Case B1 splits the ISC-GEM catalog by hemisphere and independently computes solar-phase bin distributions for Northern Hemisphere (NH, latitude > 0°) and Southern Hemisphere (SH, latitude < 0°) events. The original bimodal equinox framing — testing whether NH and SH peaks are in-phase (geometric forcing) or anti-phased by 6 months (hydrological loading) — has been replaced by a richer four-question test based on the three-interval structure identified in Adhoc A1b. The test asks: (1) do all three elevated intervals appear in both hemispheres, (2) is interval 1 (March equinox, phase 0.1875–0.25) symmetric in both hemispheres, (3) are intervals 2 (phase 0.625–0.656) and 3 (phase 0.875–0.917) hemisphere-specific, and (4) are any intervals 0.5 cycles apart between hemispheres. A symmetric result (all three intervals in both hemispheres at the same phase) is the strongest evidence for geometric solar forcing. A hemisphere-specific result for intervals 2 and 3 is consistent with hydrological or seasonal forcing at those phases. No published study has applied this specific three-interval symmetry test to a global M≥6.0 catalog.
