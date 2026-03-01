@@ -30,7 +30,7 @@ All cases use the ISC-GEM catalog (9,210 events, M ≥ 6.0, 1950–2021). Prior 
 | Priority | Case | Status  | Title                                                          |
 | -------- | ---- | ------- | -------------------------------------------------------------- |
 | 1        | A4   | Complete | Declustering Sensitivity Analysis                             |
-| 2        | B6   | Pending | Rolling Window Stationarity Test                               |
+| 2        | B6   | Complete | Rolling Window Stationarity Test                              |
 | 3        | A1   | Pending | Schuster Spectrum and MFPA Periodicity Analysis                |
 | 4        | B1   | Pending | Hemisphere Stratification — Phase Symmetry Test                |
 | 5        | A3   | Pending | Magnitude Stratification of the Solar Signal                   |
@@ -45,7 +45,6 @@ All cases use the ISC-GEM catalog (9,210 events, M ≥ 6.0, 1950–2021). Prior 
 Only read this file if you need the full description of "Case A4: Declustering Sensitivity Analysis": `topic-a2/.claude/spec/case-a4-spec.md`
 
 Only read this file if you need the full description of "Case B6: Rolling Window Stationarity Test": `topic-a2/.claude/spec/case-b6-spec.md`
-**Pre-run:** *User Confirmed* - apply Julian constant (31,557,600 s) should be used uniformly for year phase normalization.
 
 Only read this file if you need the full description of "Case A1: Schuster Spectrum and MFPA Periodicity Analysis": `topic-a2/.claude/spec/case-a1-spec.md`
 **Pre-run:** *User Confirmed* - apply Julian constant (31,557,600 s) should be used uniformly for year phase normalization.
