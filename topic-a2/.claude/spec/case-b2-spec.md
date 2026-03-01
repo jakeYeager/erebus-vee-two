@@ -1,6 +1,6 @@
 # Case B2: Ocean vs. Continent Location — Hydrological Loading Discrimination
 
-**Status:** Pending
+**Status:** Complete
 
 **Intent statement:**
 Case B2 tests whether the solar-phase signal persists in purely oceanic seismicity, which would rule out hydrological and snow loading as sufficient explanations because those are land-surface processes. Events are classified into three categories — oceanic, transitional, and continental — using a distance-to-coastline approach, and solar-phase bin distributions are computed independently for each subset. Three coastline classification files are available (GSHHG, Natural Earth, PB2002 proximity) and all three are used in order to assess sensitivity to the classification method. The tidal literature (Scholz et al. 2019) adds a complication: strong tidal modulation has been found at Axial Volcano (mid-ocean ridge), establishing that oceanic settings can show periodic signals via mechanisms other than continental hydrology, so a positive oceanic result requires careful mechanism discrimination. Visualizations include global maps and zoomed regional maps (Philippines, Japan, Chile, Java) for each of the three classification treatments. Color scheme: oceanic=blue, transitional=green, continental=red. No published study has used ocean/continent separation as a mechanism discriminator for annual solar seismicity at global M≥6.0 scale.
