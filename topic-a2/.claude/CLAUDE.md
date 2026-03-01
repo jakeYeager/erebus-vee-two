@@ -34,7 +34,7 @@ All cases use the ISC-GEM catalog (9,210 events, M ≥ 6.0, 1950–2021). Prior 
 | 3        | A1   | Complete | Schuster Spectrum and MFPA Periodicity Analysis               |
 | 4        | B1   | Complete | Hemisphere Stratification — Phase Symmetry Test               |
 | 5        | A3   | Complete | Magnitude Stratification of the Solar Signal                  |
-| 6        | B2   | Pending | Ocean vs. Continent Location — Hydrological Loading Discrimination |
+| 6        | B2   | Complete | Ocean vs. Continent Location — Hydrological Loading Discrimination |
 | 7        | B4   | Pending | Depth Stratification — Surface Loading Penetration Test        |
 | 8        | A2   | Pending | b-Value Seasonal Variation                                     |
 | 9        | B3   | Pending | Tectonic Regime Stratification                                 |
@@ -53,7 +53,6 @@ Only read this file if you need the full description of "Case B1: Hemisphere Str
 Only read this file if you need the full description of "Case A3: Magnitude Stratification of the Solar Signal": `topic-a2/.claude/spec/case-a3-spec.md`
 
 Only read this file if you need the full description of "Case B2: Ocean vs. Continent Location — Hydrological Loading Discrimination": `topic-a2/.claude/spec/case-b2-spec.md`
-**Pre-run:** (1) *User Confirmed* - apply Julian constant (31,557,600 s) should be used uniformly for year phase normalization. (2) Verify cartopy or basemap availability in the project Python environment for global map figures; if neither is available, use lat/lon scatter with Natural Earth coastline path via geopandas.
 
 Only read this file if you need the full description of "Case B4: Depth Stratification — Surface Loading Penetration Test": `topic-a2/.claude/spec/case-b4-spec.md`
 **Pre-run:** *User Confirmed* - apply Julian constant (31,557,600 s) should be used uniformly for year phase normalization.
