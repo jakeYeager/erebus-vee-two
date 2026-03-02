@@ -25,8 +25,8 @@ If no topic has Active status, check for Planning. If still none, report all top
 
 Read these two files:
 
-- **Spec file:** `<topic-dir>/.claude/spec/case-<id-lowercase>-spec.md` — the implementation prompt. Every numbered `## N.` section is a deliverable.
-- **Topic CLAUDE.md:** `<topic-dir>/.claude/CLAUDE.md` — whitepaper header/footer templates and interpretive analysis standards.
+- **Spec file:** `<topic-dir>/spec/case-<id-lowercase>-spec.md` — the implementation prompt. Every numbered `## N.` section is a deliverable.
+- **Topic CLAUDE.md:** `<topic-dir>/CLAUDE.md` — whitepaper header/footer templates and interpretive analysis standards.
 
 If the spec file does not exist, stop and report: `Spec file not found: <path>. Run the scaffold-topic agent first.`
 
@@ -95,10 +95,10 @@ Use the topic CLAUDE.md header and footer templates exactly.
 Only reached if all tests passed in Step 4.
 
 Execute the spec's final **Update context docs** section exactly as written. This section will instruct you to:
-- Update `<topic-dir>/.claude/docs/topic-summary.md` with the case title, key results, and final status
-- Update the case status in `<topic-dir>/.claude/CLAUDE.md`
+- Update `<topic-dir>/docs/topic-summary.md` with the case title, key results, and final status
+- Update the case status in `<topic-dir>/CLAUDE.md`
 
-Additionally, read `<topic-dir>/.claude/CLAUDE.md`. Find the reference line for this case in the `## Analysis Framework` section (the line containing `case-<id-lowercase>-spec.md`). If a `**Pre-run:**` annotation follows that line, remove it.
+Additionally, read `<topic-dir>/CLAUDE.md`. Find the reference line for this case in the `## Analysis Framework` section (the line containing `case-<id-lowercase>-spec.md`). If a `**Pre-run:**` annotation follows that line, remove it.
 
 ---
 

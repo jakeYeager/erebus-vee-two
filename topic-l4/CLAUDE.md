@@ -6,8 +6,8 @@ This topic tests whether the solar_secs clustering signal identified in previous
 
 ## Data Description
 
-- Primary dataset: `data/declustering/mainshocks.csv` (declustered population)
-- Secondary reference dataset: `data/declustering/aftershocks.csv` (G-K designated aftershock events)
+- Primary dataset: `data/declustering/comcat_mainshocks.csv` (declustered population)
+- Secondary reference dataset: `data/declustering/comcat_aftershocks.csv` (G-K designated aftershock events)
 - Source: USGS Earthquake Catalog; global post-1950 events M>=6.0, declustered via Gardner-Knopoff (1974)
 - CSV column headers: `usgs_id`, `usgs_mag`, `event_at`, `solaration_year`, `solar_secs`, `lunar_secs`, `midnight_secs`, `longitude`, `latitude`, `depth`
 - Astronomical metrics recomputed with verified ephemeris calculations

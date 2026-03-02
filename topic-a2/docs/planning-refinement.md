@@ -1,4 +1,4 @@
-> **Status: Superseded.** See `topic-a2/.claude/CLAUDE.md` for current case status.
+> **Status: Superseded.** See `topic-a2/CLAUDE.md` for current case status.
 
 # Topic A2 Initial Planning: Annual Solar Signal Investigation
 

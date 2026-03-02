@@ -42,22 +42,22 @@ All cases use the ISC-GEM catalog (9,210 events, M ≥ 6.0, 1950–2021). Prior 
 
 ## Analysis Framework
 
-Only read this file if you need the full description of "Case A4: Declustering Sensitivity Analysis": `topic-a2/.claude/spec/case-a4-spec.md`
+Only read this file if you need the full description of "Case A4: Declustering Sensitivity Analysis": `topic-a2/spec/case-a4-spec.md`
 
-Only read this file if you need the full description of "Case B6: Rolling Window Stationarity Test": `topic-a2/.claude/spec/case-b6-spec.md`
+Only read this file if you need the full description of "Case B6: Rolling Window Stationarity Test": `topic-a2/spec/case-b6-spec.md`
 
-Only read this file if you need the full description of "Case A1: Schuster Spectrum and MFPA Periodicity Analysis": `topic-a2/.claude/spec/case-a1-spec.md`
+Only read this file if you need the full description of "Case A1: Schuster Spectrum and MFPA Periodicity Analysis": `topic-a2/spec/case-a1-spec.md`
 
-Only read this file if you need the full description of "Case B1: Hemisphere Stratification — Phase Symmetry Test": `topic-a2/.claude/spec/case-b1-spec.md`
+Only read this file if you need the full description of "Case B1: Hemisphere Stratification — Phase Symmetry Test": `topic-a2/spec/case-b1-spec.md`
 
-Only read this file if you need the full description of "Case A3: Magnitude Stratification of the Solar Signal": `topic-a2/.claude/spec/case-a3-spec.md`
+Only read this file if you need the full description of "Case A3: Magnitude Stratification of the Solar Signal": `topic-a2/spec/case-a3-spec.md`
 
-Only read this file if you need the full description of "Case B2: Ocean vs. Continent Location — Hydrological Loading Discrimination": `topic-a2/.claude/spec/case-b2-spec.md`
+Only read this file if you need the full description of "Case B2: Ocean vs. Continent Location — Hydrological Loading Discrimination": `topic-a2/spec/case-b2-spec.md`
 
-Only read this file if you need the full description of "Case B4: Depth Stratification — Surface Loading Penetration Test": `topic-a2/.claude/spec/case-b4-spec.md`
+Only read this file if you need the full description of "Case B4: Depth Stratification — Surface Loading Penetration Test": `topic-a2/spec/case-b4-spec.md`
 
-Only read this file if you need the full description of "Case A2: b-Value Seasonal Variation": `topic-a2/.claude/spec/case-a2-spec.md`
+Only read this file if you need the full description of "Case A2: b-Value Seasonal Variation": `topic-a2/spec/case-a2-spec.md`
 
-Only read this file if you need the full description of "Case B3: Tectonic Regime Stratification": `topic-a2/.claude/spec/case-b3-spec.md`
+Only read this file if you need the full description of "Case B3: Tectonic Regime Stratification": `topic-a2/spec/case-b3-spec.md`
 
-Only read this file if you need the full description of "Case B5: Solar Declination Rate-of-Change vs. Position Test": `topic-a2/.claude/spec/case-b5-spec.md`
+Only read this file if you need the full description of "Case B5: Solar Declination Rate-of-Change vs. Position Test": `topic-a2/spec/case-b5-spec.md`
