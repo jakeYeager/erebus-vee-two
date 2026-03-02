@@ -31,3 +31,4 @@ htmlcov/
 # Environments
 .env
 claude.local.md
+notes.md
