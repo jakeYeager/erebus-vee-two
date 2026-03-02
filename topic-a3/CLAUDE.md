@@ -11,9 +11,38 @@ Topic A2 focused on building analysis test cases to address a liturature review 
 
 ## Case Table
 
-| Priority | Case | Status   | Title |
-| -------- | ---- | -------- | ----- |
-| TBD      | TBD  | Planning | TBD   |
+| Case | Status   | Title                                                                       |
+| ---- | -------- | --------------------------------------------------------------------------- |
+| A1   | Planning | Aftershock Phase-Preference Characterization. Source: A2.A4 Sub-C           |
+| B1   | Planning | Rolling-Window Chi-Square Repeat. Source: A2.B6                             |
+| B3   | Planning | Ocean/Coast Sequential Threshold Sensitivity. Source: A2.B2                 |
+| B4   | Planning | Depth × Magnitude Two-Way Stratification with Moho Isolation. Source: A2.B4 |
+| B2   | Planning | Hemisphere Stratification Refinement. Source: A2.B1                         |
+| B5   | Planning | Corrected Null-Distribution Geometric Variable Test. Source: A2.B5          |
+| A2   | Planning | Aftershock Periodicity Analysis (Schuster/MFPA). Source: A2.A1, A2.A4       |
+| A3   | Planning | Phase-Aware Declustering Methodology. Source: A2.A4 note                    |
+| C1   | Planning | Subduction Zone Subset Test. Source: A2.B2, A2.B4                           |
+| C2   | Planning | Major Sequence Removal Test. Source: A2.B6, A2.A4                           |
+
+### Execution Tiers
+
+**Tier 1 — Foundational (run first)**
+- **A3.A1** — Most novel A2 finding; gates both A3.A2 and A3.C2
+- **A3.B1** — Interval-level stationarity tracking; provides interpretive context for B2/B3/B4 and gates A3.C2
+
+**Tier 2 — Independent (run in parallel after or alongside Tier 1)**
+- **A3.B3** — Needed for A3.C1
+- **A3.B4** — Needed for A3.C1
+- **A3.B2** — Standalone; A3.B1 results provide interpretive context but do not block it
+- **A3.B5** — Standalone methodological correction
+- **A3.A3** — Exploratory probe; does not block any other case in the current list
+
+**Tier 3 — After Tier 1 completes**
+- **A3.A2** — After A3.A1
+- **A3.C2** — After A3.A1 + A3.B1
+
+**Tier 4 — After Tier 2 completes**
+- **A3.C1** — After A3.B3 + A3.B4
 
 ## Previous Case Analysis Reference Table
 
