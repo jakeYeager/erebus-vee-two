@@ -1,0 +1,825 @@
+{
+  "case": "B3",
+  "title": "Tectonic Regime Stratification",
+  "solar_year_secs": 31557600.0,
+  "catalog_n": 9210,
+  "a1b_intervals": [
+    {
+      "phase_start": 0.1875,
+      "phase_end": 0.25
+    },
+    {
+      "phase_start": 0.625,
+      "phase_end": 0.656
+    },
+    {
+      "phase_start": 0.875,
+      "phase_end": 0.917
+    }
+  ],
+  "full_catalog_k24": {
+    "n": 9210,
+    "k": 24,
+    "chi2": 69.37459283387622,
+    "p_chi2": 1.518371402559259e-06,
+    "cramer_v": 0.018096996004343686,
+    "rayleigh_R": 0.0112088170803404,
+    "p_rayleigh": 0.3143896575076237,
+    "mean_phase": 0.1125426044741076,
+    "bin_counts": [
+      383,
+      370,
+      351,
+      372,
+      405,
+      424,
+      425,
+      423,
+      361,
+      394,
+      363,
+      361,
+      351,
+      333,
+      373,
+      468,
+      343,
+      370,
+      358,
+      411,
+      377,
+      444,
+      361,
+      389
+    ],
+    "expected_count": 383.75,
+    "threshold_1sd": 403.3395380241597,
+    "elevated_bin_indices": [
+      4,
+      5,
+      6,
+      7,
+      15,
+      19,
+      21
+    ],
+    "elevated_intervals": [
+      {
+        "phase_start": 0.166667,
+        "phase_end": 0.333333
+      },
+      {
+        "phase_start": 0.625,
+        "phase_end": 0.666667
+      },
+      {
+        "phase_start": 0.791667,
+        "phase_end": 0.833333
+      },
+      {
+        "phase_start": 0.875,
+        "phase_end": 0.916667
+      }
+    ],
+    "a1b_overlapping_intervals": [
+      {
+        "elevated": {
+          "phase_start": 0.166667,
+          "phase_end": 0.333333
+        },
+        "a1b_interval": {
+          "phase_start": 0.1875,
+          "phase_end": 0.25
+        }
+      },
+      {
+        "elevated": {
+          "phase_start": 0.625,
+          "phase_end": 0.666667
+        },
+        "a1b_interval": {
+          "phase_start": 0.625,
+          "phase_end": 0.656
+        }
+      },
+      {
+        "elevated": {
+          "phase_start": 0.875,
+          "phase_end": 0.916667
+        },
+        "a1b_interval": {
+          "phase_start": 0.875,
+          "phase_end": 0.917
+        }
+      }
+    ]
+  },
+  "mechanism_stats": {
+    "coverage": {
+      "n_thrust": 1885,
+      "n_normal": 720,
+      "n_strike_slip": 2201,
+      "n_oblique": 68,
+      "n_unmatched": 4336,
+      "n_total": 9210
+    },
+    "thrust": {
+      "n": 1885,
+      "k16": {
+        "n": 1885,
+        "k": 16,
+        "chi2": 20.256233421750665,
+        "p_chi2": 0.1623220651761196,
+        "cramer_v": 0.026765665102056798,
+        "rayleigh_R": 0.03028482716422351,
+        "p_rayleigh": 0.17748540909066252,
+        "mean_phase": 0.1362222115694962,
+        "bin_counts": [
+          102,
+          108,
+          127,
+          130,
+          140,
+          134,
+          110,
+          107,
+          98,
+          109,
+          106,
+          122,
+          126,
+          114,
+          130,
+          122
+        ],
+        "expected_count": 117.8125,
+        "threshold_1sd": 128.66664667304622,
+        "elevated_bin_indices": [
+          3,
+          4,
+          5,
+          14
+        ],
+        "elevated_intervals": [
+          {
+            "phase_start": 0.1875,
+            "phase_end": 0.375
+          },
+          {
+            "phase_start": 0.875,
+            "phase_end": 0.9375
+          }
+        ],
+        "a1b_overlapping_intervals": [
+          {
+            "elevated": {
+              "phase_start": 0.1875,
+              "phase_end": 0.375
+            },
+            "a1b_interval": {
+              "phase_start": 0.1875,
+              "phase_end": 0.25
+            }
+          },
+          {
+            "elevated": {
+              "phase_start": 0.875,
+              "phase_end": 0.9375
+            },
+            "a1b_interval": {
+              "phase_start": 0.875,
+              "phase_end": 0.917
+            }
+          }
+        ]
+      },
+      "k24": {
+        "n": 1885,
+        "k": 24,
+        "chi2": 32.82281167108753,
+        "p_chi2": 0.08420419170877166,
+        "cramer_v": 0.027514922580659937,
+        "rayleigh_R": 0.03028482716422351,
+        "p_rayleigh": 0.17748540909066252,
+        "mean_phase": 0.1362222115694962,
+        "bin_counts": [
+          70,
+          74,
+          66,
+          81,
+          95,
+          81,
+          94,
+          97,
+          83,
+          85,
+          64,
+          68,
+          72,
+          58,
+          77,
+          81,
+          69,
+          78,
+          73,
+          91,
+          76,
+          87,
+          72,
+          93
+        ],
+        "expected_count": 78.54166666666667,
+        "threshold_1sd": 87.40404031409695,
+        "elevated_bin_indices": [
+          4,
+          6,
+          7,
+          19,
+          23
+        ],
+        "elevated_intervals": [
+          {
+            "phase_start": 0.166667,
+            "phase_end": 0.208333
+          },
+          {
+            "phase_start": 0.25,
+            "phase_end": 0.333333
+          },
+          {
+            "phase_start": 0.791667,
+            "phase_end": 0.833333
+          },
+          {
+            "phase_start": 0.958333,
+            "phase_end": 1.0
+          }
+        ],
+        "a1b_overlapping_intervals": []
+      },
+      "k32": {
+        "n": 1885,
+        "k": 32,
+        "chi2": 34.50769230769231,
+        "p_chi2": 0.30371974057239726,
+        "cramer_v": 0.024300848297778704,
+        "rayleigh_R": 0.03028482716422351,
+        "p_rayleigh": 0.17748540909066252,
+        "mean_phase": 0.1362222115694962,
+        "bin_counts": [
+          53,
+          49,
+          67,
+          41,
+          65,
+          62,
+          68,
+          62,
+          67,
+          73,
+          71,
+          63,
+          66,
+          44,
+          53,
+          54,
+          52,
+          46,
+          48,
+          61,
+          56,
+          50,
+          62,
+          60,
+          60,
+          66,
+          60,
+          54,
+          66,
+          64,
+          58,
+          64
+        ],
+        "expected_count": 58.90625,
+        "threshold_1sd": 66.58129071650437,
+        "elevated_bin_indices": [
+          2,
+          6,
+          8,
+          9,
+          10
+        ],
+        "elevated_intervals": [
+          {
+            "phase_start": 0.0625,
+            "phase_end": 0.09375
+          },
+          {
+            "phase_start": 0.1875,
+            "phase_end": 0.21875
+          },
+          {
+            "phase_start": 0.25,
+            "phase_end": 0.34375
+          }
+        ],
+        "a1b_overlapping_intervals": []
+      }
+    },
+    "normal": {
+      "n": 720,
+      "k16": {
+        "n": 720,
+        "k": 16,
+        "chi2": 10.977777777777778,
+        "p_chi2": 0.7541680708407587,
+        "cramer_v": 0.03188198402467755,
+        "rayleigh_R": 0.02995384264318865,
+        "p_rayleigh": 0.5241341918411904,
+        "mean_phase": 0.7735189270604086,
+        "bin_counts": [
+          45,
+          31,
+          42,
+          43,
+          53,
+          45,
+          41,
+          47,
+          37,
+          42,
+          52,
+          47,
+          46,
+          49,
+          52,
+          48
+        ],
+        "expected_count": 45.0,
+        "threshold_1sd": 51.70820393249937,
+        "elevated_bin_indices": [
+          4,
+          10,
+          14
+        ],
+        "elevated_intervals": [
+          {
+            "phase_start": 0.25,
+            "phase_end": 0.3125
+          },
+          {
+            "phase_start": 0.625,
+            "phase_end": 0.6875
+          },
+          {
+            "phase_start": 0.875,
+            "phase_end": 0.9375
+          }
+        ],
+        "a1b_overlapping_intervals": [
+          {
+            "elevated": {
+              "phase_start": 0.625,
+              "phase_end": 0.6875
+            },
+            "a1b_interval": {
+              "phase_start": 0.625,
+              "phase_end": 0.656
+            }
+          },
+          {
+            "elevated": {
+              "phase_start": 0.875,
+              "phase_end": 0.9375
+            },
+            "a1b_interval": {
+              "phase_start": 0.875,
+              "phase_end": 0.917
+            }
+          }
+        ]
+      },
+      "k24": {
+        "n": 720,
+        "k": 24,
+        "chi2": 20.666666666666664,
+        "p_chi2": 0.6014356895419259,
+        "cramer_v": 0.03532686113359542,
+        "rayleigh_R": 0.02995384264318865,
+        "p_rayleigh": 0.5241341918411904,
+        "mean_phase": 0.7735189270604086,
+        "bin_counts": [
+          35,
+          22,
+          19,
+          31,
+          24,
+          30,
+          36,
+          34,
+          28,
+          25,
+          31,
+          32,
+          22,
+          33,
+          24,
+          39,
+          34,
+          26,
+          33,
+          29,
+          33,
+          36,
+          31,
+          33
+        ],
+        "expected_count": 30.0,
+        "threshold_1sd": 35.47722557505166,
+        "elevated_bin_indices": [
+          6,
+          15,
+          21
+        ],
+        "elevated_intervals": [
+          {
+            "phase_start": 0.25,
+            "phase_end": 0.291667
+          },
+          {
+            "phase_start": 0.625,
+            "phase_end": 0.666667
+          },
+          {
+            "phase_start": 0.875,
+            "phase_end": 0.916667
+          }
+        ],
+        "a1b_overlapping_intervals": [
+          {
+            "elevated": {
+              "phase_start": 0.625,
+              "phase_end": 0.666667
+            },
+            "a1b_interval": {
+              "phase_start": 0.625,
+              "phase_end": 0.656
+            }
+          },
+          {
+            "elevated": {
+              "phase_start": 0.875,
+              "phase_end": 0.916667
+            },
+            "a1b_interval": {
+              "phase_start": 0.875,
+              "phase_end": 0.917
+            }
+          }
+        ]
+      },
+      "k32": {
+        "n": 720,
+        "k": 32,
+        "chi2": 26.48888888888889,
+        "p_chi2": 0.6975848995874692,
+        "cramer_v": 0.034449646965179305,
+        "rayleigh_R": 0.02995384264318865,
+        "p_rayleigh": 0.5241341918411904,
+        "mean_phase": 0.7735189270604086,
+        "bin_counts": [
+          20,
+          25,
+          20,
+          11,
+          26,
+          16,
+          22,
+          21,
+          27,
+          26,
+          20,
+          25,
+          20,
+          21,
+          23,
+          24,
+          12,
+          25,
+          26,
+          16,
+          22,
+          30,
+          27,
+          20,
+          24,
+          22,
+          22,
+          27,
+          23,
+          29,
+          22,
+          26
+        ],
+        "expected_count": 22.5,
+        "threshold_1sd": 27.24341649025257,
+        "elevated_bin_indices": [
+          21,
+          29
+        ],
+        "elevated_intervals": [
+          {
+            "phase_start": 0.65625,
+            "phase_end": 0.6875
+          },
+          {
+            "phase_start": 0.90625,
+            "phase_end": 0.9375
+          }
+        ],
+        "a1b_overlapping_intervals": []
+      }
+    },
+    "strike_slip": {
+      "n": 2201,
+      "k16": {
+        "n": 2201,
+        "k": 16,
+        "chi2": 12.008632439800092,
+        "p_chi2": 0.6783755281118674,
+        "cramer_v": 0.019071775473517266,
+        "rayleigh_R": 0.009743430796929579,
+        "p_rayleigh": 0.811435229836325,
+        "mean_phase": 0.3229106973217066,
+        "bin_counts": [
+          140,
+          144,
+          129,
+          136,
+          129,
+          154,
+          154,
+          132,
+          137,
+          128,
+          150,
+          123,
+          132,
+          139,
+          151,
+          123
+        ],
+        "expected_count": 137.5625,
+        "threshold_1sd": 149.2912041057399,
+        "elevated_bin_indices": [
+          5,
+          6,
+          10,
+          14
+        ],
+        "elevated_intervals": [
+          {
+            "phase_start": 0.3125,
+            "phase_end": 0.4375
+          },
+          {
+            "phase_start": 0.625,
+            "phase_end": 0.6875
+          },
+          {
+            "phase_start": 0.875,
+            "phase_end": 0.9375
+          }
+        ],
+        "a1b_overlapping_intervals": [
+          {
+            "elevated": {
+              "phase_start": 0.625,
+              "phase_end": 0.6875
+            },
+            "a1b_interval": {
+              "phase_start": 0.625,
+              "phase_end": 0.656
+            }
+          },
+          {
+            "elevated": {
+              "phase_start": 0.875,
+              "phase_end": 0.9375
+            },
+            "a1b_interval": {
+              "phase_start": 0.875,
+              "phase_end": 0.917
+            }
+          }
+        ]
+      },
+      "k24": {
+        "n": 2201,
+        "k": 24,
+        "chi2": 16.999091322126308,
+        "p_chi2": 0.8092961292602936,
+        "cramer_v": 0.0183247861114014,
+        "rayleigh_R": 0.009743430796929579,
+        "p_rayleigh": 0.811435229836325,
+        "mean_phase": 0.3229106973217066,
+        "bin_counts": [
+          96,
+          100,
+          88,
+          92,
+          86,
+          87,
+          88,
+          98,
+          97,
+          100,
+          99,
+          87,
+          99,
+          85,
+          81,
+          106,
+          87,
+          80,
+          81,
+          101,
+          89,
+          105,
+          77,
+          92
+        ],
+        "expected_count": 91.70833333333333,
+        "threshold_1sd": 101.28478013438294,
+        "elevated_bin_indices": [
+          15,
+          21
+        ],
+        "elevated_intervals": [
+          {
+            "phase_start": 0.625,
+            "phase_end": 0.666667
+          },
+          {
+            "phase_start": 0.875,
+            "phase_end": 0.916667
+          }
+        ],
+        "a1b_overlapping_intervals": [
+          {
+            "elevated": {
+              "phase_start": 0.625,
+              "phase_end": 0.666667
+            },
+            "a1b_interval": {
+              "phase_start": 0.625,
+              "phase_end": 0.656
+            }
+          },
+          {
+            "elevated": {
+              "phase_start": 0.875,
+              "phase_end": 0.916667
+            },
+            "a1b_interval": {
+              "phase_start": 0.875,
+              "phase_end": 0.917
+            }
+          }
+        ]
+      },
+      "k32": {
+        "n": 2201,
+        "k": 32,
+        "chi2": 35.93230349840981,
+        "p_chi2": 0.24835000637627921,
+        "cramer_v": 0.022948360381325732,
+        "rayleigh_R": 0.009743430796929579,
+        "p_rayleigh": 0.811435229836325,
+        "mean_phase": 0.3229106973217066,
+        "bin_counts": [
+          72,
+          68,
+          83,
+          61,
+          66,
+          63,
+          77,
+          59,
+          69,
+          60,
+          96,
+          58,
+          69,
+          85,
+          65,
+          67,
+          76,
+          61,
+          72,
+          56,
+          78,
+          72,
+          63,
+          60,
+          62,
+          70,
+          73,
+          66,
+          78,
+          73,
+          60,
+          63
+        ],
+        "expected_count": 68.78125,
+        "threshold_1sd": 77.07469620769919,
+        "elevated_bin_indices": [
+          2,
+          10,
+          13,
+          20,
+          28
+        ],
+        "elevated_intervals": [
+          {
+            "phase_start": 0.0625,
+            "phase_end": 0.09375
+          },
+          {
+            "phase_start": 0.3125,
+            "phase_end": 0.34375
+          },
+          {
+            "phase_start": 0.40625,
+            "phase_end": 0.4375
+          },
+          {
+            "phase_start": 0.625,
+            "phase_end": 0.65625
+          },
+          {
+            "phase_start": 0.875,
+            "phase_end": 0.90625
+          }
+        ],
+        "a1b_overlapping_intervals": [
+          {
+            "elevated": {
+              "phase_start": 0.625,
+              "phase_end": 0.65625
+            },
+            "a1b_interval": {
+              "phase_start": 0.625,
+              "phase_end": 0.656
+            }
+          },
+          {
+            "elevated": {
+              "phase_start": 0.875,
+              "phase_end": 0.90625
+            },
+            "a1b_interval": {
+              "phase_start": 0.875,
+              "phase_end": 0.917
+            }
+          }
+        ]
+      }
+    }
+  },
+  "prediction_evaluation": {
+    "cramer_v_rank_order": [
+      "normal",
+      "thrust",
+      "strike_slip"
+    ],
+    "cramer_v_by_mechanism": {
+      "thrust": 0.027514922580659937,
+      "normal": 0.03532686113359542,
+      "strike_slip": 0.0183247861114014
+    },
+    "matches_metivier_pattern": false,
+    "phase_offset_thrust_normal": 0.3627032845090876,
+    "mean_phase_thrust": 0.1362222115694962,
+    "mean_phase_normal": 0.7735189270604086,
+    "thrust_normal_phase_relationship": "other",
+    "equinox_in_thrust": false,
+    "equinox_in_normal": false,
+    "equinox_in_strike_slip": false,
+    "geometric_equinox_in_all": false,
+    "loading_supported": false,
+    "geometric_supported": false,
+    "metivier_pattern_supported": false,
+    "primary_conclusion": "ambiguous"
+  },
+  "unmatched_check": {
+    "n_unmatched": 4336,
+    "full_catalog_cramer_v_k24": 0.018096996004343686,
+    "k24_chi2": 67.23616236162363,
+    "k24_p": 3.2239188607390832e-06,
+    "k24_cramer_v": 0.0259652736399981,
+    "k24_rayleigh_R": 0.014206643868761352,
+    "k24_p_rayleigh": 0.41680809233520066,
+    "similar_to_full_catalog": true
+  }
+}
