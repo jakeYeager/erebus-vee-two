@@ -11,7 +11,8 @@ The purpose of this project is for the user to begin to formally describe and do
 | L4         | Complete    | Declustering (legacy Four); G-K declustered: 6,222 mainshocks / 3,580 aftershocks. Latitude+depth added.    |
 | L5         | Complete    | Declustering Degradation (legacy Five); G-K declustering effects on seismic signal analysis. Cases E1–E5.   |
 | Adhoc      | In Progress | Adhoc cases for the user to review data architecture and analysis strategies.                               |
-| A2         | Planning    | Semiannual solar signal investigation informed by literature review. Cases A1-4 and B1-4.                   |
+| A2         | Complete    | Semiannual solar signal investigation informed by literature review. Cases A1-4 and B1-4.                   |
+| A3         | Planning    | Further refinement of Topic A2 cases. Cases: TBD.                                                           |
 
 
 ## Subject Domain

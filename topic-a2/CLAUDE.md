@@ -1,6 +1,6 @@
-# Topic: Seasonal Solar Signal Investigation
+# Topic A2: Seasonal Solar Signal Investigation
 
-**STATUS: Active**
+> **Status: Superseded.** See `topic-a3/CLAUDE.md` for current project status.
 
 ## Intent
 

@@ -10,13 +10,15 @@
   - Limitations
   - References (as applicable)
 
+Use canonical naming references when citing other works withing this project. See `.claude/rules/project-naming-and-organization.md` for convention.
+
 ## Template Header & Footers
 
 Use these template header and footers unless otherwise specified:
 
 **Header:**
 ```markdown
-# Case [identifier]: [Title]
+# [canonical name i.e. "A1.B1"]: [Title]
 
 **Document Information**
 - Author: Jake Yeager
