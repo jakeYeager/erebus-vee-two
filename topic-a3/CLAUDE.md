@@ -9,9 +9,6 @@ Topic A2 focused on building analysis test cases to address a liturature review 
 **Asymetrical Topic Workflow**
 Due to the iterative review process of the cases, as compared to other topics, the operational workflow for this specific topic will override any automated scaffolding that is discribed in any rules or agents. **Stop and report to user** if any topic scaffolding subagents are triggered. Allow any subagents to freely execute individual case-related work.
 
-## Data Sources
-**TBD**
-
 ## Case Table
 
 | Case | Status   | Title                                                                       |
@@ -47,21 +44,39 @@ Due to the iterative review process of the cases, as compared to other topics, t
 **Tier 4 — After Tier 2 completes**
 - **A3.C1** — After A3.B3 + A3.B4
 
-## Previous Case Analysis Reference Table
+## Data Sources
 
-| Topic ID | Case ID | Title                                                              |
-| -------- | ------- | ------------------------------------------------------------------ |
-| Adhoc    | A0      | ComCat and ISC-GEM data file comparison.                           |
-| Adhoc    | A0b     | Duplicate detection and cross-catalog event accounting.            |
-| Adhoc    | A1      | Effects of binning increments on astronomical metrics.             |
-| Adhoc    | A1b     | Elevated bin event characterization and declustering implications. |
-| A2       | A1      | Schuster Spectrum and MFPA Periodicity Analysis                    |
-| A2       | A2      | b-Value Seasonal Variation                                         |
-| A2       | A3      | Magnitude Stratification of the Solar Signal                       |
-| A2       | A4      | Declustering Sensitivity Analysis                                  |
-| A2       | B1      | Hemisphere Stratification — Phase Symmetry Test                    |
-| A2       | B2      | Ocean vs. Continent Location — Hydrological Loading Discrimination |
-| A2       | B3      | Tectonic Regime Stratification                                     |
-| A2       | B4      | Depth Stratification — Surface Loading Penetration Test            |
-| A2       | B5      | Solar Declination Rate-of-Change vs. Position Test                 |
-| A2       | B6      | Rolling Window Stationarity Test                                   |
+### Data Pipeline Changes - Sequence Paradigm
+
+To support the descriptive inquiry into the behavior of clusters and sequence event trains, new columns have been added to declustered datasets of mainshocks and aftershocks per the declustering algorithm. This applies to all declustered datasets available to this topic A3.
+
+#### Aftershock output column expectations
+
+The aftershock CSV retains all input columns plus four attribution columns appended at the end (no change from aftershock datasets common in topic A2):
+
+| Column             | Description                                                                    |
+| ------------------ | ------------------------------------------------------------------------------ |
+| `parent_id`        | `usgs_id` of the mainshock whose window claimed this event                     |
+| `parent_magnitude` | Magnitude of the parent mainshock                                              |
+| `delta_t_sec`      | Signed elapsed seconds from the parent to this event (negative for foreshocks) |
+| `delta_dist_km`    | Great-circle distance in km between this event and its parent                  |
+
+
+#### Mainshock output columns
+
+The mainshock CSV retains all input columns plus four summary columns appended at the end:
+
+| Column             | Description                                                                           |
+| ------------------ | ------------------------------------------------------------------------------------- |
+| `foreshock_count`  | Number of claimed events with `delta_t_sec < 0` (occurred before the mainshock)       |
+| `aftershock_count` | Number of claimed events with `delta_t_sec >= 0` (occurred at or after the mainshock) |
+| `window_secs`      | Maximum `\|delta_t_sec\|` observed across all claimed events (seconds)                |
+| `window_km`        | Maximum `delta_dist_km` observed across all claimed events (km)                       |
+
+`window_secs` and `window_km` reflect the observed maximum temporal and spatial reach across all events claimed by that mainshock. For the G-K formula this equals the algorithm's theoretical window at the mainshock's magnitude. Mainshocks with no claimed events have `window_secs = 0` and `window_km = 0`.
+
+
+**G-K window overlap behavior:** When two mainshock windows overlap and both could claim the same event, the parent is the mainshock with the smallest `|delta_t_sec|` (temporal proximity takes priority over spatial proximity).
+
+**Reasenberg window overlap behavior:** For Reasenberg, each aftershock's parent is the highest-magnitude event in its cluster; no tie-breaking is required since each event belongs to exactly one cluster. `window_secs` and `window_km` on each mainshock row report the actual maximum temporal and spatial reach observed across its claimed events — Reasenberg's interaction radius and adaptive lookback window vary dynamically, so these observed maximums provide the most meaningful per-mainshock footprint.
+
