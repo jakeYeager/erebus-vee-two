@@ -6,6 +6,9 @@
 
 Topic A2 focused on building analysis test cases to address a liturature review on the conventionally accepted view that hydrological/snow loading is the dominant mechanism in seasonal earthquake propagation. This mechanism is suspect from this studies perspective given the nature of the "solar signal" as seen in the historical population of strong earthquakes. Hydrological forcing peaks at summer or winter solstice depending on hemisphere and regional climate — not at the equinoxes where the solar signal is strongest. The equinox signal is more consistent with a direct solar-geometric forcing (e.g., solar declination rate of change, Earth-Sun distance, or tidal stress geometry) or with a globally symmetric effect that cancels hemisphere-specific hydrological loading and leaves a residual equinox peak. This distinction is the core scientific question. This topic A3 attempts to further refine the inital cases of A2 to better describe this solar signal.
 
+**Asymetrical Topic Workflow**
+Due to the iterative review process of the cases, as compared to other topics, the operational workflow for this specific topic will override any automated scaffolding that is discribed in any rules or agents. **Stop and report to user** if any topic scaffolding subagents are triggered. Allow any subagents to freely execute individual case-related work.
+
 ## Data Sources
 **TBD**
 

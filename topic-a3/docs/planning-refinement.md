@@ -12,6 +12,41 @@ This document proposes cases for Topic A3 based on a review of all Topic A2 cons
 
 Each case includes its source case reference(s), the gap or concern it addresses, and open data/methodology questions to resolve before case spec writing.
 
+## Data Pipeline Changes - Sequence Paradigm
+
+To support the descriptive inquiry into the behavior of clusters and sequence event trains new columns have been added to declustered datasets of mainshocks and aftershocks per the declustering algorithm. This applies to all algorithm declustered datasets available to this topic A3.
+
+### Aftershock output column expectations
+
+The aftershock CSV retains all input columns plus four attribution columns appended at the end (no change from aftershock datasets common in topic A2):
+
+| Column             | Description                                                                    |
+| ------------------ | ------------------------------------------------------------------------------ |
+| `parent_id`        | `usgs_id` of the mainshock whose window claimed this event                     |
+| `parent_magnitude` | Magnitude of the parent mainshock                                              |
+| `delta_t_sec`      | Signed elapsed seconds from the parent to this event (negative for foreshocks) |
+| `delta_dist_km`    | Great-circle distance in km between this event and its parent                  |
+
+
+### Mainshock output columns
+
+The mainshock CSV retains all input columns plus four summary columns appended at the end:
+
+| Column             | Description                                                                           |
+| ------------------ | ------------------------------------------------------------------------------------- |
+| `foreshock_count`  | Number of claimed events with `delta_t_sec < 0` (occurred before the mainshock)       |
+| `aftershock_count` | Number of claimed events with `delta_t_sec >= 0` (occurred at or after the mainshock) |
+| `window_secs`      | Maximum `\|delta_t_sec\|` observed across all claimed events (seconds)                |
+| `window_km`        | Maximum `delta_dist_km` observed across all claimed events (km)                       |
+
+`window_secs` and `window_km` reflect the observed maximum temporal and spatial reach across all events claimed by that mainshock. For the G-K formula this equals the algorithm's theoretical window at the mainshock's magnitude. Mainshocks with no claimed events have `window_secs = 0` and `window_km = 0`.
+
+
+**G-K window overlap behavior:** When two mainshock windows overlap and both could claim the same event, the parent is the mainshock with the smallest `|delta_t_sec|` (temporal proximity takes priority over spatial proximity).
+
+**Reasenberg window overlap behavior:** For Reasenberg, each aftershock's parent is the highest-magnitude event in its cluster; no tie-breaking is required since each event belongs to exactly one cluster. `window_secs` and `window_km` on each mainshock row report the actual maximum temporal and spatial reach observed across its claimed events — Reasenberg's interaction radius and adaptive lookback window vary dynamically, so these observed maximums provide the most meaningful per-mainshock footprint.
+
+
 ---
 
 ## Case Table
@@ -27,7 +62,7 @@ Each case includes its source case reference(s), the gap or concern it addresses
 | B | A3.B4 | Depth × Magnitude Two-Way Stratification with Moho Isolation | A2.B4 | Console summary gap + planning-initial |
 | B | A3.B5 | Corrected Null-Distribution Geometric Variable Test | A2.B5 | Evaluation gap |
 | C | A3.C1 | Subduction Zone Subset Test | A2.B2, A2.B4 | Console summary gap |
-| C | A3.C2 | Major Sequence Removal Test | A2.B6, A2.A4 | Evaluation gap |
+| C | A3.C2 | Targeted Major Sequence Phased Declustering Test | A2.B6, A2.A4 | Evaluation gap |
 
 ---
 
@@ -39,32 +74,33 @@ Cases have upstream dependencies that determine execution order. Cases with no d
 
 | Case | Feeds | Reason |
 | ---- | ----- | ------ |
-| A3.A1 | A3.A2, A3.C2 | A3.A2 needs A3.A1's aftershock phase distribution before MFPA results are interpretable; A3.C2's sequence targeting is informed by which aftershock sequences A3.A1 identifies as driving the signal |
 | A3.B1 | A3.C2 | A3.C2's major-sequence removal targets are sharpened by A3.B1's interval-level temporal tracking (which years and intervals are non-stationary) |
+| A3.C2 | A3.A1 | A3.A1 benefits from A3.C2's sequence identification and handling results before characterizing aftershock phase preferences |
+| A3.A1 | A3.A2 | A3.A2 needs A3.A1's aftershock phase distribution before MFPA results are interpretable |
 | A3.B3 | A3.C1 | A3.C1's subduction zone boundary definition is informed by where the signal migrates in A3.B3's threshold sweep |
 | A3.B4 | A3.C1 | A3.C1 needs to know whether the mid-crustal signal is independently real or magnitude-driven before interpreting a subduction zone subset |
 
 ### Execution Tiers
 
 **Tier 1 — Foundational (run first)**
-- **A3.A1** — Most novel A2 finding; gates both A3.A2 and A3.C2
 - **A3.B1** — Interval-level stationarity tracking; provides interpretive context for B2/B3/B4 and gates A3.C2
 
-**Tier 2 — Independent (run in parallel after or alongside Tier 1)**
-- **A3.B3** — Needed for A3.C1
-- **A3.B4** — Needed for A3.C1
+**Tier 2 — After Tier 1; independent cases may run alongside A3.C2**
+- **A3.C2** — After A3.B1; sequence identification and handling results inform A3.A1
+- **A3.B3** — Standalone; needed for A3.C1
+- **A3.B4** — Standalone; needed for A3.C1
 - **A3.B2** — Standalone; A3.B1 results provide interpretive context but do not block it
 - **A3.B5** — Standalone methodological correction
 - **A3.A3** — Exploratory probe; does not block any other case in the current list
 
-**Tier 3 — After Tier 1 completes**
-- **A3.A2** — After A3.A1
-- **A3.C2** — After A3.A1 + A3.B1
-
-**Tier 4 — After Tier 2 completes**
+**Tier 3 — After Tier 2 completes**
+- **A3.A1** — After A3.C2; most novel A2 finding, run with sequence handling context from A3.C2; gates A3.A2
 - **A3.C1** — After A3.B3 + A3.B4
 
-> **Note:** Unlike A2, where A2.A4 (declustering sensitivity) served as a single-gating prerequisite for all downstream cases, A3 has two parallel Tier 1 priorities (A3.A1 and A3.B1) that are independently foundational and jointly required before the two synthesis cases (A3.C1, A3.C2) can run.
+**Tier 4 — After Tier 3 completes**
+- **A3.A2** — After A3.A1
+
+> **Note:** Unlike A2, where A2.A4 (declustering sensitivity) served as a single-gating prerequisite for all downstream cases, A3 has a sequential foundational chain: A3.B1 → A3.C2 → A3.A1, with independent stratification cases (B2–B5, A3) running in parallel during Tier 2.
 
 ---
 
@@ -82,11 +118,10 @@ A2.A4's Sub-analysis C is the most novel finding from all of Topic A2 — all th
 - Are the elevated aftershock χ² values concentrated in specific large event sequences (e.g., 2004 Sumatra M9.1 — identified in A2.B6 as the likely driver of the 2003–2014 significant window cluster), or is the aftershock phase preference diffuse across sequences?
 - Does the aftershock phase preference change with sequence age (early vs. late aftershocks within a defined window)?
 
-**Data source requirements:** Declustered mainshock/aftershock catalogs (G-K, Reasenberg, A1b) with solar phase values. Existing data files sufficient.
+**Data source requirements:** Sequence-enriched aftershock catalogs (G-K, Reasenberg, A1b) are **required** — `parent_id`, `parent_magnitude`, `delta_t_sec`, and `delta_dist_km` are now available on all three algorithm datasets. Corresponding sequence-enriched mainshock catalogs provide `aftershock_count` and `window_secs` per mainshock row, which are needed to filter sequences large enough for meaningful subdivision and to compute the early/late temporal midpoint.
 
 **Open questions:**
-- Should sequence-level analysis require event parentage attribution (available in the A1b custom method; may need derivation for G-K and Reasenberg)?
-- What temporal window defines "early" vs. "late" aftershocks within a sequence?
+- What temporal window defines "early" vs. "late" aftershocks within a sequence? *Decision: Split aftershocks into first/second half of sequence train based on temporal duration of train (`window_secs / 2` as midpoint), not total event count. Note: a single late straggler extends `window_secs` and shifts the midpoint outward — carry as a sensitivity check comparing duration-based vs. count-based splits.*
 
 ---
 
@@ -103,7 +138,7 @@ A2.A1 ran the Schuster spectrum and MFPA analysis exclusively on mainshock catal
 
 **Intent:** Run the full A2.A1 framework (Schuster spectrum + MFPA + cluster correction) on aftershock populations from all three declustering methods. Compare resulting periodicity structure to the mainshock results to determine whether the 75.6-day quarter-year period is an aftershock artifact, a mainshock artifact, or genuinely present in both populations. Apply structural improvements (bootstrap replicates, threshold sensitivity, multiple comparison correction) to the full analysis.
 
-**Data source requirements:** Aftershock catalogs (G-K, Reasenberg, A1b) with timestamps. Existing data files sufficient.
+**Data source requirements:** Sequence-enriched aftershock catalogs (G-K, Reasenberg, A1b) are **suggested** — `parent_id` enables correct stratification of the aftershock population by parent event, and `delta_t_sec` enables temporal position within sequence as an optional secondary variable (e.g., testing whether the periodicity signal shifts between early and late aftershocks within sequences).
 
 **Open questions:**
 - How many additional bootstrap replicates are warranted? (Current: assess from A2.A1 spec)
@@ -121,12 +156,11 @@ A2.A4's console summary included a methodological finding not captured in the fo
 
 **Intent:** Design and apply a phase-aware declustering probe: identify events that are disproportionately contributing to solar-phase bin elevations (i.e., phase-clustered events relative to a uniform null) and measure the signal before and after their removal. This is not proposed as a declustering standard — it is an exploratory methodological test to determine how much of the signal can be attributed to a small number of phase-concentrating events.
 
-**Data source requirements:** Full ISC-GEM catalog with solar phase values. Permutation framework to define phase-clustered thresholds without circular reasoning.
+**Data source requirements:** Sequence-enriched aftershock catalogs (G-K, Reasenberg, A1b) are **suggested** — `parent_id` is now available on all three algorithm datasets, enabling sequence membership to be used as a structuring variable when identifying which events are phase-clustering candidates, reducing (but not eliminating) circular reasoning risk. Permutation framework still required to define phase-clustered thresholds.
 
 **Open questions:**
 - How to define "phase-clustered" events without circular reasoning (i.e., without selecting events based on the outcome being tested)? A leave-one-out jackknife or permutation threshold may be required.
 - What comparison framework makes the result interpretable against G-K/Reasenberg baselines?
-- Is this case feasible without a more complete event parentage record, or can it operate purely on phase values?
 
 ---
 
@@ -141,7 +175,7 @@ A2.B6 used the Rayleigh test (unimodal) as its primary stationarity statistic. C
 
 **Intent:** Repeat the A2.B6 rolling-window stationarity analysis with chi-square (k=24) as the primary statistic and Rayleigh as secondary. Add interval-level tracking within each window — which of the three A1b baseline intervals (Interval 1 ~0.19–0.25, Interval 2 ~0.625–0.656, Interval 3 ~0.875–0.917) are elevated — to determine whether the non-stationarity is global or interval-specific.
 
-**Data source requirements:** Full ISC-GEM catalog with solar phase values. Existing data sufficient.
+**Data source requirements:** Full ISC-GEM catalog with solar phase values. Sequence-enriched mainshock catalogs (G-K, Reasenberg, A1b) are **suggested** — `aftershock_count` per mainshock row enables sequence density to be computed per rolling window, providing a direct diagnostic check: windows with elevated chi-square can be tested for elevated sequence density, which would directly quantify the contribution of major aftershock sequences (e.g., 2004 Sumatra) to window-level significance.
 
 **Open questions:**
 - Should window size and stride remain unchanged from A2.B6 (5-year window, 1-year stride, 62 windows)?
@@ -252,7 +286,7 @@ Classification approach options (in order of preference):
 
 ---
 
-### A3.C2: Major Sequence Removal Test
+### A3.C2: Targeted Major Sequence Phased Declustering Test
 
 **Source:** A2.B6, A2.A4
 
@@ -268,8 +302,11 @@ A2.B6 identified that the most statistically significant rolling windows cluster
 
 This test should run on both the raw catalog and the declustered mainshock-only catalog, since A2.A4 showed the mainshock signal is also suppressed. If even the mainshock signal is concentrated in a few sequences, the declustering framing needs further revision.
 
-**Data source requirements:** Full ISC-GEM catalog with event IDs, magnitudes, locations, and timestamps. Aftershock attribution from existing declustered catalogs to define sequence membership.
+**Report Requirement:** In the whitepaper "Results" block include a simple breakout to describe the major events removed, and basic metrics of their sequence train including: how many fore/after/complete, sequence window duration - mainshock to last aftershock, pre/post count of "last event" half-life (will inform subsequent "early" and "late" designation).
+
+**Data source requirements:** Sequence-enriched mainshock and aftershock catalogs (G-K, Reasenberg) are **required**. `parent_id` on aftershock rows provides precise sequence membership for targeted removal without relying on a fixed spatial/temporal buffer. `foreshock_count`, `aftershock_count`, `window_secs`, and `window_km` on mainshock rows directly supply the sequence train metrics required by the Report Requirement block above, without additional derivation.
+
 
 **Open questions:**
-- Should aftershock windows for removal be defined using the existing G-K/Reasenberg declustering windows, or a fixed spatial/temporal buffer applied to each large event independently?
-- What magnitude threshold defines a "major sequence" for inclusion in the removal set? (Suggest M≥8.5 as a starting point, yielding approximately 10–15 events in the ISC-GEM catalog.)
+- Should aftershock windows for removal be defined using the existing G-K/Reasenberg declustering windows, or a fixed spatial/temporal buffer applied to each large event independently? *Decision: use G-K/Reasenberg declustering windows as typical in other cases*
+- What magnitude threshold defines a "major sequence" for inclusion in the removal set? (Suggest M≥8.5 as a starting point, yielding approximately 10–15 events in the ISC-GEM catalog.) *Decision: Wait for the results of A3.B1 to inform, or use suggest M≥8.5 as fallback.*
