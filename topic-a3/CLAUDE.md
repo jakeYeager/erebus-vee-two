@@ -9,40 +9,45 @@ Topic A2 focused on building analysis test cases to address a liturature review 
 **Asymetrical Topic Workflow**
 Due to the iterative review process of the cases, as compared to other topics, the operational workflow for this specific topic will override any automated scaffolding that is discribed in any rules or agents. **Stop and report to user** if any topic scaffolding subagents are triggered. Allow any subagents to freely execute individual case-related work.
 
+
 ## Case Table
 
-| Case | Status   | Title                                                                       |
-| ---- | -------- | --------------------------------------------------------------------------- |
-| A1   | Planning | Aftershock Phase-Preference Characterization. Source: A2.A4 Sub-C           |
-| B1   | Planning | Rolling-Window Chi-Square Repeat. Source: A2.B6                             |
-| B3   | Planning | Ocean/Coast Sequential Threshold Sensitivity. Source: A2.B2                 |
-| B4   | Planning | Depth × Magnitude Two-Way Stratification with Moho Isolation. Source: A2.B4 |
-| B2   | Planning | Hemisphere Stratification Refinement. Source: A2.B1                         |
-| B5   | Planning | Corrected Null-Distribution Geometric Variable Test. Source: A2.B5          |
-| A2   | Planning | Aftershock Periodicity Analysis (Schuster/MFPA). Source: A2.A1, A2.A4       |
-| A3   | Planning | Phase-Aware Declustering Methodology. Source: A2.A4 note                    |
-| C1   | Planning | Subduction Zone Subset Test. Source: A2.B2, A2.B4                           |
-| C2   | Planning | Major Sequence Removal Test. Source: A2.B6, A2.A4                           |
+| Case | Status   | Title                                                        |
+| ---- | -------- | ------------------------------------------------------------ |
+| B1   | Planning | Rolling-Window Chi-Square Repeat                             |
+| C2   | Planning | Targeted Major Sequence Phased Declustering Test             |
+| B3   | Planning | Ocean/Coast Sequential Threshold Sensitivity                 |
+| B4   | Planning | Depth × Magnitude Two-Way Stratification with Moho Isolation |
+| B2   | Planning | Hemisphere Stratification Refinement                         |
+| B5   | Planning | Corrected Null-Distribution Geometric Variable Test          |
+| A3   | Planning | Phase-Aware Declustering Methodology                         |
+| A1   | Planning | Aftershock Phase-Preference Characterization                 |
+| C1   | Planning | Subduction Zone Subset Test                                  |
+| A2   | Planning | Aftershock Periodicity Analysis (Schuster/MFPA)              |
+
 
 ### Execution Tiers
 
 **Tier 1 — Foundational (run first)**
-- **A3.A1** — Most novel A2 finding; gates both A3.A2 and A3.C2
 - **A3.B1** — Interval-level stationarity tracking; provides interpretive context for B2/B3/B4 and gates A3.C2
 
-**Tier 2 — Independent (run in parallel after or alongside Tier 1)**
-- **A3.B3** — Needed for A3.C1
-- **A3.B4** — Needed for A3.C1
+**Tier 2 — After Tier 1; independent cases may run alongside A3.C2**
+- **A3.C2** — After A3.B1; sequence identification and handling results inform A3.A1
+- **A3.B3** — Standalone; needed for A3.C1
+- **A3.B4** — Standalone; needed for A3.C1
 - **A3.B2** — Standalone; A3.B1 results provide interpretive context but do not block it
 - **A3.B5** — Standalone methodological correction
 - **A3.A3** — Exploratory probe; does not block any other case in the current list
 
-**Tier 3 — After Tier 1 completes**
-- **A3.A2** — After A3.A1
-- **A3.C2** — After A3.A1 + A3.B1
-
-**Tier 4 — After Tier 2 completes**
+**Tier 3 — After Tier 2 completes**
+- **A3.A1** — After A3.C2; most novel A2 finding, run with sequence handling context from A3.C2; gates A3.A2
 - **A3.C1** — After A3.B3 + A3.B4
+
+**Tier 4 — After Tier 3 completes**
+- **A3.A2** — After A3.A1
+
+> **Note:** Unlike A2, where A2.A4 (declustering sensitivity) served as a single-gating prerequisite for all downstream cases, A3 has a sequential foundational chain: A3.B1 → A3.C2 → A3.A1, with independent stratification cases (B2–B5, A3) running in parallel during Tier 2.
+
 
 ## Data Sources
 
