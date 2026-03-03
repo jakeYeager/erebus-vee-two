@@ -1,4 +1,4 @@
-> **Status: Draft**
+> **Status: Approved**
 
 # Topic A3 Planning Refinement
 
@@ -178,9 +178,9 @@ A2.B6 used the Rayleigh test (unimodal) as its primary stationarity statistic. C
 **Data source requirements:** Full ISC-GEM catalog with solar phase values. Sequence-enriched mainshock catalogs (G-K, Reasenberg, A1b) are **suggested** — `aftershock_count` per mainshock row enables sequence density to be computed per rolling window, providing a direct diagnostic check: windows with elevated chi-square can be tested for elevated sequence density, which would directly quantify the contribution of major aftershock sequences (e.g., 2004 Sumatra) to window-level significance.
 
 **Open questions:**
-- Should window size and stride remain unchanged from A2.B6 (5-year window, 1-year stride, 62 windows)?
-- Should the stationarity threshold (70%) be retained or recalibrated for chi-square as primary?
-- Should this run on declustered catalogs in addition to the raw catalog?
+- Should window size and stride remain unchanged from A2.B6 (5-year window, 1-year stride, 62 windows)? *Decision: apply what was used A2.B6 unless a change can materially benefit the chi-square tests*
+- Should the stationarity threshold (70%) be retained or recalibrated for chi-square as primary? *Decision: apply what was used A2.B6 unless a change can materially benefit the chi-square tests*
+- Should this run on declustered catalogs in addition to the raw catalog? *Decision: yes*
 
 ---
 
