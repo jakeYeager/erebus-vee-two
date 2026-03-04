@@ -1,0 +1,1816 @@
+{
+  "case": "A3.C2",
+  "title": "Targeted Major Sequence Phased Declustering Test",
+  "parameters": {
+    "n_raw": 9210,
+    "n_gk_mainshocks": 5883,
+    "n_gk_aftershocks": 3327,
+    "n_reas_mainshocks": 8265,
+    "n_reas_aftershocks": 945,
+    "mag_threshold": 8.5,
+    "k_bins": 24,
+    "julian_year_secs": 31557600.0
+  },
+  "major_events": [
+    {
+      "usgs_id": "iscgem879136",
+      "usgs_mag": 9.55,
+      "event_at": "1960-05-22T19:11:20+00:00",
+      "latitude": -38.143,
+      "longitude": -73.407,
+      "removal_order": 1
+    },
+    {
+      "usgs_id": "iscgem7453151",
+      "usgs_mag": 9.31,
+      "event_at": "2004-12-26T00:58:53+00:00",
+      "latitude": 3.331,
+      "longitude": 95.952,
+      "removal_order": 2
+    },
+    {
+      "usgs_id": "iscgem869809",
+      "usgs_mag": 9.3,
+      "event_at": "1964-03-28T03:36:16+00:00",
+      "latitude": 60.969,
+      "longitude": -147.473,
+      "removal_order": 3
+    },
+    {
+      "usgs_id": "iscgem16461282",
+      "usgs_mag": 9.09,
+      "event_at": "2011-03-11T05:46:23+00:00",
+      "latitude": 38.285,
+      "longitude": 142.546,
+      "removal_order": 4
+    },
+    {
+      "usgs_id": "iscgem893648",
+      "usgs_mag": 8.84,
+      "event_at": "1952-11-04T16:58:30+00:00",
+      "latitude": 52.623,
+      "longitude": 159.779,
+      "removal_order": 5
+    },
+    {
+      "usgs_id": "iscgem14340585",
+      "usgs_mag": 8.79,
+      "event_at": "2010-02-27T06:34:12+00:00",
+      "latitude": -36.207,
+      "longitude": -72.848,
+      "removal_order": 6
+    },
+    {
+      "usgs_id": "iscgem859206",
+      "usgs_mag": 8.7,
+      "event_at": "1965-02-04T05:01:23+00:00",
+      "latitude": 51.23,
+      "longitude": 178.604,
+      "removal_order": 7
+    },
+    {
+      "usgs_id": "iscgem895681",
+      "usgs_mag": 8.68,
+      "event_at": "1950-08-15T14:09:34+00:00",
+      "latitude": 28.363,
+      "longitude": 96.445,
+      "removal_order": 8
+    },
+    {
+      "usgs_id": "iscgem7486110",
+      "usgs_mag": 8.62,
+      "event_at": "2005-03-28T16:09:37+00:00",
+      "latitude": 2.092,
+      "longitude": 97.154,
+      "removal_order": 9
+    },
+    {
+      "usgs_id": "iscgem879134",
+      "usgs_mag": 8.6,
+      "event_at": "1960-05-22T18:56:02+00:00",
+      "latitude": -38.061,
+      "longitude": -73.039,
+      "removal_order": 10
+    },
+    {
+      "usgs_id": "iscgem600860404",
+      "usgs_mag": 8.58,
+      "event_at": "2012-04-11T08:38:36+00:00",
+      "latitude": 2.273,
+      "longitude": 93.051,
+      "removal_order": 11
+    },
+    {
+      "usgs_id": "iscgem886030",
+      "usgs_mag": 8.56,
+      "event_at": "1957-03-09T14:22:33+00:00",
+      "latitude": 51.499,
+      "longitude": -175.626,
+      "removal_order": 12
+    },
+    {
+      "usgs_id": "iscgem873239",
+      "usgs_mag": 8.5,
+      "event_at": "1963-10-13T05:17:59+00:00",
+      "latitude": 44.872,
+      "longitude": 149.483,
+      "removal_order": 13
+    }
+  ],
+  "sequence_metrics": {
+    "gk": [
+      {
+        "usgs_id": "iscgem879136",
+        "usgs_mag": 9.55,
+        "event_at": "1960-05-22T19:11:20+00:00",
+        "latitude": -38.143,
+        "longitude": -73.407,
+        "declustering": "gk",
+        "classification": "mainshock",
+        "foreshock_count": 5,
+        "aftershock_count": 13,
+        "total_sequence": 19,
+        "window_secs": 85471809.0,
+        "window_days": 989.2570486111111,
+        "window_km": 146.21135365003636,
+        "early_count": 14,
+        "late_count": 4,
+        "early_pct": 1.0769230769230769
+      },
+      {
+        "usgs_id": "iscgem7453151",
+        "usgs_mag": 9.31,
+        "event_at": "2004-12-26T00:58:53+00:00",
+        "latitude": 3.331,
+        "longitude": 95.952,
+        "declustering": "gk",
+        "classification": "mainshock",
+        "foreshock_count": 2,
+        "aftershock_count": 3,
+        "total_sequence": 6,
+        "window_secs": 67822361.0,
+        "window_days": 784.9810300925926,
+        "window_km": 88.68624885051597,
+        "early_count": 5,
+        "late_count": 0,
+        "early_pct": 1.6666666666666667
+      },
+      {
+        "usgs_id": "iscgem869809",
+        "usgs_mag": 9.3,
+        "event_at": "1964-03-28T03:36:16+00:00",
+        "latitude": 60.969,
+        "longitude": -147.473,
+        "declustering": "gk",
+        "classification": "mainshock",
+        "foreshock_count": 1,
+        "aftershock_count": 5,
+        "total_sequence": 7,
+        "window_secs": 31059684.0,
+        "window_days": 359.4870833333333,
+        "window_km": 110.87978068057164,
+        "early_count": 6,
+        "late_count": 0,
+        "early_pct": 1.2
+      },
+      {
+        "usgs_id": "iscgem16461282",
+        "usgs_mag": 9.09,
+        "event_at": "2011-03-11T05:46:23+00:00",
+        "latitude": 38.285,
+        "longitude": 142.546,
+        "declustering": "gk",
+        "classification": "mainshock",
+        "foreshock_count": 6,
+        "aftershock_count": 22,
+        "total_sequence": 29,
+        "window_secs": 83387214.0,
+        "window_days": 965.1297916666666,
+        "window_km": 122.7100421086959,
+        "early_count": 28,
+        "late_count": 0,
+        "early_pct": 1.2727272727272727
+      },
+      {
+        "usgs_id": "iscgem893648",
+        "usgs_mag": 8.84,
+        "event_at": "1952-11-04T16:58:30+00:00",
+        "latitude": 52.623,
+        "longitude": 159.779,
+        "declustering": "gk",
+        "classification": "mainshock",
+        "foreshock_count": 9,
+        "aftershock_count": 25,
+        "total_sequence": 35,
+        "window_secs": 77247419.0,
+        "window_days": 894.067349537037,
+        "window_km": 115.54654458505809,
+        "early_count": 29,
+        "late_count": 5,
+        "early_pct": 1.16
+      },
+      {
+        "usgs_id": "iscgem14340585",
+        "usgs_mag": 8.79,
+        "event_at": "2010-02-27T06:34:12+00:00",
+        "latitude": -36.207,
+        "longitude": -72.848,
+        "declustering": "gk",
+        "classification": "mainshock",
+        "foreshock_count": 0,
+        "aftershock_count": 10,
+        "total_sequence": 11,
+        "window_secs": 60082241.0,
+        "window_days": 695.3963078703704,
+        "window_km": 85.64297505693156,
+        "early_count": 7,
+        "late_count": 3,
+        "early_pct": 0.7
+      },
+      {
+        "usgs_id": "iscgem859206",
+        "usgs_mag": 8.7,
+        "event_at": "1965-02-04T05:01:23+00:00",
+        "latitude": 51.23,
+        "longitude": 178.604,
+        "declustering": "gk",
+        "classification": "mainshock",
+        "foreshock_count": 1,
+        "aftershock_count": 2,
+        "total_sequence": 4,
+        "window_secs": 55840625.0,
+        "window_days": 646.3035300925926,
+        "window_km": 103.39825554334688,
+        "early_count": 2,
+        "late_count": 1,
+        "early_pct": 1.0
+      },
+      {
+        "usgs_id": "iscgem895681",
+        "usgs_mag": 8.68,
+        "event_at": "1950-08-15T14:09:34+00:00",
+        "latitude": 28.363,
+        "longitude": 96.445,
+        "declustering": "gk",
+        "classification": "mainshock",
+        "foreshock_count": 0,
+        "aftershock_count": 4,
+        "total_sequence": 5,
+        "window_secs": 9476243.0,
+        "window_days": 109.67873842592593,
+        "window_km": 107.70688635011985,
+        "early_count": 3,
+        "late_count": 1,
+        "early_pct": 0.75
+      },
+      {
+        "usgs_id": "iscgem7486110",
+        "usgs_mag": 8.62,
+        "event_at": "2005-03-28T16:09:37+00:00",
+        "latitude": 2.092,
+        "longitude": 97.154,
+        "declustering": "gk",
+        "classification": "mainshock",
+        "foreshock_count": 0,
+        "aftershock_count": 12,
+        "total_sequence": 13,
+        "window_secs": 43303479.0,
+        "window_days": 501.1976736111111,
+        "window_km": 99.85687857328004,
+        "early_count": 9,
+        "late_count": 3,
+        "early_pct": 0.75
+      },
+      {
+        "usgs_id": "iscgem879134",
+        "usgs_mag": 8.6,
+        "event_at": "1960-05-22T18:56:02+00:00",
+        "latitude": -38.061,
+        "longitude": -73.039,
+        "declustering": "gk",
+        "classification": "aftershock",
+        "foreshock_count": 0,
+        "aftershock_count": 0,
+        "total_sequence": 1,
+        "window_secs": 0.0,
+        "window_days": 0.0,
+        "window_km": 0.0,
+        "early_count": 0,
+        "late_count": 0,
+        "early_pct": null
+      },
+      {
+        "usgs_id": "iscgem600860404",
+        "usgs_mag": 8.58,
+        "event_at": "2012-04-11T08:38:36+00:00",
+        "latitude": 2.273,
+        "longitude": 93.051,
+        "declustering": "gk",
+        "classification": "mainshock",
+        "foreshock_count": 1,
+        "aftershock_count": 0,
+        "total_sequence": 2,
+        "window_secs": 7912896.0,
+        "window_days": 91.58444444444444,
+        "window_km": 24.478016669126426,
+        "early_count": 1,
+        "late_count": 0,
+        "early_pct": 1.0
+      },
+      {
+        "usgs_id": "iscgem886030",
+        "usgs_mag": 8.56,
+        "event_at": "1957-03-09T14:22:33+00:00",
+        "latitude": 51.499,
+        "longitude": -175.626,
+        "declustering": "gk",
+        "classification": "mainshock",
+        "foreshock_count": 2,
+        "aftershock_count": 7,
+        "total_sequence": 10,
+        "window_secs": 46959705.0,
+        "window_days": 543.5151041666667,
+        "window_km": 96.37261910264054,
+        "early_count": 6,
+        "late_count": 3,
+        "early_pct": 0.8571428571428571
+      },
+      {
+        "usgs_id": "iscgem873239",
+        "usgs_mag": 8.5,
+        "event_at": "1963-10-13T05:17:59+00:00",
+        "latitude": 44.872,
+        "longitude": 149.483,
+        "declustering": "gk",
+        "classification": "mainshock",
+        "foreshock_count": 3,
+        "aftershock_count": 18,
+        "total_sequence": 22,
+        "window_secs": 78005774.0,
+        "window_days": 902.8446064814815,
+        "window_km": 101.67680252930856,
+        "early_count": 19,
+        "late_count": 2,
+        "early_pct": 1.0555555555555556
+      }
+    ],
+    "reasenberg": [
+      {
+        "usgs_id": "iscgem879136",
+        "usgs_mag": 9.55,
+        "event_at": "1960-05-22T19:11:20+00:00",
+        "latitude": -38.143,
+        "longitude": -73.407,
+        "declustering": "reasenberg",
+        "classification": "mainshock",
+        "foreshock_count": 5,
+        "aftershock_count": 2,
+        "total_sequence": 8,
+        "window_secs": 119303.0,
+        "window_days": 1.3808217592592593,
+        "window_km": 88.62182126882436,
+        "early_count": 7,
+        "late_count": 0,
+        "early_pct": 3.5
+      },
+      {
+        "usgs_id": "iscgem7453151",
+        "usgs_mag": 9.31,
+        "event_at": "2004-12-26T00:58:53+00:00",
+        "latitude": 3.331,
+        "longitude": 95.952,
+        "declustering": "reasenberg",
+        "classification": "mainshock",
+        "foreshock_count": 0,
+        "aftershock_count": 0,
+        "total_sequence": 1,
+        "window_secs": 0.0,
+        "window_days": 0.0,
+        "window_km": 0.0,
+        "early_count": 0,
+        "late_count": 0,
+        "early_pct": 0.0
+      },
+      {
+        "usgs_id": "iscgem869809",
+        "usgs_mag": 9.3,
+        "event_at": "1964-03-28T03:36:16+00:00",
+        "latitude": 60.969,
+        "longitude": -147.473,
+        "declustering": "reasenberg",
+        "classification": "mainshock",
+        "foreshock_count": 0,
+        "aftershock_count": 2,
+        "total_sequence": 3,
+        "window_secs": 40379.0,
+        "window_days": 0.467349537037037,
+        "window_km": 93.68415409941112,
+        "early_count": 0,
+        "late_count": 2,
+        "early_pct": 0.0
+      },
+      {
+        "usgs_id": "iscgem16461282",
+        "usgs_mag": 9.09,
+        "event_at": "2011-03-11T05:46:23+00:00",
+        "latitude": 38.285,
+        "longitude": 142.546,
+        "declustering": "reasenberg",
+        "classification": "mainshock",
+        "foreshock_count": 0,
+        "aftershock_count": 5,
+        "total_sequence": 6,
+        "window_secs": 72051.0,
+        "window_days": 0.8339236111111111,
+        "window_km": 78.06380986472631,
+        "early_count": 4,
+        "late_count": 1,
+        "early_pct": 0.8
+      },
+      {
+        "usgs_id": "iscgem893648",
+        "usgs_mag": 8.84,
+        "event_at": "1952-11-04T16:58:30+00:00",
+        "latitude": 52.623,
+        "longitude": 159.779,
+        "declustering": "reasenberg",
+        "classification": "mainshock",
+        "foreshock_count": 0,
+        "aftershock_count": 2,
+        "total_sequence": 3,
+        "window_secs": 107257.0,
+        "window_days": 1.241400462962963,
+        "window_km": 76.07589290561704,
+        "early_count": 0,
+        "late_count": 2,
+        "early_pct": 0.0
+      },
+      {
+        "usgs_id": "iscgem14340585",
+        "usgs_mag": 8.79,
+        "event_at": "2010-02-27T06:34:12+00:00",
+        "latitude": -36.207,
+        "longitude": -72.848,
+        "declustering": "reasenberg",
+        "classification": "mainshock",
+        "foreshock_count": 0,
+        "aftershock_count": 2,
+        "total_sequence": 3,
+        "window_secs": 39018.0,
+        "window_days": 0.4515972222222222,
+        "window_km": 76.97061860027705,
+        "early_count": 1,
+        "late_count": 1,
+        "early_pct": 0.5
+      },
+      {
+        "usgs_id": "iscgem859206",
+        "usgs_mag": 8.7,
+        "event_at": "1965-02-04T05:01:23+00:00",
+        "latitude": 51.23,
+        "longitude": 178.604,
+        "declustering": "reasenberg",
+        "classification": "mainshock",
+        "foreshock_count": 0,
+        "aftershock_count": 1,
+        "total_sequence": 2,
+        "window_secs": 13156.0,
+        "window_days": 0.15226851851851853,
+        "window_km": 72.36062237734534,
+        "early_count": 0,
+        "late_count": 1,
+        "early_pct": 0.0
+      },
+      {
+        "usgs_id": "iscgem895681",
+        "usgs_mag": 8.68,
+        "event_at": "1950-08-15T14:09:34+00:00",
+        "latitude": 28.363,
+        "longitude": 96.445,
+        "declustering": "reasenberg",
+        "classification": "mainshock",
+        "foreshock_count": 0,
+        "aftershock_count": 2,
+        "total_sequence": 3,
+        "window_secs": 59551.0,
+        "window_days": 0.6892476851851852,
+        "window_km": 71.96030406379056,
+        "early_count": 1,
+        "late_count": 1,
+        "early_pct": 0.5
+      },
+      {
+        "usgs_id": "iscgem7486110",
+        "usgs_mag": 8.62,
+        "event_at": "2005-03-28T16:09:37+00:00",
+        "latitude": 2.092,
+        "longitude": 97.154,
+        "declustering": "reasenberg",
+        "classification": "mainshock",
+        "foreshock_count": 0,
+        "aftershock_count": 0,
+        "total_sequence": 1,
+        "window_secs": 0.0,
+        "window_days": 0.0,
+        "window_km": 0.0,
+        "early_count": 0,
+        "late_count": 0,
+        "early_pct": 0.0
+      },
+      {
+        "usgs_id": "iscgem879134",
+        "usgs_mag": 8.6,
+        "event_at": "1960-05-22T18:56:02+00:00",
+        "latitude": -38.061,
+        "longitude": -73.039,
+        "declustering": "reasenberg",
+        "classification": "aftershock",
+        "foreshock_count": 0,
+        "aftershock_count": 0,
+        "total_sequence": 1,
+        "window_secs": 0.0,
+        "window_days": 0.0,
+        "window_km": 0.0,
+        "early_count": 0,
+        "late_count": 0,
+        "early_pct": null
+      },
+      {
+        "usgs_id": "iscgem600860404",
+        "usgs_mag": 8.58,
+        "event_at": "2012-04-11T08:38:36+00:00",
+        "latitude": 2.273,
+        "longitude": 93.051,
+        "declustering": "reasenberg",
+        "classification": "mainshock",
+        "foreshock_count": 0,
+        "aftershock_count": 0,
+        "total_sequence": 1,
+        "window_secs": 0.0,
+        "window_days": 0.0,
+        "window_km": 0.0,
+        "early_count": 0,
+        "late_count": 0,
+        "early_pct": 0.0
+      },
+      {
+        "usgs_id": "iscgem886030",
+        "usgs_mag": 8.56,
+        "event_at": "1957-03-09T14:22:33+00:00",
+        "latitude": 51.499,
+        "longitude": -175.626,
+        "declustering": "reasenberg",
+        "classification": "mainshock",
+        "foreshock_count": 0,
+        "aftershock_count": 0,
+        "total_sequence": 1,
+        "window_secs": 0.0,
+        "window_days": 0.0,
+        "window_km": 0.0,
+        "early_count": 0,
+        "late_count": 0,
+        "early_pct": 0.0
+      },
+      {
+        "usgs_id": "iscgem873239",
+        "usgs_mag": 8.5,
+        "event_at": "1963-10-13T05:17:59+00:00",
+        "latitude": 44.872,
+        "longitude": 149.483,
+        "declustering": "reasenberg",
+        "classification": "mainshock",
+        "foreshock_count": 1,
+        "aftershock_count": 1,
+        "total_sequence": 3,
+        "window_secs": 64259.0,
+        "window_days": 0.7437384259259259,
+        "window_km": 71.6629656567866,
+        "early_count": 2,
+        "late_count": 0,
+        "early_pct": 2.0
+      }
+    ]
+  },
+  "runs": {
+    "raw_gk": {
+      "steps": [
+        {
+          "step": 0,
+          "event_removed": null,
+          "n_removed_cumulative": 0,
+          "ids_removed_cumulative_count": 0,
+          "n_remaining": 9210,
+          "stats": {
+            "chi2_k24": 69.37459283387622,
+            "p_chi2_k24": 1.518371402559259e-06,
+            "cramers_v": 0.018096996004343686,
+            "interval_1_z": 2.219912842729633,
+            "interval_2_z": 4.3007650254995635,
+            "interval_3_z": 3.0756212793631894
+          }
+        },
+        {
+          "step": 1,
+          "event_removed": {
+            "usgs_id": "iscgem879136",
+            "usgs_mag": 9.55,
+            "event_at": "1960-05-22T19:11:20+00:00",
+            "latitude": -38.143,
+            "longitude": -73.407,
+            "n_removed_this_step": 19
+          },
+          "n_removed_cumulative": 19,
+          "ids_removed_cumulative_count": 19,
+          "n_remaining": 9191,
+          "stats": {
+            "chi2_k24": 70.14068110107715,
+            "p_chi2_k24": 1.1567814258046071e-06,
+            "cramers_v": 0.01821544092687115,
+            "interval_1_z": 2.243284040703225,
+            "interval_2_z": 4.345662564117153,
+            "interval_3_z": 3.1192531388690004
+          }
+        },
+        {
+          "step": 2,
+          "event_removed": {
+            "usgs_id": "iscgem7453151",
+            "usgs_mag": 9.31,
+            "event_at": "2004-12-26T00:58:53+00:00",
+            "latitude": 3.331,
+            "longitude": 95.952,
+            "n_removed_this_step": 6
+          },
+          "n_removed_cumulative": 25,
+          "ids_removed_cumulative_count": 25,
+          "n_remaining": 9185,
+          "stats": {
+            "chi2_k24": 69.74229722373435,
+            "p_chi2_k24": 1.3327321343011002e-06,
+            "cramers_v": 0.018169569013661784,
+            "interval_1_z": 2.2259440042858083,
+            "interval_2_z": 4.359860980572056,
+            "interval_3_z": 3.1330510515004857
+          }
+        },
+        {
+          "step": 3,
+          "event_removed": {
+            "usgs_id": "iscgem869809",
+            "usgs_mag": 9.3,
+            "event_at": "1964-03-28T03:36:16+00:00",
+            "latitude": 60.969,
+            "longitude": -147.473,
+            "n_removed_this_step": 7
+          },
+          "n_removed_cumulative": 32,
+          "ids_removed_cumulative_count": 32,
+          "n_remaining": 9178,
+          "stats": {
+            "chi2_k24": 68.64719982567007,
+            "p_chi2_k24": 1.963663276910629e-06,
+            "cramers_v": 0.01803322779315925,
+            "interval_1_z": 2.2478854578787075,
+            "interval_2_z": 4.376438115181694,
+            "interval_3_z": 3.1491604353644322
+          }
+        },
+        {
+          "step": 4,
+          "event_removed": {
+            "usgs_id": "iscgem16461282",
+            "usgs_mag": 9.09,
+            "event_at": "2011-03-11T05:46:23+00:00",
+            "latitude": 38.285,
+            "longitude": 142.546,
+            "n_removed_this_step": 29
+          },
+          "n_removed_cumulative": 61,
+          "ids_removed_cumulative_count": 61,
+          "n_remaining": 9149,
+          "stats": {
+            "chi2_k24": 65.24505410427369,
+            "p_chi2_k24": 6.442935498249151e-06,
+            "cramers_v": 0.017608528556679975,
+            "interval_1_z": 1.614642371992692,
+            "interval_2_z": 4.445256598504265,
+            "interval_3_z": 3.2160353787546465
+          }
+        },
+        {
+          "step": 5,
+          "event_removed": {
+            "usgs_id": "iscgem893648",
+            "usgs_mag": 8.84,
+            "event_at": "1952-11-04T16:58:30+00:00",
+            "latitude": 52.623,
+            "longitude": 159.779,
+            "n_removed_this_step": 35
+          },
+          "n_removed_cumulative": 96,
+          "ids_removed_cumulative_count": 96,
+          "n_remaining": 9114,
+          "stats": {
+            "chi2_k24": 61.236339697169186,
+            "p_chi2_k24": 2.5266647345315283e-05,
+            "cramers_v": 0.01709173621988667,
+            "interval_1_z": 1.7235731521454425,
+            "interval_2_z": 4.4773036005246025,
+            "interval_3_z": 2.527303178519618
+          }
+        },
+        {
+          "step": 6,
+          "event_removed": {
+            "usgs_id": "iscgem14340585",
+            "usgs_mag": 8.79,
+            "event_at": "2010-02-27T06:34:12+00:00",
+            "latitude": -36.207,
+            "longitude": -72.848,
+            "n_removed_this_step": 11
+          },
+          "n_removed_cumulative": 107,
+          "ids_removed_cumulative_count": 107,
+          "n_remaining": 9103,
+          "stats": {
+            "chi2_k24": 60.699879160716236,
+            "p_chi2_k24": 3.0246694570581837e-05,
+            "cramers_v": 0.017026983840991283,
+            "interval_1_z": 1.4674349017802057,
+            "interval_2_z": 4.503541902777427,
+            "interval_3_z": 2.5523636532130496
+          }
+        },
+        {
+          "step": 7,
+          "event_removed": {
+            "usgs_id": "iscgem859206",
+            "usgs_mag": 8.7,
+            "event_at": "1965-02-04T05:01:23+00:00",
+            "latitude": 51.23,
+            "longitude": 178.604,
+            "n_removed_this_step": 4
+          },
+          "n_removed_cumulative": 111,
+          "ids_removed_cumulative_count": 111,
+          "n_remaining": 9099,
+          "stats": {
+            "chi2_k24": 61.32179360369271,
+            "p_chi2_k24": 2.4551209010755165e-05,
+            "cramers_v": 0.017117749790013324,
+            "interval_1_z": 1.4798626307427243,
+            "interval_2_z": 4.513091372393799,
+            "interval_3_z": 2.5614842924397236
+          }
+        },
+        {
+          "step": 8,
+          "event_removed": {
+            "usgs_id": "iscgem895681",
+            "usgs_mag": 8.68,
+            "event_at": "1950-08-15T14:09:34+00:00",
+            "latitude": 28.363,
+            "longitude": 96.445,
+            "n_removed_this_step": 5
+          },
+          "n_removed_cumulative": 116,
+          "ids_removed_cumulative_count": 116,
+          "n_remaining": 9094,
+          "stats": {
+            "chi2_k24": 59.659115900593804,
+            "p_chi2_k24": 4.2789568069959704e-05,
+            "cramers_v": 0.01688873081505523,
+            "interval_1_z": 1.495405077665887,
+            "interval_2_z": 4.3195456302740505,
+            "interval_3_z": 2.5728909056439084
+          }
+        },
+        {
+          "step": 9,
+          "event_removed": {
+            "usgs_id": "iscgem7486110",
+            "usgs_mag": 8.62,
+            "event_at": "2005-03-28T16:09:37+00:00",
+            "latitude": 2.092,
+            "longitude": 97.154,
+            "n_removed_this_step": 13
+          },
+          "n_removed_cumulative": 129,
+          "ids_removed_cumulative_count": 129,
+          "n_remaining": 9081,
+          "stats": {
+            "chi2_k24": 58.58638916418896,
+            "p_chi2_k24": 6.099910517366763e-05,
+            "cramers_v": 0.016748179630076715,
+            "interval_1_z": 1.5358559992652379,
+            "interval_2_z": 4.299073931670665,
+            "interval_3_z": 2.5511694332933543
+          }
+        },
+        {
+          "step": 10,
+          "event_removed": {
+            "usgs_id": "iscgem879134",
+            "usgs_mag": 8.6,
+            "event_at": "1960-05-22T18:56:02+00:00",
+            "latitude": -38.061,
+            "longitude": -73.039,
+            "n_removed_this_step": 0
+          },
+          "n_removed_cumulative": 129,
+          "ids_removed_cumulative_count": 129,
+          "n_remaining": 9081,
+          "stats": {
+            "chi2_k24": 58.58638916418896,
+            "p_chi2_k24": 6.099910517366763e-05,
+            "cramers_v": 0.016748179630076715,
+            "interval_1_z": 1.5358559992652379,
+            "interval_2_z": 4.299073931670665,
+            "interval_3_z": 2.5511694332933543
+          }
+        },
+        {
+          "step": 11,
+          "event_removed": {
+            "usgs_id": "iscgem600860404",
+            "usgs_mag": 8.58,
+            "event_at": "2012-04-11T08:38:36+00:00",
+            "latitude": 2.273,
+            "longitude": 93.051,
+            "n_removed_this_step": 2
+          },
+          "n_removed_cumulative": 131,
+          "ids_removed_cumulative_count": 131,
+          "n_remaining": 9079,
+          "stats": {
+            "chi2_k24": 58.44949884348496,
+            "p_chi2_k24": 6.380816328667878e-05,
+            "cramers_v": 0.016730444124162934,
+            "interval_1_z": 1.5420844265482456,
+            "interval_2_z": 4.3038319755313115,
+            "interval_3_z": 2.5557349660571695
+          }
+        },
+        {
+          "step": 12,
+          "event_removed": {
+            "usgs_id": "iscgem886030",
+            "usgs_mag": 8.56,
+            "event_at": "1957-03-09T14:22:33+00:00",
+            "latitude": 51.499,
+            "longitude": -175.626,
+            "n_removed_this_step": 10
+          },
+          "n_removed_cumulative": 141,
+          "ids_removed_cumulative_count": 141,
+          "n_remaining": 9069,
+          "stats": {
+            "chi2_k24": 57.81971551438968,
+            "p_chi2_k24": 7.844088412616518e-05,
+            "cramers_v": 0.016649237798069424,
+            "interval_1_z": 1.4641204504244094,
+            "interval_2_z": 4.224752800140587,
+            "interval_3_z": 2.5785781930842853
+          }
+        },
+        {
+          "step": 13,
+          "event_removed": {
+            "usgs_id": "iscgem873239",
+            "usgs_mag": 8.5,
+            "event_at": "1963-10-13T05:17:59+00:00",
+            "latitude": 44.872,
+            "longitude": 149.483,
+            "n_removed_this_step": 22
+          },
+          "n_removed_cumulative": 163,
+          "ids_removed_cumulative_count": 163,
+          "n_remaining": 9047,
+          "stats": {
+            "chi2_k24": 56.22095722338897,
+            "p_chi2_k24": 0.00013181978963408672,
+            "cramers_v": 0.016437391708892694,
+            "interval_1_z": 1.5326693054544094,
+            "interval_2_z": 4.277099786915154,
+            "interval_3_z": 2.4744084567552305
+          }
+        }
+      ]
+    },
+    "raw_reas": {
+      "steps": [
+        {
+          "step": 0,
+          "event_removed": null,
+          "n_removed_cumulative": 0,
+          "ids_removed_cumulative_count": 0,
+          "n_remaining": 9210,
+          "stats": {
+            "chi2_k24": 69.37459283387622,
+            "p_chi2_k24": 1.518371402559259e-06,
+            "cramers_v": 0.018096996004343686,
+            "interval_1_z": 2.219912842729633,
+            "interval_2_z": 4.3007650254995635,
+            "interval_3_z": 3.0756212793631894
+          }
+        },
+        {
+          "step": 1,
+          "event_removed": {
+            "usgs_id": "iscgem879136",
+            "usgs_mag": 9.55,
+            "event_at": "1960-05-22T19:11:20+00:00",
+            "latitude": -38.143,
+            "longitude": -73.407,
+            "n_removed_this_step": 8
+          },
+          "n_removed_cumulative": 8,
+          "ids_removed_cumulative_count": 8,
+          "n_remaining": 9202,
+          "stats": {
+            "chi2_k24": 69.57400565094544,
+            "p_chi2_k24": 1.4147451816788606e-06,
+            "cramers_v": 0.01813086280309987,
+            "interval_1_z": 2.244952156771142,
+            "interval_2_z": 4.319657391138402,
+            "interval_3_z": 3.0939812052784412
+          }
+        },
+        {
+          "step": 2,
+          "event_removed": {
+            "usgs_id": "iscgem7453151",
+            "usgs_mag": 9.31,
+            "event_at": "2004-12-26T00:58:53+00:00",
+            "latitude": 3.331,
+            "longitude": 95.952,
+            "n_removed_this_step": 1
+          },
+          "n_removed_cumulative": 9,
+          "ids_removed_cumulative_count": 9,
+          "n_remaining": 9201,
+          "stats": {
+            "chi2_k24": 69.5862406260189,
+            "p_chi2_k24": 1.4086189231695214e-06,
+            "cramers_v": 0.018133442265190584,
+            "interval_1_z": 2.2480836312384067,
+            "interval_2_z": 4.322020148910747,
+            "interval_3_z": 3.096277359263977
+          }
+        },
+        {
+          "step": 3,
+          "event_removed": {
+            "usgs_id": "iscgem869809",
+            "usgs_mag": 9.3,
+            "event_at": "1964-03-28T03:36:16+00:00",
+            "latitude": 60.969,
+            "longitude": -147.473,
+            "n_removed_this_step": 3
+          },
+          "n_removed_cumulative": 12,
+          "ids_removed_cumulative_count": 12,
+          "n_remaining": 9198,
+          "stats": {
+            "chi2_k24": 68.97977821265492,
+            "p_chi2_k24": 1.7460559237642454e-06,
+            "cramers_v": 0.018057194508613837,
+            "interval_1_z": 2.257480136971156,
+            "interval_2_z": 4.329110039923804,
+            "interval_3_z": 3.1031673737506913
+          }
+        },
+        {
+          "step": 4,
+          "event_removed": {
+            "usgs_id": "iscgem16461282",
+            "usgs_mag": 9.09,
+            "event_at": "2011-03-11T05:46:23+00:00",
+            "latitude": 38.285,
+            "longitude": 142.546,
+            "n_removed_this_step": 6
+          },
+          "n_removed_cumulative": 18,
+          "ids_removed_cumulative_count": 18,
+          "n_remaining": 9192,
+          "stats": {
+            "chi2_k24": 67.83812010443864,
+            "p_chi2_k24": 2.6106480920987835e-06,
+            "cramers_v": 0.017912985583763436,
+            "interval_1_z": 2.059493714560284,
+            "interval_2_z": 4.343297107614567,
+            "interval_3_z": 3.116954394876336
+          }
+        },
+        {
+          "step": 5,
+          "event_removed": {
+            "usgs_id": "iscgem893648",
+            "usgs_mag": 8.84,
+            "event_at": "1952-11-04T16:58:30+00:00",
+            "latitude": 52.623,
+            "longitude": 159.779,
+            "n_removed_this_step": 3
+          },
+          "n_removed_cumulative": 21,
+          "ids_removed_cumulative_count": 21,
+          "n_remaining": 9189,
+          "stats": {
+            "chi2_k24": 67.97682011100228,
+            "p_chi2_k24": 2.486494048049501e-06,
+            "cramers_v": 0.017934215279387496,
+            "interval_1_z": 2.068864217670893,
+            "interval_2_z": 4.350394287916098,
+            "interval_3_z": 3.1238514049794004
+          }
+        },
+        {
+          "step": 6,
+          "event_removed": {
+            "usgs_id": "iscgem14340585",
+            "usgs_mag": 8.79,
+            "event_at": "2010-02-27T06:34:12+00:00",
+            "latitude": -36.207,
+            "longitude": -72.848,
+            "n_removed_this_step": 3
+          },
+          "n_removed_cumulative": 24,
+          "ids_removed_cumulative_count": 24,
+          "n_remaining": 9186,
+          "stats": {
+            "chi2_k24": 67.67472240365774,
+            "p_chi2_k24": 2.7647440993852407e-06,
+            "cramers_v": 0.01789724168868818,
+            "interval_1_z": 1.969808035553239,
+            "interval_2_z": 4.357493901607592,
+            "interval_3_z": 3.130750750421877
+          }
+        },
+        {
+          "step": 7,
+          "event_removed": {
+            "usgs_id": "iscgem859206",
+            "usgs_mag": 8.7,
+            "event_at": "1965-02-04T05:01:23+00:00",
+            "latitude": 51.23,
+            "longitude": 178.604,
+            "n_removed_this_step": 2
+          },
+          "n_removed_cumulative": 26,
+          "ids_removed_cumulative_count": 26,
+          "n_remaining": 9184,
+          "stats": {
+            "chi2_k24": 68.03135888501743,
+            "p_chi2_k24": 2.4392814139819855e-06,
+            "cramers_v": 0.017946291487331855,
+            "interval_1_z": 1.976047040118706,
+            "interval_2_z": 4.362228330182379,
+            "interval_3_z": 3.1353516123185847
+          }
+        },
+        {
+          "step": 8,
+          "event_removed": {
+            "usgs_id": "iscgem895681",
+            "usgs_mag": 8.68,
+            "event_at": "1950-08-15T14:09:34+00:00",
+            "latitude": 28.363,
+            "longitude": 96.445,
+            "n_removed_this_step": 3
+          },
+          "n_removed_cumulative": 29,
+          "ids_removed_cumulative_count": 29,
+          "n_remaining": 9181,
+          "stats": {
+            "chi2_k24": 66.73771920270123,
+            "p_chi2_k24": 3.837159564432523e-06,
+            "cramers_v": 0.017777748928626103,
+            "interval_1_z": 1.9854081388923237,
+            "interval_2_z": 4.215947359848775,
+            "interval_3_z": 3.1422548538539377
+          }
+        },
+        {
+          "step": 9,
+          "event_removed": {
+            "usgs_id": "iscgem7486110",
+            "usgs_mag": 8.62,
+            "event_at": "2005-03-28T16:09:37+00:00",
+            "latitude": 2.092,
+            "longitude": 97.154,
+            "n_removed_this_step": 1
+          },
+          "n_removed_cumulative": 30,
+          "ids_removed_cumulative_count": 30,
+          "n_remaining": 9180,
+          "stats": {
+            "chi2_k24": 66.54117647058823,
+            "p_chi2_k24": 4.109287923230242e-06,
+            "cramers_v": 0.01775251870545036,
+            "interval_1_z": 1.988529196671015,
+            "interval_2_z": 4.2183074386605375,
+            "interval_3_z": 3.144556454274219
+          }
+        },
+        {
+          "step": 10,
+          "event_removed": {
+            "usgs_id": "iscgem879134",
+            "usgs_mag": 8.6,
+            "event_at": "1960-05-22T18:56:02+00:00",
+            "latitude": -38.061,
+            "longitude": -73.039,
+            "n_removed_this_step": 0
+          },
+          "n_removed_cumulative": 30,
+          "ids_removed_cumulative_count": 30,
+          "n_remaining": 9180,
+          "stats": {
+            "chi2_k24": 66.54117647058823,
+            "p_chi2_k24": 4.109287923230242e-06,
+            "cramers_v": 0.01775251870545036,
+            "interval_1_z": 1.988529196671015,
+            "interval_2_z": 4.2183074386605375,
+            "interval_3_z": 3.144556454274219
+          }
+        },
+        {
+          "step": 11,
+          "event_removed": {
+            "usgs_id": "iscgem600860404",
+            "usgs_mag": 8.58,
+            "event_at": "2012-04-11T08:38:36+00:00",
+            "latitude": 2.273,
+            "longitude": 93.051,
+            "n_removed_this_step": 1
+          },
+          "n_removed_cumulative": 31,
+          "ids_removed_cumulative_count": 31,
+          "n_remaining": 9179,
+          "stats": {
+            "chi2_k24": 66.33914369757055,
+            "p_chi2_k24": 4.408762642646587e-06,
+            "cramers_v": 0.01772651358137231,
+            "interval_1_z": 1.9916506003521663,
+            "interval_2_z": 4.220667787090086,
+            "interval_3_z": 3.146858314756213
+          }
+        },
+        {
+          "step": 12,
+          "event_removed": {
+            "usgs_id": "iscgem886030",
+            "usgs_mag": 8.56,
+            "event_at": "1957-03-09T14:22:33+00:00",
+            "latitude": 51.499,
+            "longitude": -175.626,
+            "n_removed_this_step": 1
+          },
+          "n_removed_cumulative": 32,
+          "ids_removed_cumulative_count": 32,
+          "n_remaining": 9178,
+          "stats": {
+            "chi2_k24": 66.1629984746132,
+            "p_chi2_k24": 4.687280051239258e-06,
+            "cramers_v": 0.017703928412554585,
+            "interval_1_z": 1.9586133346128145,
+            "interval_2_z": 4.223028405204537,
+            "interval_3_z": 3.1491604353644322
+          }
+        },
+        {
+          "step": 13,
+          "event_removed": {
+            "usgs_id": "iscgem873239",
+            "usgs_mag": 8.5,
+            "event_at": "1963-10-13T05:17:59+00:00",
+            "latitude": 44.872,
+            "longitude": 149.483,
+            "n_removed_this_step": 3
+          },
+          "n_removed_cumulative": 35,
+          "ids_removed_cumulative_count": 35,
+          "n_remaining": 9175,
+          "stats": {
+            "chi2_k24": 65.75858310626703,
+            "p_chi2_k24": 5.393745769952284e-06,
+            "cramers_v": 0.0176526239242849,
+            "interval_1_z": 1.967974749326647,
+            "interval_2_z": 4.23011187832886,
+            "interval_3_z": 3.1560683585919604
+          }
+        }
+      ]
+    },
+    "mainshock_gk": {
+      "steps": [
+        {
+          "step": 0,
+          "event_removed": null,
+          "n_removed_cumulative": 0,
+          "ids_removed_cumulative_count": 0,
+          "n_remaining": 5883,
+          "stats": {
+            "chi2_k24": 32.0841407445181,
+            "p_chi2_k24": 0.09840617691622336,
+            "cramers_v": 0.015398622212683684,
+            "interval_1_z": 0.6661671594612887,
+            "interval_2_z": 2.5468706738809406,
+            "interval_3_z": 2.8023561333298126
+          }
+        },
+        {
+          "step": 1,
+          "event_removed": {
+            "usgs_id": "iscgem879136",
+            "usgs_mag": 9.55,
+            "event_at": "1960-05-22T19:11:20+00:00",
+            "latitude": -38.143,
+            "longitude": -73.407,
+            "n_removed_this_step": 1
+          },
+          "n_removed_cumulative": 1,
+          "ids_removed_cumulative_count": 1,
+          "n_remaining": 5882,
+          "stats": {
+            "chi2_k24": 32.070044202652156,
+            "p_chi2_k24": 0.09869546938714426,
+            "cramers_v": 0.015396547677023571,
+            "interval_1_z": 0.6699877608454101,
+            "interval_2_z": 2.54974869476145,
+            "interval_3_z": 2.805255870854455
+          }
+        },
+        {
+          "step": 2,
+          "event_removed": {
+            "usgs_id": "iscgem7453151",
+            "usgs_mag": 9.31,
+            "event_at": "2004-12-26T00:58:53+00:00",
+            "latitude": 3.331,
+            "longitude": 95.952,
+            "n_removed_this_step": 1
+          },
+          "n_removed_cumulative": 2,
+          "ids_removed_cumulative_count": 2,
+          "n_remaining": 5881,
+          "stats": {
+            "chi2_k24": 32.014793402482574,
+            "p_chi2_k24": 0.09983614334211662,
+            "cramers_v": 0.015384587070830714,
+            "interval_1_z": 0.6738090166676197,
+            "interval_2_z": 2.5526272234021787,
+            "interval_3_z": 2.808156121678101
+          }
+        },
+        {
+          "step": 3,
+          "event_removed": {
+            "usgs_id": "iscgem869809",
+            "usgs_mag": 9.3,
+            "event_at": "1964-03-28T03:36:16+00:00",
+            "latitude": 60.969,
+            "longitude": -147.473,
+            "n_removed_this_step": 1
+          },
+          "n_removed_cumulative": 3,
+          "ids_removed_cumulative_count": 3,
+          "n_remaining": 5880,
+          "stats": {
+            "chi2_k24": 31.83673469387755,
+            "p_chi2_k24": 0.1035866964373492,
+            "cramers_v": 0.015343049215430862,
+            "interval_1_z": 0.6776309271789385,
+            "interval_2_z": 2.5555062599997593,
+            "interval_3_z": 2.8110568859997356
+          }
+        },
+        {
+          "step": 4,
+          "event_removed": {
+            "usgs_id": "iscgem16461282",
+            "usgs_mag": 9.09,
+            "event_at": "2011-03-11T05:46:23+00:00",
+            "latitude": 38.285,
+            "longitude": 142.546,
+            "n_removed_this_step": 1
+          },
+          "n_removed_cumulative": 4,
+          "ids_removed_cumulative_count": 4,
+          "n_remaining": 5879,
+          "stats": {
+            "chi2_k24": 31.788909678516752,
+            "p_chi2_k24": 0.10461362809614139,
+            "cramers_v": 0.015332824617812766,
+            "interval_1_z": 0.6362742555500597,
+            "interval_2_z": 2.5583858047509414,
+            "interval_3_z": 2.8139581640184654
+          }
+        },
+        {
+          "step": 5,
+          "event_removed": {
+            "usgs_id": "iscgem893648",
+            "usgs_mag": 8.84,
+            "event_at": "1952-11-04T16:58:30+00:00",
+            "latitude": 52.623,
+            "longitude": 159.779,
+            "n_removed_this_step": 1
+          },
+          "n_removed_cumulative": 5,
+          "ids_removed_cumulative_count": 5,
+          "n_remaining": 5878,
+          "stats": {
+            "chi2_k24": 31.912215039128956,
+            "p_chi2_k24": 0.10198285072986633,
+            "cramers_v": 0.015363839655779789,
+            "interval_1_z": 0.6400936332776606,
+            "interval_2_z": 2.561265857852586,
+            "interval_3_z": 2.8168599559335092
+          }
+        },
+        {
+          "step": 6,
+          "event_removed": {
+            "usgs_id": "iscgem14340585",
+            "usgs_mag": 8.79,
+            "event_at": "2010-02-27T06:34:12+00:00",
+            "latitude": -36.207,
+            "longitude": -72.848,
+            "n_removed_this_step": 1
+          },
+          "n_removed_cumulative": 6,
+          "ids_removed_cumulative_count": 6,
+          "n_remaining": 5877,
+          "stats": {
+            "chi2_k24": 31.855538540071468,
+            "p_chi2_k24": 0.10318520973333366,
+            "cramers_v": 0.015351496304688779,
+            "interval_1_z": 0.5987267415750529,
+            "interval_2_z": 2.5641464195016606,
+            "interval_3_z": 2.8197622619441933
+          }
+        },
+        {
+          "step": 7,
+          "event_removed": {
+            "usgs_id": "iscgem859206",
+            "usgs_mag": 8.7,
+            "event_at": "1965-02-04T05:01:23+00:00",
+            "latitude": 51.23,
+            "longitude": 178.604,
+            "n_removed_this_step": 1
+          },
+          "n_removed_cumulative": 7,
+          "ids_removed_cumulative_count": 7,
+          "n_remaining": 5876,
+          "stats": {
+            "chi2_k24": 32.15793056501021,
+            "p_chi2_k24": 0.09690329989915066,
+            "cramers_v": 0.015425499464155628,
+            "interval_1_z": 0.6025435836007343,
+            "interval_2_z": 2.567027489895252,
+            "interval_3_z": 2.822665082249966
+          }
+        },
+        {
+          "step": 8,
+          "event_removed": {
+            "usgs_id": "iscgem895681",
+            "usgs_mag": 8.68,
+            "event_at": "1950-08-15T14:09:34+00:00",
+            "latitude": 28.363,
+            "longitude": 96.445,
+            "n_removed_this_step": 1
+          },
+          "n_removed_cumulative": 8,
+          "ids_removed_cumulative_count": 8,
+          "n_remaining": 5875,
+          "stats": {
+            "chi2_k24": 31.839148936170215,
+            "p_chi2_k24": 0.10353507725558131,
+            "cramers_v": 0.015350158767280655,
+            "interval_1_z": 0.6063610796095419,
+            "interval_2_z": 2.505994232275602,
+            "interval_3_z": 2.8255684170503867
+          }
+        },
+        {
+          "step": 9,
+          "event_removed": {
+            "usgs_id": "iscgem7486110",
+            "usgs_mag": 8.62,
+            "event_at": "2005-03-28T16:09:37+00:00",
+            "latitude": 2.092,
+            "longitude": 97.154,
+            "n_removed_this_step": 1
+          },
+          "n_removed_cumulative": 9,
+          "ids_removed_cumulative_count": 9,
+          "n_remaining": 5874,
+          "stats": {
+            "chi2_k24": 31.667007150153218,
+            "p_chi2_k24": 0.10726915342059475,
+            "cramers_v": 0.015309909410401714,
+            "interval_1_z": 0.6101792298525177,
+            "interval_2_z": 2.508870880494828,
+            "interval_3_z": 2.8284722665451243
+          }
+        },
+        {
+          "step": 10,
+          "event_removed": {
+            "usgs_id": "iscgem879134",
+            "usgs_mag": 8.6,
+            "event_at": "1960-05-22T18:56:02+00:00",
+            "latitude": -38.061,
+            "longitude": -73.039,
+            "n_removed_this_step": 1
+          },
+          "n_removed_cumulative": 10,
+          "ids_removed_cumulative_count": 10,
+          "n_remaining": 5874,
+          "stats": {
+            "chi2_k24": 31.667007150153218,
+            "p_chi2_k24": 0.10726915342059475,
+            "cramers_v": 0.015309909410401714,
+            "interval_1_z": 0.6101792298525177,
+            "interval_2_z": 2.508870880494828,
+            "interval_3_z": 2.8284722665451243
+          }
+        },
+        {
+          "step": 11,
+          "event_removed": {
+            "usgs_id": "iscgem600860404",
+            "usgs_mag": 8.58,
+            "event_at": "2012-04-11T08:38:36+00:00",
+            "latitude": 2.273,
+            "longitude": 93.051,
+            "n_removed_this_step": 1
+          },
+          "n_removed_cumulative": 11,
+          "ids_removed_cumulative_count": 11,
+          "n_remaining": 5873,
+          "stats": {
+            "chi2_k24": 31.64158011237868,
+            "p_chi2_k24": 0.10782997559141544,
+            "cramers_v": 0.015305064462584147,
+            "interval_1_z": 0.6139980345808539,
+            "interval_2_z": 2.5117480366610834,
+            "interval_3_z": 2.831376630933968
+          }
+        },
+        {
+          "step": 12,
+          "event_removed": {
+            "usgs_id": "iscgem886030",
+            "usgs_mag": 8.56,
+            "event_at": "1957-03-09T14:22:33+00:00",
+            "latitude": 51.499,
+            "longitude": -175.626,
+            "n_removed_this_step": 1
+          },
+          "n_removed_cumulative": 12,
+          "ids_removed_cumulative_count": 12,
+          "n_remaining": 5872,
+          "stats": {
+            "chi2_k24": 31.599455040871938,
+            "p_chi2_k24": 0.10876438336906775,
+            "cramers_v": 0.015296175400427443,
+            "interval_1_z": 0.5726113359449675,
+            "interval_2_z": 2.514625700971314,
+            "interval_3_z": 2.8342815104168197
+          }
+        },
+        {
+          "step": 13,
+          "event_removed": {
+            "usgs_id": "iscgem873239",
+            "usgs_mag": 8.5,
+            "event_at": "1963-10-13T05:17:59+00:00",
+            "latitude": 44.872,
+            "longitude": 149.483,
+            "n_removed_this_step": 1
+          },
+          "n_removed_cumulative": 13,
+          "ids_removed_cumulative_count": 13,
+          "n_remaining": 5871,
+          "stats": {
+            "chi2_k24": 31.483392948390396,
+            "p_chi2_k24": 0.11137320382021208,
+            "cramers_v": 0.015269359027189072,
+            "interval_1_z": 0.5764276006082412,
+            "interval_2_z": 2.5175038736225708,
+            "interval_3_z": 2.837186905193691
+          }
+        }
+      ]
+    },
+    "mainshock_reas": {
+      "steps": [
+        {
+          "step": 0,
+          "event_removed": null,
+          "n_removed_cumulative": 0,
+          "ids_removed_cumulative_count": 0,
+          "n_remaining": 8265,
+          "stats": {
+            "chi2_k24": 39.93793103448275,
+            "p_chi2_k24": 0.015617079765352504,
+            "cramers_v": 0.014494640034465467,
+            "interval_1_z": 0.809707437474345,
+            "interval_2_z": 2.728030541472861,
+            "interval_3_z": 3.1052397027629355
+          }
+        },
+        {
+          "step": 1,
+          "event_removed": {
+            "usgs_id": "iscgem879136",
+            "usgs_mag": 9.55,
+            "event_at": "1960-05-22T19:11:20+00:00",
+            "latitude": -38.143,
+            "longitude": -73.407,
+            "n_removed_this_step": 1
+          },
+          "n_removed_cumulative": 1,
+          "ids_removed_cumulative_count": 1,
+          "n_remaining": 8264,
+          "stats": {
+            "chi2_k24": 39.96515004840272,
+            "p_chi2_k24": 0.015507876036721897,
+            "cramers_v": 0.014500455727290125,
+            "interval_1_z": 0.8129319414320328,
+            "interval_2_z": 2.730441020041241,
+            "interval_3_z": 3.1076730030732542
+          }
+        },
+        {
+          "step": 2,
+          "event_removed": {
+            "usgs_id": "iscgem7453151",
+            "usgs_mag": 9.31,
+            "event_at": "2004-12-26T00:58:53+00:00",
+            "latitude": 3.331,
+            "longitude": 95.952,
+            "n_removed_this_step": 1
+          },
+          "n_removed_cumulative": 2,
+          "ids_removed_cumulative_count": 2,
+          "n_remaining": 8263,
+          "stats": {
+            "chi2_k24": 40.0269877768365,
+            "p_chi2_k24": 0.015262387147919736,
+            "cramers_v": 0.014512547690452232,
+            "interval_1_z": 0.8161568385762036,
+            "interval_2_z": 2.73285180030733,
+            "interval_3_z": 3.110106609224036
+          }
+        },
+        {
+          "step": 3,
+          "event_removed": {
+            "usgs_id": "iscgem869809",
+            "usgs_mag": 9.3,
+            "event_at": "1964-03-28T03:36:16+00:00",
+            "latitude": 60.969,
+            "longitude": -147.473,
+            "n_removed_this_step": 1
+          },
+          "n_removed_cumulative": 3,
+          "ids_removed_cumulative_count": 3,
+          "n_remaining": 8262,
+          "stats": {
+            "chi2_k24": 39.827160493827165,
+            "p_chi2_k24": 0.01606883144866521,
+            "cramers_v": 0.014477152818189518,
+            "interval_1_z": 0.8193821290142089,
+            "interval_2_z": 2.7352628823541996,
+            "interval_3_z": 3.1125405212996062
+          }
+        },
+        {
+          "step": 4,
+          "event_removed": {
+            "usgs_id": "iscgem16461282",
+            "usgs_mag": 9.09,
+            "event_at": "2011-03-11T05:46:23+00:00",
+            "latitude": 38.285,
+            "longitude": 142.546,
+            "n_removed_this_step": 1
+          },
+          "n_removed_cumulative": 4,
+          "ids_removed_cumulative_count": 4,
+          "n_remaining": 8261,
+          "stats": {
+            "chi2_k24": 39.74325142234596,
+            "p_chi2_k24": 0.01641899708330332,
+            "cramers_v": 0.014462769609411032,
+            "interval_1_z": 0.784494709555202,
+            "interval_2_z": 2.737674266264947,
+            "interval_3_z": 3.114974739384316
+          }
+        },
+        {
+          "step": 5,
+          "event_removed": {
+            "usgs_id": "iscgem893648",
+            "usgs_mag": 8.84,
+            "event_at": "1952-11-04T16:58:30+00:00",
+            "latitude": 52.623,
+            "longitude": 159.779,
+            "n_removed_this_step": 1
+          },
+          "n_removed_cumulative": 5,
+          "ids_removed_cumulative_count": 5,
+          "n_remaining": 8260,
+          "stats": {
+            "chi2_k24": 39.81598062953995,
+            "p_chi2_k24": 0.016115087083640286,
+            "cramers_v": 0.014476873067907207,
+            "interval_1_z": 0.7877184798843103,
+            "interval_2_z": 2.7400859521227017,
+            "interval_3_z": 3.117409263562549
+          }
+        },
+        {
+          "step": 6,
+          "event_removed": {
+            "usgs_id": "iscgem14340585",
+            "usgs_mag": 8.79,
+            "event_at": "2010-02-27T06:34:12+00:00",
+            "latitude": -36.207,
+            "longitude": -72.848,
+            "n_removed_this_step": 1
+          },
+          "n_removed_cumulative": 6,
+          "ids_removed_cumulative_count": 6,
+          "n_remaining": 8259,
+          "stats": {
+            "chi2_k24": 39.789683981111516,
+            "p_chi2_k24": 0.016224369854752785,
+            "cramers_v": 0.01447296773358367,
+            "interval_1_z": 0.7528249256558281,
+            "interval_2_z": 2.7424979400106366,
+            "interval_3_z": 3.1198440939187337
+          }
+        },
+        {
+          "step": 7,
+          "event_removed": {
+            "usgs_id": "iscgem859206",
+            "usgs_mag": 8.7,
+            "event_at": "1965-02-04T05:01:23+00:00",
+            "latitude": 51.23,
+            "longitude": 178.604,
+            "n_removed_this_step": 1
+          },
+          "n_removed_cumulative": 7,
+          "ids_removed_cumulative_count": 7,
+          "n_remaining": 8258,
+          "stats": {
+            "chi2_k24": 39.93751513683701,
+            "p_chi2_k24": 0.015618753836427772,
+            "cramers_v": 0.01450070651439158,
+            "interval_1_z": 0.7560471746297338,
+            "interval_2_z": 2.7449102300119503,
+            "interval_3_z": 3.1222792305373246
+          }
+        },
+        {
+          "step": 8,
+          "event_removed": {
+            "usgs_id": "iscgem895681",
+            "usgs_mag": 8.68,
+            "event_at": "1950-08-15T14:09:34+00:00",
+            "latitude": 28.363,
+            "longitude": 96.445,
+            "n_removed_this_step": 1
+          },
+          "n_removed_cumulative": 8,
+          "ids_removed_cumulative_count": 8,
+          "n_remaining": 8257,
+          "stats": {
+            "chi2_k24": 39.64914617899964,
+            "p_chi2_k24": 0.01682004329559829,
+            "cramers_v": 0.014449135355229894,
+            "interval_1_z": 0.7592698165963462,
+            "interval_2_z": 2.6934097005965962,
+            "interval_3_z": 3.124714673502807
+          }
+        },
+        {
+          "step": 9,
+          "event_removed": {
+            "usgs_id": "iscgem7486110",
+            "usgs_mag": 8.62,
+            "event_at": "2005-03-28T16:09:37+00:00",
+            "latitude": 2.092,
+            "longitude": 97.154,
+            "n_removed_this_step": 1
+          },
+          "n_removed_cumulative": 9,
+          "ids_removed_cumulative_count": 9,
+          "n_remaining": 8256,
+          "stats": {
+            "chi2_k24": 39.45348837209302,
+            "p_chi2_k24": 0.01768280399422224,
+            "cramers_v": 0.014414312858112179,
+            "interval_1_z": 0.7624928516630234,
+            "interval_2_z": 2.6958193300859605,
+            "interval_3_z": 3.127150422899714
+          }
+        },
+        {
+          "step": 10,
+          "event_removed": {
+            "usgs_id": "iscgem879134",
+            "usgs_mag": 8.6,
+            "event_at": "1960-05-22T18:56:02+00:00",
+            "latitude": -38.061,
+            "longitude": -73.039,
+            "n_removed_this_step": 1
+          },
+          "n_removed_cumulative": 10,
+          "ids_removed_cumulative_count": 10,
+          "n_remaining": 8256,
+          "stats": {
+            "chi2_k24": 39.45348837209302,
+            "p_chi2_k24": 0.01768280399422224,
+            "cramers_v": 0.014414312858112179,
+            "interval_1_z": 0.7624928516630234,
+            "interval_2_z": 2.6958193300859605,
+            "interval_3_z": 3.127150422899714
+          }
+        },
+        {
+          "step": 11,
+          "event_removed": {
+            "usgs_id": "iscgem600860404",
+            "usgs_mag": 8.58,
+            "event_at": "2012-04-11T08:38:36+00:00",
+            "latitude": 2.273,
+            "longitude": 93.051,
+            "n_removed_this_step": 1
+          },
+          "n_removed_cumulative": 11,
+          "ids_removed_cumulative_count": 11,
+          "n_remaining": 8255,
+          "stats": {
+            "chi2_k24": 39.28079951544518,
+            "p_chi2_k24": 0.018477788221907748,
+            "cramers_v": 0.014383603494426276,
+            "interval_1_z": 0.7657162799371539,
+            "interval_2_z": 2.6982292613452503,
+            "interval_3_z": 3.129586478812601
+          }
+        },
+        {
+          "step": 12,
+          "event_removed": {
+            "usgs_id": "iscgem886030",
+            "usgs_mag": 8.56,
+            "event_at": "1957-03-09T14:22:33+00:00",
+            "latitude": 51.499,
+            "longitude": -175.626,
+            "n_removed_this_step": 1
+          },
+          "n_removed_cumulative": 12,
+          "ids_removed_cumulative_count": 12,
+          "n_remaining": 8254,
+          "stats": {
+            "chi2_k24": 39.20087230433729,
+            "p_chi2_k24": 0.01885670308054874,
+            "cramers_v": 0.014369832811420147,
+            "interval_1_z": 0.7308108402934668,
+            "interval_2_z": 2.7006394944576195,
+            "interval_3_z": 3.1320228413260582
+          }
+        },
+        {
+          "step": 13,
+          "event_removed": {
+            "usgs_id": "iscgem873239",
+            "usgs_mag": 8.5,
+            "event_at": "1963-10-13T05:17:59+00:00",
+            "latitude": 44.872,
+            "longitude": 149.483,
+            "n_removed_this_step": 1
+          },
+          "n_removed_cumulative": 13,
+          "ids_removed_cumulative_count": 13,
+          "n_remaining": 8253,
+          "stats": {
+            "chi2_k24": 39.17884405670665,
+            "p_chi2_k24": 0.01896237599708428,
+            "cramers_v": 0.014366665116778825,
+            "interval_1_z": 0.7340327453505187,
+            "interval_2_z": 2.703050029506264,
+            "interval_3_z": 3.13445951052472
+          }
+        }
+      ]
+    }
+  }
+}

@@ -15,7 +15,7 @@ Due to the iterative review process of the cases, as compared to other topics, t
 | Case | Status   | Title                                                        |
 | ---- | -------- | ------------------------------------------------------------ |
 | B1   | Complete | Rolling-Window Chi-Square Repeat                             |
-| C2   | Planning | Targeted Major Sequence Phased Declustering Test             |
+| C2   | Complete | Targeted Major Sequence Phased Declustering Test             |
 | B3   | Planning | Ocean/Coast Sequential Threshold Sensitivity                 |
 | B4   | Planning | Depth × Magnitude Two-Way Stratification with Moho Isolation |
 | B2   | Planning | Hemisphere Stratification Refinement                         |
