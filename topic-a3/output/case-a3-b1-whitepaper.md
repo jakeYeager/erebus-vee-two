@@ -244,10 +244,10 @@ Whether this represents genuine non-stationarity in the underlying solar seismic
 - Gardner, J. K. & Knopoff, L. (1974). Is the sequence of earthquakes in Southern California, with aftershocks removed, Poisson? *Bulletin of the Seismological Society of America*, 64(5), 1363–1367.
 - Mardia, K. V. & Jupp, P. E. (2000). *Directional Statistics*. Wiley.
 - Reasenberg, P. (1985). Second-order moment of Central California seismicity. *Journal of Geophysical Research*, 90(B7), 5479–5495.
-- Adhoc A0b: ISC-GEM catalog density spike investigation (1970s).
-- Adhoc A1: Phase normalization methodology baseline.
-- A2.B6: Rolling-window stationarity analysis (Rayleigh primary, chi-square secondary).
-- A2.A4: Aftershock sequence phase-preference characterization.
+- Yeager, J. (2026). Adhoc A0b: ISC-GEM Catalog Density Spike Investigation. erebus-vee-two internal report.
+- Yeager, J. (2026). Adhoc A1: Phase Normalization Methodology Baseline. erebus-vee-two internal report.
+- Yeager, J. (2026). A2.B6: Rolling-Window Stationarity Test. erebus-vee-two internal report.
+- Yeager, J. (2026). A2.A4: Aftershock Phase-Preference Analysis. erebus-vee-two internal report.
 
 ---
 

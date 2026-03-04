@@ -10,7 +10,23 @@
   - Limitations
   - References (as applicable)
 
-Use canonical naming references when citing other works withing this project. See `.claude/rules/project-naming-and-organization.md` for convention.
+Use canonical naming references when citing other works within this project. See `.claude/rules/project-naming-and-organization.md` for convention.
+
+### Internal Citation Format
+
+**Inline:** Use the canonical identifier in parentheses, e.g. `(A2.A4)` or `(see A2.B6)`.
+
+**Reference list entry:**
+```
+Yeager, J. ([year]). [Canonical ID]: [Title]. erebus-vee-two internal report.
+```
+
+Example:
+```
+Yeager, J. (2026). A2.A4: Aftershock Phase-Preference Analysis. erebus-vee-two internal report.
+```
+
+The year should match the date in the cited document's header.
 
 ## Template Header & Footers
 

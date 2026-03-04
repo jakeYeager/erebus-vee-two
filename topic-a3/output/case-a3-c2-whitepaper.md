@@ -209,9 +209,9 @@ An important interpretive caution: the removal order (largest magnitude first) i
 
 - Gardner, J. K., & Knopoff, L. (1974). Is the sequence of earthquakes in Southern California, with aftershocks removed, Poissonian? *Bulletin of the Seismological Society of America*, 64(5), 1363–1367.
 - Reasenberg, P. (1985). Second-order moment of central California seismicity, 1969–1982. *Journal of Geophysical Research: Solid Earth*, 90(B7), 5479–5495.
-- A2.A4: Aftershock Phase-Preference Analysis (ISC-GEM declustering sensitivity). erebus-vee-two project.
-- A2.B6: Rolling-Window Stationarity Test (2003–2014 window cluster identification). erebus-vee-two project.
-- A3.B1: Rolling-Window Chi-Square Repeat (interval stationarity and sequence density correlation). erebus-vee-two project.
+- Yeager, J. (2026). A2.A4: Aftershock Phase-Preference Analysis. erebus-vee-two internal report.
+- Yeager, J. (2026). A2.B6: Rolling-Window Stationarity Test. erebus-vee-two internal report.
+- Yeager, J. (2026). A3.B1: Rolling-Window Chi-Square Repeat. erebus-vee-two internal report.
 
 ---
 
