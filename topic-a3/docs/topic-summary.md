@@ -11,3 +11,7 @@
 ## Case A3.B3: Ocean/Coast Sequential Threshold Sensitivity
 **Status:** Complete
 **Key results:** First oceanic significant threshold: T=175 km (p=0.041; A2.B2 baseline T=200 km p=0.061 reproduced within 0.0003). Oceanic Cramér's V at baseline V=0.0276 vs. tightest effective threshold (T=75 km) V=0.0213 — dilution as n grows. Signal migration observed: True (oceanic p < 0.05 at T=175, 150, 100, 75, 50, 25 km; non-significant dip at T=125 km p=0.112). Transitional pct near subduction at baseline: 65.8% (vs. oceanic 17.6%). GCMT proxy validated: True (thrust enrichment ratio 1.97; pct_thrust near sub=50.8%, far=25.7%). Conclusion: A2.B2 oceanic near-miss was a boundary-placement artifact; signal migrates to oceanic when outer threshold tightens to 175 km.
+
+## Case A3.B4: Depth × Magnitude Two-Way Stratification with Moho Isolation
+**Status:** Complete
+**Key results:** Mid-crustal signal persists in M6–7 alone: True (p=7.24×10⁻⁶, V=0.0262, n=4,113 — magnitude confound ruled out). Cramér's V range across significant cells: 0.0262 (mid-crustal M6–7) to 0.0285 (mid-crustal all-mag total). Moho isolation at delta=10 km: n=4,036, p=1.15×10⁻³, V=0.0230; continental Moho significant (p=2.53×10⁻³), oceanic Moho not significant (p=0.535), transitional significant (p=4.52×10⁻⁴). Near-subduction mid-crustal M6–7: p=5.22×10⁻⁵; far-subduction mid-crustal M6–7: p=0.025 — both significant, subduction geometry not sole driver. CRUST1.0 mean Moho depth assigned: 21.91 km (median 19.69 km, sd 11.04 km).
