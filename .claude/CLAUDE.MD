@@ -12,7 +12,7 @@ The purpose of this project is for the user to begin to formally describe and do
 | L5         | Complete    | Declustering Degradation (legacy Five); G-K declustering effects on seismic signal analysis. Cases E1–E5.   |
 | Adhoc      | In Progress | Adhoc cases for the user to review data architecture and analysis strategies.                               |
 | A2         | Complete    | Semiannual solar signal investigation informed by literature review. Cases A1-4 and B1-4.                   |
-| A3         | Planning    | Further refinement of Topic A2 cases. **Cases: TBD.**                       |
+| A3         | Planning    | Further refinement of Topic A2 cases. Cases A1-3, B1-5, C1-2                                                |
 
 
 ## Subject Domain
