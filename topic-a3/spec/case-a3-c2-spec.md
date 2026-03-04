@@ -1,6 +1,6 @@
 # Case A3.C2: Targeted Major Sequence Phased Declustering Test
 
-**Status:** Planning
+**Status:** Complete
 
 **Reference cases:** A2.B6, A2.A4, A3.B1
 

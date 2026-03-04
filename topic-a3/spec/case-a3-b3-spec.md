@@ -1,6 +1,6 @@
 # Case A3.B3: Ocean/Coast Sequential Threshold Sensitivity
 
-**Status:** Planning
+**Status:** Complete
 
 **Source case:** A2.B2
 **Reference case:** A2.B3 (GCMT join reference)

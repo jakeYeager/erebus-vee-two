@@ -1,6 +1,6 @@
 # Case A3.B1: Rolling-Window Chi-Square Repeat
 
-**Status:** Planning
+**Status:** Complete
 
 **Source case:** A2.B6
 
