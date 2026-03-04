@@ -19,12 +19,12 @@
 
 **Specifications file:** @topic-a2/spec/case-b6-spec.md  
 **Results file:** @topic-a2/output/case-b6-results.json  
-**Topic Summary:** **Stop And Warn User:** *A3.B1 has not run yet! We need the results!*
+**Topic Summary:** @topic-a3/docs/topic-summary.md (contains results from recent A3.B1 case)
 
 ## Expectations for A3.C2
 
 **Gap or concern:**
-A2.B6 identified that the most statistically significant rolling windows cluster in the 2003–2014 start-year range, contemporaneous with aftershock sequences from the 2004 Sumatra M9.1. A2.A4 showed that aftershock populations carry stronger solar-phase signals than mainshocks. Together, these findings raise a direct question the A2 framework did not test: is the global solar-phase signal diffuse across the catalog, or is it disproportionately driven by a small number of major event sequences? If removing the top 3–5 major sequences causes the global signal to collapse, the phenomenon is sequence-concentrated. If the signal survives, it is genuinely diffuse.
+A2.B6 identified that the most statistically significant rolling windows cluster in the 2003–2014 start-year range, contemporaneous with aftershock sequences from the 2004 Sumatra M9.1. A2.A4 showed that aftershock populations carry stronger solar-phase signals than mainshocks. Together, these findings raise a direct question the A2 framework did not test: is the global solar-phase signal diffuse across the catalog, or is it disproportionately driven by a small number of major event sequences? If removing the top 3–5 major sequences causes the global signal to collapse, the phenomenon is sequence-concentrated. If the signal survives, it is genuinely diffuse. Case A3.B1 also expands on this inquiry with a rolling-window chi-square repeat test.
 
 **Intent:** Sequentially remove the largest events in the ISC-GEM catalog and their associated aftershock sequences, recomputing the global solar-phase chi-square and interval structure after each removal:
 

@@ -1,6 +1,6 @@
 # Topic A3: Analysis Refinements of Topic A2 Seasonal Solar Signal Investigation
 
-**STATUS: Planning**
+**STATUS: Active**
 
 ## Intent
 
