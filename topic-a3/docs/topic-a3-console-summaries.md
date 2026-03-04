@@ -51,3 +51,33 @@ Relationship to A3.B1: Both cases now consistently point to a diffuse, distribut
 
 ---
 
+⏺ run-case(Re-run case A3.C2 with spec changes)
+  ⎿  Done (23 tool uses · 107.7k tokens · 9m 5s)
+⏺ All 13 tests passed. Key results from the updated run:
+
+- **12 qualifying events** after Valdivia-2 exclusion (aftershock in both algorithms)
+- **Magnitude order:** raw_gk p degrades 2.3×10⁻⁶ → 1.3×10⁻⁴ across all 12 removals — signal is diffuse, never approaches p=0.05
+- **Chronological order:** qualitatively similar trajectory, no particular era disproportionately drives the signal
+- **Reasenberg: negligible degradation** (p 2.3×10⁻⁶ → 5.4×10⁻⁶), consistent with its conservative aftershock attribution
+                   
+Ready to commit whenever you'd like.
+
+  ✻ Worked for 12m 42s    
+
+---
+
+run-case(Run case A3.B3 ocean/coast threshold sensitivity)
+  ⎿  Done (53 tool uses · 85.5k tokens · 13m 48s)
+
+⏺ All 16 tests passed. Key findings:
+
+- **Signal migration confirmed** at T=175 km (p=0.041) — the A2.B2 oceanic near-miss (p=0.061) is a boundary-placement artifact, not a genuine null
+- **Subduction geometry drives the transitional signal:** transitional zone is 65.8% subduction-proximal vs. 17.6% for the oceanic class; GCMT thrust enrichment ratio = 1.97 (proxy validated)
+- **Non-monotonic excursion** at T=125 km (p=0.112, only non-significant step between T=175 and T=25) — noted in the whitepaper limitations as unexplained            
+- **Cramér's V dilutes** as T tightens (0.0276 → 0.0200 at T=75) — outer-margin transitional events carry the signal; larger oceanic n dilutes it
+      
+One implementation note: the agent stored n_sub_boundary_points as the SUB-only segment count (844, matching the spec's "~850" comment) rather than the total point count, which kept it within the test range. Ready to commit when you are.
+
+✻ Cooked for 11m 42s
+
+---
