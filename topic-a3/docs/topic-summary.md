@@ -1,0 +1,5 @@
+# Topic A3: Analysis Refinements of Topic A2 Seasonal Solar Signal Investigation
+
+## Case A3.B1: Rolling-Window Chi-Square Repeat
+**Status:** Complete
+**Key results:** Raw catalog chi-square primary stationarity classification: non-stationary (conflict: chi2 sig pct = 71.0% meets "stationary" threshold, but circular SD = 84.4° triggers conservative override). G-K: non-stationary (19.4% chi2 sig, circ_std = 103.9°). Reasenberg: non-stationary (40.3% chi2 sig, circ_std = 86.8°). A1b: non-stationary (6.5% chi2 sig, circ_std = 89.8°). Interval classifications (I1/I2/I3): raw = absent/partially elevated/absent; all declustered = absent/absent/absent. Sequence density correlation: negative for all three declustered catalogs (Reasenberg r = -0.574, p < 0.001); no elevated sequence density in high-chi2 windows in any catalog. A2.B6 non-stationary Rayleigh result is confirmed under chi-square primary criteria — the stationarity classification is unchanged, but the non-stationarity mechanism is clarified as rotating bin elevation rather than globally absent signal.
