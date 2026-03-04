@@ -16,6 +16,8 @@ Use canonical naming references when citing other works within this project. See
 
 **Inline:** Use the canonical identifier in parentheses, e.g. `(A2.A4)` or `(see A2.B6)`.
 
+**Cross-Topic Comparison section lead-lines:** Use the format `**[Case Title] ([Case ID]):**`, e.g. `**Tectonic Regime Stratification (A2.B3):**`. The case title should match the canonical title from the reference list. Inline case ID references within the body text use the standard inline format `(A2.B3)`.
+
 **Reference list entry:**
 ```
 Yeager, J. ([year]). [Canonical ID]: [Title]. erebus-vee-two internal report.

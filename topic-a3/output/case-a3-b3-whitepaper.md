@@ -138,11 +138,11 @@ Three regional panels illustrate the coastal classification at 50m resolution:
 
 ## 6. Cross-Topic Comparison
 
-**A2.B2** (A2.B2): The baseline oceanic p=0.0607 is reproduced within 0.0003 (regression test passed). A2.B2's PB2002 broader oceanic definition flipped the oceanic result to p=5.24×10⁻³ — a result now reconciled: the PB2002 oceanic class incorporated many events at the outer edge of the GSHHG transitional zone (50–200 km offshore), and A3.B3 shows those are exactly the events that make the oceanic signal significant.
+**Ocean vs. Continent Location — Hydrological Loading Discrimination (A2.B2):** The baseline oceanic p=0.0607 is reproduced within 0.0003 (regression test passed). (A2.B2)'s PB2002 broader oceanic definition flipped the oceanic result to p=5.24×10⁻³ — a result now reconciled: the PB2002 oceanic class incorporated many events at the outer edge of the GSHHG transitional zone (50–200 km offshore), and A3.B3 shows those are exactly the events that make the oceanic signal significant.
 
-**A2.B3**: Tectonic regime stratification showed that thrust events (predominantly subduction zone) carry stronger solar-phase signals than strike-slip or normal events. A3.B3's GCMT validation confirms the subduction-proximity metric captures a geometrically distinct subset: the 50.8% thrust fraction near subduction is consistent with A2.B3's finding that the transitional zone's signal is concentrated in convergent-margin seismicity.
+**Tectonic Regime Stratification (A2.B3):** Tectonic regime stratification showed that thrust events (predominantly subduction zone) carry stronger solar-phase signals than strike-slip or normal events. A3.B3's GCMT validation confirms the subduction-proximity metric captures a geometrically distinct subset: the 50.8% thrust fraction near subduction is consistent with (A2.B3)'s finding that the transitional zone's signal is concentrated in convergent-margin seismicity.
 
-**A2.B4** (A2.B4): Depth stratification showed mid-crustal events (20–70 km) dominate the solar-phase signal. Subduction zone events are predominantly mid-crustal (slab interface seismicity typically at 20–50 km depth). This provides independent corroboration that the transitional zone's subduction-proximal events overlap substantially with A2.B4's high-signal depth band.
+**Depth Stratification — Surface Loading Penetration Test (A2.B4):** Depth stratification showed mid-crustal events (20–70 km) dominate the solar-phase signal. Subduction zone events are predominantly mid-crustal (slab interface seismicity typically at 20–50 km depth). This provides independent corroboration that the transitional zone's subduction-proximal events overlap substantially with (A2.B4)'s high-signal depth band.
 
 ---
 
