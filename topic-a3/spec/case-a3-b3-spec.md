@@ -54,6 +54,7 @@ Phase normalization: `phase = (solar_secs / 31_557_600.0) % 1.0` (Julian year co
 - `output/case-a3-b3-global-map.png` — Cartopy global map with event classification + SUB boundary overlay
 - `output/case-a3-b3-subduction-crosstab.png` — cross-tabulation of ocean class × subduction proximity at each threshold
 - `output/case-a3-b3-binplots.png` — bin distributions at baseline (T=200) and the key threshold where oceanic becomes significant
+- `output/case-a3-b3-region-maps.png` — 3-panel regional detail maps (Japan, Philippines, New Zealand) showing coastline resolution and event classification at baseline
 
 ---
 
@@ -294,6 +295,22 @@ Import: `matplotlib`, `cartopy`, `cartopy.crs`, `cartopy.feature`, `numpy`, `jso
 
 ---
 
+**Figure 5 — Regional detail maps** (`output/case-a3-b3-region-maps.png`):
+- 1 row × 3 columns; each panel is a Cartopy regional inset using `PlateCarree` projection
+- Event classification at GSHHG baseline (T=200): oceanic=steelblue, transitional=orange, continental=red; alpha=0.5; point size proportional to magnitude as in Figure 2
+- Overlay SUB-type PB2002 boundary segments as black lines (linewidth=1.2)
+- Add `cartopy.feature.COASTLINE` at resolution `'50m'` (higher detail than global map), linewidth=0.6, color='dimgray'
+- Add `cartopy.feature.LAND` at resolution `'50m'`, facecolor='whitesmoke', zorder=0 (land as background)
+- **Panel A — Japan**: extent lon [128, 148], lat [30, 46]; rationale: dense seismicity with well-defined Pacific and Philippine plate subduction arcs; complex island coastline tests the transitional zone boundary precisely
+- **Panel B — Philippines**: extent lon [114, 130], lat [4, 22]; rationale: multiple active subduction zones (Manila Trench, Philippine Trench, Cotabato Trench); island-arc geometry makes the coastal/ocean boundary definition non-trivial
+- **Panel C — New Zealand**: extent lon [164, 180], lat [-48, -32]; rationale: Hikurangi subduction zone (NE coast) transitions to Alpine strike-slip fault (SW); provides a contrasting fault regime within a single region to assess whether classification correlates with tectonic type
+- Each panel annotated with: region name, n_events in extent, n_transitional and n_oceanic counts
+- Shared legend below panels: event class colors and n; note "Black lines = PB2002 subduction boundaries"
+- Title: "Regional Coastline Resolution — GSHHG Classification at T=200 km (A2.B2 baseline)"
+- 300 DPI, figsize=(18, 7)
+
+---
+
 ## 7. Test suite
 
 In `tests/test-case-a3-b3.py`:
@@ -313,6 +330,7 @@ In `tests/test-case-a3-b3.py`:
 - `test_gcmt_validation_structure`: load results JSON; assert `"gcmt_validation"` present with `"proxy_validated"` bool key
 - `test_results_json_completeness`: assert `"threshold_sweep"` list has length 8; assert each entry contains all three class keys with `chi2_k24` and `p_chi2_k24`
 - `test_sub_parse_type_filter`: confirm that parsing `PB2002_steps.dat` and filtering type `SUB` produces no rows with type `OTF`, `OSR`, `CTF`, `CRB` (spot-check that filter is working)
+- `test_region_maps_output_exists`: assert `output/case-a3-b3-region-maps.png` exists and file size > 100 KB (confirms all three panels rendered)
 
 ---
 
