@@ -3,13 +3,13 @@
 **Document Information**
 - Author: Jake Yeager
 - Version: 1.0
-- Date: March 3, 2026
+- Date: March 4, 2026
 
 ---
 
 ## 1. Abstract
 
-This case tests whether the statistically significant global solar-phase signal in the ISC-GEM catalog is diffuse across the full earthquake population or disproportionately concentrated in a small number of mega-event aftershock sequences. Thirteen events at M≥8.5 (1950–2021) were identified in the raw ISC-GEM catalog and removed sequentially in descending magnitude order across four parallel runs: raw catalog with G-K aftershock removal (`raw_gk`), raw catalog with Reasenberg aftershock removal (`raw_reas`), G-K mainshock-only removal (`mainshock_gk`), and Reasenberg mainshock-only removal (`mainshock_reas`). Chi-square (k=24), Cramér's V, and three A1b interval z-scores were recomputed after each removal. The signal does not collapse at any single removal step. Across all 13 removals, the raw catalog chi-square p-value degrades from p=0.000002 to p=0.000132 (`raw_gk`) — highly significant at every step. Reasenberg-based raw removal shows even smaller degradation (p=0.000002 to p=0.000005). Mainshock-only runs confirm that the declustered-catalog signal was never driven by the major event mainshock rows themselves, as the G-K mainshock baseline was already sub-threshold (p=0.098). These results indicate the global solar-phase signal is diffuse: no individual M≥8.5 sequence accounts for its statistical significance.
+This case tests whether the statistically significant global solar-phase signal in the ISC-GEM catalog is diffuse across the full earthquake population or disproportionately concentrated in a small number of mega-event aftershock sequences. Twelve events at M≥8.5 (1950–2021) were identified as the qualifying major event pool — events classified as mainshock in at least one declustering algorithm (G-K or Reasenberg). One candidate event, the 1960-05-22 M8.6 Valdivia-2 event (iscgem879134), is classified as an aftershock in both algorithms and was excluded, reducing the pool from 13 to 12. Two removal orderings were applied in parallel: magnitude-descending (largest event removed first) and chronological-ascending (oldest event removed first). Each ordering drove four runs — raw catalog with G-K aftershock removal, raw catalog with Reasenberg aftershock removal, G-K mainshock-only removal, and Reasenberg mainshock-only removal — for eight total runs. Chi-square (k=24), Cramér's V, and three A1b interval z-scores were recomputed after each removal step. The signal does not collapse at any single removal step under either ordering. Across all 12 magnitude-order removals, the raw catalog chi-square p-value degrades from p=2.3×10⁻⁶ to p=1.3×10⁻⁴ (`raw_gk`) — remaining highly significant at every step. Reasenberg-based removal shows negligible degradation (p=2.3×10⁻⁶ to p=5.4×10⁻⁶). The chronological ordering produces qualitatively similar overall degradation, confirming that neither the earliest (pre-1970) nor the most recent (post-2000) events are disproportionately responsible for the signal. These results classify the global solar-phase signal as diffuse: no individual M≥8.5 sequence, nor any subset of them identifiable by magnitude or chronological ordering, accounts for its statistical significance.
 
 ---
 
@@ -37,20 +37,32 @@ Solar phase is computed as `phase = (solar_secs / 31,557,600.0) % 1.0`, using th
 
 ### 3.2 Major Event Identification
 
-All raw catalog events with `usgs_mag >= 8.5` were identified (13 events, 1950–2021). This threshold captures the events most likely to carry large aftershock sequences while yielding a tractable number of removal steps. Events were sorted by magnitude descending to define the removal order — largest first — so that the most sequence-rich events are removed earliest.
+The candidate pool of raw catalog events with `usgs_mag >= 8.5` was cross-referenced against the G-K and Reasenberg mainshock catalogs. Only events classified as mainshock in at least one algorithm were retained. The 1960-05-22 M8.6 event (iscgem879134, "Valdivia-2") is classified as an aftershock in both G-K and Reasenberg — it is the foreshock of the M9.55 1960 Valdivia rupture — and was excluded. This reduces the qualifying pool from 13 to 12 events. The magnitude threshold of M≥8.5 captures the events most likely to carry large aftershock sequences while yielding a tractable number of removal steps.
+
+Tie-breaking for the magnitude-descending sort: events with equal `usgs_mag` are ranked by `event_at` ascending (earliest event preferred). This yields unambiguous `removal_order_magnitude` rankings for all 12 events.
 
 ### 3.3 Sequence Attribution
 
-For G-K removal runs, aftershocks attributed to a major event are identified via `aftershock_df["parent_id"] == usgs_id`. All such aftershocks are removed simultaneously with the major event at each step. Reasenberg aftershock attribution is far more conservative: the Reasenberg algorithm attributes 945 total aftershocks vs. 3,327 for G-K, resulting in substantially smaller per-step removals in the `raw_reas` track. The G-K formulaic implementation uses magnitude-dependent space-time windows (Gardner & Knopoff, 1974); Reasenberg uses an adaptive cluster algorithm (Reasenberg, 1985). Each major event was classified as mainshock, aftershock, or absent in each declustered catalog. One event (M8.60, 1960-05-22, `iscgem879134`) is classified as a G-K aftershock of the M9.55 1960 Valdivia event and is therefore already removed in the `raw_gk` run at step 1; it appears as a zero-removal step (no new events removed from the raw catalog) in subsequent processing.
+For G-K removal runs, aftershocks attributed to a major event are identified via `aftershock_df["parent_id"] == usgs_id`. All such aftershocks are removed simultaneously with the major event at each step. Reasenberg aftershock attribution is far more conservative: the Reasenberg algorithm attributes 945 total aftershocks vs. 3,327 for G-K, resulting in substantially smaller per-step removals in the `raw_reas` track. The G-K formulaic implementation uses magnitude-dependent space-time windows (Gardner & Knopoff, 1974); Reasenberg uses an adaptive cluster algorithm (Reasenberg, 1985). Each major event was classified as mainshock, aftershock, or absent in each declustered catalog.
 
-### 3.4 Four Removal Tracks
+### 3.4 Eight Removal Tracks
 
-| Run key | Base catalog (n) | Removal set per step |
-|---------|-----------------|---------------------|
-| `raw_gk` | Raw (9,210) | Major event + G-K attributed aftershocks |
-| `raw_reas` | Raw (9,210) | Major event + Reasenberg attributed aftershocks |
-| `mainshock_gk` | G-K mainshocks (5,883) | Major event mainshock row only |
-| `mainshock_reas` | Reasenberg mainshocks (8,265) | Major event mainshock row only |
+Two event orderings were applied in parallel to produce eight runs:
+
+**Magnitude-descending order** (`removal_order_magnitude`): largest event removed first. Events with equal magnitude are ordered by `event_at` ascending.
+
+**Chronological-ascending order** (`removal_order_chronological`): oldest event removed first (1950 Assam → 2012 Sumatra-OT). This ordering provides a complementary perspective: does the signal accumulate evenly over time, or do events from a particular era carry disproportionate weight?
+
+| Run key | Base catalog (n) | Removal set per step | Ordering |
+|---------|-----------------|---------------------|----------|
+| `raw_gk` | Raw (9,210) | Major event + G-K attributed aftershocks | Magnitude desc |
+| `raw_reas` | Raw (9,210) | Major event + Reasenberg attributed aftershocks | Magnitude desc |
+| `mainshock_gk` | G-K mainshocks (5,883) | Major event mainshock row only | Magnitude desc |
+| `mainshock_reas` | Reasenberg mainshocks (8,265) | Major event mainshock row only | Magnitude desc |
+| `raw_gk_chron` | Raw (9,210) | Major event + G-K attributed aftershocks | Chronological asc |
+| `raw_reas_chron` | Raw (9,210) | Major event + Reasenberg attributed aftershocks | Chronological asc |
+| `mainshock_gk_chron` | G-K mainshocks (5,883) | Major event mainshock row only | Chronological asc |
+| `mainshock_reas_chron` | Reasenberg mainshocks (8,265) | Major event mainshock row only | Chronological asc |
 
 For mainshock-only runs, no aftershock removal is performed — only the major event's own row is excluded if it appears in the mainshock catalog.
 
@@ -72,29 +84,28 @@ A3.B1 found that rolling-window chi-square significance is negatively correlated
 
 ### 4.1 Major Events Identified
 
-Thirteen events with M≥8.5 were identified in the 1950–2021 ISC-GEM catalog, covering the five largest earthquakes in the modern instrumental record (M≥9.0) plus eight events in the M8.5–8.9 range.
+Twelve events with M≥8.5 qualified as major events after the mainshock cross-reference filter. One event — iscgem879134 (1960-05-22, M8.60) — was excluded because it is classified as an aftershock in both G-K and Reasenberg; it is the foreshock (occurring ~15 minutes before the main Valdivia rupture) of the M9.55 sequence and contributes no independent sequence information.
 
 ![Sequence Metrics Table](case-a3-c2-sequence-summary.png)
 
-**Table 4.1 — M≥8.5 events (removal order = magnitude rank)**
+**Table 4.1 — M≥8.5 qualifying events, sorted by removal_order_magnitude**
 
-| Order | Event | ID | Mag | Date | G-K class | Reas class |
-|-------|-------|----|-----|------|-----------|------------|
-| 1 | 1960 Valdivia | iscgem879136 | 9.55 | 1960-05-22 | mainshock | mainshock |
-| 2 | 2004 Sumatra | iscgem7453151 | 9.31 | 2004-12-26 | mainshock | mainshock |
-| 3 | 1964 Alaska | iscgem869809 | 9.30 | 1964-03-28 | mainshock | mainshock |
-| 4 | 2011 Tōhoku | iscgem16461282 | 9.09 | 2011-03-11 | mainshock | mainshock |
-| 5 | 1952 Kamchatka | iscgem893648 | 8.84 | 1952-11-04 | mainshock | mainshock |
-| 6 | 2010 Maule | iscgem14340585 | 8.79 | 2010-02-27 | mainshock | mainshock |
-| 7 | 1965 Rat Islands | iscgem859206 | 8.70 | 1965-02-04 | mainshock | mainshock |
-| 8 | 1950 Assam | iscgem895681 | 8.68 | 1950-08-15 | mainshock | mainshock |
-| 9 | 2005 Nias | iscgem7486110 | 8.62 | 2005-03-28 | mainshock | mainshock |
-| 10 | 1960 Valdivia-2 | iscgem879134 | 8.60 | 1960-05-22 | **aftershock** | **aftershock** |
-| 11 | 2012 Sumatra OT | iscgem600860404 | 8.58 | 2012-04-11 | mainshock | mainshock |
-| 12 | 1957 Andreanof | iscgem886030 | 8.56 | 1957-03-09 | mainshock | mainshock |
-| 13 | 1963 Kuril | iscgem873239 | 8.50 | 1963-10-13 | mainshock | mainshock |
+| Mag Order | Chron Order | Event | ID | Mag | Date | G-K class | Reas class |
+|-----------|-------------|-------|----|-----|------|-----------|------------|
+| 1 | 4 | 1960 Valdivia | iscgem879136 | 9.55 | 1960-05-22 | mainshock | mainshock |
+| 2 | 8 | 2004 Sumatra | iscgem7453151 | 9.31 | 2004-12-26 | mainshock | mainshock |
+| 3 | 6 | 1964 Alaska | iscgem869809 | 9.30 | 1964-03-28 | mainshock | mainshock |
+| 4 | 11 | 2011 Tōhoku | iscgem16461282 | 9.09 | 2011-03-11 | mainshock | mainshock |
+| 5 | 2 | 1952 Kamchatka | iscgem893648 | 8.84 | 1952-11-04 | mainshock | mainshock |
+| 6 | 10 | 2010 Maule | iscgem14340585 | 8.79 | 2010-02-27 | mainshock | mainshock |
+| 7 | 7 | 1965 Rat Islands | iscgem859206 | 8.70 | 1965-02-04 | mainshock | mainshock |
+| 8 | 1 | 1950 Assam | iscgem895681 | 8.68 | 1950-08-15 | mainshock | mainshock |
+| 9 | 9 | 2005 Nias | iscgem7486110 | 8.62 | 2005-03-28 | mainshock | mainshock |
+| 10 | 12 | 2012 Sumatra OT | iscgem600860404 | 8.58 | 2012-04-11 | mainshock | mainshock |
+| 11 | 3 | 1957 Andreanof | iscgem886030 | 8.56 | 1957-03-09 | mainshock | mainshock |
+| 12 | 5 | 1963 Kuril | iscgem873239 | 8.50 | 1963-10-13 | mainshock | mainshock |
 
-Event `iscgem879134` (1960-05-22, 18:56 UTC) occurs two hours before the main Valdivia rupture (19:11 UTC, `iscgem879136`) — it is classified as a foreshock/aftershock of the Valdivia sequence in both G-K and Reasenberg and contributes no new removals in the `raw_gk` and `raw_reas` tracks at step 10.
+All 12 events are classified as mainshock in both G-K and Reasenberg. The excluded Valdivia-2 event (iscgem879134) would have occupied magnitude rank 10 in the original unfiltered 13-event list; its exclusion shifts the 2012 Sumatra OT, 1957 Andreanof, and 1963 Kuril events up one position each.
 
 ### 4.2 Sequence Metrics Breakout
 
@@ -108,41 +119,40 @@ Event `iscgem879134` (1960-05-22, 18:56 UTC) occurs two hours before the main Va
 | 2010 Maule | 8.79 | 2010-02-27 | 0 | 10 | 695 | 70% | mainshock | 2 | 0 | 50% | mainshock |
 | 1965 Rat Islands | 8.70 | 1965-02-04 | 1 | 2 | 646 | 100% | mainshock | 1 | 0 | 0% | mainshock |
 | 1950 Assam | 8.68 | 1950-08-15 | 0 | 4 | 110 | 75% | mainshock | 2 | 1 | 50% | mainshock |
-| 2005 Nias | 8.62 | 2005-03-28 | 1 | 12 | 501 | 75% | mainshock | 0 | 0 | 0% | mainshock |
-| 1960 Valdivia-2 | 8.60 | 1960-05-22 | 0 | 0 | — | N/A | aftershock | 0 | — | N/A | aftershock |
-| 2012 Sumatra OT | 8.58 | 2012-04-11 | 0 | 0 | 92 | N/A | mainshock | 0 | 0 | 0% | mainshock |
+| 2005 Nias | 8.62 | 2005-03-28 | 0 | 12 | 501 | 75% | mainshock | 0 | 0 | 0% | mainshock |
+| 2012 Sumatra OT | 8.58 | 2012-04-11 | 1 | 0 | 92 | N/A | mainshock | 0 | 0 | 0% | mainshock |
 | 1957 Andreanof | 8.56 | 1957-03-09 | 2 | 7 | 544 | 86% | mainshock | 0 | 0 | N/A | mainshock |
-| 1963 Kuril | 8.50 | 1963-10-13 | 1 | 18 | 903 | 106%* | mainshock | 1 | 1 | 200%* | mainshock |
+| 1963 Kuril | 8.50 | 1963-10-13 | 3 | 18 | 903 | 106%* | mainshock | 1 | 1 | 200%* | mainshock |
 
-*Values > 100% occur when foreshock events (negative `delta_t_sec`) in the aftershock file are counted in `early_count` but the denominator uses only the mainshock row's `aftershock_count` (non-negative events only). This is an artifact of the inclusive retrieval design.
+*Values > 100% occur when foreshock events (negative `delta_t_sec` events in the aftershock file) are counted in `early_count` but the denominator uses only the mainshock row's `aftershock_count` (non-negative events only). This is an artifact of the inclusive retrieval design and is noted for downstream use in A3.A1.
 
-**Early-loaded events (G-K early% ≥ 70%):** All G-K-mainshock-classified events (11 of 11) are early-loaded by this measure when foreshock inclusion is accounted for. Setting foreshock-inclusive events aside, events with large, genuine aftershock trains (Tōhoku: 22 aftershocks, 965-day window; Kamchatka: 25 aftershocks, 894-day window) tend toward early loading — the immediate post-mainshock phase is densest.
+**Early-loaded events (G-K early% ≥ 70%):** All G-K-mainshock-classified events with attributable aftershocks are early-loaded by this measure when foreshock inclusion is accounted for. Maule (70%) and Assam (75%) and Nias (75%) represent the events with cleanest early-loading estimates (zero foreshocks for Maule and Assam in the G-K attribution, and zero for Nias). Sequences with large G-K foreshock counts (Valdivia: 5, Tōhoku: 6, Kamchatka: 9, Kuril: 3) produce inflated `early_pct`.
 
-**Late-loaded events (G-K early% < 30%):** None identified using the G-K metric given the foreshock-inclusive counting. Reasenberg attribution shows 0% early loading for Sumatra, Alaska, Kamchatka, Rat Islands, Nias, Sumatra-OT, and Andreanof — but Reasenberg aftershock counts are extremely small (0–2 events), limiting the interpretability of this metric.
+**Late-loaded events (G-K early% < 30%):** None identified using the G-K metric. Reasenberg attribution shows 0% early loading for Alaska, Kamchatka, Rat Islands, Nias, Sumatra-OT, and Andreanof — but Reasenberg aftershock counts are extremely small (0–2 events per major event), limiting interpretability.
 
 **Reasenberg attribution is dramatically sparser than G-K:** total attributed aftershocks per event range from 0–5 (Reasenberg) vs. 0–25 (G-K). This reflects Reasenberg's more conservative adaptive clustering algorithm.
 
-### 4.3 Chi-Square and Cramér's V Degradation
+### 4.3 Chi-Square and Cramér's V Degradation (Magnitude Order)
 
-![Chi-Square Degradation](case-a3-c2-degradation.png)
+![Chi-Square Degradation — Magnitude Order](case-a3-c2-degradation.png)
 
-The signal does not collapse at any removal step. Key statistics:
+The signal does not collapse at any removal step under the magnitude-descending ordering. Key statistics:
 
 **`raw_gk` track (raw catalog, G-K aftershock removal):**
 - Baseline: chi2 = 69.37, p = 2.3×10⁻⁶, V = 0.01810
-- After step 1 (1960 Valdivia + 13 G-K aftershocks removed, 19 events total): chi2 = 70.14, p = 1.4×10⁻⁶, V = 0.01822 — slight *increase* in chi-square, indicating the Valdivia aftershock train did not contribute to the solar-phase concentration
+- After step 1 (1960 Valdivia + 13 G-K aftershocks removed, 19 events total): chi2 = 70.14, p = 1.2×10⁻⁶, V = 0.01822 — slight *increase* in chi-square, indicating the Valdivia aftershock train did not contribute to the solar-phase concentration
 - After step 5 (1952 Kamchatka removed, 96 events cumulative): chi2 = 61.24, p = 2.5×10⁻⁵, V = 0.01709 — still highly significant
-- After all 13 removals (163 events cumulative removed): chi2 = 56.22, p = 1.3×10⁻⁴, V = 0.01644 — p remains highly significant (100× below α=0.05)
+- After all 12 removals (163 events cumulative removed): chi2 = 56.22, p = 1.3×10⁻⁴, V = 0.01644 — p remains highly significant (100× below α=0.05)
 - Signal does not cross p=0.05 at any step
 
 **`raw_reas` track (raw catalog, Reasenberg aftershock removal):**
-- Reasenberg removes far fewer events per step (35 total across all 13 steps vs. 163 for G-K)
+- Reasenberg removes far fewer events per step (35 total across all 12 steps vs. 163 for G-K)
 - Baseline to final step: chi2 degrades from 69.37 to 65.76, p from 2.3×10⁻⁶ to 5.4×10⁻⁶
 - The signal is essentially unchanged — Reasenberg aftershock attribution at this magnitude range is too sparse to affect the global statistic
 
-**`mainshock_gk` track:** The G-K mainshock baseline is already sub-threshold (p=0.098). Sequential removal of individual mainshock rows causes trivial changes (p remains near 0.10 throughout). The major events themselves, as individual rows, do not drive the declustered signal.
+**`mainshock_gk` track:** The G-K mainshock baseline is already sub-threshold (p=0.098). Sequential removal of individual mainshock rows causes trivial changes (p ranges from 0.098 baseline to 0.111 at final step). The major events themselves, as individual rows, do not drive the declustered signal.
 
-**`mainshock_reas` track:** Reasenberg mainshock baseline is p=0.0156 (mildly significant). After all 13 removals: p=0.019 — essentially unchanged. The mainshock-only Reasenberg signal, while present, is not driven by the M≥8.5 events.
+**`mainshock_reas` track:** Reasenberg mainshock baseline is p=0.0156 (mildly significant). After all 12 removals: p=0.019 — essentially unchanged. The mainshock-only Reasenberg signal, while present, is not driven by the M≥8.5 events.
 
 ### 4.4 Interval-Level Decay
 
@@ -151,57 +161,79 @@ The signal does not collapse at any removal step. Key statistics:
 All three A1b intervals remain substantially elevated above z=1.96 throughout the full removal sequence in the raw catalog runs:
 
 **`raw_gk` track — baseline vs. final step z-scores:**
-| Interval | Baseline z | Final z (step 13) | Change |
+
+| Interval | Baseline z | Final z (step 12) | Change |
 |----------|-----------|-------------------|--------|
 | Interval 1 (0.167–0.250) | 2.220 | 1.533 | −0.687 |
 | Interval 2 (0.625–0.667) | 4.301 | 4.277 | −0.024 |
 | Interval 3 (0.875–0.917) | 3.076 | 2.474 | −0.602 |
 
-Interval 2 (mid-August region) is the most robust, essentially unchanged after all removals. Interval 1 (March equinox) shows the largest absolute decline across `raw_gk`, dropping below z=1.96 at step 4 (2011 Tōhoku removal). Interval 3 (late-November) remains above z=1.96 throughout all raw-catalog removals.
+Interval 2 (mid-August region) is the most robust, essentially unchanged after all removals. Interval 1 (March equinox) shows the largest absolute decline across `raw_gk`. Interval 3 (late-November) remains above z=1.96 throughout all raw-catalog removals.
 
-**`raw_reas` track:** All three intervals remain above z=1.96 at every step. Interval 2 in particular stays near z=4.2–4.4 throughout. Interval 1 drops below z=1.96 at steps 6–7 in the `raw_reas` track.
+**`raw_reas` track:** All three intervals remain above z=1.96 at every step. Interval 2 in particular stays near z=4.2–4.4 throughout.
 
-**`mainshock_gk` track:** Interval 1 is sub-threshold throughout (z≈0.6). Interval 2 stays near z=2.5 and Interval 3 near z=2.8 across all 13 removals. The declustered-catalog signal is concentrated in Intervals 2 and 3, not Interval 1.
+**`mainshock_gk` track:** Interval 1 is sub-threshold throughout (z≈0.6). Interval 2 stays near z=2.5 and Interval 3 near z=2.8 across all 12 removals. The declustered-catalog signal is concentrated in Intervals 2 and 3, not Interval 1.
 
 The A3.B1 finding that Interval 2 was the only "partially elevated" interval in the raw catalog is reflected here: Interval 2 is the most persistent signal across all removal tracks.
 
 ### 4.5 Mainshock-Only Removal
 
-Mainshock-only removal (`mainshock_gk`, `mainshock_reas`) removes one event per step and shows negligible signal degradation — even across all 13 major events, chi-square p-values barely change (G-K: 0.098 baseline, 0.111 final; Reasenberg: 0.0156 baseline, 0.019 final). This confirms that the major event mainshock rows themselves are not responsible for the global signal in the declustered catalogs. The G-K declustered signal (which was already sub-threshold at p=0.098) was not created by these 13 events; it reflects the underlying population distribution.
+Mainshock-only removal (`mainshock_gk`, `mainshock_reas`) removes one event per step and shows negligible signal degradation — even across all 12 major events, chi-square p-values barely change (G-K: p=0.098 baseline to p=0.111 final; Reasenberg: p=0.0156 baseline to p=0.019 final). This confirms that the major event mainshock rows themselves are not responsible for the global signal in the declustered catalogs. The G-K declustered signal (which was already sub-threshold at p=0.098) was not created by these 12 events; it reflects the underlying population distribution.
 
-The contrast between `raw_gk` (substantial degradation under G-K aftershock removal) and `mainshock_gk` (negligible degradation) is informative: the raw catalog signal is partially attributable to aftershock-attributed events, but the degradation is gradual (not a single-step collapse) and does not eliminate significance.
+The contrast between `raw_gk` (substantial but gradual degradation under G-K aftershock removal) and `mainshock_gk` (negligible degradation) is informative: the raw catalog signal is partially attributable to aftershock-attributed events, but the degradation is gradual and does not eliminate significance.
+
+### 4.6 Chronological Removal Perspective
+
+![Chi-Square Degradation — Chronological Order](case-a3-c2-degradation-chron.png)
+
+The chronological-ascending ordering removes events from oldest to most recent (1950 Assam → 2012 Sumatra OT) and produces broadly similar degradation patterns to the magnitude-descending ordering.
+
+**`raw_gk_chron` track:**
+- Baseline: chi2 = 69.37, p = 2.3×10⁻⁶ (identical to magnitude-order baseline)
+- Step 1 (1950 Assam, 5 events removed): chi2 = 67.82, p = 2.7×10⁻⁶ — modest decrease
+- Step 2 (1952 Kamchatka, 40 events cumulative): chi2 = 64.09, p = 1.0×10⁻⁵ — the 1952 Kamchatka sequence (35 G-K aftershocks) produces the largest single-step degradation in this ordering
+- Steps 3–7 (1957 Andreanof through 1965 Rat Islands, pre-1970 era): chi2 ranges 61–64, p in range 1×10⁻⁵ to 2×10⁻⁴
+- Steps 8–12 (2004 Sumatra through 2012 Sumatra OT, post-2000 era): continued gradual decline; final step (step 12) chi2 = 56.22, p = 1.3×10⁻⁴ — identical to the magnitude-order final step because both orderings remove the same 12 events cumulatively
+- Signal does not cross p=0.05 at any chronological step
+
+**Comparison to magnitude-order degradation:** The two orderings produce similar final-step values (by mathematical necessity, since the same events are removed cumulatively). The intermediate trajectories differ: the 1952 Kamchatka sequence is removed early in the chronological ordering (step 2) but at step 5 in the magnitude ordering. This means the chronological ordering sees its largest single-step G-K degradation in the early pre-1970 steps, whereas the magnitude ordering front-loads the steps with the five M≥9.0 events before reaching Kamchatka. The absence of a sharp early collapse under chronological ordering indicates that no subset of historically early events disproportionately anchors the signal.
+
+**`raw_reas_chron` track:** Essentially unchanged from baseline at all steps (p range: 2.3×10⁻⁶ to 5.4×10⁻⁶), consistent with the magnitude-order `raw_reas` result.
+
+**`mainshock_gk_chron` and `mainshock_reas_chron` tracks:** Negligible degradation, consistent with their magnitude-order counterparts.
 
 ---
 
 ## 5. Cross-Topic Comparison
 
-**A2.A4 (aftershock phase-preference):** A2.A4 found that the aftershock-only population carries a stronger solar-phase signal than the mainshock-only population. A3.C2 is consistent with this: aftershock removal via G-K (which removes 3,327 events total, of which ~163 are sequence-attributed to M≥8.5 events) degrades chi-square from 69.37 to 56.22 across all 13 steps. The residual signal in the `raw_gk` final step (9,047 events, p=1.3×10⁻⁴) still exceeds any declustered baseline, implying that the aftershock population's phase-preference is broadly distributed, not dominated by a few mega-sequences.
+**A2.A4 (aftershock phase-preference):** A2.A4 found that the aftershock-only population carries a stronger solar-phase signal than the mainshock-only population. A3.C2 is consistent with this: aftershock removal via G-K (which removes 3,327 events total, of which ~163 are sequence-attributed to M≥8.5 events) degrades chi-square from 69.37 to 56.22 across all 12 steps. The residual signal in the `raw_gk` final step (9,047 events, p=1.3×10⁻⁴) still exceeds any declustered baseline, implying that the aftershock population's phase-preference is broadly distributed, not dominated by a few mega-sequences.
 
-**A2.B6 (2003–2014 rolling-window cluster):** A2.B6 identified the 2003–2014 decade as the most statistically elevated window in the rolling-window analysis, contemporaneous with the 2004 Sumatra M9.1 and 2005 Nias M8.62 events. A3.C2 shows that removing these two events plus their attributed aftershocks (steps 2 and 9 of `raw_gk`) results in only modest chi-square reduction. The 2003–2014 window elevation identified in A2.B6 therefore appears to reflect broader population behavior in that epoch, not specifically Sumatra or Nias sequence aftershocks.
+**A2.B6 (2003–2014 rolling-window cluster):** A2.B6 identified the 2003–2014 decade as the most statistically elevated window in the rolling-window analysis, contemporaneous with the 2004 Sumatra M9.1 and 2005 Nias M8.62 events. A3.C2 shows that removing these two events plus their attributed aftershocks (magnitude-order steps 2 and 9 of `raw_gk`, chronological-order steps 8 and 9) results in only modest chi-square reduction. The 2003–2014 window elevation identified in A2.B6 therefore appears to reflect broader population behavior in that epoch, not specifically Sumatra or Nias sequence aftershocks.
 
-**A3.B1 (negative rolling-window sequence density correlation):** A3.B1 found that the most chi-square-significant rolling windows do not coincide with the highest aftershock-density windows (negative r). A3.C2 is consistent with this: the major aftershock sequences (which would elevate aftershock density) do not, when removed, collapse the signal. The apparent contradiction between raw-vs.-declustered significance differentials and the window-level null result is resolved: the aftershock contribution to the signal is spread broadly across the entire catalog, not concentrated in the windows or events with highest sequence density.
+**A3.B1 (negative rolling-window sequence density correlation):** A3.B1 found that the most chi-square-significant rolling windows do not coincide with the highest aftershock-density windows (negative r). A3.C2 is consistent with this: the major aftershock sequences, when removed, do not collapse the signal. The apparent contradiction between raw-vs.-declustered significance differentials and the window-level null result is resolved: the aftershock contribution to the signal is spread broadly across the entire catalog, not concentrated in the windows or events with highest sequence density. The two orderings tested in C2 are also consistent with A3.B1's result — no particular era of events drives a disproportionate share of the signal.
 
 ---
 
 ## 6. Interpretation
 
-The global solar-phase signal in the ISC-GEM catalog is **diffuse**. After sequential removal of all 13 M≥8.5 events and their G-K attributed aftershock sequences (163 events total, 1.8% of the catalog), the chi-square p-value degrades from p=2.3×10⁻⁶ to p=1.3×10⁻⁴ — a factor of ~57 increase in p-value, but the signal remains highly significant and does not approach p=0.05. Reasenberg-based removal shows even less degradation. The signal survives all 13 removal steps under both removal strategies.
+The global solar-phase signal in the ISC-GEM catalog is **diffuse** under the M≥8.5 sequence removal test. After sequential removal of all 12 qualifying M≥8.5 events and their G-K attributed aftershock sequences (163 events total, 1.8% of the catalog), the chi-square p-value degrades from p=2.3×10⁻⁶ to p=1.3×10⁻⁴ — a factor of ~57 increase in p-value, but the signal remains highly significant and does not approach p=0.05 under either the magnitude-descending or chronological-ascending removal orderings. Reasenberg-based removal shows even less degradation.
 
-This finding does not confirm that the signal is uniformly distributed across all events. It specifically rules out the hypothesis that the significant chi-square is an artifact of a small number of identifiable M≥8.5 sequences. The signal could still be concentrated in a broader class of events (e.g., all M≥7.5 aftershock sequences, or all sub-crustal events), which are not tested here.
+The exclusion of iscgem879134 (Valdivia-2) from the major event list — because it is classified as aftershock in both algorithms — has no material effect on this conclusion: the event produces zero new removals in the raw-catalog aftershock runs (its aftershocks are attributed to the M9.55 Valdivia parent), and its mainshock-only absence is one fewer row in an already sub-threshold declustered catalog.
 
-The mainshock-only removal results demonstrate that the G-K declustered catalog's sub-threshold signal (p=0.098) is not driven by the 13 major events themselves. The large gap between raw catalog significance and declustered significance — identified in A3.B1 — reflects systematic differences between the full aftershock population and the mainshock population, not a discrete sequence-level artifact.
+This finding does not confirm that the signal is uniformly distributed across all events. It specifically rules out the hypothesis that the significant chi-square is an artifact of a small number of identifiable M≥8.5 sequences. The signal could still be concentrated in a broader class of events (e.g., all M≥7.5 aftershock sequences, or all sub-crustal events) not tested here.
 
-An important interpretive caution: the removal order (largest magnitude first) is one design choice. A chronological or random removal order could yield different degradation curves. Additionally, the cumulative design means later removals operate on an already-reduced catalog; the independent marginal contribution of each event cannot be directly read from the step-to-step changes.
+The mainshock-only removal results demonstrate that the G-K declustered catalog's sub-threshold signal (p=0.098) is not driven by the 12 major events themselves. The large gap between raw catalog significance and declustered significance — identified in A3.B1 — reflects systematic differences between the full aftershock population and the mainshock population, not a discrete sequence-level artifact.
 
 ---
 
 ## 7. Limitations
 
 - **Cumulative removal design:** Each step removes the current event and all previously removed events. The degradation curve reflects cumulative, not independent, contributions. The marginal impact of a single event cannot be isolated.
-- **Magnitude ordering:** Removing by magnitude descending is one reasonable choice, but removes events with the largest aftershock sequences first, potentially front-loading the degradation. A chronological or random ordering would provide complementary degradation curves.
-- **G-K vs. Reasenberg aftershock counts differ substantially:** G-K attributes 3,327 aftershocks vs. 945 for Reasenberg. The `raw_gk` run removes up to 35 events per step (step 5, Kamchatka), while `raw_reas` removes at most 8 per step. The two tracks are therefore not directly comparable in terms of catalog fraction removed.
+- **Only two orderings tested:** Magnitude-descending and chronological-ascending are two specific orderings. A random permutation test would require many runs to characterize the full ordering-sensitivity distribution; the two orderings tested here provide qualitative bracketing but do not cover all possibilities.
+- **G-K vs. Reasenberg aftershock counts differ substantially:** G-K attributes 3,327 aftershocks vs. 945 for Reasenberg. The `raw_gk` run removes up to 35 events per step (1952 Kamchatka in both orderings), while `raw_reas` removes at most 8 per step. The two tracks are therefore not directly comparable in terms of catalog fraction removed.
 - **M≥8.5 threshold is specific:** Events in the M7.5–8.4 range may still carry large aftershock sequences. This analysis does not test whether sub-threshold major events collectively account for the signal.
 - **`early_pct > 1.0` artifact:** When the `aftershock_df` retrieval includes foreshocks (negative `delta_t_sec` events), `early_count` can exceed `aftershock_count`, yielding `early_pct > 1.0`. Downstream use of this metric (A3.A1) should account for this inclusive counting.
+- **The 200 km subduction proximity threshold used in the companion case A3.C1 is not incorporated here:** A3.C1 will test a spatially refined version of this analysis restricted to subduction-zone events.
 
 ---
 

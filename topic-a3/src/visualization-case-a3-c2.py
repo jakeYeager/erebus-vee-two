@@ -1,10 +1,14 @@
 """
 Case A3.C2: Visualization Script
 
-Generates three figures from the case-a3-c2-results.json output:
-  1. case-a3-c2-degradation.png  — chi-square p-value and Cramér's V trajectories
-  2. case-a3-c2-interval-decay.png — per-interval z-score decay across removal steps
-  3. case-a3-c2-sequence-summary.png — visual table of sequence metrics for major events
+Generates four figures from the case-a3-c2-results.json output:
+  1. case-a3-c2-degradation.png        — chi-square p-value and Cramér's V trajectories
+                                          (4 magnitude-order runs)
+  2. case-a3-c2-interval-decay.png     — per-interval z-score decay across removal steps
+                                          (4 magnitude-order runs)
+  3. case-a3-c2-sequence-summary.png   — visual table of sequence metrics for major events
+  4. case-a3-c2-degradation-chron.png  — chi-square p-value and Cramér's V trajectories
+                                          (4 chronological-order runs)
 """
 
 from __future__ import annotations
@@ -40,12 +44,14 @@ runs = results["runs"]
 seq_metrics = results["sequence_metrics"]
 
 # ---------------------------------------------------------------------------
-# Build x-axis tick labels
+# Build x-axis tick label helpers
 # ---------------------------------------------------------------------------
 
 
-def build_tick_labels(major_events: list[dict]) -> list[str]:
-    """Build per-step x-axis tick labels (step 0 = 'Baseline', steps 1+ = 'MX.X\\nYYYY').
+def build_tick_labels_magnitude(major_events: list[dict]) -> list[str]:
+    """Build per-step x-axis tick labels sorted by magnitude-descending order.
+
+    Step 0 = 'Baseline', steps 1+ = 'MX.X\\nYYYY' ordered by removal_order_magnitude.
 
     Args:
         major_events: List of major event dicts from results JSON.
@@ -53,11 +59,34 @@ def build_tick_labels(major_events: list[dict]) -> list[str]:
     Returns:
         List of label strings, one per removal step including baseline.
     """
+    # Sort by removal_order_magnitude
+    ordered = sorted(major_events, key=lambda e: e["removal_order_magnitude"])
     labels = ["Baseline"]
-    for ev in major_events:
+    for ev in ordered:
         mag = ev["usgs_mag"]
         year = ev["event_at"][:4]
         labels.append(f"M{mag:.1f}\n{year}")
+    return labels
+
+
+def build_tick_labels_chronological(major_events: list[dict]) -> list[str]:
+    """Build per-step x-axis tick labels sorted by chronological (event_at ascending) order.
+
+    Step 0 = 'Baseline', steps 1+ = 'YYYY\\nMX.X' ordered by removal_order_chronological.
+
+    Args:
+        major_events: List of major event dicts from results JSON.
+
+    Returns:
+        List of label strings, one per removal step including baseline.
+    """
+    # Sort by removal_order_chronological (oldest first)
+    ordered = sorted(major_events, key=lambda e: e["removal_order_chronological"])
+    labels = ["Baseline"]
+    for ev in ordered:
+        mag = ev["usgs_mag"]
+        year = ev["event_at"][:4]
+        labels.append(f"{year}\nM{mag:.1f}")
     return labels
 
 
@@ -65,24 +94,32 @@ def build_tick_labels(major_events: list[dict]) -> list[str]:
 # Run styling
 # ---------------------------------------------------------------------------
 
-RUN_STYLES: dict[str, dict] = {
+RUN_STYLES_MAG: dict[str, dict] = {
     "raw_gk": {"color": "steelblue", "linestyle": "-", "label": "Raw + G-K removal"},
     "raw_reas": {"color": "steelblue", "linestyle": "--", "label": "Raw + Reasenberg removal"},
     "mainshock_gk": {"color": "red", "linestyle": "-", "label": "G-K mainshocks only"},
     "mainshock_reas": {"color": "red", "linestyle": "--", "label": "Reasenberg mainshocks only"},
 }
 
-RUN_KEYS = ["raw_gk", "raw_reas", "mainshock_gk", "mainshock_reas"]
+RUN_STYLES_CHRON: dict[str, dict] = {
+    "raw_gk_chron": {"color": "steelblue", "linestyle": "-", "label": "Raw + G-K removal"},
+    "raw_reas_chron": {"color": "steelblue", "linestyle": "--", "label": "Raw + Reasenberg removal"},
+    "mainshock_gk_chron": {"color": "red", "linestyle": "-", "label": "G-K mainshocks only"},
+    "mainshock_reas_chron": {"color": "red", "linestyle": "--", "label": "Reasenberg mainshocks only"},
+}
+
+RUN_KEYS_MAG = ["raw_gk", "raw_reas", "mainshock_gk", "mainshock_reas"]
+RUN_KEYS_CHRON = ["raw_gk_chron", "raw_reas_chron", "mainshock_gk_chron", "mainshock_reas_chron"]
 
 
 # ---------------------------------------------------------------------------
-# Figure 1: Chi-square degradation trajectory
+# Figure 1: Chi-square degradation trajectory (magnitude order)
 # ---------------------------------------------------------------------------
 
 
 def plot_degradation() -> None:
-    """Plot chi-square p-value and Cramér's V across removal steps for all four runs."""
-    tick_labels = build_tick_labels(major_events)
+    """Plot chi-square p-value and Cramér's V across removal steps for the 4 magnitude-order runs."""
+    tick_labels = build_tick_labels_magnitude(major_events)
     x_steps = list(range(len(tick_labels)))
 
     fig = plt.figure(figsize=(14, 9))
@@ -90,8 +127,8 @@ def plot_degradation() -> None:
     ax_p = fig.add_subplot(gs[0])
     ax_v = fig.add_subplot(gs[1], sharex=ax_p)
 
-    for run_key in RUN_KEYS:
-        style = RUN_STYLES[run_key]
+    for run_key in RUN_KEYS_MAG:
+        style = RUN_STYLES_MAG[run_key]
         steps = runs[run_key]["steps"]
         p_vals = [s["stats"]["p_chi2_k24"] for s in steps]
         v_vals = [s["stats"]["cramers_v"] for s in steps]
@@ -125,7 +162,7 @@ def plot_degradation() -> None:
     ax_p.legend(fontsize=9, loc="upper left")
     ax_p.grid(True, which="both", linestyle=":", alpha=0.5)
     ax_p.set_title(
-        "Phased Removal of M≥8.5 Sequences — Chi-Square and Cramér's V Degradation",
+        "Phased Removal of M≥8.5 Sequences — Magnitude Order",
         fontsize=13,
         pad=12,
     )
@@ -151,8 +188,8 @@ def plot_degradation() -> None:
 
 
 def plot_interval_decay() -> None:
-    """Plot A1b interval z-score trajectories across sequential removal steps."""
-    tick_labels = build_tick_labels(major_events)
+    """Plot A1b interval z-score trajectories across sequential removal steps (magnitude order)."""
+    tick_labels = build_tick_labels_magnitude(major_events)
     x_steps = list(range(len(tick_labels)))
 
     interval_keys = ["interval_1_z", "interval_2_z", "interval_3_z"]
@@ -172,8 +209,8 @@ def plot_interval_decay() -> None:
     for row_idx, (interval_key, row_label) in enumerate(zip(interval_keys, interval_labels)):
         ax = axes[row_idx]
 
-        for run_key in RUN_KEYS:
-            style = RUN_STYLES[run_key]
+        for run_key in RUN_KEYS_MAG:
+            style = RUN_STYLES_MAG[run_key]
             steps = runs[run_key]["steps"]
             z_vals = [s["stats"][interval_key] for s in steps]
 
@@ -221,7 +258,6 @@ CANONICAL_NAMES: dict[str, str] = {
     "iscgem859206": "1965 Rat Islands",
     "iscgem895681": "1950 Assam",
     "iscgem7486110": "2005 Nias",
-    "iscgem879134": "1960 Valdivia-2",
     "iscgem600860404": "2012 Sumatra OT",
     "iscgem886030": "1957 Andreanof",
     "iscgem873239": "1963 Kuril",
@@ -261,7 +297,9 @@ def plot_sequence_summary() -> None:
     gk_metrics = {m["usgs_id"]: m for m in seq_metrics["gk"]}
     reas_metrics = {m["usgs_id"]: m for m in seq_metrics["reasenberg"]}
 
-    # Build table rows: sorted by magnitude descending (major_events already sorted)
+    # Build table rows: sorted by magnitude descending (major_events already in mag order)
+    ordered_events = sorted(major_events, key=lambda e: e["removal_order_magnitude"])
+
     col_headers = [
         "Event", "Mag", "Date",
         "G-K\nAftershocks", "G-K\nWindow", "G-K\nEarly%", "G-K\nClass",
@@ -269,7 +307,7 @@ def plot_sequence_summary() -> None:
     ]
 
     rows = []
-    for ev in major_events:
+    for ev in ordered_events:
         uid = ev["usgs_id"]
         gk = gk_metrics[uid]
         reas = reas_metrics[uid]
@@ -317,7 +355,7 @@ def plot_sequence_summary() -> None:
         cell.set_text_props(color="white", fontweight="bold")
 
     # Alternate row colors; highlight rows where G-K and Reasenberg classification differ
-    for row_idx, ev in enumerate(major_events):
+    for row_idx, ev in enumerate(ordered_events):
         uid = ev["usgs_id"]
         gk = gk_metrics[uid]
         reas = reas_metrics[uid]
@@ -340,13 +378,83 @@ def plot_sequence_summary() -> None:
 
 
 # ---------------------------------------------------------------------------
+# Figure 4: Chi-square degradation trajectory (chronological order)
+# ---------------------------------------------------------------------------
+
+
+def plot_degradation_chron() -> None:
+    """Plot chi-square p-value and Cramér's V across removal steps for the 4 chronological-order runs."""
+    tick_labels = build_tick_labels_chronological(major_events)
+    x_steps = list(range(len(tick_labels)))
+
+    fig = plt.figure(figsize=(14, 9))
+    gs = GridSpec(2, 1, figure=fig, hspace=0.15)
+    ax_p = fig.add_subplot(gs[0])
+    ax_v = fig.add_subplot(gs[1], sharex=ax_p)
+
+    for run_key in RUN_KEYS_CHRON:
+        style = RUN_STYLES_CHRON[run_key]
+        steps = runs[run_key]["steps"]
+        p_vals = [s["stats"]["p_chi2_k24"] for s in steps]
+        v_vals = [s["stats"]["cramers_v"] for s in steps]
+
+        ax_p.plot(
+            x_steps,
+            p_vals,
+            color=style["color"],
+            linestyle=style["linestyle"],
+            linewidth=1.8,
+            marker="o",
+            markersize=4,
+            label=style["label"],
+        )
+        ax_v.plot(
+            x_steps,
+            v_vals,
+            color=style["color"],
+            linestyle=style["linestyle"],
+            linewidth=1.8,
+            marker="o",
+            markersize=4,
+            label=style["label"],
+        )
+
+    # P-value panel
+    ax_p.axhline(0.05, color="gray", linestyle="--", linewidth=1.0, label="p = 0.05 threshold")
+    ax_p.set_yscale("log")
+    ax_p.set_ylim(1e-12, 1.0)
+    ax_p.set_ylabel("Chi-Square p-value (log scale)", fontsize=11)
+    ax_p.legend(fontsize=9, loc="upper left")
+    ax_p.grid(True, which="both", linestyle=":", alpha=0.5)
+    ax_p.set_title(
+        "Phased Removal of M≥8.5 Sequences — Chronological Order (Oldest First)",
+        fontsize=13,
+        pad=12,
+    )
+    plt.setp(ax_p.get_xticklabels(), visible=False)
+
+    # Cramér's V panel
+    ax_v.set_ylabel("Cramér's V", fontsize=11)
+    ax_v.grid(True, linestyle=":", alpha=0.5)
+    ax_v.set_xticks(x_steps)
+    ax_v.set_xticklabels(tick_labels, fontsize=8)
+    ax_v.set_xlabel("Event Removed (Chronological Order, Oldest First)", fontsize=11)
+
+    fig.tight_layout()
+    out_path = OUTPUT_DIR / "case-a3-c2-degradation-chron.png"
+    fig.savefig(out_path, dpi=300, bbox_inches="tight")
+    plt.close(fig)
+    print(f"Saved: {out_path}")
+
+
+# ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 
 
 def main() -> None:
-    """Generate all three case A3.C2 figures."""
-    print("Generating Figure 1: chi-square degradation trajectory...")
+    """Generate all four case A3.C2 figures."""
+    print("Generating Figure 1: chi-square degradation trajectory (magnitude order)...")
     plot_degradation()
 
     print("Generating Figure 2: interval z-score decay...")
@@ -354,6 +462,9 @@ def main() -> None:
 
     print("Generating Figure 3: sequence summary table...")
     plot_sequence_summary()
+
+    print("Generating Figure 4: chi-square degradation trajectory (chronological order)...")
+    plot_degradation_chron()
 
     print("All figures generated successfully.")
 

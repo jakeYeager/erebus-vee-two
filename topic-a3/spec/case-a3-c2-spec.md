@@ -12,8 +12,14 @@ A3.C2 resolves this apparent contradiction through a targeted approach: sequenti
 **A3.B1 context for sequence handling:**
 A3.B1 found that rolling-window chi-square significance is *negatively* correlated with aftershock count per window in all three declustered catalogs (r = −0.574 for Reasenberg). This means the most chi-square-significant time windows do not coincide with the highest aftershock density windows. Despite this, the raw catalog shows substantially higher chi-square significance than all declustered versions (71% vs. 40% Reasenberg vs. 19% G-K vs. 6.5% A1b). The discrepancy motivates C2: the window-level null does not rule out a few specific mega-sequences (with very large `aftershock_count`) driving the full-catalog signal even while not dominating any particular 10-year window's per-window density. A3.B1's negative correlation is consistent with sequences being distributed across multiple overlapping windows rather than concentrated in one.
 
-**Magnitude threshold decision:**
-Use M≥8.5 from the raw ISC-GEM catalog as the primary threshold. This is expected to yield approximately 10–15 events in the 1950–2021 record. Report results for all removal steps; the spec does not pre-commit to a specific "collapse point."
+**Major event identification strategy:**
+Use M≥8.5 as the primary threshold, but draw the candidate pool from the **mainshock population** — events that are classified as mainshocks in at least one declustering algorithm (G-K or Reasenberg). Events classified as aftershocks in both algorithms (e.g., the 1960-05-22 M8.6 Valdivia-2 event, which is an aftershock of the M9.55 Valdivia mainshock in both G-K and Reasenberg) contribute no independent sequence information and are excluded. This filters the raw M≥8.5 pool from 13 to approximately 12 qualifying events.
+
+Sort the qualifying events by `usgs_mag` descending for the magnitude-order removal runs. Ties in magnitude are broken by `event_at` ascending (earliest event preferred). This defines the **magnitude-order removal list** used in the primary runs.
+
+A second **chronological-order removal list** sorts the same qualifying events by `event_at` ascending (oldest first). This provides a complementary perspective: does the historical accumulation of signal proceed evenly over time, or do early events contribute disproportionately? The two orderings are run in parallel; no single ordering is designated as primary.
+
+Report results for all removal steps; the spec does not pre-commit to a specific "collapse point."
 
 **Data context block:**
 
@@ -45,8 +51,9 @@ Bin index (0-based) for k=24: `bin_i = floor(phase * 24)`.
 - `tests/test-case-a3-c2.py` — test suite (all tests must pass)
 - `output/case-a3-c2-results.json` — removal steps × 4 runs; sequence metrics; per-step chi2, V, interval z-scores
 - `output/case-a3-c2-whitepaper.md` — methodology, sequence metrics breakout, results, interpretation
-- `output/case-a3-c2-degradation.png` — chi-square p-value + Cramér's V trajectory across removal steps (4 runs)
-- `output/case-a3-c2-interval-decay.png` — per-interval z-score change across removal steps
+- `output/case-a3-c2-degradation.png` — chi-square p-value + Cramér's V trajectory across removal steps (4 magnitude-order runs)
+- `output/case-a3-c2-degradation-chron.png` — chi-square p-value + Cramér's V trajectory across removal steps (4 chronological-order runs)
+- `output/case-a3-c2-interval-decay.png` — per-interval z-score change across removal steps (magnitude order)
 - `output/case-a3-c2-sequence-summary.png` — visual table of sequence metrics for major events
 
 ---
@@ -83,12 +90,26 @@ In `src/case-a3-c2-analysis.py`:
 ## 2. Major event identification
 
 ```python
-def identify_major_events(raw_df: pd.DataFrame, mag_threshold: float) -> pd.DataFrame:
+def identify_major_events(
+    raw_df: pd.DataFrame,
+    gk_ms_df: pd.DataFrame,
+    reas_ms_df: pd.DataFrame,
+    mag_threshold: float,
+) -> pd.DataFrame:
 ```
 - Filter raw catalog to `usgs_mag >= mag_threshold`
-- Sort by `usgs_mag` descending (largest first — this defines the removal order)
-- Return DataFrame with columns: `usgs_id`, `usgs_mag`, `event_at`, `latitude`, `longitude`, `depth`
-- Log count of major events found; expected approximately 10–15 for M≥8.5
+- Build mainshock ID sets: `gk_mainshock_ids = set(gk_ms_df["usgs_id"])`; `reas_mainshock_ids = set(reas_ms_df["usgs_id"])`
+- Retain only events where `usgs_id in gk_mainshock_ids OR usgs_id in reas_mainshock_ids` (mainshock in at least one algorithm); log and discard events excluded by this filter (e.g., Valdivia-2: 1960-05-22 M8.6, classified as aftershock in both)
+- Sort by `usgs_mag` descending; break ties by `event_at` ascending (earliest event first)
+- Return DataFrame with columns: `usgs_id`, `usgs_mag`, `event_at`, `latitude`, `longitude`, `depth`; add `removal_order_magnitude` (1-indexed rank in this sorted order)
+- Log count of qualifying events; expected approximately 12 for M≥8.5 after mainshock filter
+
+```python
+def create_chronological_order(major_events_df: pd.DataFrame) -> pd.DataFrame:
+```
+- Return the same DataFrame sorted by `event_at` ascending (oldest first)
+- Add `removal_order_chronological` column (1-indexed rank in this sorted order)
+- Log the ordered list at INFO level for verification
 
 For each major event, determine its declustering classification in G-K and Reasenberg:
 ```python
@@ -182,28 +203,33 @@ def compute_chi2_stats(phases: np.ndarray, k: int = 24) -> dict:
 
 ## 5. Phased removal analysis
 
-Four parallel removal tracks:
+Eight parallel removal tracks — four using magnitude-order removal, four using chronological-order removal of the same qualifying events:
 
-| Run key | Base catalog | Removal set |
-|---------|-------------|-------------|
-| `raw_gk` | raw (9,210 events) | major event + G-K aftershocks (via `parent_id`) |
-| `raw_reas` | raw (9,210 events) | major event + Reasenberg aftershocks (via `parent_id`) |
-| `mainshock_gk` | G-K mainshocks (5,883 events) | major event mainshock row only (if present as mainshock) |
-| `mainshock_reas` | Reasenberg mainshocks (8,265 events) | major event mainshock row only (if present as mainshock) |
+| Run key | Base catalog | Removal set | Ordering |
+|---------|-------------|-------------|----------|
+| `raw_gk` | raw (9,210 events) | major event + G-K aftershocks (via `parent_id`) | magnitude desc |
+| `raw_reas` | raw (9,210 events) | major event + Reasenberg aftershocks (via `parent_id`) | magnitude desc |
+| `mainshock_gk` | G-K mainshocks (5,883 events) | major event mainshock row only (if present as mainshock) | magnitude desc |
+| `mainshock_reas` | Reasenberg mainshocks (8,265 events) | major event mainshock row only (if present as mainshock) | magnitude desc |
+| `raw_gk_chron` | raw (9,210 events) | major event + G-K aftershocks (via `parent_id`) | chronological asc |
+| `raw_reas_chron` | raw (9,210 events) | major event + Reasenberg aftershocks (via `parent_id`) | chronological asc |
+| `mainshock_gk_chron` | G-K mainshocks (5,883 events) | major event mainshock row only (if present as mainshock) | chronological asc |
+| `mainshock_reas_chron` | Reasenberg mainshocks (8,265 events) | major event mainshock row only (if present as mainshock) | chronological asc |
 
 ```python
 def run_phased_removal(
     base_df: pd.DataFrame,
-    major_events: pd.DataFrame,
+    ordered_events: pd.DataFrame,
     aftershock_df: pd.DataFrame | None,
     run_key: str,
 ) -> list[dict]:
 ```
+- `ordered_events` is the major events DataFrame pre-sorted in the desired removal order (magnitude-desc or chronological-asc); the function does not re-sort internally
 
 **Step 0 (baseline):** compute stats on full `base_df` with no removals. Record `{"step": 0, "event_removed": null, "ids_removed_cumulative": [], "n_remaining": n_full, "stats": {...}}`.
 
-**Steps 1 through len(major_events):**
-For step `i` (1-indexed), removing event `major_events.iloc[i-1]`:
+**Steps 1 through len(ordered_events):**
+For step `i` (1-indexed), removing event `ordered_events.iloc[i-1]`:
 1. Collect IDs to remove at this step:
    - Always add `major_event_usgs_id` to the removal set
    - For `raw_gk` and `raw_reas`: additionally add all `usgs_id` values from `aftershock_df` where `parent_id == major_event_usgs_id`
@@ -259,17 +285,21 @@ Note: if `n_remaining < 24` (degenerate case after extreme removals), record `ch
   },
   "major_events": [
     {"usgs_id": str, "usgs_mag": float, "event_at": str, "latitude": float, "longitude": float,
-     "removal_order": int}
+     "removal_order_magnitude": int, "removal_order_chronological": int}
   ],
   "sequence_metrics": {
     "gk": [/* list of compute_sequence_metrics results for each major event */],
     "reasenberg": [/* same */]
   },
   "runs": {
-    "raw_gk":       {"steps": [/* step dicts */]},
-    "raw_reas":     {"steps": [/* step dicts */]},
-    "mainshock_gk": {"steps": [/* step dicts */]},
-    "mainshock_reas": {"steps": [/* step dicts */]}
+    "raw_gk":              {"steps": [/* step dicts — magnitude order */]},
+    "raw_reas":            {"steps": [/* step dicts — magnitude order */]},
+    "mainshock_gk":        {"steps": [/* step dicts — magnitude order */]},
+    "mainshock_reas":      {"steps": [/* step dicts — magnitude order */]},
+    "raw_gk_chron":        {"steps": [/* step dicts — chronological order */]},
+    "raw_reas_chron":      {"steps": [/* step dicts — chronological order */]},
+    "mainshock_gk_chron":  {"steps": [/* step dicts — chronological order */]},
+    "mainshock_reas_chron":{"steps": [/* step dicts — chronological order */]}
   }
 }
 ```
@@ -284,9 +314,9 @@ Load `output/case-a3-c2-results.json` and render all figures.
 
 ---
 
-**Figure 1 — Chi-square degradation trajectory** (`output/case-a3-c2-degradation.png`):
+**Figure 1 — Chi-square degradation trajectory (magnitude order)** (`output/case-a3-c2-degradation.png`):
 - 2-row stacked subplot sharing x-axis (removal step, 0 = baseline)
-- Row 1: chi-square p-value (log scale, y-range [1e-12, 1.0]); four lines, one per run:
+- Row 1: chi-square p-value (log scale, y-range [1e-12, 1.0]); four lines, one per magnitude-order run:
   - `raw_gk`: steelblue solid
   - `raw_reas`: steelblue dashed
   - `mainshock_gk`: red solid
@@ -294,7 +324,7 @@ Load `output/case-a3-c2-results.json` and render all figures.
   - Horizontal dashed line at p=0.05 (gray)
 - Row 2: Cramér's V (linear); same four lines, same colors/styles
 - x-axis: integer tick per removal step; label each tick with the magnitude and year of the event removed (e.g., "M9.5\n1960"); baseline labeled "Baseline"
-- Legend; title "Phased Removal of M≥8.5 Sequences — Chi-Square and Cramér's V Degradation"
+- Legend; title "Phased Removal of M≥8.5 Sequences — Magnitude Order"
 - 300 DPI, publication quality
 
 ---
@@ -308,6 +338,15 @@ Load `output/case-a3-c2-results.json` and render all figures.
 - x-axis: same event-labeled ticks as Figure 1
 - Legend; title "A1b Interval Elevation Z-Score Through Sequential Removal"
 - 300 DPI
+
+---
+
+**Figure 4 — Chi-square degradation trajectory (chronological order)** (`output/case-a3-c2-degradation-chron.png`):
+- Same layout as Figure 1 (2-row stacked subplot: chi2 p log scale, Cramér's V linear)
+- Four lines for the chronological-order runs: `raw_gk_chron` (steelblue solid), `raw_reas_chron` (steelblue dashed), `mainshock_gk_chron` (red solid), `mainshock_reas_chron` (red dashed)
+- x-axis tick labels show the year and magnitude of each event as removed in chronological order (oldest first; e.g., "1950\nM8.7")
+- Title: "Phased Removal of M≥8.5 Sequences — Chronological Order (Oldest First)"
+- 300 DPI, publication quality
 
 ---
 
@@ -328,7 +367,7 @@ Load `output/case-a3-c2-results.json` and render all figures.
 In `tests/test-case-a3-c2.py`:
 
 - `test_catalog_loads`: assert n=9210 (raw), n=5883 (gk_ms), n=3327 (gk_as), n=8265 (reas_ms), n=945 (reas_as); assert `event_at` parses without NaT; assert `phase` in [0.0, 1.0) for all
-- `test_major_event_count`: assert at least 5 events identified at M≥8.5; assert all identified events have `usgs_mag >= 8.5`; assert sorted by `usgs_mag` descending (removal order)
+- `test_major_event_count`: assert exactly 12 events identified at M≥8.5 after mainshock filter (excludes iscgem879134 / Valdivia-2 aftershock); assert all identified events have `usgs_mag >= 8.5`; assert `removal_order_magnitude` is sorted by `usgs_mag` descending with tie-breaking by `event_at` ascending
 - `test_removal_monotonic`: for each run, assert `n_remaining` is non-increasing across steps (steps are cumulative); assert step 0 `n_remaining` equals the full catalog size for that run
 - `test_step0_matches_full_catalog_stats`: for each run, assert step 0 chi2 and Cramér's V match direct computation on the unmodified base catalog (tolerance: 1e-6)
 - `test_chi2_bounds`: for all steps and all runs, assert `chi2_k24 >= 0` and `p_chi2_k24` in [0.0, 1.0]
@@ -337,7 +376,8 @@ In `tests/test-case-a3-c2.py`:
 - `test_parent_id_removal`: for `raw_gk` run step 1 (first event removed), assert that the removed event's G-K aftershocks (from aftershock file `parent_id`) are absent from the remaining catalog; assert the major event itself is absent
 - `test_mainshock_only_removal`: for `mainshock_gk` run step 1, assert `n_remaining = n_gk_mainshocks - 1` (only one event removed per step in mainshock-only runs, for events present as mainshocks)
 - `test_sequence_metrics_structure`: load results JSON; assert `sequence_metrics` contains keys "gk" and "reasenberg"; assert each list has length equal to `len(major_events)`; assert each entry has keys `foreshock_count`, `aftershock_count`, `total_sequence`, `window_days`, `early_count`, `late_count`
-- `test_results_json_completeness`: load results JSON; assert all four run keys present; for each run, assert steps list length equals `len(major_events) + 1` (baseline + one per removal)
+- `test_chronological_order`: load results JSON; assert `removal_order_chronological` in major_events entries; assert the events ordered by `removal_order_chronological` are sorted by `event_at` ascending; assert `iscgem879134` is absent from `major_events`
+- `test_results_json_completeness`: load results JSON; assert all eight run keys present (four magnitude-order + four chronological-order `_chron` variants); for each run, assert steps list length equals `len(major_events) + 1` (baseline + one per removal)
 - `test_raw_baseline_chi2`: assert raw catalog step 0 `chi2_k24` approximately matches the known full-catalog value from A2.A4 (the global chi-square was 69.37 at k=24); tolerance ± 2.0 (some variation expected due to Julian year constant vs. per-year normalization differences)
 
 ---
@@ -356,9 +396,9 @@ Standard header (Author: Jake Yeager, Version: 1.0, Date: current date) and foot
 
 3. **Methodology**
    - 3.1 Phase-normalized binning: Julian year constant; cite `data-handling.md`
-   - 3.2 Major event identification: M≥8.5 threshold rationale; removal order (largest first)
+   - 3.2 Major event identification: M≥8.5 threshold applied to the **mainshock population** (events classified as mainshock in G-K or Reasenberg); events classified as aftershocks in both algorithms are excluded (Valdivia-2 1960-05-22 M8.6 is the only such exclusion at this threshold); tie-breaking by earliest event_at; yields n=12 qualifying events
    - 3.3 Sequence attribution: G-K `parent_id` vs. Reasenberg `parent_id` as removal sets; classification check (mainshock vs. aftershock in each declustering)
-   - 3.4 Four removal tracks: describe `raw_gk`, `raw_reas`, `mainshock_gk`, `mainshock_reas`
+   - 3.4 Eight removal tracks: four magnitude-order runs (`raw_gk`, `raw_reas`, `mainshock_gk`, `mainshock_reas`) and four chronological-order runs (`raw_gk_chron`, `raw_reas_chron`, `mainshock_gk_chron`, `mainshock_reas_chron`); the chronological ordering removes events from oldest (1950) to most recent (2012), testing whether signal accumulation is historically even or front-loaded
    - 3.5 Per-step statistics: chi-square (k=24), Cramér's V formula, A1b interval z-scores
    - 3.6 Sequence metrics: foreshock/aftershock counts, window duration, half-life split definition
    - 3.7 Relationship to A3.B1: explain why A3.B1's negative rolling-window correlation does not rule out targeted sequence concentration; describe how C2 tests the complementary hypothesis
@@ -371,12 +411,13 @@ Standard header (Author: Jake Yeager, Version: 1.0, Date: current date) and foot
    - 4.3 Chi-square and Cramér's V degradation: embed Figure 1; describe whether the signal collapses early (step 1–2), degrades gradually, or is robust; compare raw-GK vs. raw-Reas removal paths
    - 4.4 Interval-level decay: embed Figure 2; describe which intervals decay first and which persist across all removals; relate to A3.B1's finding that only Interval 2 was partially elevated in any catalog
    - 4.5 Mainshock-only removal: compare `mainshock_gk` and `mainshock_reas` degradation trajectories to the raw-catalog tracks; assess whether declustered signal is similarly sequence-concentrated
+   - 4.6 Chronological removal perspective: embed Figure 4; compare the chronological-order degradation curves to the magnitude-order curves from Figure 1; note whether early events (pre-1970) or recent events (post-2000) carry more signal weight; assess whether the degradation pattern is qualitatively similar to or different from magnitude ordering
 
 5. **Cross-Topic Comparison**: compare to A2.A4 (aftershock phase-preference); compare to A2.B6 (2003–2014 window elevation); compare to A3.B1 (negative rolling-window sequence density correlation). State whether C2 results are consistent or in tension with A3.B1.
 
 6. **Interpretation**: state whether the signal is diffuse or concentrated; note whether the finding changes the interpretation of the A2 main result; guard against both confirmatory framing (eagerly attributing any collapse to sequence artifact) and dismissive framing (assuming robustness without verifying the magnitude of per-step changes).
 
-7. **Limitations**: removal is cumulative — later steps remove both the current event and all previously removed events; the ordering (largest first) is one reasonable choice but a random or chronological ordering could yield different degradation curves; G-K and Reasenberg aftershock attributions differ substantially in n (3,327 vs. 945 G-K vs. Reasenberg aftershocks), so `raw_gk` removes far more events per step than `raw_reas`.
+7. **Limitations**: removal is cumulative — later steps remove both the current event and all previously removed events; only two orderings are tested (magnitude-desc and chronological-asc); a random ordering would require multiple permutations to characterize the full ordering-sensitivity distribution; G-K and Reasenberg aftershock attributions differ substantially in n (3,327 vs. 945 aftershocks), so `raw_gk` removes far more events per step than `raw_reas`; the 200 km subduction proximity threshold used in the companion case A3.C1 is not yet incorporated here.
 
 8. **References**: Gardner & Knopoff (1974), Reasenberg (1985), A2.A4, A2.B6, A3.B1
 

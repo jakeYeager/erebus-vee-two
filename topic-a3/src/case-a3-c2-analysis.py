@@ -5,7 +5,9 @@ Sequential removal of M>=8.5 event sequences from the ISC-GEM catalog to test
 whether the global solar-phase signal is diffuse across events or concentrated
 in a small number of major aftershock sequences.
 
-Run order: largest magnitude first (descending by usgs_mag).
+Eight parallel removal tracks: four in magnitude-descending order and four in
+chronological-ascending order. Only events classified as mainshock in at least
+one declustering algorithm (G-K or Reasenberg) are included as major events.
 """
 
 from __future__ import annotations
@@ -135,29 +137,104 @@ def load_data() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame,
 # ---------------------------------------------------------------------------
 
 
-def identify_major_events(raw_df: pd.DataFrame, mag_threshold: float) -> pd.DataFrame:
-    """Identify events at or above the magnitude threshold, sorted largest first.
+def identify_major_events(
+    raw_df: pd.DataFrame,
+    gk_ms_df: pd.DataFrame,
+    reas_ms_df: pd.DataFrame,
+    mag_threshold: float,
+) -> pd.DataFrame:
+    """Identify events at or above the magnitude threshold that are mainshocks in
+    at least one declustering algorithm.
+
+    Events classified as aftershocks in both G-K and Reasenberg are excluded
+    (e.g., iscgem879134, the 1960-05-22 M8.6 Valdivia-2 event). Ties in
+    magnitude are broken by event_at ascending (earliest event preferred).
 
     Args:
         raw_df: Full raw catalog DataFrame.
+        gk_ms_df: G-K mainshock catalog DataFrame.
+        reas_ms_df: Reasenberg mainshock catalog DataFrame.
         mag_threshold: Minimum magnitude for inclusion (e.g. 8.5).
 
     Returns:
-        DataFrame containing major events sorted by usgs_mag descending.
-        Columns: usgs_id, usgs_mag, event_at, latitude, longitude, depth.
+        DataFrame containing qualifying major events sorted by usgs_mag descending
+        with tie-breaking by event_at ascending. Has a removal_order_magnitude
+        column (1-indexed rank in this sorted order). Columns: usgs_id, usgs_mag,
+        event_at, latitude, longitude, depth, removal_order_magnitude.
     """
-    major = (
-        raw_df[raw_df["usgs_mag"] >= mag_threshold]
-        .sort_values("usgs_mag", ascending=False)
-        .reset_index(drop=True)
-    )
-    major = major[["usgs_id", "usgs_mag", "event_at", "latitude", "longitude", "depth"]].copy()
+    # Candidate pool: events at or above threshold
+    candidates = raw_df[raw_df["usgs_mag"] >= mag_threshold].copy()
     log.info(
-        "Identified %d major events at M>=%.1f (expected ~10–15)",
+        "Candidate pool at M>=%.1f: %d events", mag_threshold, len(candidates)
+    )
+
+    # Build mainshock ID sets for filtering
+    gk_mainshock_ids: set[str] = set(gk_ms_df["usgs_id"].astype(str))
+    reas_mainshock_ids: set[str] = set(reas_ms_df["usgs_id"].astype(str))
+
+    # Retain only events that are mainshock in at least one algorithm
+    def _is_mainshock_in_any(uid: str) -> bool:
+        return uid in gk_mainshock_ids or uid in reas_mainshock_ids
+
+    mask = candidates["usgs_id"].astype(str).apply(_is_mainshock_in_any)
+    excluded = candidates[~mask]
+    for _, row in excluded.iterrows():
+        log.info(
+            "Excluded %s (M%.2f, %s) — aftershock in both G-K and Reasenberg",
+            row["usgs_id"],
+            row["usgs_mag"],
+            str(row["event_at"])[:10],
+        )
+
+    major = candidates[mask].copy()
+
+    # Sort: magnitude descending, then event_at ascending to break ties
+    major = major.sort_values(
+        ["usgs_mag", "event_at"], ascending=[False, True]
+    ).reset_index(drop=True)
+
+    major = major[
+        ["usgs_id", "usgs_mag", "event_at", "latitude", "longitude", "depth"]
+    ].copy()
+
+    # Assign magnitude-order rank (1-indexed)
+    major["removal_order_magnitude"] = range(1, len(major) + 1)
+
+    log.info(
+        "Identified %d qualifying major events at M>=%.1f after mainshock filter (expected ~12)",
         len(major),
         mag_threshold,
     )
     return major
+
+
+def create_chronological_order(major_events_df: pd.DataFrame) -> pd.DataFrame:
+    """Return a copy of major_events_df sorted by event_at ascending with
+    removal_order_chronological added.
+
+    Args:
+        major_events_df: DataFrame from identify_major_events (includes
+            removal_order_magnitude).
+
+    Returns:
+        DataFrame sorted by event_at ascending with removal_order_chronological
+        column (1-indexed rank in chronological order).
+    """
+    chron_df = major_events_df.sort_values("event_at", ascending=True).copy()
+    chron_df["removal_order_chronological"] = range(1, len(chron_df) + 1)
+    chron_df = chron_df.reset_index(drop=True)
+
+    log.info("Chronological removal order (oldest first):")
+    for _, row in chron_df.iterrows():
+        log.info(
+            "  %d. %s  M%.2f  id=%s",
+            row["removal_order_chronological"],
+            str(row["event_at"])[:10],
+            row["usgs_mag"],
+            row["usgs_id"],
+        )
+
+    return chron_df
 
 
 def classify_event_in_catalog(
@@ -360,27 +437,35 @@ def compute_chi2_stats(phases: np.ndarray, k: int = 24) -> dict:
 
 def run_phased_removal(
     base_df: pd.DataFrame,
-    major_events: pd.DataFrame,
+    ordered_events: pd.DataFrame,
     aftershock_df: Optional[pd.DataFrame],
     run_key: str,
 ) -> list[dict]:
     """Run sequential phased removal of major events and their attributed sequences.
 
-    For raw_gk and raw_reas run keys, the attributed aftershocks (via parent_id)
-    are also removed at each step. For mainshock_gk and mainshock_reas, only the
-    major event row itself is removed (mainshock-only catalogs).
+    For raw_gk, raw_reas, raw_gk_chron, and raw_reas_chron run keys, the attributed
+    aftershocks (via parent_id) are also removed at each step. For mainshock_gk,
+    mainshock_reas, mainshock_gk_chron, and mainshock_reas_chron, only the major
+    event row itself is removed (mainshock-only catalogs).
 
     Args:
         base_df: The starting catalog DataFrame (with ``phase`` column).
-        major_events: DataFrame of major events sorted by magnitude descending.
+        ordered_events: DataFrame of major events pre-sorted in the desired removal
+            order (magnitude-desc or chronological-asc). The function does not
+            re-sort internally.
         aftershock_df: Aftershock catalog for `parent_id` lookup; None for
             mainshock-only runs.
-        run_key: One of 'raw_gk', 'raw_reas', 'mainshock_gk', 'mainshock_reas'.
+        run_key: One of 'raw_gk', 'raw_reas', 'mainshock_gk', 'mainshock_reas',
+            'raw_gk_chron', 'raw_reas_chron', 'mainshock_gk_chron',
+            'mainshock_reas_chron'.
 
     Returns:
         List of step dicts with removal metadata and chi-square statistics.
     """
-    use_aftershocks = run_key in ("raw_gk", "raw_reas") and aftershock_df is not None
+    use_aftershocks = (
+        run_key in ("raw_gk", "raw_reas", "raw_gk_chron", "raw_reas_chron")
+        and aftershock_df is not None
+    )
 
     steps: list[dict] = []
     accumulated_ids: set[str] = set()
@@ -413,7 +498,7 @@ def run_phased_removal(
         baseline_stats["cramers_v"] or 0.0,
     )
 
-    for i, (_, major_event) in enumerate(major_events.iterrows(), start=1):
+    for i, (_, major_event) in enumerate(ordered_events.iterrows(), start=1):
         ev_id = major_event["usgs_id"]
 
         # Always remove the major event itself
@@ -495,15 +580,32 @@ def main() -> None:
     # 1. Load data
     raw, gk_ms, gk_as, reas_ms, reas_as = load_data()
 
-    # 2. Identify major events
-    major_events = identify_major_events(raw, MAG_THRESHOLD)
-    log.info("Major events (removal order, largest first):")
-    for idx, row in major_events.iterrows():
-        log.info("  %d. M%.2f  %s  id=%s", idx + 1, row["usgs_mag"], str(row["event_at"])[:10], row["usgs_id"])
+    # 2. Identify major events (mainshock in at least one algorithm)
+    major_events_mag = identify_major_events(raw, gk_ms, reas_ms, MAG_THRESHOLD)
+    log.info("Major events (magnitude-descending removal order):")
+    for _, row in major_events_mag.iterrows():
+        log.info(
+            "  %d. M%.2f  %s  id=%s",
+            row["removal_order_magnitude"],
+            row["usgs_mag"],
+            str(row["event_at"])[:10],
+            row["usgs_id"],
+        )
 
-    # Build major_events list for JSON
+    # 2b. Create chronological ordering
+    major_events_chron = create_chronological_order(major_events_mag)
+
+    # Merge removal_order_chronological back into the magnitude-ordered DataFrame
+    chron_order_map = dict(
+        zip(major_events_chron["usgs_id"], major_events_chron["removal_order_chronological"])
+    )
+    major_events_mag["removal_order_chronological"] = major_events_mag["usgs_id"].map(
+        chron_order_map
+    )
+
+    # Build major_events list for JSON (sorted by magnitude for display)
     major_events_list = []
-    for order_idx, (_, row) in enumerate(major_events.iterrows(), start=1):
+    for _, row in major_events_mag.iterrows():
         event_at_str = (
             row["event_at"].isoformat()
             if hasattr(row["event_at"], "isoformat")
@@ -516,7 +618,8 @@ def main() -> None:
                 "event_at": event_at_str,
                 "latitude": float(row["latitude"]),
                 "longitude": float(row["longitude"]),
-                "removal_order": order_idx,
+                "removal_order_magnitude": int(row["removal_order_magnitude"]),
+                "removal_order_chronological": int(row["removal_order_chronological"]),
             }
         )
 
@@ -524,27 +627,47 @@ def main() -> None:
     log.info("Computing sequence metrics for G-K declustering...")
     gk_seq_metrics = [
         compute_sequence_metrics(row, gk_ms, gk_as, "gk")
-        for _, row in major_events.iterrows()
+        for _, row in major_events_mag.iterrows()
     ]
 
     log.info("Computing sequence metrics for Reasenberg declustering...")
     reas_seq_metrics = [
         compute_sequence_metrics(row, reas_ms, reas_as, "reasenberg")
-        for _, row in major_events.iterrows()
+        for _, row in major_events_mag.iterrows()
     ]
 
-    # 4. Phased removal — four runs
-    log.info("Running phased removal: raw_gk ...")
-    steps_raw_gk = run_phased_removal(raw, major_events, gk_as, "raw_gk")
+    # 4. Phased removal — 8 runs (4 magnitude-order + 4 chronological-order)
+    # Magnitude-order runs use major_events_mag (sorted magnitude descending)
+    log.info("Running phased removal: raw_gk (magnitude order)...")
+    steps_raw_gk = run_phased_removal(raw, major_events_mag, gk_as, "raw_gk")
 
-    log.info("Running phased removal: raw_reas ...")
-    steps_raw_reas = run_phased_removal(raw, major_events, reas_as, "raw_reas")
+    log.info("Running phased removal: raw_reas (magnitude order)...")
+    steps_raw_reas = run_phased_removal(raw, major_events_mag, reas_as, "raw_reas")
 
-    log.info("Running phased removal: mainshock_gk ...")
-    steps_ms_gk = run_phased_removal(gk_ms, major_events, None, "mainshock_gk")
+    log.info("Running phased removal: mainshock_gk (magnitude order)...")
+    steps_ms_gk = run_phased_removal(gk_ms, major_events_mag, None, "mainshock_gk")
 
-    log.info("Running phased removal: mainshock_reas ...")
-    steps_ms_reas = run_phased_removal(reas_ms, major_events, None, "mainshock_reas")
+    log.info("Running phased removal: mainshock_reas (magnitude order)...")
+    steps_ms_reas = run_phased_removal(reas_ms, major_events_mag, None, "mainshock_reas")
+
+    # Chronological-order runs use major_events_chron (sorted event_at ascending)
+    log.info("Running phased removal: raw_gk_chron (chronological order)...")
+    steps_raw_gk_chron = run_phased_removal(raw, major_events_chron, gk_as, "raw_gk_chron")
+
+    log.info("Running phased removal: raw_reas_chron (chronological order)...")
+    steps_raw_reas_chron = run_phased_removal(
+        raw, major_events_chron, reas_as, "raw_reas_chron"
+    )
+
+    log.info("Running phased removal: mainshock_gk_chron (chronological order)...")
+    steps_ms_gk_chron = run_phased_removal(
+        gk_ms, major_events_chron, None, "mainshock_gk_chron"
+    )
+
+    log.info("Running phased removal: mainshock_reas_chron (chronological order)...")
+    steps_ms_reas_chron = run_phased_removal(
+        reas_ms, major_events_chron, None, "mainshock_reas_chron"
+    )
 
     # 5. Assemble results JSON
     results = {
@@ -570,6 +693,10 @@ def main() -> None:
             "raw_reas": {"steps": steps_raw_reas},
             "mainshock_gk": {"steps": steps_ms_gk},
             "mainshock_reas": {"steps": steps_ms_reas},
+            "raw_gk_chron": {"steps": steps_raw_gk_chron},
+            "raw_reas_chron": {"steps": steps_raw_reas_chron},
+            "mainshock_gk_chron": {"steps": steps_ms_gk_chron},
+            "mainshock_reas_chron": {"steps": steps_ms_reas_chron},
         },
     }
 

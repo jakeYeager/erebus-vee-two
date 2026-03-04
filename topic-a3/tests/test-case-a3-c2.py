@@ -31,7 +31,13 @@ JULIAN_YEAR_SECS = 31_557_600.0
 MAG_THRESHOLD = 8.5
 K_BINS = 24
 
-RUN_KEYS = ["raw_gk", "raw_reas", "mainshock_gk", "mainshock_reas"]
+# All eight run keys: four magnitude-order + four chronological-order
+ALL_RUN_KEYS = [
+    "raw_gk", "raw_reas", "mainshock_gk", "mainshock_reas",
+    "raw_gk_chron", "raw_reas_chron", "mainshock_gk_chron", "mainshock_reas_chron",
+]
+# Magnitude-order run keys only (used in some tests that pre-date chron runs)
+MAG_RUN_KEYS = ["raw_gk", "raw_reas", "mainshock_gk", "mainshock_reas"]
 
 # ---------------------------------------------------------------------------
 # Fixtures
@@ -116,19 +122,46 @@ def test_catalog_loads(raw_df, gk_ms_df, gk_as_df, reas_ms_df, reas_as_df) -> No
 
 
 def test_major_event_count(results) -> None:
-    """Assert at least 5 M>=8.5 events identified, all above threshold, sorted descending."""
-    major = results["major_events"]
-    assert len(major) >= 5, f"Expected at least 5 major events, got {len(major)}"
+    """Assert exactly 12 M>=8.5 events identified after mainshock filter.
 
+    The 1960-05-22 M8.6 Valdivia-2 event (iscgem879134) must be excluded because
+    it is classified as aftershock in both G-K and Reasenberg. removal_order_magnitude
+    must be sorted by usgs_mag descending with tie-breaking by event_at ascending.
+    """
+    major = results["major_events"]
+
+    # Exactly 12 events after mainshock filter
+    assert len(major) == 12, f"Expected exactly 12 major events, got {len(major)}"
+
+    # All events must be above the magnitude threshold
     for ev in major:
         assert ev["usgs_mag"] >= MAG_THRESHOLD, (
             f"Event {ev['usgs_id']} has mag {ev['usgs_mag']} < {MAG_THRESHOLD}"
         )
 
-    mags = [ev["usgs_mag"] for ev in major]
-    assert mags == sorted(mags, reverse=True), (
-        "Major events are not sorted by magnitude descending"
+    # Valdivia-2 (iscgem879134) must be excluded
+    ids = [ev["usgs_id"] for ev in major]
+    assert "iscgem879134" not in ids, (
+        "iscgem879134 (Valdivia-2, aftershock in both algorithms) must be excluded"
     )
+
+    # removal_order_magnitude must reflect magnitude-descending sort with tie-break by event_at
+    ordered_by_mag_rank = sorted(major, key=lambda e: e["removal_order_magnitude"])
+    mags = [ev["usgs_mag"] for ev in ordered_by_mag_rank]
+    for i in range(len(mags) - 1):
+        assert mags[i] >= mags[i + 1], (
+            f"removal_order_magnitude not descending: position {i} mag={mags[i]} "
+            f"< position {i+1} mag={mags[i+1]}"
+        )
+    # Check tie-breaking: events with same magnitude should be ordered by event_at ascending
+    for i in range(len(ordered_by_mag_rank) - 1):
+        ev_a = ordered_by_mag_rank[i]
+        ev_b = ordered_by_mag_rank[i + 1]
+        if ev_a["usgs_mag"] == ev_b["usgs_mag"]:
+            assert ev_a["event_at"] <= ev_b["event_at"], (
+                f"Tie in magnitude {ev_a['usgs_mag']}: event {ev_a['usgs_id']} at "
+                f"{ev_a['event_at']} should precede {ev_b['usgs_id']} at {ev_b['event_at']}"
+            )
 
 
 def test_removal_monotonic(results) -> None:
@@ -138,8 +171,12 @@ def test_removal_monotonic(results) -> None:
         "raw_reas": 9210,
         "mainshock_gk": 5883,
         "mainshock_reas": 8265,
+        "raw_gk_chron": 9210,
+        "raw_reas_chron": 9210,
+        "mainshock_gk_chron": 5883,
+        "mainshock_reas_chron": 8265,
     }
-    for run_key in RUN_KEYS:
+    for run_key in ALL_RUN_KEYS:
         steps = results["runs"][run_key]["steps"]
         n_vals = [s["n_remaining"] for s in steps]
 
@@ -165,10 +202,14 @@ def test_step0_matches_full_catalog_stats(
         "raw_reas": raw_df,
         "mainshock_gk": gk_ms_df,
         "mainshock_reas": reas_ms_df,
+        "raw_gk_chron": raw_df,
+        "raw_reas_chron": raw_df,
+        "mainshock_gk_chron": gk_ms_df,
+        "mainshock_reas_chron": reas_ms_df,
     }
 
     tol = 1e-6
-    for run_key in RUN_KEYS:
+    for run_key in ALL_RUN_KEYS:
         df = base_dfs[run_key]
         phases = df["phase"].values
         n = len(phases)
@@ -189,7 +230,7 @@ def test_step0_matches_full_catalog_stats(
 
 def test_chi2_bounds(results) -> None:
     """Assert chi2 >= 0 and p-value in [0.0, 1.0] for all steps and runs."""
-    for run_key in RUN_KEYS:
+    for run_key in ALL_RUN_KEYS:
         for step in results["runs"][run_key]["steps"]:
             stats = step["stats"]
             chi2 = stats["chi2_k24"]
@@ -204,7 +245,7 @@ def test_chi2_bounds(results) -> None:
 
 def test_cramers_v_bounds(results) -> None:
     """Assert Cramér's V >= 0 for all steps and runs."""
-    for run_key in RUN_KEYS:
+    for run_key in ALL_RUN_KEYS:
         for step in results["runs"][run_key]["steps"]:
             v = step["stats"]["cramers_v"]
             if v is not None:
@@ -215,7 +256,7 @@ def test_cramers_v_bounds(results) -> None:
 
 def test_interval_z_type(results) -> None:
     """Assert interval z-score fields are float-convertible for all steps."""
-    for run_key in RUN_KEYS:
+    for run_key in ALL_RUN_KEYS:
         for step in results["runs"][run_key]["steps"]:
             stats = step["stats"]
             for interval_key in ("interval_1_z", "interval_2_z", "interval_3_z"):
@@ -230,14 +271,12 @@ def test_parent_id_removal(raw_df, gk_as_df, results) -> None:
     step1 = results["runs"]["raw_gk"]["steps"][1]
     removed_event_id = step1["event_removed"]["usgs_id"]
 
-    # The major event itself must not appear in the raw catalog's phase array after step 1
-    # We reconstruct the remaining set by noting n_remaining
-    n_remaining = step1["n_remaining"]
     # Get G-K aftershocks for this event
     attributed_ids = set(gk_as_df[gk_as_df["parent_id"] == removed_event_id]["usgs_id"].tolist())
     removal_set = {removed_event_id} | attributed_ids
 
     remaining_df = raw_df[~raw_df["usgs_id"].isin(removal_set)]
+    n_remaining = step1["n_remaining"]
     assert len(remaining_df) == n_remaining, (
         f"raw_gk step 1: expected {n_remaining} remaining, got {len(remaining_df)}"
     )
@@ -257,8 +296,8 @@ def test_parent_id_removal(raw_df, gk_as_df, results) -> None:
 def test_mainshock_only_removal(gk_ms_df, results) -> None:
     """Assert that mainshock_gk step 1 removes exactly one event from the mainshock catalog.
 
-    The first major event (M9.55, 1960 Valdivia) is present as a mainshock in G-K,
-    so n_remaining for mainshock_gk step 1 should equal n_gk_mainshocks - 1.
+    The first major event in magnitude order (M9.55, 1960 Valdivia) is present as a mainshock
+    in G-K, so n_remaining for mainshock_gk step 1 should equal n_gk_mainshocks - 1.
     """
     step1 = results["runs"]["mainshock_gk"]["steps"][1]
     expected_n = len(gk_ms_df) - 1
@@ -294,12 +333,40 @@ def test_sequence_metrics_structure(results) -> None:
             )
 
 
+def test_chronological_order(results) -> None:
+    """Assert removal_order_chronological is present and events are sorted by event_at ascending.
+
+    Also asserts iscgem879134 is absent from major_events.
+    """
+    major = results["major_events"]
+
+    # iscgem879134 must be absent (excluded as aftershock in both algorithms)
+    ids = [ev["usgs_id"] for ev in major]
+    assert "iscgem879134" not in ids, (
+        "iscgem879134 must be absent from major_events (aftershock in both algorithms)"
+    )
+
+    # All events must have removal_order_chronological field
+    for ev in major:
+        assert "removal_order_chronological" in ev, (
+            f"Event {ev['usgs_id']} missing removal_order_chronological"
+        )
+
+    # Events ordered by removal_order_chronological must be sorted by event_at ascending
+    ordered_chron = sorted(major, key=lambda e: e["removal_order_chronological"])
+    for i in range(len(ordered_chron) - 1):
+        assert ordered_chron[i]["event_at"] <= ordered_chron[i + 1]["event_at"], (
+            f"Chronological order violated at position {i}: "
+            f"{ordered_chron[i]['event_at']} > {ordered_chron[i+1]['event_at']}"
+        )
+
+
 def test_results_json_completeness(results) -> None:
-    """Assert all four run keys are present and each has the correct number of steps."""
+    """Assert all eight run keys are present and each has the correct number of steps."""
     n_major = len(results["major_events"])
     expected_steps = n_major + 1  # baseline + one per removal
 
-    for run_key in RUN_KEYS:
+    for run_key in ALL_RUN_KEYS:
         assert run_key in results["runs"], f"Run key '{run_key}' missing from results"
         actual_steps = len(results["runs"][run_key]["steps"])
         assert actual_steps == expected_steps, (
