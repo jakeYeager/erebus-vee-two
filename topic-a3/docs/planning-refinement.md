@@ -16,11 +16,11 @@ Each case includes its source case reference(s), the gap or concern it addresses
 
 ## Case Table
 
-| Series | Case ID | Title | Source Case(s) | Origin |
-| ------ | ------- | ----- | -------------- | ------ |
-| A | A3.A1 | Aftershock Phase-Preference Characterization | A2.A4 Sub-C | Evaluation gap |
-| A | A3.A2 | Aftershock Periodicity Analysis (Schuster/MFPA) | A2.A1, A2.A4 | Evaluation gap + planning-initial |
-| A | A3.A3 | Phase-Aware Declustering Methodology | A2.A4 note | Console summary gap |
+| Series | Case ID | Title | Source Case(s) | Origin | Status |
+| ------ | ------- | ----- | -------------- | ------ | ------ |
+| A | A3.A1 | Aftershock Phase-Preference Characterization | A2.A4 Sub-C | Evaluation gap | **Abandoned** |
+| A | A3.A2 | Stratified Schuster/MFPA Periodicity Audit | A2.A1, A2.A4 | Evaluation gap + planning-initial | **Reframed** |
+| A | A3.A3 | Phase-Concentration Audit | A2.A4 note | Console summary gap | Complete |
 | B | A3.B1 | Rolling-Window Chi-Square Repeat | A2.B6 | Evaluation gap |
 | B | A3.B2 | Hemisphere Stratification Refinement | A2.B1 | Console summary gap + planning-initial |
 | B | A3.B3 | Ocean/Coast Sequential Threshold Sensitivity | A2.B2 | Evaluation gap + planning-initial |
@@ -40,8 +40,6 @@ Cases have upstream dependencies that determine execution order. Cases with no d
 | Case | Feeds | Reason |
 | ---- | ----- | ------ |
 | A3.B1 | A3.C2 | A3.C2's major-sequence removal targets are sharpened by A3.B1's interval-level temporal tracking (which years and intervals are non-stationary) |
-| A3.C2 | A3.A1 | A3.A1 benefits from A3.C2's sequence identification and handling results before characterizing aftershock phase preferences |
-| A3.A1 | A3.A2 | A3.A2 needs A3.A1's aftershock phase distribution before MFPA results are interpretable |
 | A3.B3 | A3.C1 | A3.C1's subduction zone boundary definition is informed by where the signal migrates in A3.B3's threshold sweep |
 | A3.B4 | A3.C1 | A3.C1 needs to know whether the mid-crustal signal is independently real or magnitude-driven before interpreting a subduction zone subset |
 
@@ -59,19 +57,18 @@ Cases have upstream dependencies that determine execution order. Cases with no d
 - **A3.A3** — Exploratory probe; does not block any other case in the current list
 
 **Tier 3 — After Tier 2 completes**
-- **A3.A1** — After A3.C2; most novel A2 finding, run with sequence handling context from A3.C2; gates A3.A2
 - **A3.C1** — After A3.B3 + A3.B4
 
-**Tier 4 — After Tier 3 completes**
-- **A3.A2** — After A3.A1
-
-> **Note:** Unlike A2, where A2.A4 (declustering sensitivity) served as a single-gating prerequisite for all downstream cases, A3 has a sequential foundational chain: A3.B1 → A3.C2 → A3.A1, with independent stratification cases (B2–B5, A3) running in parallel during Tier 2.
+> **Note:** A3.A1 and A3.A2 were abandoned (see case sections below). The A-series chain (A3.C2 → A3.A1 → A3.A2) is dissolved; Tier 3 now contains only A3.C1.
 
 ---
 
 ## A-Series: Analysis Refinements
 
 ### A3.A1: Aftershock Phase-Preference Characterization
+
+> **Status: Abandoned**
+> **Rationale:** Sufficient coverage exists from prior cases to address the core intent. A3.A3's sequence role annotation (Figure 5) directly characterizes aftershock member representation across elevated, suppressed, and neutral bins, and the diffuse result from A3.A3 and A3.C2 resolves the concentration-vs-diffuse question at both event and sequence levels. The remaining unique thread — whether solar-phase clustering in aftershock sequences decays with sequence age (early vs. late within-sequence temporal analysis) — is better suited to a future concentrated "Sequence Topic" where it can be treated as a primary question rather than a sub-test.
 
 **Source:** A2.A4 Sub-C
 
@@ -90,25 +87,27 @@ A2.A4's Sub-analysis C is the most novel finding from all of Topic A2 — all th
 
 ---
 
-### A3.A2: Aftershock Periodicity Analysis (Schuster/MFPA)
+### A3.A2: Stratified Schuster/MFPA Periodicity Audit
 
-**Source:** A2.A1, A2.A4; see also planning-initial A2.A1 comparitive questions
+> **Status: Reframed** (previously "Aftershock Periodicity Analysis (Schuster/MFPA)")
+> **Rationale:** The A3.A1 dependency is dissolved. The aftershock population focus is dropped; the case is reframed as a stratified periodicity audit using signal-location information from A3.B3/B4, hemisphere offset from A3.B2, and oscillation structure from A3.A3 to generate four concrete sub-tests. See `topic-a3/cases/case-a3-a2-details.md` for full reframing rationale and sub-test design.
+
+**Source:** A2.A1
 
 **Gap or concern:**
-A2.A1 ran the Schuster spectrum and MFPA analysis exclusively on mainshock catalogs. Given A2.A4 Sub-C's finding that aftershock populations carry stronger solar-phase signals, running this analysis on aftershock populations is a direct cross-case validation that A2.A1 cannot currently provide. Two unresolved tensions also emerge from A2.A1:
+A2.A1 ran the Schuster spectrum and MFPA exclusively on the unsegmented full catalog. Two unresolved tensions remain from that analysis:
 
-1. **Interval 1 contradiction:** A2.A1 identifies the ~75.6-day quarter-year period as the strongest robust MFPA detection, and this aligns with Interval 1 (March equinox). But A2.A4.4.2 shows Interval 1 does not survive post-declustering at k=24 under any method. These two analyses need direct comparative treatment.
+1. **Interval 1 contradiction:** A2.A1 identifies the ~75.6-day quarter-year period as the strongest robust MFPA detection, aligning with Interval 1 (March equinox). But A2.A4.4.2 shows Interval 1 does not survive post-declustering at k=24. These two analyses were never directly reconciled in the periodicity domain.
 
-2. **Structural improvements pending from planning-initial:** More bootstrap replicates for better resolution; threshold sensitivity tests at 3-day and 7-day cluster correction windows; Bonferroni or FDR correction applied post-hoc.
+2. **Structural improvements deferred from planning-initial:** Bootstrap replicates, FDR correction, and cluster-window sensitivity (3-day vs. 7-day) were flagged but not applied in A2.A1.
 
-**Intent:** Run the full A2.A1 framework (Schuster spectrum + MFPA + cluster correction) on aftershock populations from all three declustering methods. Compare resulting periodicity structure to the mainshock results to determine whether the 75.6-day quarter-year period is an aftershock artifact, a mainshock artifact, or genuinely present in both populations. Apply structural improvements (bootstrap replicates, threshold sensitivity, multiple comparison correction) to the full analysis.
+The Tier 2 cases add three new testable predictions that A2.A1 could not address: (a) the signal-bearing stratum (B3+B4) should show stronger periodicity detections than the remainder; (b) NH and SH strata should show different phase angles for the half-year period consistent with B2's ~5-month offset; (c) A3.A3's symmetric oscillation predicts both the ~91.25-day and ~182.5-day periods should be detectable, with relative strength indicating whether the mechanism is a single equinox pulse or a full suppression/release cycle.
 
-**Data source requirements:** Sequence-enriched aftershock catalogs (G-K, Reasenberg, A1b) are **suggested** — `parent_id` enables correct stratification of the aftershock population by parent event, and `delta_t_sec` enables temporal position within sequence as an optional secondary variable (e.g., testing whether the periodicity signal shifts between early and late aftershocks within sequences).
+**Intent:** Apply Schuster spectrum and MFPA to the full catalog and four strata (signal-bearing = continental × mid-crustal; NH; SH; non-signal-bearing remainder). Test whether the ~75.6-day and ~182.5-day periods are consistent across strata, whether NH/SH show different phase angles, and whether the Interval 1 contradiction is visible in the periodicity domain. Apply structural improvements throughout.
 
-**Open questions:**
-- How many additional bootstrap replicates are warranted? (Current: assess from A2.A1 spec)
-- Should FDR correction use Benjamini-Hochberg or a more conservative method?
-- Does the 3-day vs. 7-day cluster correction threshold materially change the 329× inflation finding from A2.A1?
+**Data source requirements:** Full ISC-GEM catalog with solar phase values, GSHHG tectonic classification, and G-K mainshock/aftershock catalogs for Sub-test 4 declustering comparison.
+
+**Open questions:** All resolved — see `topic-a3/cases/case-a3-a2-details.md`.
 
 ---
 

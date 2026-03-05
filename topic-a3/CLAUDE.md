@@ -21,9 +21,9 @@ Due to the iterative review process of the cases, as compared to other topics, t
 | B2   | Complete | Hemisphere Stratification Refinement                         |
 | B5   | Complete | Corrected Null-Distribution Geometric Variable Test          |
 | A3   | Complete | Phase-Concentration Audit                                    |
-| A1   | Planning | Aftershock Phase-Preference Characterization                 |
+| A1   | Abandoned | Aftershock Phase-Preference Characterization                |
 | C1   | Planning | Subduction Zone Subset Test                                  |
-| A2   | Planning | Aftershock Periodicity Analysis (Schuster/MFPA)              |
+| A2   | Planning  | Stratified Schuster/MFPA Periodicity Audit                  |
 
 
 ### Execution Tiers
@@ -32,21 +32,18 @@ Due to the iterative review process of the cases, as compared to other topics, t
 - **A3.B1** — Interval-level stationarity tracking; provides interpretive context for B2/B3/B4 and gates A3.C2
 
 **Tier 2 — After Tier 1; independent cases may run alongside A3.C2**
-- **A3.C2** — After A3.B1; sequence identification and handling results inform A3.A1
+- **A3.C2** — After A3.B1
 - **A3.B3** — Standalone; needed for A3.C1
 - **A3.B4** — Standalone; needed for A3.C1
 - **A3.B2** — Standalone; A3.B1 results provide interpretive context but do not block it
 - **A3.B5** — Standalone methodological correction
-- **A3.A3** — Exploratory probe; does not block any other case in the current list
+- **A3.A3** — Exploratory probe
 
 **Tier 3 — After Tier 2 completes**
-- **A3.A1** — After A3.C2; most novel A2 finding, run with sequence handling context from A3.C2; gates A3.A2
 - **A3.C1** — After A3.B3 + A3.B4
+- **A3.A2** — Standalone (A3.A1 dependency dissolved by reframe); informed by B2/B3/B4/A3 results
 
-**Tier 4 — After Tier 3 completes**
-- **A3.A2** — After A3.A1
-
-> **Note:** Unlike A2, where A2.A4 (declustering sensitivity) served as a single-gating prerequisite for all downstream cases, A3 has a sequential foundational chain: A3.B1 → A3.C2 → A3.A1, with independent stratification cases (B2–B5, A3) running in parallel during Tier 2.
+> **Note:** A3.A1 was abandoned — prior cases (A3.A3, A3.C2) provided sufficient coverage of the concentration-vs-diffuse and aftershock phase questions. Aftershock temporal decay analysis is deferred to a future Sequence Topic. A3.A2 was reframed as a stratified Schuster/MFPA periodicity audit; the aftershock focus and A3.A1 dependency are both dropped.
 
 
 ## Data Sources
