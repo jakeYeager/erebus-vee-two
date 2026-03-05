@@ -18,7 +18,7 @@ Due to the iterative review process of the cases, as compared to other topics, t
 | C2   | Complete | Targeted Major Sequence Phased Declustering Test             |
 | B3   | Complete | Ocean/Coast Sequential Threshold Sensitivity                 |
 | B4   | Complete | Depth × Magnitude Two-Way Stratification with Moho Isolation |
-| B2   | Planning | Hemisphere Stratification Refinement                         |
+| B2   | Complete | Hemisphere Stratification Refinement                         |
 | B5   | Planning | Corrected Null-Distribution Geometric Variable Test          |
 | A3   | Planning | Phase-Aware Declustering Methodology                         |
 | A1   | Planning | Aftershock Phase-Preference Characterization                 |

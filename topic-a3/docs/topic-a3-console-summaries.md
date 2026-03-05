@@ -81,3 +81,24 @@ One implementation note: the agent stored n_sub_boundary_points as the SUB-only 
 ✻ Cooked for 11m 42s
 
 ---
+
+⏺ run-case(Run case A3.B2)         
+  ⎿  Done (19 tool uses · 87.7k tokens · 7m 19s)
+
+⏺ 15/15 tests passed. Key findings:
+
+**Catalog sizes:** Full catalog NH=4,429, SH=4,781 (SH slightly larger — more oceanic character).
+
+**Sub-test 1 — Tectonic-matched hemisphere:** Continental is the only class achieving both-hemisphere significance (NH p=0.020, SH p=0.0022). Transitional and oceanic NH are significant, but their SH counterparts are not. G-K declustering eliminates all cells; Reasenberg preserves NH transitional only.
+
+**Sub-test 2 — Mid-crustal split:** Both NH (p=2.0×10⁻⁹) and SH (p=1.7×10⁻³) are independently significant — the mid-crustal signal exists in both hemispheres. NH is  notably stronger (V=0.040 vs. V=0.031). A3.B4 anchor χ²≈85.48 reproduced within 0.001.
+
+**Sub-test 3 — Phase alignment:** All 6 significant pairs classify as "offset" — NH peaks cluster at phase ≈0.229 (late February), SH peaks at ≈0.646 (mid-August). The ~0.4 phase offset is geometrically ambiguous between symmetric solar-geometric and hemisphere-reversed loading.
+                                               
+**Sub-test 4 — Interval 1 SH threshold:** Overlap fraction = 0.500 for both all-SH and continental-SH at all four thresholds — no classification flip. Interval 1 is "present" in SH under the updated criterion, which departs from A2.B1's threshold-sensitive absence characterization. Likely a methodology difference in elevation criterion.
+
+**Notable edge case:** The transitional/NH/full oceanic pair's phase delta lands at exactly −0.083 — right at the in-phase/offset boundary, classified as offset by strict < comparison.
+
+Ready to commit?
+
+✻ Baked for 8m 5s
