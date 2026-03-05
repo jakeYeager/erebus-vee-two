@@ -12,41 +12,6 @@ This document proposes cases for Topic A3 based on a review of all Topic A2 cons
 
 Each case includes its source case reference(s), the gap or concern it addresses, and open data/methodology questions to resolve before case spec writing.
 
-## Data Pipeline Changes - Sequence Paradigm
-
-To support the descriptive inquiry into the behavior of clusters and sequence event trains new columns have been added to declustered datasets of mainshocks and aftershocks per the declustering algorithm. This applies to all algorithm declustered datasets available to this topic A3.
-
-### Aftershock output column expectations
-
-The aftershock CSV retains all input columns plus four attribution columns appended at the end (no change from aftershock datasets common in topic A2):
-
-| Column             | Description                                                                    |
-| ------------------ | ------------------------------------------------------------------------------ |
-| `parent_id`        | `usgs_id` of the mainshock whose window claimed this event                     |
-| `parent_magnitude` | Magnitude of the parent mainshock                                              |
-| `delta_t_sec`      | Signed elapsed seconds from the parent to this event (negative for foreshocks) |
-| `delta_dist_km`    | Great-circle distance in km between this event and its parent                  |
-
-
-### Mainshock output columns
-
-The mainshock CSV retains all input columns plus four summary columns appended at the end:
-
-| Column             | Description                                                                           |
-| ------------------ | ------------------------------------------------------------------------------------- |
-| `foreshock_count`  | Number of claimed events with `delta_t_sec < 0` (occurred before the mainshock)       |
-| `aftershock_count` | Number of claimed events with `delta_t_sec >= 0` (occurred at or after the mainshock) |
-| `window_secs`      | Maximum `\|delta_t_sec\|` observed across all claimed events (seconds)                |
-| `window_km`        | Maximum `delta_dist_km` observed across all claimed events (km)                       |
-
-`window_secs` and `window_km` reflect the observed maximum temporal and spatial reach across all events claimed by that mainshock. For the G-K formula this equals the algorithm's theoretical window at the mainshock's magnitude. Mainshocks with no claimed events have `window_secs = 0` and `window_km = 0`.
-
-
-**G-K window overlap behavior:** When two mainshock windows overlap and both could claim the same event, the parent is the mainshock with the smallest `|delta_t_sec|` (temporal proximity takes priority over spatial proximity).
-
-**Reasenberg window overlap behavior:** For Reasenberg, each aftershock's parent is the highest-magnitude event in its cluster; no tie-breaking is required since each event belongs to exactly one cluster. `window_secs` and `window_km` on each mainshock row report the actual maximum temporal and spatial reach observed across its claimed events — Reasenberg's interaction radius and adaptive lookback window vary dynamically, so these observed maximums provide the most meaningful per-mainshock footprint.
-
-
 ---
 
 ## Case Table
