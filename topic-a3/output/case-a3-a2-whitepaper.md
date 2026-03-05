@@ -2,7 +2,7 @@
 
 **Document Information**
 - Author: Jake Yeager
-- Version: 1.1
+- Version: 1.2
 - Date: March 5, 2026
 
 ---
@@ -90,9 +90,9 @@ The top MFPA detections after FDR correction in the full catalog are tabulated b
 
 The two highest-power detections (~60.5d and ~243d) are approximately in a 1:4 harmonic relationship (60.5 × 4 = 242d), suggesting these may reflect the same underlying structure. The ~295d detection has no obvious harmonic relationship to the others.
 
-**Data inquiry — ~4.7d detection:** The ~4.7-day period is shorter than typical aftershock cluster windows (G-K windows for M6+ are on the order of hundreds of days spatially, but the 1-day temporal cluster threshold used here may not fully suppress events separated by 2–4 days within the same sequence). This detection warrants inspection of whether it disappears under the 7-day cluster window. If it does, it is a clustering artifact; if it persists, it may reflect a genuine short-interval seismicity pattern.
+**Data inquiry — ~4.7d detection:** The Schuster/MFPA test operates on `event_time_days` — absolute time since 1950-01-01 — and asks whether events cluster at a consistent position within every T-day window. A ~4.7-day detection means events recur at a consistent phase within every 4.7-day cycle. The 1-day cluster threshold suppresses events within 1 day of each other, but aftershock sequences frequently produce inter-event gaps of 2–5 days that survive this threshold and would contribute to a short-period Schuster signal. This detection should be compared against the 7-day cluster window result: if it disappears at 7 days, the source is aftershock clustering not fully removed by the 1-day threshold; if it persists, it reflects a genuine short-interval recurrence pattern in the catalog.
 
-**Data inquiry — ~344d detection:** The ~344-day period is close to but distinctly shorter than the Julian year constant (365.25d). A ~344d periodicity could indicate that the catalog's dominant annual structure has a true period slightly shorter than 365.25d, or that the Julian year constant introduces a systematic phase drift over the 72-year catalog. The ~21-day shortfall (365.25 − 344 ≈ 21d) accumulated over 72 years would produce a ~4-year aliasing cycle — worth examining in the rolling-window context of A3.B1. Alternatively, if there is a year-boundary edge effect in the `solar_secs` computation (events near December 31 mapping near phase 0 rather than phase ~1), MFPA could detect an artifact near the annual period. This is flagged as a data inquiry for future investigation.
+**Data inquiry — ~344d detection:** A ~344-day Schuster/MFPA detection means events tend to recur at a consistent phase within every 344-day window — a near-annual but sub-annual inter-event recurrence pattern. This is an empirical statement about the catalog's internal timing structure and is independent of the solar-year phase analysis (which uses `solar_secs`, not `event_time_days`). There is no calendar wrap-around or year-boundary artifact here: `event_time_days` is monotonically increasing with no modular structure. The ~344d detection is a genuine periodicity finding that warrants further investigation — it may reflect a real near-annual recurrence slightly shorter than the calendar year, or a harmonic relationship with other detected periods in the catalog.
 
 **Cluster-robust Schuster — full catalog:**
 
@@ -230,10 +230,11 @@ The oscillation symmetry question (quarter-year vs. half-year power ratio = 1.56
 
 ## 7. Limitations
 
+- **Unimodal sensitivity of Schuster/MFPA vs. multi-modal sensitivity of chi-square:** The Schuster test is most powerful when events cluster at a *single* preferred phase per cycle. The ISC-GEM solar-phase distribution has a multi-modal structure — elevated bins at both March and August equinox phases, with suppressed bins at solstice phases. With two elevated peaks roughly half a year apart, their Schuster vectors partially cancel before summing, causing the test to underestimate the signal strength that chi-square (k=24) detects directly as bin-count deviations. This is the primary methodological reason the Schuster/MFPA results and the chi-square results can simultaneously be valid: they are sensitive to different distributional structures. Chi-square captures any non-uniform pattern; Schuster is optimized for unimodal concentration.
 - The MFPA bootstrap null uses uniform random phases (correct for periodicity testing) but does not preserve catalog spatial or temporal structure. Residual temporal clustering not captured by the 1-day cluster window may affect MFPA significance levels, which is the most likely explanation for the ~4.7d detection.
 - The signal-bearing stratum (n = 2,219) has a high multiple-testing burden (200 periods) under BH correction; the annual period FDR detection in this stratum should be interpreted in the context of the ~7-fold smaller sample relative to the full catalog.
 - Dominant phase angles from non-significant spectral peaks (p_cluster_robust >> 0.05) are noise-dominated circular means and are explicitly unreliable. Section 4.3 and 4.5 phase comparisons are reported for completeness but should not be interpreted as physically meaningful.
-- The ~344d and ~4.7d detections are flagged as data inquiry items. Until their source is confirmed, they should not be interpreted as evidence for specific physical mechanisms.
+- The ~344d and ~4.7d detections are flagged as data inquiry items about the catalog's internal inter-event timing structure. They are independent of the solar-year phase analysis and should not be interpreted as evidence for specific physical mechanisms until their source is confirmed.
 - The 329× vs. 6.2× inflation factor discrepancy with A2.A1 is unresolved. All A3.A2 results should be interpreted within the A3.A2 implementation; direct comparison to A2.A1 magnitude claims is not justified until the implementations are reconciled.
 
 ---
@@ -255,5 +256,5 @@ Yeager, J. (2026). A3.A3: Phase-Concentration Audit. erebus-vee-two internal rep
 ---
 
 **Generation Details**
-- Version: 1.1
+- Version: 1.2
 - Generated with: Claude Code (Claude Sonnet 4.6)
