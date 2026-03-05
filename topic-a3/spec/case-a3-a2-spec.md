@@ -290,6 +290,26 @@ Compute inflation factor: ratio of periods significant at p_standard < 0.05 to p
 
 Report top-10 detected periods by MFPA power; for each: period_days, power, p_mfpa, fdr_significant, dominant_phase_fraction.
 
+**Sub-test 1 extension — Suppression phase characterization:**
+
+The Schuster statistic's dominant phase angle identifies where events *cluster*. The anti-dominant phase — `anti_dominant_phase = (dominant_phase_fraction + 0.5) % 1.0` — identifies where events are *suppressed* within each detected period. For each FDR-significant period in the full catalog, compute the anti-dominant phase and cross-reference against A3.A3's empirically identified suppressed bins.
+
+A3.A3 suppressed-bin phase centers (bin midpoints at k=24):
+```python
+A3A3_SUPPRESSED_BINS = [2, 8, 10, 11, 12, 13, 16, 18, 22]
+# Phase center of bin j: (j + 0.5) / 24
+# Permutation-significant suppressed: bins 2 (0.104), 12 (0.521), 13 (0.563), 16 (0.688)
+A3A3_PERM_SIG_SUPPRESSED_PHASES = [0.104, 0.521, 0.563, 0.688]
+```
+
+For the **half-year period (182.5d)** specifically, compare the anti-dominant phase to:
+- Naive solstice prediction: June solstice at annual phase ~0.46 (DOY ~172), December solstice at ~0.96 (DOY ~355)
+- A3.A3 empirical deep suppression: bins 12–13, annual phase ~0.521–0.563 (~DOY 190–205, ~July)
+
+Compute alignment score: minimum angular distance between the anti-dominant phase and each A3.A3 permutation-significant suppressed bin center. Report whether the periodicity-domain trough location is consistent with the chi-square-domain suppression location (|distance| < 1/(2*k) = 0.021, i.e., within half a bin width), or falls at the naive solstice phase instead.
+
+Also record the **quarter-year vs. half-year power ratio**: `power_ratio = mfpa_power_half_year / mfpa_power_quarter_year`. A ratio ≥ 1.0 indicates the symmetric oscillation (both peaks AND troughs contributing equally) is at least as strong as the single-peak signal. A ratio < 1.0 indicates one equinox peak dominates and the suppression is weaker or asymmetric.
+
 ---
 
 ## 6. Sub-test 2 — Signal-bearing vs. non-signal-bearing stratification
@@ -373,7 +393,22 @@ Interpretive question: If the ~75.6-day period is detected in full catalog and G
     "explicit_period_tests": {"quarter_year_756": {...}, "quarter_year_912": {...}, "half_year": {...}, "annual": {...}},
     "inflation_factor_1day": float,
     "inflation_factor_7day": float,
-    "top10_mfpa_periods": [{"period_days": float, "power": float, "p_mfpa": float, "fdr_significant": bool, "dominant_phase_fraction": float}]
+    "top10_mfpa_periods": [{"period_days": float, "power": float, "p_mfpa": float, "fdr_significant": bool, "dominant_phase_fraction": float}],
+    "suppression_characterization": {
+      "half_year_dominant_phase": float,
+      "half_year_anti_dominant_phase": float,
+      "half_year_anti_phase_nearest_a3a3_suppressed_bin": int,
+      "half_year_anti_phase_alignment_distance": float,
+      "half_year_anti_phase_consistent_with_chi2_suppression": bool,
+      "half_year_naive_solstice_phase_june": 0.46,
+      "half_year_naive_solstice_distance": float,
+      "quarter_year_vs_half_year_power_ratio": float,
+      "oscillation_symmetric": bool,
+      "fdr_sig_periods_suppression": [
+        {"period_days": float, "dominant_phase_fraction": float, "anti_dominant_phase": float,
+         "nearest_a3a3_suppressed_bin": int, "alignment_distance": float}
+      ]
+    }
   },
   "subtest_2_stratified": {
     "signal_bearing": {
@@ -414,6 +449,9 @@ Interpretive question: If the ~75.6-day period is detected in full catalog and G
     "quarter_year_signal_bearing_stronger": bool,
     "half_year_detected_full_catalog": bool,
     "quarter_year_vs_half_year_dominant": str,
+    "quarter_year_vs_half_year_power_ratio": float,
+    "oscillation_symmetric": bool,
+    "half_year_trough_consistent_with_chi2_suppression": bool,
     "nh_sh_phase_delta_days": float,
     "nh_sh_closer_to_antiphase": bool,
     "interval1_contradiction_resolved": bool,
@@ -535,7 +573,7 @@ Standard header (Author: Jake Yeager, Version: 1.0, Date: March 5, 2026) and foo
    - 3.8 Disclose: cluster-robust Schuster modification uses 1-day inter-event threshold (default); 7-day sensitivity also reported
 
 4. **Results**
-   - 4.1 Baseline spectrum: embed Figure 1; state cluster-window inflation factors; compare to A2.A1's 329× result; state top detected periods with FDR-corrected significance
+   - 4.1 Baseline spectrum and suppression characterization: embed Figure 1; state cluster-window inflation factors; compare to A2.A1's 329× result; state top detected periods with FDR-corrected significance; report the anti-dominant phase for the half-year period and whether it aligns with A3.A3's permutation-significant suppressed bins (chi-square domain trough location) or with the naive June solstice phase; state the quarter-year vs. half-year power ratio and whether the symmetric oscillation interpretation (ratio ≥ 1.0) is supported
    - 4.2 Stratified MFPA: embed Figure 2; compare signal-bearing vs. non-signal-bearing detections at quarter-year and half-year periods; state whether stratification sharpens or diminishes the detection
    - 4.3 NH/SH phase angle: embed Figure 3; state observed phase offset for half-year period in days; compare to anti-phase reference (91.25d) and A3.B2 reference (~36d); state whether MFPA detects the half-year period independently in each hemisphere
    - 4.4 Declustering sensitivity: embed Figure 4; state whether the ~75.6-day detection survives G-K mainshock declustering; state whether it is stronger in G-K aftershocks; state whether the Interval 1 contradiction is resolved
@@ -544,7 +582,7 @@ Standard header (Author: Jake Yeager, Version: 1.0, Date: March 5, 2026) and foo
 5. **Cross-Topic Comparison**
    - **Schuster Spectrum and MFPA Periodicity Analysis (A2.A1):** A2.A1 detected the ~75.6-day quarter-year period using MFPA on the unsegmented full catalog. A3.A2 repeats this with structural improvements and stratification, directly resolving whether that detection is a signal-bearing-stratum feature or a catalog-wide artifact.
    - **Hemisphere Stratification Refinement (A3.B2):** A3.B2 found a ~5-month NH/SH peak offset rather than the anti-phase predicted by hemisphere-specific hydrological loading. A3.A2 Sub-test 3 directly tests whether this offset is visible in the periodicity domain as a difference in NH vs. SH dominant phase angles for the half-year period.
-   - **Phase-Concentration Audit (A3.A3):** A3.A3 established a symmetric oscillation with permutation-significant suppressed bins (2, 12, 13, 16) and elevated bins (5, 6, 7, 15, 21). The half-year period in the Schuster/MFPA domain is the direct frequency-domain counterpart of this time-domain oscillation. Agreement between the two domains strengthens the oscillation interpretation.
+   - **Phase-Concentration Audit (A3.A3):** A3.A3 established a symmetric oscillation with permutation-significant suppressed bins (2, 12, 13, 16, annual phase ~0.10–0.69) and elevated bins (5, 6, 7, 15, 21). The half-year period's anti-dominant phase (trough location in the frequency domain) is directly compared to A3.A3's suppressed bin centers in the Sub-test 1 extension. Alignment between the periodicity-domain trough and the chi-square-domain suppression bins would confirm that both methods are detecting the same underlying oscillation. A mismatch would indicate that the frequency-domain and phase-binning methods are sensitive to different aspects of the distribution.
    - **Corrected Null-Distribution Geometric Variable Test (A3.B5):** A3.B5 identified declination_rate as the top-ranked variable with its peak at DOY ~80 (Interval 1). If the ~75.6-day quarter-year period in the Schuster/MFPA domain is the signal-bearing stratum's dominant period, it directly implicates the declination rate cycle as the driving periodicity.
 
 6. **Interpretation**: state whether the periodicity evidence supports a single equinox pulse (quarter-year dominant) or a full oscillation cycle (half-year comparable or dominant); state whether NH/SH phase angle comparison is consistent with A3.B2's offset finding or with anti-phase hydrological loading; state whether the Interval 1 contradiction is resolved; maintain objectivity and guard against over-interpreting marginal detections.
@@ -569,6 +607,6 @@ After all outputs generated and tests pass:
   ```
   ## Case A3.A2: Stratified Schuster/MFPA Periodicity Audit
   **Status:** [Complete | Blocked | Abandoned]
-  **Key results:** [quarter-year vs. half-year dominant period; signal-bearing stratum stronger T/F; NH/SH phase delta days; closer to antiphase T/F; Interval 1 contradiction resolved T/F; inflation factor vs A2.A1's 329×]
+  **Key results:** [quarter-year vs. half-year dominant period; power ratio; oscillation symmetric T/F; half-year trough consistent with A3.A3 suppressed bins T/F; signal-bearing stratum stronger T/F; NH/SH phase delta days; closer to antiphase T/F; Interval 1 contradiction resolved T/F; inflation factor vs A2.A1's 329×]
   ```
 - Update Case A2 status from `Planning` to `Complete` (or `Blocked`/`Abandoned`) in `topic-a3/CLAUDE.md` Case Table
