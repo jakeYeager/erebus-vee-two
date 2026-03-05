@@ -102,3 +102,38 @@ One implementation note: the agent stored n_sub_boundary_points as the SUB-only 
 Ready to commit?
 
 ✻ Baked for 8m 5s
+
+---
+
+run-case(Run case A3.B5)
+  ⎿  Done (21 tool uses · 74.3k tokens · 7m 30s)
+  (ctrl+o to expand)
+
+⏺ 15/15 tests passed. Key findings:
+
+**The null correction matters enormously.** Uniform-null chi-square values for the non-cyclic variables were 45–80× inflated — A2.B5's results were almost entirely artifacts of the variables' intrinsic temporal non-uniformity. The correction was essential. 
+
+**declination_rate edges out solar_phase after correction:**
+  ┌────────────────────┬────────────────────────┬──────────┐
+  │      Variable      │ Cramér's V (corrected) │    p     │
+  ├────────────────────┼────────────────────────┼──────────┤
+  │ declination_rate   │ 0.0186                 │ 3.6×10⁻⁷ │
+  ├────────────────────┼────────────────────────┼──────────┤                                                  
+  │ solar_phase        │ 0.0181                 │ 1.5×10⁻⁶ │
+  ├────────────────────┼────────────────────────┼──────────┤
+  │ solar_declination  │ —                      │ ns       │
+  ├────────────────────┼────────────────────────┼──────────┤
+  │ earth_sun_distance │ —                      │ ns       │
+  └────────────────────┴────────────────────────┴──────────┘
+
+**The margin is narrow (ΔV ≈ 0.0005)** — enough to note but not to over-interpret.
+
+**Mid-crustal is the strongest stratum** for every variable, with declination_rate reaching V=0.0304 (p=4.8×10⁻¹¹) — consistent with B4.
+
+**A1b Interval 1 alignment confirmed:** The March equinox phase center maps to near-zero declination and maximum positive declination rate (+0.395°/day). The declination_rate bin at that value is elevated in the corrected distribution — variable-level support for the equinox-timing/clamping-release mechanism we discussed. Interval 3 (late November) shows no elevated geometric variable bins. 
+
+**earth_sun_distance loses significance in the continental stratum** specifically — distinguishing it from declination_rate which holds across all strata.
+
+Ready to commit?
+
+✻ Brewed for 8m 13s
