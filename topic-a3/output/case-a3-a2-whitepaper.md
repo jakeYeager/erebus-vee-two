@@ -2,7 +2,7 @@
 
 **Document Information**
 - Author: Jake Yeager
-- Version: 1.2
+- Version: 1.3
 - Date: March 5, 2026
 
 ---
@@ -17,7 +17,7 @@ A3.A2 applies the cluster-robust Schuster spectrum and Modified Fourier Power An
 
 The primary dataset is the ISC-GEM global seismic catalog (post-1950, M ≥ 6.0, n = 9,210), described fully in Topic L3. GSHHG-based tectonic classification (A3.B3 baseline: continental ≤ 50 km from coast, transitional 50–200 km, oceanic > 200 km) was merged on event identifier. G-K declustered catalogs (mainshocks n = 5,883; aftershocks n = 3,327) from the A3 data pipeline provided the declustering sensitivity comparison. Phase normalization follows the Julian year constant (31,557,600 s = 365.25 days) applied to the `solar_secs` column. Event times are expressed as decimal days since 1950-01-01 00:00:00 UTC for spectral analysis.
 
-**Stratum sizes:**
+**Table 1. Stratum sizes.**
 
 | Stratum | n |
 |---|---|
@@ -77,16 +77,16 @@ Both 1-day and 7-day inter-event thresholds are reported to bracket the effect o
 
 The top MFPA detections after FDR correction in the full catalog are tabulated below. All periods are expressed in days, as annual phase fraction (period / 365.25), and as approximate calendar equivalent of the dominant phase.
 
-**Top MFPA detections — full catalog (FDR-corrected):**
+**Table 2. Top MFPA detections — full catalog (FDR-corrected).**
 
-| Rank | Period (days) | Annual fraction | Power | p_mfpa | Dominant phase (annual fraction) | Dominant phase (approx. DOY) |
-|------|--------------|-----------------|-------|--------|----------------------------------|------------------------------|
-| 1 | ~60.5d | 0.166 | 9.50 | <0.001 | — | — |
-| 2 | ~243d | 0.665 | 9.33 | <0.001 | — | — |
-| 3 | ~295d | 0.808 | 8.86 | <0.001 | — | — |
-| 4 | ~4.7d | 0.013 | 8.33 | <0.001 | — | — |
-| 5 | ~344d | 0.942 | 7.16 | <0.001 | — | — |
-| 6 | ~49.9d | 0.137 | 6.71 | <0.001 | — | — |
+| Rank | Period (days) | Annual fraction | Power | p_mfpa | FDR-significant |
+|------|--------------|-----------------|-------|--------|-----------------|
+| 1 | ~60.5d | 0.166 | 9.50 | <0.001 | Yes |
+| 2 | ~243d | 0.665 | 9.33 | <0.001 | Yes |
+| 3 | ~295d | 0.808 | 8.86 | <0.001 | Yes |
+| 4 | ~4.7d | 0.013 | 8.33 | <0.001 | Yes |
+| 5 | ~344d | 0.942 | 7.16 | <0.001 | Yes |
+| 6 | ~49.9d | 0.137 | 6.71 | <0.001 | Yes |
 
 The two highest-power detections (~60.5d and ~243d) are approximately in a 1:4 harmonic relationship (60.5 × 4 = 242d), suggesting these may reflect the same underlying structure. The ~295d detection has no obvious harmonic relationship to the others.
 
@@ -102,7 +102,7 @@ At the 1-day cluster window, the **inflation factor** (ratio of periods signific
 
 The four period targets from prior case predictions are tested here for direct comparison. These periods were not selected from the data — they are externally motivated targets.
 
-**Explicit period tests — full catalog (1-day cluster-robust Schuster):**
+**Table 3. Explicit period tests — full catalog (1-day cluster-robust Schuster).**
 
 | Period | Period (annual fraction) | p_standard | p_cluster_robust | p_mfpa | FDR-significant |
 |--------|--------------------------|-----------|-----------------|--------|----------------|
@@ -117,7 +117,7 @@ None of the four explicit target periods reach significance after cluster-robust
 
 For the half-year period (182.5d), the dominant phase and its trough are characterized below and compared to A3.A3's chi-square-domain suppressed bins.
 
-**Half-year suppression characterization:**
+**Table 4. Half-year suppression characterization.**
 
 | Metric | Value | Unit |
 |--------|-------|------|
@@ -142,7 +142,7 @@ The half-year trough location (mid-December) is inconsistent with both the A3.A3
 
 **Figure 2.** MFPA periodogram for signal-bearing (top) and non-signal-bearing (bottom) strata. Steelblue line: observed MFPA power; dashed/dotted gray lines: p95/p99 thresholds. Light blue fill: region where observed power exceeds p95. Orange triangles: FDR-significant periods.
 
-**Explicit period comparison across strata:**
+**Table 5. Explicit period comparison across strata.**
 
 | Period | Annual fraction | Signal-bearing p_mfpa | Sig. (95%) | Non-signal p_mfpa | Sig. (95%) |
 |--------|-----------------|----------------------|------------|-------------------|------------|
@@ -159,7 +159,7 @@ The annual period (365.25d) is FDR-significant in the signal-bearing stratum (n 
 
 **Figure 3.** NH/SH phase comparison. Top row: dominant phase vectors for the half-year (182.5d) and quarter-year (91.25d) periods. Bottom row: MFPA power at explicit periods for NH vs. SH.
 
-**Half-year period phase offset (NH vs. SH):**
+**Table 6. Half-year period phase offset (NH vs. SH).**
 
 | Metric | Value | Unit |
 |--------|-------|------|
@@ -178,7 +178,7 @@ The observed offset of 9.5 days is substantially smaller than either reference p
 
 **Figure 4.** Cluster-robust Schuster spectrum across three catalog versions: full catalog (top), G-K mainshocks (middle), G-K aftershocks (bottom).
 
-**Explicit period results across catalog versions (p_cluster_robust):**
+**Table 7. Explicit period results across catalog versions (p_cluster_robust).**
 
 | Period | Annual fraction | Full (n=9,210) | GK Mainshocks (n=5,883) | GK Aftershocks (n=3,327) |
 |--------|-----------------|---------------|------------------------|--------------------------|
@@ -194,6 +194,8 @@ The ~75.6-day period (originally detected in A2.A1) is not significant by cluste
 ![Cluster-Window Sensitivity](case-a3-a2-cluster-window.png)
 
 **Figure 5.** Cluster-window sensitivity: standard p-value (gray), 1-day cluster-robust (steelblue solid), and 7-day cluster-robust (steelblue dashed) for the full catalog.
+
+**Table 8. Cluster-window sensitivity — inflation factors.**
 
 | Cluster window | Inflation factor | Periods significant (standard) | Periods significant (cluster-robust) |
 |----------------|-----------------|-------------------------------|--------------------------------------|
@@ -256,5 +258,5 @@ Yeager, J. (2026). A3.A3: Phase-Concentration Audit. erebus-vee-two internal rep
 ---
 
 **Generation Details**
-- Version: 1.2
+- Version: 1.3
 - Generated with: Claude Code (Claude Sonnet 4.6)

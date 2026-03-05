@@ -57,6 +57,10 @@ Use these template header and footers unless otherwise specified:
 
 Any data visualization image should be embedded inline (once) within their referencing section.
 
+## Tables
+
+All tables in a whitepaper must carry a sequentially numbered caption in the format **Table N. Description.** placed immediately above the table. Numbering is document-wide and sequential (Table 1, Table 2, …). Tables should be referenced by their number in surrounding prose where relevant (e.g., "see Table 3").
+
 
 ## Update Version on Content Change
 
