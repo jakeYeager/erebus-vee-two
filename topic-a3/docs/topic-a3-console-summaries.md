@@ -137,3 +137,23 @@ run-case(Run case A3.B5)
 Ready to commit?
 
 ✻ Brewed for 8m 13s
+
+---
+
+⏺ Committed. Results are scientifically interesting — here's the honest read:
+
+**The main unexpected finding: 6.2× vs A2.A1's 329× inflation factor**
+
+A2.A1 found that 329× more periods appeared significant under the standard Schuster test than under cluster-robust correction. This case found only 6.2×. This is a large enough discrepancy to be meaningful — the most likely explanation is that A2.A1 used a shorter cluster window or a different catalog preprocessing step that left more aftershock clustering intact. The cluster-robust correction is doing its job here; the 329× figure in A2.A1 may have reflected uncorrected temporal clustering inflation.
+
+**Quarter-year and half-year periods: non-significant after correction**
+
+Both the ~75.6-day and 182.5-day periods are non-significant under cluster-robust Schuster across all three catalog versions. The MFPA top detections (~60.5d, ~243d, ~295d) don't match the targeted periods. This doesn't contradict the chi-square signal — the chi-square test and the Schuster spectrum are sensitive to different aspects of the distribution — but it does mean the periodicity framing from A2.A1 doesn't replicate cleanly under tighter methodology.
+
+**What this means for the body of work:**
+
+The chi-square signal (k=24 binning) is robust across all Tier 2 cases. The periodicity detection in A2.A1 appears to be methodologically sensitive in a way the chi-square framework is not. That's itself a useful finding — it suggests the signal is better characterized as phase concentration (chi-square domain) than as strict periodicity (frequency domain), which aligns with the oscillation structure A3.A3 established. Worth noting in any future synthesis.
+
+The only remaining Planning case is A3.C1 (Subduction Zone Subset Test).
+
+✻ Crunched for 35s 
