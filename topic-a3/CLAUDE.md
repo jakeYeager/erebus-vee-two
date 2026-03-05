@@ -20,7 +20,7 @@ Due to the iterative review process of the cases, as compared to other topics, t
 | B4   | Complete | Depth × Magnitude Two-Way Stratification with Moho Isolation |
 | B2   | Complete | Hemisphere Stratification Refinement                         |
 | B5   | Complete | Corrected Null-Distribution Geometric Variable Test          |
-| A3   | Planning | Phase-Aware Declustering Methodology                         |
+| A3   | Complete | Phase-Concentration Audit                                    |
 | A1   | Planning | Aftershock Phase-Preference Characterization                 |
 | C1   | Planning | Subduction Zone Subset Test                                  |
 | A2   | Planning | Aftershock Periodicity Analysis (Schuster/MFPA)              |
