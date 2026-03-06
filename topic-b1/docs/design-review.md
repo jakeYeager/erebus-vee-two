@@ -83,3 +83,101 @@ The A2/A3 oscillation framing (equinox elevation + solstice suppression, establi
 A3.A1 (Aftershock Phase-Preference Characterization) was abandoned because A3.A3 and A3.C2 addressed the concentration-vs-diffuse question. However, A3.A1's early/late temporal decay question — does solar-phase clustering within a sequence decay with sequence age? — was explicitly deferred to a future Sequence Topic (see `topic-a3/cases/case-a3-a1-details.md` abandonment rationale). This question maps directly to Research Question 4 above.
 
 A3.A2's ~4.7d, ~60.5d, ~243d, and ~344d period detections provide the empirical timescales for defining what "early" and "late" within a sequence means — replacing the arbitrary `window_secs / 2` midpoint proposed in the original A3.A1 spec with data-grounded thresholds.
+
+---
+
+## Comparison Guidelines
+
+The A2/A3 body of work provides a set of quantitative reference values against which Sequence Topic results can be evaluated. These benchmarks are not pass/fail thresholds — they are interpretive anchors. Results consistent with the benchmarks suggest the sequence data model is capturing the same underlying structure as the event-level analyses. Results that diverge indicate either a genuine data model improvement (signal clarified) or a loss of information (signal degraded or distorted).
+
+### Solar-phase signal strength reference values
+
+These are the primary chi-square and effect-size benchmarks from the event-level analyses at k=24, ISC-GEM full catalog (n=9,210):
+
+| Population | χ² (k=24) | p-value | Cramér's V | Source |
+|---|---|---|---|---|
+| Full catalog (raw) | 69.37 | 1.52×10⁻⁶ | 0.0181 | A2.A1 / A3.B5 |
+| G-K mainshocks only | ~32 | ~0.05 (marginal) | — | A2.A4 Sub-A |
+| Reasenberg mainshocks only | ~33 | ~0.03 (marginal) | — | A2.A4 Sub-A |
+| G-K aftershocks only | ~66–149 | highly significant | — | A2.A4 Sub-C |
+| Mid-crustal band (20–70 km) | 85.48 | 4.02×10⁻⁹ | 0.0285 | A2.B4 / A3.B4 |
+| M ≥ 7.5 only | — | 0.027 | 0.0779 | A2.A3 |
+| Continental × mid-crustal | — | significant | — | A3.B4 |
+
+**Interpretation key for a sequence-level catalog:**
+- If the sequence catalog chi-square falls *below* the G-K mainshock-only level (~32), the data model is losing information relative to naive declustering — a failure mode.
+- If it falls *above* the full catalog raw level (69.37), the model is concentrating signal — a strong positive result.
+- The aftershock finding from A2.A4 Sub-C (aftershock populations carry stronger signal than mainshocks) sets an upper bound expectation: a sequence catalog that includes aftershock-level information within sequences should approach, but likely not exceed, those aftershock-level chi-square values.
+
+### Cramér's V magnitude trend
+
+A2.A3 found a monotonically increasing Cramér's V by magnitude band (Spearman ρ=1.000). In a sequence catalog, the unit of analysis is a sequence (represented by its mainshock magnitude). The magnitude trend should be preserved or steepened if the sequence framing is adding information. A flattening or reversal of the trend would indicate the sequence model is obscuring a magnitude-driven signal.
+
+| Magnitude band | Cramér's V (event-level, A2.A3) | Expected direction in sequence catalog |
+|---|---|---|
+| M 6.0–6.4 | 0.0186 | Baseline |
+| M 6.5–6.9 | ~0.024 | > M 6.0–6.4 |
+| M 7.0–7.4 | ~0.030 | > M 6.5–6.9 |
+| M ≥ 7.5 | 0.0779 | Highest |
+
+### Cluster-robust Schuster inflation factor
+
+A3.A2 measured a 6.2× inflation factor between the standard Schuster p-value and the cluster-robust p-value at the 1-day cluster window. This quantifies how much event-level temporal clustering inflates the nominal significance. In a sequence catalog — where each unit of analysis is already a sequence rather than an individual event — the inflation factor should contract toward 1.0× if the data model correctly captures the natural cluster unit. An inflation factor significantly greater than 6.2× would indicate the sequence catalog still contains within-cluster correlations (cluster windows too short); significantly less than 6.2× indicates the clustering is being correctly accounted for.
+
+**Reference:** A3.A2 cluster-robust Schuster inflation factor = 6.2× (1-day window), 329× reported in A2.A1 (methodological discrepancy unresolved).
+
+### MFPA period replication
+
+The A3.A2 FDR-significant period detections are the primary candidate timescales for the Sequence Topic cluster windows. If a sequence catalog built around these windows reproduces the same periods in a subsequent MFPA scan of sequence initiation times or inter-sequence intervals, that is strong self-consistency evidence. The expected replication hierarchy:
+
+| Period | Power (A3.A2) | Replication priority | Interpretation if reproduced |
+|---|---|---|---|
+| ~60.5d | 9.50 | High | Sequence lifetime or inter-sequence rhythm confirmed at sequence level |
+| ~243d | 9.33 | High | 4× harmonic of ~60.5d; if both reproduced, harmonic structure is real |
+| ~295d | 8.86 | Medium | No obvious harmonic; warrants independent confirmation |
+| ~4.7d | 8.33 | High | Intra-sequence grain; if reproduced in inter-sequence intervals, suggests sequence-to-sequence entrainment |
+| ~344d | 7.16 | High | Near-annual; if reproduced at sequence level, direct link to annual solar signal |
+| ~49.9d | 6.71 | Low | Weaker detection; lower replication priority |
+
+If the ~344d period is reproduced in the distribution of inter-sequence initiation times, that is the most direct possible connection between the sequence data model and the solar signal observed in A2/A3.
+
+### Stationarity benchmark
+
+A2.B6 and A3.B1 both classified the full event-level catalog as non-stationary:
+- Rayleigh significance rate: 38.7% of 10-year rolling windows (threshold: 70% for stationary)
+- Chi-square significance rate: 71% of windows (meets threshold, but overridden by high circular SD)
+- Circular SD of mean phase angles: 84.4° (threshold: ≤ 40° for stationary)
+
+A sequence catalog, if the sequence-level solar signal is more coherent than the event-level signal, should show improvement on at least one of these metrics — ideally a higher chi-square significance rate with a lower circular SD. If the sequence catalog shows *lower* stationarity than the event-level result, the data model is introducing noise.
+
+### Phase structure reference (A1b intervals)
+
+The three elevated solar-phase intervals from Adhoc A1b provide a phase-domain fingerprint for any new analysis to compare against:
+
+| Interval | Phase range | Approximate calendar period |
+|---|---|---|
+| Interval 1 | ~0.1875–0.25 | March equinox (~DOY 69–91) |
+| Interval 2 | ~0.625–0.656 | Mid-August (~DOY 228–240) |
+| Interval 3 | ~0.875–0.917 | Late November (~DOY 319–335) |
+
+A sequence catalog should show mainshock initiation phase preferences consistent with at least Intervals 2 and 3 (most robust across all A2/A3 stratifications). Interval 1 is less stable (absent from SH in A2.B1, inconsistent across declustering methods in A2.A4). Appearance of Interval 1 in a sequence-level analysis would be a notable positive result; absence is expected and not a failure.
+
+### Hemisphere asymmetry benchmark
+
+A3.B2 found that mid-crustal NH and SH signal strengths differ substantially:
+- NH mid-crustal: p=2.0×10⁻⁹
+- SH mid-crustal: p=0.0017
+
+The NH/SH ratio of significance implies the NH signal is roughly 5–6 orders of magnitude stronger by p-value. A sequence catalog that removes tectonic-composition imbalance (as A3.B2 attempted) should narrow this gap if the asymmetry is compositional. If the NH/SH ratio persists at sequence level after tectonic matching, the asymmetry is real and not a sampling artifact — a meaningful finding for mechanism interpretation.
+
+### Summary: what constitutes a well-functioning sequence data model
+
+A sequence data model is performing well if, compared to the event-level baselines above:
+
+1. Solar-phase chi-square signal is *at least as strong* as the declustered mainshock catalogs and ideally approaches the full raw catalog level.
+2. Cramér's V magnitude trend is preserved (monotonically increasing with mainshock magnitude).
+3. Cluster-robust Schuster inflation factor is *lower* than the 6.2× event-level value.
+4. At least one of the A3.A2 MFPA periods (~60.5d, ~243d, ~344d) is reproduced in sequence initiation timing.
+5. Phase preferences for sequence initiation are consistent with A1b Intervals 2 and 3.
+
+Failure on all five criteria simultaneously would indicate the sequence data model is not capturing the solar signal structure seen in Topics A2 and A3 and would require fundamental redesign of cluster window definitions or sequence representation.
