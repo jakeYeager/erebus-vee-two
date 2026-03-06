@@ -1,6 +1,6 @@
 # Case A3.B5: Corrected Null-Distribution Geometric Variable Test
 
-**Status:** Planning
+**Status:** Complete
 
 **Source case:** A2.B5
 **Informed by:** A3.B2 (phase alignment), A3.B3 (tectonic class), A3.B4 (depth localization)

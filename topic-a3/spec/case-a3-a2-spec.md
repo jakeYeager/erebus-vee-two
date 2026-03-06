@@ -1,6 +1,6 @@
 # Case A3.A2: Stratified Schuster/MFPA Periodicity Audit
 
-**Status:** Planning
+**Status:** Complete
 
 **Source case:** A2.A1
 **Informed by:** A3.B2 (NH/SH phase offset), A3.B3 (tectonic classification), A3.B4 (depth bands), A3.A3 (oscillation structure)

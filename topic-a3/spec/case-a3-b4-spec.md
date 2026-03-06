@@ -1,6 +1,6 @@
 # Case A3.B4: Depth × Magnitude Two-Way Stratification with Moho Isolation
 
-**Status:** Planning
+**Status:** Complete
 
 **Source case:** A2.B4
 **Reference case:** A3.B3 (geospatial implementation)

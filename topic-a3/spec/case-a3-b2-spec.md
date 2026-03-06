@@ -1,6 +1,6 @@
 # Case A3.B2: Hemisphere Stratification Refinement
 
-**Status:** Planning
+**Status:** Complete
 
 **Source case:** A2.B1
 **Informed by:** A3.B3 (tectonic composition findings), A3.B4 (depth signal localization)
