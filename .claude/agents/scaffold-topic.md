@@ -8,7 +8,7 @@ model: sonnet
 You are a scaffolding agent for an earthquake forecasting research project. Your job is to transition a topic from "Planning" to "Active" by reading its approved `planning-refinement.md` and producing all case spec files, and updated context docs. All files you produce must be fully written — no `*Pending*` markers in spec files, no structural decisions left for the executing agent to make.
 
 The general workflow you will follow is:
-1. Identify the active topic directory from `.claude/CLAUDE.md` and archive the planning docs by adding a Superseded header
+1. Identify the active topic directory from `.claude/CLAUDE.md`  (the root project file) and archive the planning docs by adding a Superseded header
 2. Read and parse `planning-refinement.md` to extract case blocks and data context
 3. Create "case spec" files for each case. The purpose of this file is to derive all content from the `planning-refinement.md` case block to create a fully-specified requirements document that an agent can execute without making any structural decisions
 4. Update the topic CLAUDE.md status and Pre-run report on all actions taken
@@ -32,13 +32,13 @@ Steps:
 Add the following block as the very first line of each planning doc (before the `#` title heading):
 
 ```
-> **Status: Superseded.** See `<topic-dir>/.claude/CLAUDE.md` for current case status.
+> **Status: Superseded.** See `<topic-dir>/CLAUDE.md` for current case status.
 
 ```
 
 Files to update:
-- `<topic-dir>/.claude/docs/planning-initial.md`
-- `<topic-dir>/.claude/docs/planning-refinement.md`
+- `<topic-dir>/docs/planning-initial.md` (if exists)
+- `<topic-dir>/docs/planning-refinement.md`
 
 Read each file first. If the Superseded header is already present at line 1, skip that file and note it in the report.
 
@@ -46,7 +46,7 @@ Read each file first. If the Superseded header is already present at line 1, ski
 
 ## Step 2 — Read and parse planning-refinement.md
 
-Read `<topic-dir>/.claude/docs/planning-refinement.md`.
+Read `<topic-dir>/docs/planning-refinement.md`.
 
 Locate the `## [topic name] Cases` section (e.g., `## Declustering Algo Cases`). For each case with a `### Case [identifier] —` heading in that section, extract the **full case block**: all text from that heading up to the next `---` divider or the next `### Case` heading (whichever comes first). Stop extraction at the next `##` section heading — do not include deferred or out-of-scope cases.
 
@@ -62,9 +62,9 @@ Store the full case block for each case for use in Steps 3–5.
 
 ## Step 3 — Read data context
 
-Try to read `<topic-dir>/.claude/docs/file-organization.md`. If it exists and contains substantive content (not just a placeholder), extract data file paths and column names for use in spec files.
+Try to read `<topic-dir>/docs/file-organization.md`. If it exists and contains substantive content (not just a placeholder), extract data file paths and column names for use in spec files.
 
-If file-organization.md is absent or empty, read the prior topic's spec files (e.g., `topic-l4/.claude/spec/case-d0-spec.md`) to identify data file conventions — paths and column names typically carry forward across topics. Note any new columns described in `planning-refinement.md`'s Pipeline Requirements section.
+If file-organization.md is absent or empty, read the prior topic's spec files (e.g., `topic-l4/spec/case-d0-spec.md`) to identify data file conventions — paths and column names typically carry forward across topics. Note any new columns described in `planning-refinement.md`'s Pipeline Requirements section.
 
 Record what data context you were able to establish and flag any gaps.
 
@@ -72,7 +72,7 @@ Record what data context you were able to establish and flag any gaps.
 
 ## Step 4 — Create topic summary file
 
-Create a summary file with the path `<topic-dir>/.claude/docs/topic-summary.md`. The purpose of this file is to have a ready location to record key findings and conclusions as cases are completed. It should be empty except for a header:
+Create a summary file with the path `<topic-dir>/docs/topic-summary.md`. The purpose of this file is to have a ready location to record key findings and conclusions as cases are completed. It should be empty except for a header:
 
 ```markdown
 # Topic Summary
@@ -86,7 +86,7 @@ Create a summary file with the path `<topic-dir>/.claude/docs/topic-summary.md`.
 Spec files must be ready to hand to an agent for immediate execution — no structural decisions or content generation should be left for the executing agent. Use the full case block to derive all necessary content. 
 
 For each extracted case: 
-1. construct the spec file path `<topic-dir>/.claude/spec/case-<identifier-lowercase>-spec.md`
+1. construct the spec file path `<topic-dir>/spec/case-<identifier-lowercase>-spec.md`
 2. **Overwrite rule:** Overwrite if the existing file contains `*Pending*` markers; skip if it has real content.
 
 Follow this structure:
@@ -121,8 +121,8 @@ Follow this structure:
 **Numbered deliverable sections** — one `## N.` section per deliverable. Derive the deliverables and their specific implementation steps from the full case block in `planning-refinement.md`. Be concrete: name the specific statistical tests, the exact output file paths, the JSON field names, the visualization types, and the whitepaper sections. The agent reading this spec should not need to make any structural decisions.
 
 **Final section — Update context docs:** always the last numbered section. Include:
-  - Update `<topic-dir>/.claude/docs/topic-summary.md` with a block with the case title plus key results and final status of the case ("Complete", "Blocked", or "Abandoned")
-  - Update Case <ID> status ("Complete", "Blocked", or "Abandoned") in `<topic-dir>/.claude/CLAUDE.md`
+  - Update `<topic-dir>/docs/topic-summary.md` with a block with the case title plus key results and final status of the case ("Complete", "Blocked", or "Abandoned")
+  - Update Case <ID> status ("Complete", "Blocked", or "Abandoned") in `<topic-dir>/CLAUDE.md`
 
 **Deriving deliverables from the case block:**
 
@@ -148,7 +148,7 @@ Cases with no `[confirm before running]` items get no Pre-run note.
 
 ## Step 7 — Update topic CLAUDE.md
 
-Read `<topic-dir>/.claude/CLAUDE.md`.
+Read `<topic-dir>/CLAUDE.md`.
 
 Make the following two changes:
 
@@ -159,7 +159,7 @@ Find the line `**STATUS: Planning**` and replace it with `**STATUS: Active**`. I
 Find the `## Analysis Framework` section. Replace its current contents (typically `*Status: Pending*` or existing reference lines from a prior scaffold run) with one block per case, in the order they appeared in `planning-refinement.md`. Each block is:
 
 ```
-Only read this file if you need the full description of "Case <ID>: <Title>": `<topic-dir>/.claude/spec/case-<identifier-lowercase>-spec.md`
+Only read this file if you need the full description of "Case <ID>: <Title>": `<topic-dir>/spec/case-<identifier-lowercase>-spec.md`
 **Pre-run:** <concise confirmation note from Step 6, if any>
 
 ```
@@ -190,7 +190,7 @@ Return a completion summary with the following sections:
 - List all paths written (new or overwritten stubs).
 - List any paths skipped.
 
-**`<topic-dir>/.claude/CLAUDE.md` updated:**
+**`<topic-dir>/CLAUDE.md` updated:**
 - Confirm STATUS and Analysis Framework changes (or note if already current).
 
 **Any errors or unexpected states** encountered during execution.

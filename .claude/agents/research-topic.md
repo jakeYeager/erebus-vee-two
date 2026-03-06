@@ -25,7 +25,7 @@ You will receive a research question or topic in your task prompt. Extract the c
 
 ## Step 1 — Read project context
 
-Read `.claude/CLAUDE.md` to understand the research domain and framing.
+Read `.claude/CLAUDE.md`  (the root project file) to understand the research domain and framing.
 
 ---
 

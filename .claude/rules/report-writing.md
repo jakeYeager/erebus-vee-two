@@ -10,13 +10,33 @@
   - Limitations
   - References (as applicable)
 
+Use canonical naming references when citing other works within this project. See `.claude/rules/project-naming-and-organization.md` for convention.
+
+### Internal Citation Format
+
+**Inline:** Use the canonical identifier in parentheses, e.g. `(A2.A4)` or `(see A2.B6)`.
+
+**Cross-Topic Comparison section lead-lines:** Use the format `**[Case Title] ([Case ID]):**`, e.g. `**Tectonic Regime Stratification (A2.B3):**`. The case title should match the canonical title from the reference list. Inline case ID references within the body text use the standard inline format `(A2.B3)`.
+
+**Reference list entry:**
+```
+Yeager, J. ([year]). [Canonical ID]: [Title]. erebus-vee-two internal report.
+```
+
+Example:
+```
+Yeager, J. (2026). A2.A4: Aftershock Phase-Preference Analysis. erebus-vee-two internal report.
+```
+
+The year should match the date in the cited document's header.
+
 ## Template Header & Footers
 
 Use these template header and footers unless otherwise specified:
 
 **Header:**
 ```markdown
-# Case [identifier]: [Title]
+# [canonical name i.e. "A1.B1"]: [Title]
 
 **Document Information**
 - Author: Jake Yeager
@@ -36,6 +56,10 @@ Use these template header and footers unless otherwise specified:
 ## Images
 
 Any data visualization image should be embedded inline (once) within their referencing section.
+
+## Tables
+
+All tables in a whitepaper must carry a sequentially numbered caption in the format **Table N. Description.** placed immediately above the table. Numbering is document-wide and sequential (Table 1, Table 2, …). Tables should be referenced by their number in surrounding prose where relevant (e.g., "see Table 3").
 
 
 ## Update Version on Content Change

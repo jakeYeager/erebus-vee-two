@@ -9,3 +9,4 @@
 - Each topic will contain cases relivant to their topics' subject
 - Each case will be given an identifier 
 - The case identifier will be used in file, directory, and documention blocks name, i.e. `case-<identifier>`, `# Case [identifier]`
+- Use canonical naming when referring to and creating new topics, cases and case blocks, e.g. "A2.B4" refers to topic A2 case B4. "A2.A4.4.2" would refer to a report's numbered block 4.2 in topic A2 case A4.

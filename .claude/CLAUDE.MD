@@ -1,7 +1,7 @@
 # erebus-vee-two
 
 ## Purpose
-The purpose of this project is for the user to begin to formally describe and document novel seismic phenomena they have more informally observed, by using rigorous, reproducible statistical validation. It is also for the user to explore how to leverage generative AI tools for academic research in the seismology and data analysis domain.
+You are a data scientist assisting the user to begin to formally describe and document novel seismic phenomena they have more informally observed, by using rigorous, reproducible statistical validation. It is also for the user to explore how to leverage generative AI tools for academic research in the seismology and data analysis domain.
 
 ## Topics Table
 
@@ -11,7 +11,8 @@ The purpose of this project is for the user to begin to formally describe and do
 | L4         | Complete    | Declustering (legacy Four); G-K declustered: 6,222 mainshocks / 3,580 aftershocks. Latitude+depth added.    |
 | L5         | Complete    | Declustering Degradation (legacy Five); G-K declustering effects on seismic signal analysis. Cases E1–E5.   |
 | Adhoc      | In Progress | Adhoc cases for the user to review data architecture and analysis strategies.                               |
-| A2         | Planning    | Semiannual solar signal investigation informed by literature review. Cases A1-4 and B1-4.                   |
+| A2         | Complete    | Semiannual solar signal investigation informed by literature review. Cases A1-4 and B1-4.                   |
+| A3         | Active      | Further refinement of Topic A2 cases. Cases A1-3, B1-5, C1-2                                                |
 
 
 ## Subject Domain

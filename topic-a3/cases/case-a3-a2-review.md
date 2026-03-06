@@ -1,0 +1,9 @@
+# A3.A2 Version 1 Post-hoc Review
+
+I think we need to iterate over A3.A2 again. The results of the tests look very interesting however they feel buried. I think we have deviated from the reframed purpose of the case of an audit with a new methodology, to a comparison of pervious cases. I think there are too many external "domain" assertions or targets that the core periocity results get lost. Explicit quarter-year period test dates are another arbitrary assertion with the assumtion that the oscillation is perfectly matched to our framing of a year, and when we don't meet the ~365.25d target then that gets reported as "Not significant" (as in the Stratified MFPA table). However if we look back to the "Top MFPA detections (FDR-corrected, full catalog)" we have valuable periods that suggest we may have a data treatment inquiry: ~4.7d (power = 8.33), and ~344d (power = 7.16) detected suggest we might have a bug in the "wrap-around" from bin 16/24 to bin 1.
+
+Lastly we need to have consistant reporting of metrics, e.g. the MFPA detections are buried in a prose paragraph as is the suppression phase characteristics; not easy to read, and they should be in their own table. Also their two metrics are either year-as-decimal i.e. "0.67" or then approx day period i.e. "~275.3d". There should be some convertion column to standardize to visually cross-compare.
+
+The core periocity testing is very valuable, however we should let the data speak for itself first an then apply the assertions & comparisons in the reporting.
+
+Do we need to start over at from the top at topic-a3/cases/case-a3-a2-details.md and /Users/jake/Projects/Code/prod/erebus-vee-two/topic-a3/spec/case-a3-a2-spec.md, or can we address at the spec whitepaper report section? The `json` results may have structure issues, but those could just be interpretive?
