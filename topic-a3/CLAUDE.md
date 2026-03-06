@@ -22,7 +22,7 @@ Due to the iterative review process of the cases, as compared to other topics, t
 | B5   | Complete | Corrected Null-Distribution Geometric Variable Test          |
 | A3   | Complete | Phase-Concentration Audit                                    |
 | A1   | Abandoned | Aftershock Phase-Preference Characterization                |
-| C1   | Planning | Subduction Zone Subset Test                                  |
+| C1   | Abandoned | Subduction Zone Subset Test                                 |
 | A2   | Complete  | Stratified Schuster/MFPA Periodicity Audit                  |
 
 

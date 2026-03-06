@@ -230,6 +230,9 @@ After null correction, re-evaluate whether the three A1b intervals align with co
 
 ### A3.C1: Subduction Zone Subset Test
 
+> **Status: Abandoned**
+> **Rationale:** Sufficient coverage exists from prior cases to address the core intent. More of a nuance analysis case than something providing essential behavior description.
+
 **Source:** A2.B2, A2.B4 (console summary gap)
 
 **Gap or concern:**

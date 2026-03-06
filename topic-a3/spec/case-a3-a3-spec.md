@@ -1,6 +1,6 @@
 # Case A3.A3: Phase-Concentration Audit
 
-**Status:** Planning
+**Status:** Complete
 
 **Source case:** A2.A4
 **Informed by:** A3.C2 (sequential removal precedent), A3.B3 (tectonic classification), A3.B4 (depth bands)
