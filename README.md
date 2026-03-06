@@ -1,38 +1,62 @@
 # Erebus v2
 
-This repo is a refinement of the project https://github.com/jakeYeager/erebus-valid-one .
-
 ## Table of Contents
 
-- [Adhoc Reports](#adhoc-reports)
-  - [Case A0: ComCat and ISC-GEM Catalog Comparison Reference](#case-a0-comcat-and-isc-gem-catalog-comparison-reference)
-  - [Case A0b: Duplicate Detection and Cross-Catalog Event Accounting](#case-a0b-duplicate-detection-and-cross-catalog-event-accounting)
-  - [Case A1: Binning Increment Sensitivity Analysis for Astronomical Metrics](#case-a1-binning-increment-sensitivity-analysis-for-astronomical-metrics)
-  - [Case A1b: Elevated Bin Event Characterization and Declustering Implications](#case-a1b-elevated-bin-event-characterization-and-declustering-implications)
-- [Topic A2 Reports](#topic-a2-reports)
-  - [Case A1: Schuster Spectrum and MFPA Periodicity Analysis](#case-a1-schuster-spectrum-and-mfpa-periodicity-analysis)
-  - [Case A2: b-Value Seasonal Variation](#case-a2-b-value-seasonal-variation)
-  - [Case A3: Magnitude Stratification of the Solar Signal](#case-a3-magnitude-stratification-of-the-solar-signal)
-  - [Case A4: Declustering Sensitivity Analysis](#case-a4-declustering-sensitivity-analysis)
-  - [Case B1: Hemisphere Stratification — Phase Symmetry Test](#case-b1-hemisphere-stratification--phase-symmetry-test)
-  - [Case B2: Ocean vs. Continent Location — Hydrological Loading Discrimination](#case-b2-ocean-vs-continent-location--hydrological-loading-discrimination)
-  - [Case B3: Tectonic Regime Stratification](#case-b3-tectonic-regime-stratification)
-  - [Case B4: Depth Stratification — Surface Loading Penetration Test](#case-b4-depth-stratification--surface-loading-penetration-test)
-  - [Case B5: Solar Declination Rate-of-Change vs. Position Test](#case-b5-solar-declination-rate-of-change-vs-position-test)
-  - [Case B6: Rolling Window Stationarity Test](#case-b6-rolling-window-stationarity-test)
-- [Topic A3 Reports](#topic-a3-reports)
-  - [A3.A2: Stratified Schuster/MFPA Periodicity Audit](#a3a2-stratified-schustermfpa-periodicity-audit)
-  - [A3.A3: Phase-Concentration Audit](#a3a3-phase-concentration-audit)
-  - [A3.B1: Rolling-Window Chi-Square Repeat](#a3b1-rolling-window-chi-square-repeat)
-  - [A3.B2: Hemisphere Stratification Refinement](#a3b2-hemisphere-stratification-refinement)
-  - [A3.B3: Ocean/Coast Sequential Threshold Sensitivity](#a3b3-oceancoast-sequential-threshold-sensitivity)
-  - [A3.B4: Depth × Magnitude Two-Way Stratification with Moho Isolation](#a3b4-depth--magnitude-two-way-stratification-with-moho-isolation)
-  - [A3.B5: Corrected Null-Distribution Geometric Variable Test](#a3b5-corrected-null-distribution-geometric-variable-test)
-  - [A3.C2: Targeted Major Sequence Phased Declustering Test](#a3c2-targeted-major-sequence-phased-declustering-test)
+- [Erebus v2](#erebus-v2)
+  - [Table of Contents](#table-of-contents)
+  - [Rationale](#rationale)
+  - [Agentic AI Usage Methodology](#agentic-ai-usage-methodology)
+  - [Adhoc Cases](#adhoc-cases)
+    - [Case A0: ComCat and ISC-GEM Catalog Comparison Reference](#case-a0-comcat-and-isc-gem-catalog-comparison-reference)
+    - [Case A0b: Duplicate Detection and Cross-Catalog Event Accounting](#case-a0b-duplicate-detection-and-cross-catalog-event-accounting)
+    - [Case A1: Binning Increment Sensitivity Analysis for Astronomical Metrics](#case-a1-binning-increment-sensitivity-analysis-for-astronomical-metrics)
+    - [Case A1b: Elevated Bin Event Characterization and Declustering Implications](#case-a1b-elevated-bin-event-characterization-and-declustering-implications)
+  - [Topic A2 Reports](#topic-a2-reports)
+    - [Case A1: Schuster Spectrum and MFPA Periodicity Analysis](#case-a1-schuster-spectrum-and-mfpa-periodicity-analysis)
+    - [Case A2: b-Value Seasonal Variation](#case-a2-b-value-seasonal-variation)
+    - [Case A3: Magnitude Stratification of the Solar Signal](#case-a3-magnitude-stratification-of-the-solar-signal)
+    - [Case A4: Declustering Sensitivity Analysis](#case-a4-declustering-sensitivity-analysis)
+    - [Case B1: Hemisphere Stratification — Phase Symmetry Test](#case-b1-hemisphere-stratification--phase-symmetry-test)
+    - [Case B2: Ocean vs. Continent Location — Hydrological Loading Discrimination](#case-b2-ocean-vs-continent-location--hydrological-loading-discrimination)
+    - [Case B3: Tectonic Regime Stratification](#case-b3-tectonic-regime-stratification)
+    - [Case B4: Depth Stratification — Surface Loading Penetration Test](#case-b4-depth-stratification--surface-loading-penetration-test)
+    - [Case B5: Solar Declination Rate-of-Change vs. Position Test](#case-b5-solar-declination-rate-of-change-vs-position-test)
+    - [Case B6: Rolling Window Stationarity Test](#case-b6-rolling-window-stationarity-test)
+  - [Topic A3 Reports](#topic-a3-reports)
+    - [A3.A2: Stratified Schuster/MFPA Periodicity Audit](#a3a2-stratified-schustermfpa-periodicity-audit)
+    - [A3.A3: Phase-Concentration Audit](#a3a3-phase-concentration-audit)
+    - [A3.B1: Rolling-Window Chi-Square Repeat](#a3b1-rolling-window-chi-square-repeat)
+    - [A3.B2: Hemisphere Stratification Refinement](#a3b2-hemisphere-stratification-refinement)
+    - [A3.B3: Ocean/Coast Sequential Threshold Sensitivity](#a3b3-oceancoast-sequential-threshold-sensitivity)
+    - [A3.B4: Depth × Magnitude Two-Way Stratification with Moho Isolation](#a3b4-depth--magnitude-two-way-stratification-with-moho-isolation)
+    - [A3.B5: Corrected Null-Distribution Geometric Variable Test](#a3b5-corrected-null-distribution-geometric-variable-test)
+    - [A3.C2: Targeted Major Sequence Phased Declustering Test](#a3c2-targeted-major-sequence-phased-declustering-test)
+
+
+## Rationale
+
+This repo is a refinement of an earlier research project [Erebus Valid One](https://github.com/jakeYeager/erebus-valid-one). The purpose of the projects is two-fold: the first is to explore the tools now available through agentic AI in supporting users in the technical data analysis; the second is to epand, refine, and formalize the personal "passion project" research I've done within the seimology domain.
+
+## Agentic AI Usage Methodology
+
+**Begin with context risk management**  
+The agentic application used in this project was Claude Code. Having a little experience with the desktop app interface I knew of some of the risks related to hallucinations. Thus to the extend possible (and expense of massive context load and token burn) I used a heavy "logging" strategy such that most outputs were created as file entities that could be preserved and reviewed. There were occations where a CLI dialoge would transpire for clarification of outputs. Hard and fast rule: *All critical statistical mathmatics* was performed via Python modules with accompaning testing suites. This was to guard against associative and context based interpretation errors. 
+
+**Project Structure**  
+The project was broken up into a two-tiered hierarchy: a "Topic" that carried a specific theme of the subject or goal. Within this topic are "Cases" that would isolate certain aspects of the topic to analyze and report. 
+
+**Workflow**  
+The workflow has evolved over the course of these projects. I tried building a `scaffold-topic` agent that would take a bulk refinement document full of cases and scaffold them en masse (done in Topic A2). I have abaondoned that approach as the results of cases have served to refine subsequent cases (done in Topic A3 cases). An interative case build-out has yielded much more informative analysis results.
+
+All cases were built in an iterative style similar to what is found in the software engineering domain: initial planning -> refinement -> requirements/specifications -> execution -> reporting. Worth noting was the implementation specifications or "spec" file was crafted in such a way as to allow a subagent to have an encapsulated content/context document to preform everything required outside of the main context thread. This also allowed me the opportunity to observe errors and assumptions in the results. If there was something unexpected in the report I had an opportunity to circle back and further refine the requirements and expectations.
+
 
 ---
 
-## Adhoc Reports
+## Adhoc Cases
+
+**Topic Goal**  
+The adhoc topic lives outside of the more formalized research topic workflow. It is intented to be a "generalized review" topic for the user. The user can then review the results of the individual cases to make decisions regarding the other more formal case testing suites within other topics.
 
 ### [Case A0: ComCat and ISC-GEM Catalog Comparison Reference](topic-adhoc/output/case-a0-whitepaper.md)
 
@@ -59,6 +83,9 @@ Case A1 established that the `solar_secs` chi-square signal is robust across bin
 [Back to top](#erebus-v2)
 
 ## Topic A2 Reports
+
+**Topic Goal**  
+The bimodal equinox pattern is not straightforwardly explained by the dominant mechanism in the literature (hydrological/snow loading). Hydrological forcing peaks at summer or winter solstice depending on hemisphere and regional climate — not at the equinoxes. The equinox signal is more consistent with a direct solar-geometric forcing (e.g., solar declination rate of change, Earth-Sun distance, or tidal stress geometry) or with a globally symmetric effect that cancels hemisphere-specific hydrological loading and leaves a residual equinox peak. This distinction is the core scientific question.
 
 ### [Case A1: Schuster Spectrum and MFPA Periodicity Analysis](topic-a2/output/case-a1-whitepaper.md)
 
@@ -121,6 +148,9 @@ This case tests whether the solar-phase signal identified in the full ISC-GEM ca
 [Back to top](#erebus-v2)
 
 ## Topic A3 Reports
+
+**Topic Goal**  
+Topic A2 focused on building analysis test cases to address a liturature review on the conventionally accepted view that hydrological/snow loading is the dominant mechanism in seasonal earthquake propagation. This mechanism is suspect from this studies perspective given the nature of the "solar signal" as seen in the historical population of strong earthquakes. Hydrological forcing peaks at summer or winter solstice depending on hemisphere and regional climate — not at the equinoxes where the solar signal is strongest. The equinox signal is more consistent with a direct solar-geometric forcing (e.g., solar declination rate of change, Earth-Sun distance, or tidal stress geometry) or with a globally symmetric effect that cancels hemisphere-specific hydrological loading and leaves a residual equinox peak. This distinction is the core scientific question. This topic A3 attempts to further refine the inital cases of A2 to better describe this solar signal.
 
 ### [A3.A2: Stratified Schuster/MFPA Periodicity Audit](topic-a3/output/case-a3-a2-whitepaper.md)
 
